@@ -240,7 +240,9 @@
 					android:gravity="center"
 					android:text="@string/_sign_up_ek2_string"
 					android:textColor="@color/_sign_up_ek2_color"
-					android:textSize="15sp" />
+					android:textSize="15sp"
+					android:background="#FFFFFF"
+					/>
 
 				<TextView
 					android:id="@+id/don_t_have_any_account_"

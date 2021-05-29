@@ -8,6 +8,7 @@
 	import android.view.View;
 	import android.widget.TextView;
 	import android.widget.ImageView;
+	import android.widget.Toast;
 
 	public class sign_up_activity extends Activity {
 
@@ -52,7 +53,7 @@
 		private ImageView wifi_ek2;
 		private ImageView cellular_connection_ek2;
 		private TextView time_ek2;
-
+		database d = new database(this);
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 
@@ -91,9 +92,13 @@
 
 				public void onClick(View v) {
 
-					Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
-					startActivity(nextScreen);
-
+					/*Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+					startActivity(nextScreen);*/
+                    long save=d.Register(username.getText().toString(),password_ek1.getText().toString());
+                    if(save>=1)
+						Toast.makeText(getApplication(),"User has been created done",Toast.LENGTH_LONG).show();
+                    else
+						Toast.makeText(getApplication(),"error",Toast.LENGTH_LONG).show();
 
 				}
 			});
