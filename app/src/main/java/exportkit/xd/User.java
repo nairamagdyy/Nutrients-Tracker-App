@@ -20,12 +20,13 @@ public class User {
         this.gender = gender;
     }
 
-    public User(String name, String username, String email, String phoneNumber, String password) {
+    public User(String name, String username, String email, String phoneNumber, String password ,String gender) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
+        this.gender = gender ;
 
     }
 
