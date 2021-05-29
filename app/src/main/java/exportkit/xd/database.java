@@ -13,7 +13,7 @@ public class database extends SQLiteOpenHelper {
     // Database Name
     public static final String DB_Name = "App" ;
     // Database Version
-    public static final int DB_version = 2 ;
+    public static final int DB_version = 3;
     // User table name
     public static final String DB_User_Table = "user" ;
     // User Table Columns names
@@ -29,7 +29,7 @@ public class database extends SQLiteOpenHelper {
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + DB_User_Table + "("
             + DB_col_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DB_col_name + " TEXT, " + DB_col_username + " TEXT UNIQUE, "
-            + DB_col_email + " TEXT UNIQUE, " + DB_col_password + " TEXT, "  + DB_col_phonenumber + " INT "  +")";
+            + DB_col_email + " TEXT UNIQUE, " + DB_col_password + " TEXT, " + DB_col_gender + " TEXT, " + DB_col_phonenumber + " INT "  +")";
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + DB_User_Table;
 
@@ -49,10 +49,9 @@ public class database extends SQLiteOpenHelper {
         db.execSQL(DROP_USER_TABLE);
         // Create tables again
         onCreate(db);
-
     }
     /*
-      This method is to create user record // Register
+      This method is to create user // Register
      */
     public boolean Register(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -61,6 +60,7 @@ public class database extends SQLiteOpenHelper {
         values.put(DB_col_username,user.getUsername()) ;
         values.put(DB_col_email, user.getEmail());
         values.put(DB_col_password, user.getPassword());
+        values.put(DB_col_gender, user.getGender());
         values.put(DB_col_phonenumber, user.getPhoneNumber());
         // Inserting Row
         long i = db.insert(DB_User_Table, null, values);
