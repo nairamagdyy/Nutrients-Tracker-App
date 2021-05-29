@@ -135,21 +135,28 @@
 
 				<Button
 					android:id="@+id/sign_up_ek6"
-					android:layout_width="wrap_content"
+					android:layout_width="147dp"
 					android:layout_height="wrap_content"
+					android:layout_alignParentStart="true"
+					android:layout_alignParentLeft="true"
 					android:layout_alignParentTop="true"
+					android:layout_alignParentEnd="true"
+					android:layout_alignParentRight="true"
 					android:layout_alignParentBottom="true"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginStart="137dp"
-					android:layout_marginLeft="137dp"
+					android:layout_marginStart="132dp"
+					android:layout_marginLeft="132dp"
 					android:layout_marginTop="632dp"
-					android:layout_marginEnd="160dp"
-					android:layout_marginRight="160dp"
-					android:layout_marginBottom="49dp"
+					android:layout_marginEnd="132dp"
+					android:layout_marginRight="132dp"
+					android:layout_marginBottom="27dp"
 					android:background="@drawable/round"
 					android:gravity="center"
-					android:text="Signup"
+					android:text="@string/_sign_up_ek2_string"
 					android:textSize="15sp" />
+
+
+
 
 			</RelativeLayout>
 
@@ -303,29 +310,37 @@
 				</RelativeLayout>
 
 			</RelativeLayout>
-
-			<RadioButton
-				android:id="@+id/female"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Female"
-				android:textStyle="bold"
-				android:layout_marginLeft="262dp"
-				android:layout_marginTop="596dp"
-				/>
-
-
-			<RadioButton
-				android:id="@+id/male"
-				android:layout_width="wrap_content"
+			<RadioGroup
+				android:id="@+id/groupbutton"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_alignParentStart="true"
 				android:layout_alignParentLeft="true"
-				android:layout_marginStart="69dp"
-				android:layout_marginLeft="69dp"
-				android:layout_marginTop="596dp"
-				android:text="Male"
-				android:textStyle="bold" />
+				android:layout_alignParentTop="true"
+				android:layout_alignParentEnd="true"
+				android:layout_alignParentRight="true"
+				android:layout_marginTop="582dp"
+				android:orientation="horizontal">
+
+				<RadioButton
+					android:id="@+id/male"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Male"
+					android:textStyle="bold"
+					android:layout_marginLeft="50dp"
+					/>
+				<RadioButton
+					android:id="@+id/female"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Female"
+					android:textStyle="bold"
+					android:layout_marginLeft="170dp"
+					/>
+
+
+			</RadioGroup>
 
 			<RelativeLayout
 				android:id="@+id/group__ek1"
