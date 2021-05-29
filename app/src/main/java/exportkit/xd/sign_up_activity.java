@@ -6,13 +6,16 @@
 
 
 	import android.view.View;
+	import android.widget.RadioButton;
+	import android.widget.RadioGroup;
 	import android.widget.TextView;
 	import android.widget.ImageView;
 	import android.widget.Toast;
 
 	public class sign_up_activity extends Activity {
 
-
+		database databaseHelper;
+		User user ;
 		private View _bg__sign_up_ek5;
 		private View rectangle_33_ek2;
 		private TextView phone_number;
@@ -53,7 +56,9 @@
 		private ImageView wifi_ek2;
 		private ImageView cellular_connection_ek2;
 		private TextView time_ek2;
-		database d = new database(this);
+		private RadioGroup radioGroup;
+		private RadioButton radioButton;
+
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 
@@ -86,7 +91,7 @@
 			welcome_ = (TextView) findViewById(R.id.welcome_);
 			ellipse_ek3 = (View) findViewById(R.id.ellipse_ek3);
 			sign_up_ek7 = (TextView) findViewById(R.id.sign_up_ek7);
-
+			databaseHelper = new database(this);
 			//custom code goes here
 			sign_up_ek6.setOnClickListener(new View.OnClickListener() {
 
@@ -94,11 +99,20 @@
 
 					/*Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
 					startActivity(nextScreen);*/
-                    long save=d.Register(username.getText().toString(),password_ek1.getText().toString());
-                    if(save>=1)
-						Toast.makeText(getApplication(),"User has been created done",Toast.LENGTH_LONG).show();
-                    else
-						Toast.makeText(getApplication(),"error",Toast.LENGTH_LONG).show();
+					String Fullname = name.getText().toString();
+					String Username = username.getText().toString();
+					String email = email_address.getText().toString();
+					String password = password_ek1.getText().toString() ;
+					String phoneNumber = phone_number.getText().toString();
+					user= new User(Fullname, Username,  email, phoneNumber, password);
+                    if(databaseHelper.Register(user))
+					{   Toast.makeText(getApplication(),"Registration Successfully",Toast.LENGTH_LONG).show();
+					    Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+					    startActivity(nextScreen); }
+                    else {
+						Toast.makeText(getApplication(), "Error !!!! ", Toast.LENGTH_LONG).show();
+					}
+
 
 				}
 			});
