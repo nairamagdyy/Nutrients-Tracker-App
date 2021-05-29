@@ -110,7 +110,7 @@
 					    Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
 					    startActivity(nextScreen); }
                     else {
-						Toast.makeText(getApplication(), "Error !!!! ", Toast.LENGTH_LONG).show();
+						Toast.makeText(getApplication(), "email exists , enter new email !!!! ", Toast.LENGTH_LONG).show();
 					}
 
 
