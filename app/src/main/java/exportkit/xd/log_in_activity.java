@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.content.Intent;
+import android.widget.Toast;
 
 public class log_in_activity extends Activity {
 
-	
+	database db ;
 	private View _bg__log_in_ek2;
 	private View rectangle_33;
 	private TextView email_or_username;
@@ -49,7 +50,6 @@ public class log_in_activity extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.log_in);
-
 		rectangle_33 = (View) findViewById(R.id.rectangle_33);
 		email_or_username = (TextView) findViewById(R.id.email_or_username);
 		path_445 = (ImageView) findViewById(R.id.path_445);
@@ -69,10 +69,8 @@ public class log_in_activity extends Activity {
 		welcome_back_ = (TextView) findViewById(R.id.welcome_back_);
 		ellipse_ek1 = (View) findViewById(R.id.ellipse_ek1);
 		please_enter_your_account_here = (TextView) findViewById(R.id.please_enter_your_account_here);
-	
-		
+		 db = new database (this) ;
 		_sign_up_ek2.setOnClickListener(new View.OnClickListener() {
-		
 			public void onClick(View v) {
 				
 				Intent nextScreen = new Intent(getApplicationContext(), sign_up_activity.class);
@@ -83,9 +81,18 @@ public class log_in_activity extends Activity {
 		login_ek1.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-
-				Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
-				startActivity(nextScreen);
+				String email = email_or_username.getText().toString();
+				String Pass = password.getText().toString() ;
+				Boolean value = db.checkUser(email,Pass);
+				if (value==true) {
+					Toast.makeText(getApplication(),"Login Successfully",Toast.LENGTH_LONG).show();
+					Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+					startActivity(nextScreen);
+				}
+				else
+				{
+					Toast.makeText(getApplication(), " Try Again !!!! ", Toast.LENGTH_LONG).show();
+				}
 
 
 			}
