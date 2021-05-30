@@ -1,6 +1,6 @@
 package exportkit.xd.View.Register;
 
-public interface ILoginView {
+public interface IRegisterView {
     void onLoginSuccess(String message);
     void onLoginError(String message);
 }

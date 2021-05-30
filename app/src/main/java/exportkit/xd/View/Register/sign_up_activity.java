@@ -4,28 +4,22 @@
 	import android.content.Intent;
 	import android.os.Bundle;
 
-
 	import android.view.View;
 	import android.widget.RadioButton;
 	import android.widget.RadioGroup;
 	import android.widget.TextView;
     import android.widget.Toast;
 
-	import exportkit.xd.Controller.database;
+	import exportkit.xd.Controller.IUserController;
+	import exportkit.xd.Controller.userController;
 	import exportkit.xd.Model.User;
 	import exportkit.xd.R;
 	import exportkit.xd.View.homepage_activity;
 
-	public class sign_up_activity extends Activity {
+	public class sign_up_activity extends Activity implements IRegisterView {
 
-		database databaseHelper;
-		User user ;
-		private TextView phone_number;
-		private TextView name;
-		private TextView username;
-		private TextView sign_up_ek6;
-		private TextView email_address;
-		private TextView password_ek1;
+		IUserController signUpController;
+		private TextView email, password, phone, name, username,signUpb;
 		private RadioGroup radioSexGroup;
 		private RadioButton radioSexButton;
 
@@ -34,56 +28,63 @@
 
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.sign_up);
+			signUpController = new userController(this);
 
-			phone_number = (TextView) findViewById(R.id.phonenumber);
+			email= (TextView) findViewById(R.id.email_address);
+			password= (TextView) findViewById(R.id.password_ek1);
+			phone = (TextView) findViewById(R.id.phonenumber);
 			name = (TextView) findViewById(R.id.name);
 			username = (TextView) findViewById(R.id.username);
-			sign_up_ek6 = (TextView) findViewById(R.id.sign_up_ek6);
-			email_address = (TextView) findViewById(R.id.email_address);
-			password_ek1 = (TextView) findViewById(R.id.password_ek1);
+			signUpb = (TextView) findViewById(R.id.sign_up_ek6);
 			radioSexGroup = (RadioGroup) findViewById(R.id.groupbutton);
 
-			databaseHelper = new database(this);
-			//custom code goes here
-			sign_up_ek6.setOnClickListener(new View.OnClickListener() {
+
+			signUpb.setOnClickListener(new View.OnClickListener() {
 
 				public void onClick(View v) {
-
-					/*Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
-					startActivity(nextScreen);*/
 					String Fullname = name.getText().toString();
 					String Username = username.getText().toString();
-					String email = email_address.getText().toString();
-					String password = password_ek1.getText().toString() ;
-					String phoneNumber = phone_number.getText().toString();
+					String Email = email.getText().toString();
+					String Password = password.getText().toString() ;
+					String Phone = phone.getText().toString();
 					// get selected radio button from radioGroup
 					int selectedId = radioSexGroup.getCheckedRadioButtonId();
 					// find the radiobutton by returned id
 					radioSexButton = (RadioButton) findViewById(selectedId);
 					String gender = radioSexButton.getText().toString();
-					if (Fullname.equalsIgnoreCase("") || Username.equalsIgnoreCase("") || email.equalsIgnoreCase("") ||
-							password.equalsIgnoreCase("") || phoneNumber.equalsIgnoreCase("")) {
+
+					if (Fullname.equalsIgnoreCase("")
+							|| Username.equalsIgnoreCase("")
+							|| Email.equalsIgnoreCase("")
+							|| Password.equalsIgnoreCase("")
+							|| Phone.equalsIgnoreCase(""))
+					{
 						Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
 
 					}
                      else
 					{
-						user= new User(Fullname, Username,  email, phoneNumber, password , gender );
-						if(databaseHelper.Register(user))
-						{
-							Toast.makeText(getApplication(),"Registration Successfully",Toast.LENGTH_LONG).show();
-							Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
-							startActivity(nextScreen);
-						}
-						else {
-							Toast.makeText(getApplication(), "email exists or username , enter new one!!!! ", Toast.LENGTH_LONG).show();
-						}
+						User newUser= new User(Fullname, Username,  Email, Phone, Password , gender );
+						signUpController.signUp(newUser);
 
 					}
 
 
 				}
 			});
+
+		}
+
+		@Override
+		public void onLoginSuccess(String message) {
+			Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
+			Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+			startActivity(nextScreen);
+		}
+
+		@Override
+		public void onLoginError(String message) {
+			Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
 		}
 	}

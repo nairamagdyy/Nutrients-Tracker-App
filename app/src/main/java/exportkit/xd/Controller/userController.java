@@ -2,25 +2,34 @@ package exportkit.xd.Controller;
 
 import android.content.Context;
 
-import exportkit.xd.View.Register.ILoginView;
+import exportkit.xd.Model.User;
+import exportkit.xd.View.Register.IRegisterView;
 
 public class userController implements IUserController{
 
-    ILoginView loginView;
+    IRegisterView view;
     database db;
 
-    public userController(ILoginView loginView) {
-        this.loginView = loginView;
-        db = new database ((Context) this.loginView);
+    public userController(IRegisterView view) {
+        this.view = view;
+        db = new database ((Context) this.view);
     }
 
     @Override
+    public void signUp(User user){
+        Boolean data = db.Register(user);
+
+        if(data)
+            view.onLoginSuccess("Registration Successfully");
+        else
+            view.onLoginError("email exists or username , enter new one!!!!");
+    }
     public void login(String email, String password) {
         Boolean data = db.loginValidation(email,password);
 
         if(data)
-            loginView.onLoginSuccess("Login Successfully");
+            view.onLoginSuccess("Login Successfully");
         else
-            loginView.onLoginError("Try Again !!!!");
+            view.onLoginError("Try Again !!!!");
     }
 }
