@@ -28,90 +28,88 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginStart="16dp"
-					android:layout_marginEnd="16dp"
-					android:layout_marginTop="215dp">
+					android:layout_marginTop="215dp"
+					android:layout_marginEnd="16dp">
 
-						<View
-							android:id="@+id/rectangle_33"
-							android:layout_width="wrap_content"
-							android:layout_height="58dp"
-							android:layout_marginStart="8dp"
-							android:layout_marginLeft="8dp"
-							android:background="@drawable/rectangle_33_shape"
-							android:layout_gravity="center"
-							/>
+					<View
+						android:id="@+id/rectangle_33"
+						android:layout_width="wrap_content"
+						android:layout_height="58dp"
+						android:layout_gravity="center"
+						android:layout_marginStart="8dp"
+						android:layout_marginLeft="8dp"
+						android:background="@drawable/rectangle_33_shape" />
 
-						<EditText
-							android:id="@+id/email_or_username"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="58dp"
-							android:layout_marginTop="10dp"
-							android:hint="@string/email_or_username_string"
-							android:inputType="textEmailAddress"
-							android:textSize="15sp" />
+					<EditText
+						android:id="@+id/email_or_username"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="58dp"
+						android:layout_marginTop="10dp"
+						android:hint="@string/email_or_username_string"
+						android:inputType="textEmailAddress"
+						android:textSize="15sp" />
+
+
+					<RelativeLayout
+						android:id="@+id/iconly_light_message"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="30dp"
+						android:layout_marginLeft="30dp"
+						android:layout_marginTop="16dp">
 
 
 						<RelativeLayout
-							android:id="@+id/iconly_light_message"
+							android:id="@+id/message"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:layout_marginStart="30dp"
-							android:layout_marginLeft="30dp"
-							android:layout_marginTop="16dp">
+							android:layout_marginStart="2dp"
+							android:layout_marginLeft="0dp"
+							android:layout_marginTop="3.5dp">
 
-
-							<RelativeLayout
-								android:id="@+id/message"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_marginStart="2dp"
+							<ImageView
+								android:id="@+id/path_445"
+								android:layout_width="11.31dp"
+								android:layout_height="3.91dp"
+								android:layout_marginStart="4dp"
 								android:layout_marginLeft="0dp"
-								android:layout_marginTop="3.5dp">
+								android:layout_marginTop="6dp"
+								android:contentDescription="path_445"
+								android:src="@drawable/path_445" />
 
-								<ImageView
-									android:id="@+id/path_445"
-									android:layout_width="11.31dp"
-									android:layout_height="3.91dp"
-									android:layout_marginStart="4dp"
-									android:layout_marginLeft="0dp"
-									android:layout_marginTop="6dp"
-									android:contentDescription="path_445"
-									android:src="@drawable/path_445" />
-
-								<ImageView
-									android:id="@+id/rectangle_511"
-									android:layout_width="19.23dp"
-									android:layout_height="17.12dp"
-									android:layout_marginStart="0dp"
-									android:layout_marginLeft="0dp"
-									android:layout_marginTop="0dp"
-									android:contentDescription="rectangle_511"
-									android:src="@drawable/rectangle_511" />
-
-							</RelativeLayout>
+							<ImageView
+								android:id="@+id/rectangle_511"
+								android:layout_width="19.23dp"
+								android:layout_height="17.12dp"
+								android:layout_marginStart="0dp"
+								android:layout_marginLeft="0dp"
+								android:layout_marginTop="0dp"
+								android:contentDescription="rectangle_511"
+								android:src="@drawable/rectangle_511" />
 
 						</RelativeLayout>
 
 					</RelativeLayout>
 
+				</RelativeLayout>
 
 
 				<RelativeLayout
 					android:id="@+id/text_input___validation___success"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_gravity="center"
 					android:layout_marginStart="16dp"
-					android:layout_marginEnd="16dp"
 					android:layout_marginTop="287dp"
-					android:layout_gravity="center">
+					android:layout_marginEnd="16dp">
 
 					<View
 						android:id="@+id/rectangle_33_ek1"
 						android:layout_width="wrap_content"
 						android:layout_height="58dp"
-						android:background="@drawable/rectangle_33_ek1_shape"
-						android:layout_gravity="center"/>
+						android:layout_gravity="center"
+						android:background="@drawable/rectangle_33_ek1_shape" />
 
 
 					<RelativeLayout
@@ -222,12 +220,11 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginLeft="140dp"
+					android:layout_marginLeft="155dp"
 					android:layout_marginTop="412.5dp"
 					android:background="@drawable/round"
 					android:gravity="center"
 					android:text="@string/login_ek1_string"
-					android:textColor="#000000"
 					android:textSize="15sp" />
 
 				<Button
@@ -237,12 +234,11 @@
 					android:layout_gravity="center_vertical|end"
 					android:layout_marginLeft="235dp"
 					android:layout_marginTop="530dp"
+					android:background="#FFFFFF"
 					android:gravity="center"
 					android:text="@string/_sign_up_ek2_string"
 					android:textColor="@color/_sign_up_ek2_color"
-					android:textSize="15sp"
-					android:background="#FFFFFF"
-					/>
+					android:textSize="15sp" />
 
 				<TextView
 					android:id="@+id/don_t_have_any_account_"
