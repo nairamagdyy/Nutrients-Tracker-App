@@ -76,7 +76,7 @@ public class database extends SQLiteOpenHelper {
      * @param password
      * @return true/false
      */
-    public boolean checkUser(String email, String password) {
+    public boolean loginValidation(String email, String password) {
         // array of columns to fetch
         String[] columns = {DB_col_ID};
         SQLiteDatabase db = this.getReadableDatabase();
