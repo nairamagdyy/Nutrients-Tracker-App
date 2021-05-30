@@ -1,6 +1,6 @@
 
 
-    package exportkit.xd;
+    package exportkit.xd.View;
 
     import android.app.Activity;
     import android.os.Bundle;
@@ -11,6 +11,10 @@
     import android.widget.TextView;
     import android.widget.ImageView;
     import android.content.Intent;
+
+    import exportkit.xd.R;
+    import exportkit.xd.View.Register.log_in_activity;
+    import exportkit.xd.View.Register.sign_up_activity;
 
     public class coverpage_activity extends Activity {
 

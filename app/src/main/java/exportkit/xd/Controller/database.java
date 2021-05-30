@@ -1,13 +1,14 @@
-package exportkit.xd;
+package exportkit.xd.Controller;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.BaseColumns;
 
 import androidx.annotation.Nullable;
+
+import exportkit.xd.Model.User;
 
 public class database extends SQLiteOpenHelper {
     // Database Name

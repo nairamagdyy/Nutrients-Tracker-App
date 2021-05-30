@@ -1,4 +1,4 @@
-	package exportkit.xd;
+	package exportkit.xd.View.Register;
 
 	import android.app.Activity;
 	import android.content.Intent;
@@ -9,8 +9,12 @@
 	import android.widget.RadioButton;
 	import android.widget.RadioGroup;
 	import android.widget.TextView;
-	import android.widget.ImageView;
-	import android.widget.Toast;
+    import android.widget.Toast;
+
+	import exportkit.xd.Controller.database;
+	import exportkit.xd.Model.User;
+	import exportkit.xd.R;
+	import exportkit.xd.View.homepage_activity;
 
 	public class sign_up_activity extends Activity {
 

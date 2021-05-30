@@ -15,7 +15,7 @@
 	 */
 
 
-	package exportkit.xd;
+	package exportkit.xd.View;
 
 	import android.app.Activity;
 	import android.os.Bundle;
@@ -26,7 +26,9 @@
 	import android.widget.ImageView;
 	import android.content.Intent;
 
-	public class homepage_activity extends Activity {
+    import exportkit.xd.R;
+
+    public class homepage_activity extends Activity {
 
 
 		private View _bg__homepage_ek2;

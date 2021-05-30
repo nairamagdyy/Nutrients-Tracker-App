@@ -1,4 +1,4 @@
-package exportkit.xd;
+package exportkit.xd.Model;
 
 public class User {
     int id ;

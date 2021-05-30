@@ -1,4 +1,4 @@
-package exportkit.xd;
+package exportkit.xd.View.Register;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.widget.TextView;
 import android.widget.ImageView;
 import android.content.Intent;
 import android.widget.Toast;
+
+import exportkit.xd.Controller.database;
+import exportkit.xd.R;
+import exportkit.xd.View.Register.sign_up_activity;
+import exportkit.xd.View.homepage_activity;
 
 public class log_in_activity extends Activity {
 
