@@ -1,0 +1,260 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout android:id="@+id/log_in"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
+
+
+            <RelativeLayout
+                android:id="@+id/page_log_in_ek1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
+
+                <TextView android:id="@+id/name_ek2"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="297dp"
+                    android:layout_width="41dp"
+                    android:layout_height="23dp"
+                    android:text="@string/name_ek2_string"
+                    android:textStyle="bold"
+                    />
+
+                <EditText android:id="@+id/editname"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/sign_up_success_color"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="324dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView android:id="@+id/username_ek2"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                    android:layout_marginLeft="31dp"
+                    android:layout_marginTop="371dp"
+                    android:layout_width="69dp"
+                    android:layout_height="23dp"
+                    android:text="@string/username_ek2_string"
+                    android:textStyle="bold"
+                    />
+
+                <TextView android:id="@+id/email_address_ek2"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="459.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_address_ek2_string"
+                    android:textStyle="bold"
+                    />
+
+                <TextView android:id="@+id/phonenumber"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="548.5dp"
+                    android:layout_width="92dp"
+                    android:layout_height="23dp"
+                    android:text="@string/phonenumber_string"
+                    android:textStyle="bold"
+                    />
+
+                <TextView android:id="@+id/password_ek3"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="636.5dp"
+                    android:layout_width="66dp"
+                    android:layout_height="23dp"
+                    android:text="@string/password_ek3_string"
+                    android:textStyle="bold"
+                    />
+
+                <Button android:id="@+id/change_profile_photo"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="121dp"
+                    android:layout_marginTop="230dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_profile_photo_string"
+                    android:background=""
+                    android:layout_centerHorizontal="true"
+                    />
+                <EditText android:id="@+id/editpass"
+                    android:textSize="12sp"
+                    android:textColor="@color/sign_up_success_color"
+                    android:layout_marginLeft="34.91dp"
+                    android:layout_marginTop="666.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/__________string"
+                    />
+
+                <RelativeLayout android:id="@+id/show_ek3"
+                    android:layout_marginTop="666.5dp"
+                    android:layout_marginLeft="335.72dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView android:id="@+id/stroke_1_ek6"
+                        android:src="@drawable/stroke_1_ek6"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_width="6.49dp"
+                        android:layout_height="6.32dp" />
+
+                    <ImageView android:id="@+id/stroke_3_ek6"
+                        android:src="@drawable/stroke_3_ek6"
+                        android:layout_width="18.99dp"
+                        android:layout_height="14.6dp" />
+
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/editmail"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/capacity_ek1_color"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="488.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/taylorswift_gmail_com_string"
+                    />
+
+                <EditText
+                    android:id="@+id/editphonenumber"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/capacity_ek1_color"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="580.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_011_________string"
+                    />
+
+                <EditText
+                    android:id="@+id/editusername"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textColor="@color/sign_up_success_color"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="398dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tayshelby_string"
+                    />
+
+
+<RelativeLayout
+					android:id="@+id/group_"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content">
+
+					<View
+						android:id="@+id/rectangle_2_16"
+						android:layout_width="match_parent"
+						android:layout_height="166.76dp"
+						android:background="@drawable/rectangle_2_16_shape" />
+
+					<View
+						android:id="@+id/ellipse"
+						android:layout_width="124dp"
+						android:layout_height="120.22dp"
+						android:layout_alignParentTop="true"
+						android:layout_alignParentEnd="true"
+						android:layout_alignParentRight="true"
+						android:layout_marginStart="284dp"
+						android:layout_marginLeft="16dp"
+						android:layout_marginTop="48dp"
+						android:layout_marginEnd="-22dp"
+						android:layout_marginRight="-22dp"
+						android:alpha="0.15000000596046"
+						android:background="@drawable/ellipse_shape" />
+
+					<TextView
+						android:id="@+id/edit_profile_"
+						android:layout_width="196dp"
+						android:layout_height="36.5dp"
+						android:layout_marginLeft="20dp"
+						android:layout_marginTop="30dp"
+						android:text="Edit Profile"
+						android:textColor="#000000"
+						android:textSize="20sp"
+						android:textStyle="bold" />
+
+					<View
+						android:id="@+id/ellipse_ek1"
+						android:layout_width="204dp"
+						android:layout_height="197.78dp"
+						android:layout_alignParentEnd="true"
+						android:layout_alignParentRight="true"
+						android:layout_marginStart="215dp"
+						android:layout_marginLeft="16dp"
+						android:layout_marginTop="-100dp"
+						android:layout_marginEnd="-30dp"
+						android:layout_marginRight="-30dp"
+						android:alpha="0.15000000596046"
+						android:background="@drawable/ellipse_ek1_shape" />
+
+                    <ImageView android:id="@+id/avatr_ek3"
+                        android:src="@drawable/avatr_ek3"
+                        android:contentDescription="avatr_ek3"
+                        android:layout_marginLeft="138dp"
+                        android:layout_marginTop="127dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+
+                    <ImageButton android:id="@+id/done"
+                        android:src="@drawable/_icon_awesome_check_circle"
+                        android:contentDescription="_icon_awesome_check_circle"
+                        android:layout_marginLeft="360.72dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_width="22.42dp"
+                        android:layout_height="21.84dp" />
+
+				</RelativeLayout>
+
+			</RelativeLayout>
+
+		</RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>
