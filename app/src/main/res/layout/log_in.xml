@@ -29,15 +29,14 @@
 					android:layout_height="wrap_content"
 					android:layout_marginStart="16dp"
 					android:layout_marginTop="215dp"
-					android:layout_marginEnd="16dp">
+					android:layout_marginEnd="16dp"
+					android:layout_centerHorizontal="true">
 
 					<View
 						android:id="@+id/rectangle_33"
 						android:layout_width="wrap_content"
 						android:layout_height="58dp"
 						android:layout_gravity="center"
-						android:layout_marginStart="8dp"
-						android:layout_marginLeft="8dp"
 						android:background="@drawable/rectangle_33_shape" />
 
 					<EditText
@@ -102,7 +101,8 @@
 					android:layout_gravity="center"
 					android:layout_marginStart="16dp"
 					android:layout_marginTop="287dp"
-					android:layout_marginEnd="16dp">
+					android:layout_marginEnd="16dp"
+					android:layout_centerHorizontal="true">
 
 					<View
 						android:id="@+id/rectangle_33_ek1"
@@ -116,9 +116,10 @@
 						android:id="@+id/iconly_light_show"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_alignParentEnd="true"
 						android:layout_alignParentRight="true"
-						android:layout_marginTop="16dp">
+						android:layout_marginTop="16dp"
+						android:layout_marginRight="16dp"
+						>
 
 
 						<RelativeLayout
@@ -225,31 +226,36 @@
 					android:background="@drawable/round"
 					android:gravity="center"
 					android:text="@string/login_ek1_string"
-					android:textSize="15sp" />
+					android:textSize="15sp"
+					android:layout_centerHorizontal="true" />
 
-				<Button
-					android:id="@+id/_sign_up_ek2"
+				<RelativeLayout
+					android:id="@+id/group_10"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center_vertical|end"
-					android:layout_marginLeft="235dp"
 					android:layout_marginTop="530dp"
-					android:background="#FFFFFF"
-					android:gravity="center"
-					android:text="@string/_sign_up_ek2_string"
-					android:textColor="@color/_sign_up_ek2_color"
-					android:textSize="15sp" />
+					android:layout_centerHorizontal="true">
+				    <Button
+						android:id="@+id/_sign_up_ek2"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_vertical|end"
+						android:layout_marginLeft="180dp"
+						android:background=""
+						android:gravity="center"
+						android:text="@string/_sign_up_ek2_string"
+						android:textColor="@color/_sign_up_ek2_color"
+						android:textSize="15sp" />
 
-				<TextView
-					android:id="@+id/don_t_have_any_account_"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginLeft="63dp"
-					android:layout_marginTop="546dp"
-					android:text="@string/don_t_have_any_account__string"
-					android:textColor="@color/login_color"
-					android:textSize="15sp" />
-
+					<TextView
+						android:id="@+id/don_t_have_any_account_"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="12dp"
+						android:text="@string/don_t_have_any_account__string"
+						android:textColor="@color/login_color"
+						android:textSize="15sp" />
+				</RelativeLayout>
 
 				<RelativeLayout
 					android:id="@+id/group_"

@@ -144,7 +144,9 @@
 				android:gravity="center"
 				android:text="@string/_sign_up_ek2_string"
 				android:textSize="15sp"
-				android:layout_marginLeft="150dp"/>
+				android:layout_marginLeft="150dp"
+				android:layout_centerHorizontal="true"
+				/>
 
 			<RelativeLayout
 				android:id="@+id/text_input___validation___empty_ek3"
@@ -228,7 +230,6 @@
 					android:layout_width="wrap_content"
 					android:layout_height="58dp"
 					android:background="@drawable/rectangle_33_ek6_shape" />
-
 
 				<EditText
 					android:id="@+id/password_ek1"
