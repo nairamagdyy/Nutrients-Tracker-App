@@ -6,5 +6,5 @@ public interface IUserController {
 
     void signUp(User user);
     void login(String Email, String password);
-
+    void viewProfile(String Email, String password);
 }

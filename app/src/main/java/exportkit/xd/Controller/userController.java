@@ -11,6 +11,7 @@ public class userController implements IUserController{
 
     IRegisterView view;
     database db;
+    profile_activity p;
 
     public userController(IRegisterView view) {
         this.view = view;
@@ -29,21 +30,24 @@ public class userController implements IUserController{
     public void login(String email, String password) {
         Boolean data = db.loginValidation(email,password);
 
-        if(data){
+        if(data)
             view.onLoginSuccess("Login Successfully");
-            Cursor cursor= db.getInformation(email,password);
-            String name,userName ,gender,phoneNumber;
-            while (cursor.moveToNext()){
-                name=cursor.getString(cursor.getColumnIndex(database.DB_col_name));
-                userName=cursor.getString(cursor.getColumnIndex(database.DB_col_username));
-                gender=cursor.getString(cursor.getColumnIndex(database.DB_col_gender));
-                phoneNumber=cursor.getString(cursor.getColumnIndex(database.DB_col_phonenumber));
-                profile_activity profile = new profile_activity(name,userName,gender,phoneNumber,email,password);
 
-
-            }
-        }
         else
             view.onLoginError("Try Again !!!!");
     }
-}
+    public void viewProfile(String email, String password){
+        Cursor cursor= db.getInformation(email,password);
+        String name ="naaaaaameeee"
+                ,userName  = "htg",gender ="juyt",phoneNumber= "naaaaaameeee";
+        // while (cursor.moveToNext()){
+        //name=cursor.getString(cursor.getColumnIndex(database.DB_col_name));
+        //userName=cursor.getString(cursor.getColumnIndex(database.DB_col_username));
+        //gender=cursor.getString(cursor.getColumnIndex(database.DB_col_gender));
+        //phoneNumber=cursor.getString(cursor.getColumnIndex(database.DB_col_phonenumber));
+        p.Profile(name,userName,gender,phoneNumber,email,password);
+
+      }
+    }
+
+

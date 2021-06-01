@@ -241,7 +241,7 @@
 						android:layout_height="wrap_content"
 						android:layout_gravity="center_vertical|end"
 						android:layout_marginLeft="180dp"
-						android:background=""
+						android:background="#FFFFFF"
 						android:gravity="center"
 						android:text="@string/_sign_up_ek2_string"
 						android:textColor="@color/_sign_up_ek2_color"

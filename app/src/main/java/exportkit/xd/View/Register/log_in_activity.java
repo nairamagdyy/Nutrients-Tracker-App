@@ -12,6 +12,7 @@ import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.R;
 import exportkit.xd.View.homepage_activity;
+import exportkit.xd.View.profile_activity;
 
 public class log_in_activity extends Activity implements IRegisterView {
 
@@ -56,7 +57,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 	@Override
 	public void onLoginSuccess(String message) {
 		Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-		Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+		Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
 		startActivity(nextScreen);
 	}
 
