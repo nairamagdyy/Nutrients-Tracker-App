@@ -27,6 +27,7 @@ public class userController implements IUserController{
         else
             view.onLoginError("email exists or username , enter new one!!!!");
     }
+
     public void login(String email, String password) {
         Boolean data = db.loginValidation(email,password);
 
@@ -36,18 +37,7 @@ public class userController implements IUserController{
         else
             view.onLoginError("Try Again !!!!");
     }
-    public void viewProfile(String email, String password){
-        Cursor cursor= db.getInformation(email,password);
-        String name ="naaaaaameeee"
-                ,userName  = "htg",gender ="juyt",phoneNumber= "naaaaaameeee";
-        // while (cursor.moveToNext()){
-        //name=cursor.getString(cursor.getColumnIndex(database.DB_col_name));
-        //userName=cursor.getString(cursor.getColumnIndex(database.DB_col_username));
-        //gender=cursor.getString(cursor.getColumnIndex(database.DB_col_gender));
-        //phoneNumber=cursor.getString(cursor.getColumnIndex(database.DB_col_phonenumber));
-        p.Profile(name,userName,gender,phoneNumber,email,password);
 
-      }
-    }
+}
 
 

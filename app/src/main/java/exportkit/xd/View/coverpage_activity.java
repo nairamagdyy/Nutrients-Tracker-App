@@ -49,9 +49,6 @@
 
             super.onCreate(savedInstanceState);
             setContentView(R.layout.coverpage);
-
-
-            _bg__cover_ek2 = (View) findViewById(R.id._bg__cover_ek2);
             start_tracking = (TextView) findViewById(R.id.start_tracking);
             let_s_join_our_community_to_track_nutrients_in_your_food_ = (TextView) findViewById(R.id.let_s_join_our_community_to_track_nutrients_in_your_food_);
             rectangle_188 = (ImageView) findViewById(R.id.rectangle_188);

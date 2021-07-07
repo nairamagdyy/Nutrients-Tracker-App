@@ -105,29 +105,5 @@ public class database extends SQLiteOpenHelper {
         }
         return false;
     }
-    public Cursor getInformation (String email, String password) {
-        // array of columns to fetch
-        String[] columns = {DB_col_ID};
-        SQLiteDatabase db = this.getReadableDatabase();
-        // selection criteria
-        String selection = DB_col_email + " =?" + " AND " + DB_col_password + " =?";
-        // selection arguments
-        String[] selectionArgs = {email, password};
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = '' AND user_password = '';
-         */
-        Cursor cursor = db.query(DB_User_Table, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
-        return cursor;
-    }
-
 }
 
