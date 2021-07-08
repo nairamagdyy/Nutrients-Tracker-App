@@ -11,8 +11,6 @@
             android:layout_height="match_parent"
             android:background="@drawable/_bg__cover_ek2_shape">
 
-
-
             <RelativeLayout android:id="@+id/page_cover_ek1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
