@@ -23,7 +23,7 @@
                     android:gravity="center"
                     android:textSize="22sp"
                     android:textColor="@color/start_tracking_color"
-                    android:layout_marginTop="450dp"
+                    android:layout_marginTop="460dp"
                     android:layout_width="171dp"
                     android:layout_height="47dp"
                     android:text="@string/start_tracking_string"
@@ -36,7 +36,7 @@
                     android:gravity="center"
                     android:textSize="22sp"
                     android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
-                    android:layout_marginTop="480dp"
+                    android:layout_marginTop="500dp"
                     android:layout_width="353dp"
                     android:layout_height="79dp"
                     android:text= "lets join our community to track nutrients in your food"
@@ -51,7 +51,8 @@
                     android:layout_marginLeft="0dp"
                     android:layout_marginTop="375dp"
                     android:contentDescription="rectangle_188"
-                    android:src="@drawable/rectangle_188" />
+                    android:src="@drawable/rectangle_188"
+                    android:layout_centerHorizontal="true"/>
 
                 <ImageView
                     android:id="@+id/ellipse_3"
@@ -137,7 +138,8 @@
                     android:layout_marginEnd="308dp"
                     android:layout_marginRight="297dp"
                     android:contentDescription="image_4"
-                    android:src="@drawable/image_4" />
+                    android:src="@drawable/image_4"
+                    />
 
                 <RelativeLayout android:id="@+id/group_1542"
                     android:layout_width="wrap_content"
@@ -145,7 +147,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_marginEnd="191.99dp"
-                    >
+                    android:layout_marginRight="0dp">
 
                     <Button android:id="@+id/signup"
                         android:textStyle="bold"

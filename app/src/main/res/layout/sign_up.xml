@@ -241,7 +241,41 @@
 					android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
 					android:textSize="15sp"
 					android:inputType="textPassword"/>
+				<RelativeLayout
+					android:id="@+id/iconly_light_show"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignParentRight="true"
+					android:layout_marginTop="16dp"
+					android:layout_marginRight="16dp">
+				    <RelativeLayout
+						android:id="@+id/show"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="4.75dp">
 
+							<ImageButton
+								android:id="@+id/hide"
+								android:layout_width="6.32dp"
+								android:layout_height="6.32dp"
+								android:layout_marginStart="6dp"
+								android:layout_marginLeft="0dp"
+								android:layout_marginTop="4dp"
+								android:contentDescription="stroke_1"
+								android:src="@drawable/stroke_1" />
+
+							<ImageView
+								android:id="@+id/stroke_3"
+								android:layout_width="18.5dp"
+								android:layout_height="14.6dp"
+								android:layout_marginStart="0dp"
+								android:layout_marginLeft="0dp"
+								android:layout_marginTop="0dp"
+								android:contentDescription="stroke_3"
+								android:src="@drawable/stroke_3" />
+
+				    </RelativeLayout>
+				</RelativeLayout>
 
 				<RelativeLayout
 					android:id="@+id/iconly_light_lock_ek1"

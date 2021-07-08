@@ -128,8 +128,8 @@
 							android:layout_height="wrap_content"
 							android:layout_marginTop="4.75dp">
 
-							<ImageView
-								android:id="@+id/stroke_1"
+							<ImageButton
+								android:id="@+id/hide"
 								android:layout_width="6.32dp"
 								android:layout_height="6.32dp"
 								android:layout_marginStart="6dp"
@@ -309,14 +309,14 @@
 						android:background="@drawable/ellipse_ek1_shape" />
 
 					<TextView
-						android:id="@+id/please_enter_your_account_here"
+						android:id="@+id/txt"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_gravity="center_horizontal|center"
 						android:layout_marginLeft="20dp"
 						android:layout_marginTop="74dp"
 						android:gravity="center"
-						android:text="@string/please_enter_your_account_here_string"
+						android:text="Nice to see you again!"
 						android:textColor="@color/please_enter_your_account_here_color"
 						android:textSize="15sp"
 						android:textStyle="bold" />

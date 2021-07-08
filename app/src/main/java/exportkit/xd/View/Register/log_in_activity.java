@@ -3,7 +3,10 @@ package exportkit.xd.View.Register;
 import android.app.Activity;
 import android.os.Bundle;
 
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
@@ -11,7 +14,6 @@ import android.widget.Toast;
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.R;
-import exportkit.xd.View.homepage_activity;
 import exportkit.xd.View.profile_activity;
 
 public class log_in_activity extends Activity implements IRegisterView {
@@ -20,6 +22,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 
 	private TextView email, password,
 			loginb, signUpb;
+	private ImageView hidden;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,25 @@ public class log_in_activity extends Activity implements IRegisterView {
 
 		loginb = (TextView) findViewById(R.id.login_ek1);
 		signUpb= (TextView) findViewById(R.id._sign_up_ek2);
+		hidden = (ImageView) findViewById(R.id.hide);
 
+		hidden.setOnTouchListener(new View.OnTouchListener() {
+			public boolean onTouch(View v, MotionEvent event) {
+
+				switch ( event.getAction() ) {
+
+					case MotionEvent.ACTION_UP:
+						password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+						break;
+
+					case MotionEvent.ACTION_DOWN:
+						password.setInputType(InputType.TYPE_CLASS_TEXT);
+						break;
+
+				}
+				return true;
+			}
+		});
 
 		signUpb.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -65,6 +86,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 	public void onLoginError(String message) {
 		Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 	}
+
 }
 	
 	
