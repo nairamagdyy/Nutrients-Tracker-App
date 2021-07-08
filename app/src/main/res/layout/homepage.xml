@@ -228,7 +228,7 @@
 
 				</RelativeLayout>
 
-				<ImageView
+				<ImageButton
 					android:id="@+id/_profile"
 					android:layout_width="47dp"
 					android:layout_height="47dp"

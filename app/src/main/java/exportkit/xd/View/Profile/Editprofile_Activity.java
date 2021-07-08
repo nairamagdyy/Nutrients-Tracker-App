@@ -3,7 +3,11 @@ package exportkit.xd.View.Profile;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +17,8 @@ import exportkit.xd.Model.User;
 import exportkit.xd.R;
 public class Editprofile_Activity extends Activity implements IProfileView {
     IUserController Controller;
-    private TextView email, password, phone, name, username,editButton;
+    private TextView email, password, phone, name, username;
+    private ImageButton editButton, hidden;
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -24,7 +29,8 @@ public class Editprofile_Activity extends Activity implements IProfileView {
         phone = (TextView) findViewById(R.id.editphonenumber);
         name = (TextView) findViewById(R.id.editname);
         username = (TextView) findViewById(R.id.editusername);
-        editButton = (TextView) findViewById(R.id.sign_up_ek6);
+        editButton = (ImageButton) findViewById(R.id.done);
+        hidden = (ImageButton) findViewById(R.id.pass);
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Fullname = name.getText().toString();
@@ -51,6 +57,24 @@ public class Editprofile_Activity extends Activity implements IProfileView {
 
             }
 
+        });
+
+        hidden.setOnTouchListener(new View.OnTouchListener() {
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch ( event.getAction() ) {
+
+                    case MotionEvent.ACTION_UP:
+                        password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        break;
+
+                    case MotionEvent.ACTION_DOWN:
+                        password.setInputType(InputType.TYPE_CLASS_TEXT);
+                        break;
+
+                }
+                return true;
+            }
         });
     }
     @Override

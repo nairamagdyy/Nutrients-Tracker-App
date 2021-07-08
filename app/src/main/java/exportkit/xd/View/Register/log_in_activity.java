@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.R;
+import exportkit.xd.View.Profile.Editprofile_Activity;
 import exportkit.xd.View.Profile.profile_activity;
 
 public class log_in_activity extends Activity implements IRegisterView {
@@ -36,7 +38,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 
 		loginb = (TextView) findViewById(R.id.login_ek1);
 		signUpb= (TextView) findViewById(R.id._sign_up_ek2);
-		hidden = (ImageView) findViewById(R.id.hide);
+		hidden = (ImageButton) findViewById(R.id.hide);
 
 		hidden.setOnTouchListener(new View.OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
@@ -70,6 +72,8 @@ public class log_in_activity extends Activity implements IRegisterView {
 				String Email = email.getText().toString();
 				String Pass = password.getText().toString() ;
 				loginController.login(Email,Pass);
+				Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
+				startActivity(nextScreen);
 			}
 		});
 

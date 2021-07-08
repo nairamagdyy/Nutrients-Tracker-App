@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     >
 
-                    <ImageView android:id="@+id/stroke_1_ek6"
+                    <ImageButton android:id="@+id/pass"
                         android:src="@drawable/stroke_1_ek6"
                         android:layout_marginLeft="6dp"
                         android:layout_marginTop="4dp"
@@ -153,7 +153,6 @@
                     android:layout_marginTop="488.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/taylorswift_gmail_com_string"
                     />
 
                 <EditText
@@ -166,7 +165,6 @@
                     android:layout_marginTop="580.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/_011_________string"
                     />
 
                 <EditText
@@ -179,7 +177,7 @@
                     android:layout_marginTop="398dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tayshelby_string"
+                    android:text=""
                     />
 
 
