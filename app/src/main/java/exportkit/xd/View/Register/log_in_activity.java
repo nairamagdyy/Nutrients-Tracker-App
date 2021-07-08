@@ -14,7 +14,7 @@ import android.widget.Toast;
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.R;
-import exportkit.xd.View.profile_activity;
+import exportkit.xd.View.Profile.profile_activity;
 
 public class log_in_activity extends Activity implements IRegisterView {
 

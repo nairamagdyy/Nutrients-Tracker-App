@@ -1,21 +1,26 @@
 package exportkit.xd.Controller;
 
 import android.content.Context;
-import android.database.Cursor;
 
 import exportkit.xd.Model.User;
+import exportkit.xd.View.Profile.IProfileView;
 import exportkit.xd.View.Register.IRegisterView;
-import exportkit.xd.View.profile_activity;
+import exportkit.xd.View.Profile.profile_activity;
 
 public class userController implements IUserController{
 
-    IRegisterView view;
+    IRegisterView registerview;
+    IProfileView profileview;
     database db;
     profile_activity p;
 
     public userController(IRegisterView view) {
-        this.view = view;
-        db = new database ((Context) this.view);
+        this.registerview = view;
+        db = new database ((Context) this.registerview);
+    }
+    public userController(IProfileView view) {
+        this.profileview = view ;
+        db = new database ((Context) this.profileview);
     }
 
     @Override
@@ -23,19 +28,26 @@ public class userController implements IUserController{
         Boolean data = db.Register(user);
 
         if(data)
-            view.onLoginSuccess("Registration Successfully");
+            registerview.onLoginSuccess("Registration Successfully");
         else
-            view.onLoginError("email exists or username , enter new one!!!!");
+            registerview.onLoginError("email exists or username , enter new one!!!!");
+    }
+    public void EditProfile(User user){
+        Boolean data = db.edituser(user);
+        if(data)
+            profileview.onEditSuccess("Edit Operation is Successfully");
+        else
+            profileview.onEditError("email exists or username , enter new one!!!!");
     }
 
     public void login(String email, String password) {
         Boolean data = db.loginValidation(email,password);
 
         if(data)
-            view.onLoginSuccess("Login Successfully");
+            registerview.onLoginSuccess("Login Successfully");
 
         else
-            view.onLoginError("Try Again !!!!");
+            registerview.onLoginError("Try Again !!!!");
     }
 
 }

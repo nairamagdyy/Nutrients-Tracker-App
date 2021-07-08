@@ -1,4 +1,4 @@
-package exportkit.xd.View;
+package exportkit.xd.View.Profile;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

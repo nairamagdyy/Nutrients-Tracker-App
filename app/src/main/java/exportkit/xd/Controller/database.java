@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
+
 import exportkit.xd.Model.User;
 
 public class database extends SQLiteOpenHelper {
@@ -104,6 +106,23 @@ public class database extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+    public boolean edituser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DB_col_name, user.getName());
+        values.put(DB_col_username,user.getUsername()) ;
+        values.put(DB_col_email, user.getEmail());
+        values.put(DB_col_password, user.getPassword());
+        values.put(DB_col_phonenumber, user.getPhoneNumber());
+        // updating row
+        // if db.update = 0 so there no row updating
+       int result =  db.update(DB_User_Table, values, DB_col_ID + " =? ",
+                new String[]{String.valueOf(user.getId())});
+        db.close();
+        if (result < 0) return false ;
+        else
+            return true ;
     }
 }
 
