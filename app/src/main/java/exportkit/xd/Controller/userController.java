@@ -2,52 +2,76 @@ package exportkit.xd.Controller;
 
 import android.content.Context;
 
+import exportkit.xd.DB.AppDBController;
+import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
-import exportkit.xd.View.Profile.IProfileView;
+import exportkit.xd.View.Profile.IMyProfileView;
 import exportkit.xd.View.Register.IRegisterView;
-import exportkit.xd.View.Profile.profile_activity;
+import exportkit.xd.View.Profile.myProfile_activity;
 
 public class userController implements IUserController{
 
-    IRegisterView registerview;
-    IProfileView profileview;
     AppDBController db;
-    profile_activity p;
+    SessionManager session;
+
+    IRegisterView registerview;
+    IMyProfileView profileview;
+    static long idUser ;
 
     public userController(IRegisterView view) {
         this.registerview = view;
         db = new AppDBController((Context) this.registerview);
     }
-    public userController(IProfileView view) {
+
+    public userController(IMyProfileView view) {
         this.profileview = view ;
         db = new AppDBController((Context) this.profileview);
     }
 
     @Override
-    public void signUp(User user){
-        Boolean data = db.Register(user);
-
-        if(data)
-            registerview.onLoginSuccess("Registration Successfully");
-        else
-            registerview.onLoginError("email exists or username , enter new one!!!!");
+    public void openSession(long id) {
+        session= new SessionManager((Context) this.registerview);
+        session.createLoginSession(id);
     }
-    public void EditProfile(User user){
-        Boolean data = db.edituser(user);
-        if(data)
+
+    @Override
+    public void signUp(User user){
+        long id = db.Register(user);
+
+        if(id>0) {
+            openSession(id);
+            registerview.onLoginSuccess("Registration Successfully");
+        }
+        else
+            registerview.onLoginError("email exists or username, enter new one!!!!");
+    }
+
+    @Override
+    public void login(String email, String password) {
+        long id = db.loginValidation(email,password);
+
+        if(id>0){
+            openSession(id);
+            registerview.onLoginSuccess("Login Successfully");
+        }
+        else
+            registerview.onLoginError("Try Again !!!!");
+    }
+
+    @Override
+    public void logout(){
+        if(session.checkLogin())
+            session.logoutUserFromSession();
+    }
+
+    @Override
+    public void EditProfile(int id , String name, String username, String email, String phoneNumber, String password){
+
+        Boolean data = db.edituser(id ,name, username, email,  phoneNumber, password);
+        if(data==true)
             profileview.onEditSuccess("Edit Operation is Successfully");
         else
             profileview.onEditError("email exists or username , enter new one!!!!");
-    }
-
-    public void login(String email, String password) {
-        Boolean data = db.loginValidation(email,password);
-
-        if(data)
-            registerview.onLoginSuccess("Login Successfully");
-
-        else
-            registerview.onLoginError("Try Again !!!!");
     }
 
 }
