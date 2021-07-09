@@ -2,7 +2,6 @@
 <!-- overlay_ek4 from your XD file. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
 	android:shape="rectangle" >
-	<corners android:radius="20dp" />
-	<solid android:color="@color/overlay_color" />
+	<solid android:color="#000000" />
 </shape>
 
