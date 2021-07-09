@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
+import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 public class Editprofile_Activity extends Activity implements IMyProfileView {
@@ -48,8 +49,10 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
                 }
                 else
                 {
+                   
                     User edituser= new User(Fullname, Username,  Email, Phone, Password);
-                    Controller.EditProfile(edituser);
+                    System.out.println("edituser = " + Fullname) ;
+                     Controller.EditProfile(edituser);
                     /*
                     email.setText(Email) ; 
                     name.setText(Fullname) ; 

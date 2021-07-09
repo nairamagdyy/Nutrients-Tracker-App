@@ -16,8 +16,7 @@ public class userController implements IUserController{
 
     IRegisterView registerview;
     IMyProfileView profileview;
-
-    myProfile_activity profile;
+    static long idUser ;
 
     public userController(IRegisterView view) {
         this.registerview = view;
@@ -67,6 +66,7 @@ public class userController implements IUserController{
 
     @Override
     public void EditProfile(User user){
+
         Boolean data = db.editUser(user);
         if(data)
             profileview.onEditSuccess("Edit Operation is Successfully");

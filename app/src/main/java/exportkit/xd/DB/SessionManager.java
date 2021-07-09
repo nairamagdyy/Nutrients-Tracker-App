@@ -2,6 +2,7 @@ package exportkit.xd.DB;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.view.View;
 
 public class SessionManager {
 
@@ -17,6 +18,7 @@ public class SessionManager {
         userSession = context.getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
         editor = userSession.edit();
     }
+
 
     public void createLoginSession(long id){
         editor.putBoolean(IS_LOGIN, true);
