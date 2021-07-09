@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
+import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.Editprofile_Activity;
 import exportkit.xd.View.Profile.profile_activity;
@@ -71,9 +72,18 @@ public class log_in_activity extends Activity implements IRegisterView {
 			public void onClick(View v) {
 				String Email = email.getText().toString();
 				String Pass = password.getText().toString() ;
-				loginController.login(Email,Pass);
-				Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
-				startActivity(nextScreen);
+				if (Email.equalsIgnoreCase("")
+						|| Pass.equalsIgnoreCase(""))
+				{
+					Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
+
+				}
+				else
+				{
+					loginController.login(Email,Pass);
+
+				}
+
 			}
 		});
 
@@ -82,7 +92,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 	@Override
 	public void onLoginSuccess(String message) {
 		Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-		Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+		Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
 		startActivity(nextScreen);
 	}
 

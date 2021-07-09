@@ -16,7 +16,7 @@ public class AppDBController extends SQLiteOpenHelper {
     // Database Name
     public static final String DB_Name = "App" ;
     // Database Version
-    public static final int DB_version = 3;
+    public static final int DB_version = 5;
     // User table name
     public static final String DB_User_Table = "user" ;
     // User Table Columns names
@@ -117,7 +117,7 @@ public class AppDBController extends SQLiteOpenHelper {
         values.put(DB_col_phonenumber, user.getPhoneNumber());
         // updating row
         // if db.update = 0 so there no row updating
-       int result =  db.update(DB_User_Table, values, DB_col_ID + " =? ",
+       int result =  db.update(DB_User_Table, values, DB_col_ID + " =?",
                 new String[]{String.valueOf(user.getId())});
         db.close();
         if (result < 0) return false ;
