@@ -104,19 +104,18 @@ public class AppDBController extends SQLiteOpenHelper {
         return id;
     }
 
-    public boolean editUser(User user) {
+    public boolean edituser(int id , String name, String username, String email, String phoneNumber, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(DB_col_name, user.getName());
-        values.put(DB_col_username,user.getUsername()) ;
-        values.put(DB_col_email, user.getEmail());
-        values.put(DB_col_password, user.getPassword());
-        values.put(DB_col_phonenumber, user.getPhoneNumber());
-        System.out.println("user id " + user.getId()) ;
+        values.put(DB_col_name, name);
+        values.put(DB_col_username,username) ;
+        values.put(DB_col_email, email);
+        values.put(DB_col_password, phoneNumber);
+        values.put(DB_col_phonenumber, password);
         // updating row
-        // if db.update = 0 so there no row updating
-       int result =  db.update(DB_User_Table, values, DB_col_ID + "=?",
-                new String[]{String.valueOf(user.getId())});
+        System.out.println("name = " + name + " " + " id = " + id );
+        int result =  db.update(DB_User_Table, values, DB_col_ID + " =? ",
+                new String[]{String.valueOf(id)});
         db.close();
         if (result < 0) return false ;
         else

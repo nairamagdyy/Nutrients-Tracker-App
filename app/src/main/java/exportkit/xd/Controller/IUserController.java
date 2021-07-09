@@ -8,5 +8,5 @@ public interface IUserController {
     void signUp(User user);
     void login(String Email, String password);
     void logout();
-    void EditProfile(User user) ;
+    void EditProfile(int id , String name, String username, String email, String phoneNumber, String password) ;
 }

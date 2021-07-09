@@ -65,10 +65,10 @@ public class userController implements IUserController{
     }
 
     @Override
-    public void EditProfile(User user){
+    public void EditProfile(int id , String name, String username, String email, String phoneNumber, String password){
 
-        Boolean data = db.editUser(user);
-        if(data)
+        Boolean data = db.edituser(id ,name, username, email,  phoneNumber, password);
+        if(data==true)
             profileview.onEditSuccess("Edit Operation is Successfully");
         else
             profileview.onEditError("email exists or username , enter new one!!!!");
