@@ -11,7 +11,7 @@
 		android:label="@string/app_name"
         android:supportsRtl="true">
 		<activity
-			android:name=".View.coverpage_activity"
+			android:name=".View.dynamic_view"
 			android:label="gp"
 			android:theme="@style/AppTheme" >
 			<intent-filter>

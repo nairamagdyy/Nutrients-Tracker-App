@@ -1,6 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
-
     <LinearLayout android:id="@+id/upload_recipe_step_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -117,7 +116,7 @@
                             android:layout_width="329dp"
                             android:layout_height="58dp" />
 
-                        <TextView android:id="@+id/enter_food_name"
+                        <EditText android:id="@+id/enter_food_name"
                             android:textStyle="bold"
                             android:textSize="17sp"
                             android:layout_marginLeft="24dp"
@@ -164,7 +163,7 @@
                         android:layout_width="329dp"
                         android:layout_height="82dp" />
 
-                    <TextView android:id="@+id/tell_a_little_about_your_food"
+                    <EditText android:id="@+id/tell_a_little_about_your_food"
                         android:textStyle="bold"
                         android:textSize="17sp"
                         android:layout_marginLeft="16dp"
@@ -309,12 +308,6 @@
 
 
             </RelativeLayout>
-
-
-
-
-
-
 
     </LinearLayout>
 </LinearLayout>
