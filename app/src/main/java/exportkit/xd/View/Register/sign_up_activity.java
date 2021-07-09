@@ -89,8 +89,6 @@
 						signUpController.signUp(newUser);
 
 					}
-
-
 				}
 			});
 
