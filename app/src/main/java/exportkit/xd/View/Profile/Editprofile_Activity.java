@@ -51,7 +51,7 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
                 }
                 else
                 {
-                    
+                          System.out.println(id + " , " +    Fullname + " , " +Username + " , " +Email + ", " +Phone + ", " +Password);
                     Controller.EditProfile(id , Fullname, Username,  Email, Phone, Password);
                     /*
                     email.setText(Email) ; 

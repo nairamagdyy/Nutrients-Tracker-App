@@ -16,12 +16,12 @@ public class AppDBController extends SQLiteOpenHelper {
     // Database Name
     public static final String DB_Name = "App" ;
     // Database Version
-    public static final int DB_version = 5;
+    public static final int DB_version = 6;
     // User table name
     public static final String DB_User_Table = "user" ;
     // User Table Columns names
     public static final String DB_col_ID = "id" ;
-    public static final String DB_col_name = "name" ;
+    public static final String DB_col_name = "fullname" ;
     public static final String DB_col_username = "username" ;
     public static final String DB_col_email = "email" ;
     public static final String DB_col_password = "password" ;
@@ -114,7 +114,7 @@ public class AppDBController extends SQLiteOpenHelper {
         values.put(DB_col_phonenumber, password);
         // updating row
         System.out.println("name = " + name + " " + " id = " + id );
-        int result =  db.update(DB_User_Table, values, DB_col_ID + " =? ",
+        int result =  db.update(DB_User_Table, values, DB_col_ID + " =?",
                 new String[]{String.valueOf(id)});
         db.close();
         if (result < 0) return false ;
