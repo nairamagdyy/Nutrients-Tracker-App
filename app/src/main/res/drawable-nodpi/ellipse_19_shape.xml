@@ -3,6 +3,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
 	android:shape="oval" >
 	<stroke android:color="#d4b1ff" android:width="4dp" />
-	<solid android:color="@color/overlay_color" />
+	<solid android:color="#000000" />
 </shape>
 

@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import exportkit.xd.Controller.IUserController;
-import exportkit.xd.Controller.database;
+import exportkit.xd.Controller.AppDBController;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 
@@ -18,7 +17,7 @@ public class profile_activity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
-        database db= new database(this);
+        AppDBController db= new AppDBController(this);
         db.Register(user);
         Intent intent = getIntent();
         Name= intent.getStringExtra("name");

@@ -11,16 +11,16 @@ public class userController implements IUserController{
 
     IRegisterView registerview;
     IProfileView profileview;
-    database db;
+    AppDBController db;
     profile_activity p;
 
     public userController(IRegisterView view) {
         this.registerview = view;
-        db = new database ((Context) this.registerview);
+        db = new AppDBController((Context) this.registerview);
     }
     public userController(IProfileView view) {
         this.profileview = view ;
-        db = new database ((Context) this.profileview);
+        db = new AppDBController((Context) this.profileview);
     }
 
     @Override
