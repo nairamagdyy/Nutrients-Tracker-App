@@ -14,10 +14,9 @@ import android.widget.Toast;
 
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
-import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.Editprofile_Activity;
-import exportkit.xd.View.Profile.profile_activity;
+import exportkit.xd.View.Profile.myProfile_activity;
 
 public class log_in_activity extends Activity implements IRegisterView {
 
@@ -61,7 +60,6 @@ public class log_in_activity extends Activity implements IRegisterView {
 
 		signUpb.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				
 				Intent nextScreen = new Intent(getApplicationContext(), sign_up_activity.class);
 				startActivity(nextScreen);
 
@@ -92,7 +90,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 	@Override
 	public void onLoginSuccess(String message) {
 		Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-		Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
+		Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
 		startActivity(nextScreen);
 	}
 

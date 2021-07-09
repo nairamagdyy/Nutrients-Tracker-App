@@ -7,7 +7,6 @@ import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +14,7 @@ import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
-public class Editprofile_Activity extends Activity implements IProfileView {
+public class Editprofile_Activity extends Activity implements IMyProfileView {
     IUserController Controller;
     private TextView email, password, phone, name, username;
     private ImageButton editButton, hidden;
@@ -23,7 +22,7 @@ public class Editprofile_Activity extends Activity implements IProfileView {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
-        Controller = new userController((IProfileView) this) ;
+        Controller = new userController((IMyProfileView) this) ;
         email= (TextView) findViewById(R.id.editmail);
         password= (TextView) findViewById(R.id.editpass);
         phone = (TextView) findViewById(R.id.editphonenumber);
@@ -80,7 +79,7 @@ public class Editprofile_Activity extends Activity implements IProfileView {
     @Override
     public void onEditSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
         startActivity(nextScreen);
     }
     @Override

@@ -1,4 +1,4 @@
-package exportkit.xd.Controller;
+package exportkit.xd.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -56,7 +56,7 @@ public class AppDBController extends SQLiteOpenHelper {
     /*
       This method is to create user // Register
      */
-    public boolean Register(User user) {
+    public long Register(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DB_col_name, user.getName());
@@ -66,10 +66,10 @@ public class AppDBController extends SQLiteOpenHelper {
         values.put(DB_col_gender, user.getGender());
         values.put(DB_col_phonenumber, user.getPhoneNumber());
         // Inserting Row
-        long i = db.insert(DB_User_Table, null, values);
+        long id = db.insert(DB_User_Table, null, values);
         db.close();
-        if (i<0) return false ;
-        return true ;
+
+        return id;
     }
     /**
      * This method to check user exist or not
@@ -78,7 +78,7 @@ public class AppDBController extends SQLiteOpenHelper {
      * @param password
      * @return true/false
      */
-    public boolean loginValidation(String email, String password) {
+    public long loginValidation(String email, String password) {
         // array of columns to fetch
         String[] columns = {DB_col_ID};
         SQLiteDatabase db = this.getReadableDatabase();
@@ -99,15 +99,12 @@ public class AppDBController extends SQLiteOpenHelper {
                 null,                       //group the rows
                 null,                       //filter by row groups
                 null);                      //The sort order
-        int cursorCount = cursor.getCount();
 
-
-        if (cursorCount > 0) {
-            return true;
-        }
-        return false;
+        long id = cursor.getCount();
+        return id;
     }
-    public boolean edituser(User user) {
+
+    public boolean editUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DB_col_name, user.getName());
