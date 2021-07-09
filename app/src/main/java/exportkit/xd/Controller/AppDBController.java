@@ -12,7 +12,7 @@ import java.util.List;
 
 import exportkit.xd.Model.User;
 
-public class database extends SQLiteOpenHelper {
+public class AppDBController extends SQLiteOpenHelper {
     // Database Name
     public static final String DB_Name = "App" ;
     // Database Version
@@ -36,7 +36,7 @@ public class database extends SQLiteOpenHelper {
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + DB_User_Table;
 
-    public database(@Nullable Context context) {
+    public AppDBController(@Nullable Context context) {
         super(context, DB_Name, null, DB_version);
     }
 
