@@ -50,6 +50,11 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
                 {
                     User edituser= new User(Fullname, Username,  Email, Phone, Password);
                     Controller.EditProfile(edituser);
+                    /*
+                    email.setText(Email) ; 
+                    name.setText(Fullname) ; 
+                    */
+                    
 
                 }
 
