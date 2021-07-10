@@ -5,7 +5,8 @@
     android:orientation="vertical">
 	<ScrollView android:id="@+id/scroll"
 		android:layout_width="wrap_content"
-		android:layout_height="match_parent" >
+		android:layout_height="match_parent"
+		android:background="#ffffff">
     <LinearLayout android:id="@+id/log_in"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,10 +39,7 @@
                     />
 
                 <EditText android:id="@+id/editname"
-                    android:layout_gravity="center_horizontal|center"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:textColor="@color/sign_up_success_color"
+                    android:textSize="15sp"
                     android:layout_marginLeft="135dp"
                     android:layout_marginTop="297dp"
                     android:layout_width="fill_parent"
@@ -112,14 +110,13 @@
 					android:textAllCaps="false"
                     android:layout_centerHorizontal="true"
                     />
+
                 <EditText android:id="@+id/editpass"
-                    android:textSize="12sp"
-                    android:textColor="@color/sign_up_success_color"
+                    android:textSize="15sp"
                     android:layout_marginLeft="135dp"
                     android:layout_marginTop="593dp"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/__________string"
                     />
 
                 <RelativeLayout android:id="@+id/show_ek3"
@@ -146,10 +143,7 @@
 
                 <EditText
                     android:id="@+id/editmail"
-                    android:layout_gravity="center_horizontal|center"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:textColor="@color/capacity_ek1_color"
+                    android:textSize="15sp"
                     android:layout_marginLeft="135dp"
                     android:layout_marginTop="445dp"
                     android:layout_width="fill_parent"
@@ -158,10 +152,7 @@
 
                 <EditText
                     android:id="@+id/editphonenumber"
-                    android:layout_gravity="center_horizontal|center"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:textColor="@color/sign_up_success_color"
+                    android:textSize="15sp"
                     android:layout_marginLeft="135dp"
                     android:layout_marginTop="519dp"
                     android:layout_width="fill_parent"
@@ -171,15 +162,11 @@
 
                 <EditText
                     android:id="@+id/editusername"
-                    android:layout_gravity="center_horizontal|center"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:textColor="@color/sign_up_success_color"
+                    android:textSize="15sp"
                     android:layout_marginLeft="135dp"
                     android:layout_marginTop="371dp"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
                     />
 
 
@@ -215,10 +202,10 @@
 						android:layout_height="wrap_content"
 						android:layout_centerHorizontal="true"
 						android:layout_marginLeft="20dp"
-						android:layout_marginTop="32dp"
+						android:layout_marginTop="36dp"
 						android:text="Edit Profile"
 						android:textColor="#000000"
-						android:textSize="20sp"
+						android:textSize="19sp"
 						android:textStyle="bold" />
                  	<Button
 						android:id="@+id/cancel"
