@@ -197,7 +197,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true">
 
-                            <Button android:id="@+id/tabs___default"
+                            <Button android:id="@+id/FavoriteButton"
                                 android:background="#ffffff"
                                 android:textSize="14sp"
                                 android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"

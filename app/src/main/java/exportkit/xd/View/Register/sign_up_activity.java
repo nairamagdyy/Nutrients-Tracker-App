@@ -1,9 +1,7 @@
 	package exportkit.xd.View.Register;
-
 	import android.app.Activity;
 	import android.content.Intent;
 	import android.os.Bundle;
-
 	import android.text.InputType;
 	import android.view.MotionEvent;
 	import android.view.View;
@@ -12,13 +10,11 @@
 	import android.widget.RadioGroup;
 	import android.widget.TextView;
     import android.widget.Toast;
-
 	import exportkit.xd.Controller.IUserController;
 	import exportkit.xd.Controller.userController;
 	import exportkit.xd.Model.User;
 	import exportkit.xd.R;
-	import exportkit.xd.View.Profile.myProfile_activity;
-
+	import exportkit.xd.View.homepage_activity;
 	public class sign_up_activity extends Activity implements IRegisterView {
 
 		IUserController signUpController;
@@ -26,7 +22,6 @@
 		private RadioGroup radioSexGroup;
 		private RadioButton radioSexButton;
 		private ImageView hidden;
-
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 
@@ -97,7 +92,7 @@
 		@Override
 		public void onLoginSuccess(String message) {
 			Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-			Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+			Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
 			startActivity(nextScreen);
 		}
 
