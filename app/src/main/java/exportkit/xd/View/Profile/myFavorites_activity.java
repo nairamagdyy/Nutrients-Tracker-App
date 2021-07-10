@@ -1,4 +1,5 @@
 package exportkit.xd.View.Profile;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,46 +13,44 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
 import exportkit.xd.View.homepage_activity;
 
-
-public class myProfile_activity extends Activity {
+public class myFavorites_activity extends Activity {
     String Name,UserName;
     private TextView name , username ;
     AppDBController db ;
+    SessionManager s ;
     private ImageButton Homebutton;
-    private Button FavoriteButton;
-
+    Button recipesbtn ;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myprofile);
-        Homebutton = (ImageButton) findViewById(R.id.home_ek11);
-        FavoriteButton = (Button) findViewById(R.id.FavoriteButton) ;
-        db= new AppDBController(this);
+        setContentView(R.layout.my_favourite);
         name = (TextView) findViewById(R.id.name);
+        recipesbtn = (Button) findViewById(R.id.recipes_ek2) ;
+        Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
-        SessionManager s= new SessionManager(this);
+        db= new AppDBController(this);
+        s = new SessionManager(this);
         long id= s.getUserFromSession();
         Name =  db.GetName((int) id)  ;
         UserName  = db.GetUserName((int) id) ;
         name.setText(Name);
         username.setText(UserName);
-        Homebutton.setOnClickListener(new View.OnClickListener() {
+        recipesbtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
+                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                startActivity(nextScreen);
+
+            }
+        });
+        Homebutton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
                 Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
                 startActivity(nextScreen);
 
             }
         });
-        FavoriteButton.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-
-                Intent nextScreen = new Intent(getApplicationContext(), myFavorites_activity.class);
-                startActivity(nextScreen);
-
-            }
-        });
     }
-
 }
