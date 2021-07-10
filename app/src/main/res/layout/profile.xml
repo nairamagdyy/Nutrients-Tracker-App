@@ -1,9 +1,5 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="wrap_content" >
-
-    <ScrollView android:id="@+id/my_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
 
         <RelativeLayout android:id="@+id/content_container"
             android:layout_width="wrap_content"
@@ -304,19 +300,4 @@
 
 
                 </RelativeLayout>
-
-
-
-
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-
-
-
-        </RelativeLayout>
-
-    </ScrollView>
-</HorizontalScrollView>
+</LinearLayout>

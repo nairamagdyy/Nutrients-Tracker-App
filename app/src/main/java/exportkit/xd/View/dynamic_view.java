@@ -33,7 +33,9 @@ public class dynamic_view extends Activity implements OnClickListener{
                         myLayout.addView(hiddenInfo);
                     }
                     break;
+                    
             }
+
         }
 
 }

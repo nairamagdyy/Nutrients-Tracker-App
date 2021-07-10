@@ -14,7 +14,7 @@
             android:layout_height="58dp"
             />
 
-        <EditText android:id="@+id/enter_ingredient"
+        <EditText android:id="@+id/enter_ingredient1"
             android:textStyle="bold"
             android:textSize="17sp"
             android:layout_marginLeft="21.65dp"
