@@ -60,12 +60,11 @@
 					android:background="@drawable/ellipse_ek7_shape" />
 
 				<TextView
-					android:id="@+id/hello_taylor_"
+					android:id="@+id/hello"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginLeft="20dp"
 					android:layout_marginTop="50dp"
-					android:text="@string/hello_taylor__string"
 					android:textColor="@color/start_tracking_color"
 					android:textSize="15sp"
 					android:textStyle="bold" />
