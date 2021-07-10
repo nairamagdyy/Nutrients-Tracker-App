@@ -1,20 +1,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="match_parent" >
-	<ScrollView android:id="@+id/scroll"
-		android:layout_width="wrap_content"
-		android:layout_height="match_parent"
-		android:background="#ffffff">
+	android:layout_width="match_parent" android:layout_height="match_parent"
+	android:orientation="vertical">
+
 	<LinearLayout
 		android:id="@+id/homepage"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="#F2F2F2">
+		android:orientation="vertical"
+		android:background="#ffffff">
 
 		<RelativeLayout
 			android:id="@+id/content_container"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
-
+			<ScrollView android:id="@+id/scroll"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="#ffffff">
 
 			<RelativeLayout
 				android:id="@+id/page_homepage_ek1"
@@ -70,7 +72,8 @@
 					android:layout_marginTop="50dp"
 					android:textColor="@color/start_tracking_color"
 					android:textSize="15sp"
-					android:textStyle="bold" />
+					android:textStyle="bold"
+					/>
 
 				<View
 					android:id="@+id/rectangle"
@@ -121,124 +124,6 @@
 
 				</RelativeLayout>
 
-
-				<RelativeLayout
-					android:id="@+id/group_11_12"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="650dp">
-
-					<View
-						android:id="@+id/rectangle_3"
-						android:layout_width="38dp"
-						android:layout_height="85dp"
-						android:layout_marginStart="0dp"
-						android:layout_marginLeft="0dp"
-						android:layout_marginTop="30dp"
-						android:background="@drawable/rectangle_3_shape" />
-
-					<View
-						android:id="@+id/rectangle_3_1"
-						android:layout_width="38dp"
-						android:layout_height="85dp"
-						android:layout_marginStart="338dp"
-						android:layout_marginLeft="0dp"
-						android:layout_marginTop="30dp"
-						android:background="@drawable/rectangle_3_1_shape" />
-
-					<ImageView
-						android:id="@+id/union"
-						android:layout_width="376dp"
-						android:layout_height="115dp"
-						android:contentDescription="union"
-						android:src="@drawable/union" />
-
-					<RelativeLayout
-						android:id="@+id/group_10"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="173dp"
-						android:layout_marginLeft="20dp"
-						android:layout_marginTop="7dp">
-
-
-						<RelativeLayout
-							android:id="@+id/group_2_2"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginTop="34dp">
-
-							<TextView
-								android:id="@+id/home_ek1"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:text="@string/home_ek1_string"
-								android:textColor="@color/ellipse_2_3_color"
-								android:textSize="15sp" />
-
-						</RelativeLayout>
-
-
-						<RelativeLayout
-							android:id="@+id/group_8"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content">
-
-
-							<RelativeLayout
-								android:id="@+id/home_ek2"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content">
-
-
-								<RelativeLayout
-									android:id="@+id/group_2_ek1"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:layout_marginTop="0.62dp">
-
-
-									<RelativeLayout
-										android:id="@+id/group_ek1"
-										android:layout_width="wrap_content"
-										android:layout_height="wrap_content">
-
-
-										<RelativeLayout
-											android:id="@+id/group_ek2"
-											android:layout_width="wrap_content"
-											android:layout_height="wrap_content">
-
-											<ImageView
-												android:id="@+id/vector_ek8"
-												android:layout_width="25dp"
-												android:layout_height="23.76dp"
-												android:contentDescription="vector_ek8"
-												android:src="@drawable/vector_ek8" />
-
-										</RelativeLayout>
-
-									</RelativeLayout>
-
-								</RelativeLayout>
-
-							</RelativeLayout>
-
-						</RelativeLayout>
-
-					</RelativeLayout>
-
-				</RelativeLayout>
-
-				<ImageButton
-					android:id="@+id/_profile"
-					android:layout_width="47dp"
-					android:layout_height="47dp"
-					android:layout_marginStart="303dp"
-					android:layout_marginLeft="0dp"
-					android:layout_marginTop="700dp"
-					android:contentDescription="_profile"
-					android:src="@drawable/_profile" />
 
 				<TextView
 					android:id="@+id/let_s_learn_more_about_your_food"
@@ -390,9 +275,75 @@
 				</RelativeLayout>
 
 			</RelativeLayout>
+			</ScrollView>
+		<RelativeLayout android:id="@+id/navigation_bar_ek2"
+			android:layout_marginTop="800dp"
+			android:layout_alignParentBottom="true"
+			android:layout_width="match_parent"
+			android:layout_height="55dp"
+			android:background="#ffffff"
+			>
+
+			<RelativeLayout android:id="@+id/iconly_bold_home_ek2"
+				android:layout_marginStart="40dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="26dp"
+				android:layout_marginTop="15dp">
+
+
+				<RelativeLayout android:id="@+id/home_ek10"
+					android:layout_marginTop="2.5dp"
+					android:layout_marginStart="3.13dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="3.13dp">
+
+					<ImageButton android:id="@+id/home_ek11"
+						android:src="@drawable/home_ek11"
+						android:contentDescription="home_ek11"
+						android:layout_width="23.75dp"
+						android:layout_height="25dp" />
+
+				</RelativeLayout>
+
+			</RelativeLayout>
+
+
+			<RelativeLayout android:id="@+id/group_2_ek11"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="162dp"
+				android:layout_marginTop="15dp"
+				android:layout_centerHorizontal="true">
+
+				<Button
+					android:id="@+id/ellipse_ek22"
+					android:layout_width="25.45dp"
+					android:layout_height="24.04dp"
+					android:background="@drawable/ellipse_ek22_shape" />
+
+				<View android:id="@+id/rectangle_2_ek4"
+					android:background="@drawable/rectangle_2_ek4_shape"
+					android:layout_marginStart="19dp"
+					android:layout_marginTop="17dp"
+					android:layout_width="2.9dp"
+					android:layout_height="9.11dp"
+					android:layout_marginLeft="19dp" />
+
+			</RelativeLayout>
+
+			<ImageButton android:id="@+id/ellipse_ek23"
+				android:src="@drawable/ellipse_ek23"
+				android:layout_alignParentRight="true"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_marginTop="15dp"
+				android:layout_marginRight="30dp" />
 
 		</RelativeLayout>
 
-	</LinearLayout>
-	</ScrollView>
+
+</RelativeLayout>
+</LinearLayout>
 </LinearLayout>
