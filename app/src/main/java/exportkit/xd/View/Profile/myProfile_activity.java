@@ -27,7 +27,6 @@ public class myProfile_activity extends Activity {
         UserName  = db.GetUserName((int) id) ;
         name.setText(Name);
         username.setText(UserName);
-
     }
 
 }

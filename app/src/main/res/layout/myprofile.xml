@@ -11,27 +11,29 @@
             android:layout_height="match_parent"
             android:background="#ffffff">
 
-
+            <ScrollView android:id="@+id/scroll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ffffff">
                 <RelativeLayout android:id="@+id/recipe_card"
                     android:layout_marginTop="406dp"
-                    android:layout_marginStart="19dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="19dp">
+                    android:layout_marginLeft="19dp"
+                    android:layout_alignParentLeft="true">
 
-                    <ImageButton android:id="@+id/rectangle_188_ek1"
+                    <ImageButton android:id="@+id/recipe"
                         android:src="@drawable/rectangle_188_ek1"
-                        android:contentDescription="rectangle_188_ek1"
                         android:layout_width="151dp"
                         android:layout_height="151dp" />
 
                     <TextView android:id="@+id/pancake"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/sign_up_success_color"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginTop="167dp"
-                        android:layout_width="58dp"
-                        android:layout_height="23dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
                         android:text="@string/pancake_string"
                         />
 
@@ -39,100 +41,81 @@
 
 
                 <RelativeLayout android:id="@+id/recipe_card_ek1"
-                    android:layout_marginTop="633dp"
-                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="610dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="18dp">
+                    android:layout_marginLeft="19dp"
+                    android:layout_alignParentLeft="true">
 
                     <ImageButton android:id="@+id/image_3_ek1"
                         android:src="@drawable/image_3_ek1"
-                        android:contentDescription="image_3_ek1"
                         android:layout_width="151dp"
                         android:layout_height="151dp" />
 
                     <TextView android:id="@+id/pancake_ek1"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/sign_up_success_color"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginTop="167dp"
-                        android:layout_width="58dp"
-                        android:layout_height="23dp"
-                        android:text="@string/pancake_ek1_string"
-                        />
-
-
-                    <RelativeLayout android:id="@+id/frame_1525"
-                        android:layout_marginTop="202dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        >
-
-                    </RelativeLayout>
+                        android:text="@string/pancake_ek1_string"
+                        android:textStyle="bold"
+                        />
 
                 </RelativeLayout>
 
 
                 <RelativeLayout android:id="@+id/recipe_card_ek2"
                     android:layout_marginTop="406dp"
-                    android:layout_marginStart="195dp"
+                    android:layout_marginRight="19dp"
+                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="195dp">
+                    >
 
                     <ImageButton android:id="@+id/image_1_ek1"
                         android:src="@drawable/image_1_ek1"
-                        android:contentDescription="image_1_ek1"
                         android:layout_width="151dp"
                         android:layout_height="151dp" />
 
                     <TextView android:id="@+id/salad"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/sign_up_success_color"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginTop="167dp"
-                        android:layout_width="40dp"
-                        android:layout_height="23dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="@string/salad_string"
+                        android:textStyle="bold"
                         />
 
                 </RelativeLayout>
 
 
                 <RelativeLayout android:id="@+id/recipe_card_ek3"
-                    android:layout_marginTop="628dp"
-                    android:layout_marginStart="195dp"
-                    android:layout_width="match_parent"
+                    android:layout_marginTop="610dp"
+                    android:layout_marginRight="19dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="195dp">
+                   >
 
-                    <ImageView android:id="@+id/image_2"
+                    <ImageButton android:id="@+id/image_2"
                         android:src="@drawable/image_2"
-                        android:contentDescription="image_2"
                         android:layout_width="151dp"
                         android:layout_height="151dp" />
 
                     <TextView android:id="@+id/salad_ek1"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:textColor="@color/sign_up_success_color"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginTop="167dp"
-                        android:layout_width="40dp"
-                        android:layout_height="23dp"
-                        android:text="@string/salad_ek1_string"
-                        />
-
-
-                    <RelativeLayout android:id="@+id/frame_1525_ek1"
-                        android:layout_marginTop="202dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        >
-
-
-                    </RelativeLayout>
+                        android:text="@string/salad_ek1_string"
+                        android:textStyle="bold"
+                        />
 
                 </RelativeLayout>
+            </ScrollView>
 
             <TextView android:id="@+id/__tayshelby_ek2"
                 android:layout_gravity="center_horizontal|center"
@@ -335,7 +318,6 @@
 
                     <ImageButton android:id="@+id/_list_1"
                         android:src="@drawable/_list_1"
-                        android:contentDescription="_list_1"
                         android:layout_width="30dp"
                         android:layout_height="23.28dp"
                         android:layout_marginStart="355dp"
