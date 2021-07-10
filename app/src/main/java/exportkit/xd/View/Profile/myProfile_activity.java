@@ -11,28 +11,23 @@ import exportkit.xd.R;
 
 
 public class myProfile_activity extends Activity {
-    String Name,UserName,Gender,PhoneNumber,Email,Password;
-    private TextView name;
-    User user;
+    String Name,UserName;
+    private TextView name , username;
+    AppDBController db ;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
-/*
-        name = (TextView) findViewById(R.id.textView);
-
+        db= new AppDBController(this);
+        name = (TextView) findViewById(R.id.name);
+        username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
         SessionManager s= new SessionManager(this);
         long id= s.getUserFromSession();
-        name.setText("nadaaaa   "+id);
-*/
-        /*
-        AppDBController db= new AppDBController(this);
-        db.Register(user);
-        Intent intent = getIntent();
-        Name= intent.getStringExtra("name");
-        name= (TextView) findViewById(R.id.name_);
+        Name =  db.GetName((int) id)  ;
+        UserName  = db.GetUserName((int) id) ;
         name.setText(Name);
-         */
+        username.setText(UserName);
+
     }
 
 }

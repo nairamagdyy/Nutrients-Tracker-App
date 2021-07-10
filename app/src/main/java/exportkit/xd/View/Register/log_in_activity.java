@@ -92,7 +92,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 	@Override
 	public void onLoginSuccess(String message) {
 		Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-		Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
+		Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
 		startActivity(nextScreen);
 	}
 

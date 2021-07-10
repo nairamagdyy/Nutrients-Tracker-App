@@ -33,6 +33,7 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         hidden = (ImageButton) findViewById(R.id.pass);
         SessionManager s= new SessionManager(this);
         int  id= (int) s.getUserFromSession();
+
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Fullname = name.getText().toString();
@@ -53,10 +54,6 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
                 {
                           System.out.println(id + " , " +    Fullname + " , " +Username + " , " +Email + ", " +Phone + ", " +Password);
                     Controller.EditProfile(id , Fullname, Username,  Email, Phone, Password);
-                    /*
-                    email.setText(Email) ; 
-                    name.setText(Fullname) ; 
-                    */
 
                 }
 

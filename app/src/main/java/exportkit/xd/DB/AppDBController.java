@@ -95,6 +95,33 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getInt(0) ;
     }
+    public String GetName(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_name}, DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getString(cursor.getColumnIndex(DB_col_name));
+    }
+    public String GetUserName(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_username}, DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getString(cursor.getColumnIndex(DB_col_username));
+    }
+    public String GetUserEmail(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_email}, DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getString(cursor.getColumnIndex(DB_col_email));
+    }
     public boolean edituser(int id , String name, String username, String email, String phoneNumber, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
