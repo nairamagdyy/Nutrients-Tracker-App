@@ -11,21 +11,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-
-            <RelativeLayout android:id="@+id/page_my_favorites_ek1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-
-                <View android:id="@+id/_bg__my_favorites_ek2"
-                    android:background="@drawable/_bg__my_favorites_ek2_shape"
-                    android:layout_width="385dp"
-                    android:layout_height="812dp" />
-
                 <TextView android:id="@+id/elena_shelby_ek1"
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
                     android:textSize="12sp"
+                    android:layout_centerHorizontal="true"
                     android:textColor="@color/sign_up_success_color"
                     android:layout_marginLeft="160dp"
                     android:layout_marginTop="224dp"
@@ -36,8 +26,8 @@
 
                 <TextView android:id="@+id/__tayshelby_ek2"
                     android:layout_gravity="center_horizontal|center"
-                    android:gravity="center"
                     android:textSize="12sp"
+                    android:layout_centerHorizontal="true"
                     android:textColor="@color/__tayshelby_color"
                     android:layout_marginLeft="160dp"
                     android:layout_marginTop="251dp"
@@ -50,32 +40,32 @@
                 <View android:id="@+id/spacing_ek4"
                     android:background="@drawable/spacing_ek4_shape"
                     android:layout_marginTop="284dp"
-                    android:layout_width="375dp"
+                    android:layout_width="match_parent"
                     android:layout_height="8dp" />
 
 
                 <RelativeLayout android:id="@+id/tab_ek4"
                     android:layout_marginTop="330dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     >
 
 
                     <RelativeLayout android:id="@+id/tab_ek5"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         >
 
 
                         <RelativeLayout android:id="@+id/tab___indicator_ek2"
                             android:layout_marginTop="36dp"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             >
 
                             <View android:id="@+id/tabs___indicator_ek2"
                                 android:background="@drawable/tabs___indicator_ek2_shape"
-                                android:layout_width="375dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="1dp" />
 
                         </RelativeLayout>
@@ -86,13 +76,14 @@
                             android:layout_height="wrap_content"
                             >
 
-                            <TextView android:id="@+id/recipes_ek2"
+                            <Button android:id="@+id/recipes_ek2"
                                 android:layout_gravity="center_horizontal|center"
                                 android:gravity="center"
+                                android:background="#ffffff"
                                 android:textSize="12sp"
                                 android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
                                 android:layout_marginLeft="67dp"
-                                android:layout_marginTop="0dp"
+                                android:layout_marginTop="-14dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/recipes_ek2_string"
@@ -108,13 +99,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="261dp">
 
-                            <TextView android:id="@+id/tabs___default_ek2"
+                            <Button android:id="@+id/tabs___default_ek2"
                                 android:layout_gravity="center_horizontal|center"
+                                android:background="#ffffff"
                                 android:gravity="center"
                                 android:textSize="12sp"
                                 android:textColor="@color/login_color"
                                 android:layout_marginLeft="0dp"
-                                android:layout_marginTop="0dp"
+                                android:layout_marginTop="-14dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/tabs___default_ek2_string"
@@ -129,11 +121,11 @@
                 <ImageView android:id="@+id/rectangle_193_ek3"
                     android:src="@drawable/rectangle_193_ek3"
                     android:contentDescription="rectangle_193_ek3"
-                    android:layout_marginStart="193.01dp"
                     android:layout_marginTop="366dp"
-                    android:layout_width="191.99dp"
-                    android:layout_height="3dp"
-                    android:layout_marginLeft="193.01dp" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="190dp"
+                    android:layout_height="3dp" />
 
 
                 <RelativeLayout android:id="@+id/recipe_card_ek8"
@@ -159,8 +151,9 @@
                         android:text="@string/fruites_string"
                         />
 
-                    <ImageView android:id="@+id/avatar"
+                    <ImageButton android:id="@+id/avatar"
                         android:src="@drawable/avatar"
+                        android:background="#ffffff"
                         android:contentDescription="avatar"
                         android:layout_marginStart="130dp"
                         android:layout_marginTop="161dp"
@@ -189,11 +182,12 @@
                     android:text="@string/cacao_maca_walnut_milk_string"
                     />
 
-                <ImageView android:id="@+id/avatar_ek1"
+                <ImageButton android:id="@+id/avatar_ek1"
                     android:src="@drawable/avatar_ek1"
                     android:contentDescription="avatar_ek1"
                     android:layout_marginStart="340dp"
                     android:layout_marginTop="567dp"
+                    android:background="#ffffff"
                     android:layout_width="24dp"
                     android:layout_height="21dp"
                     android:layout_marginLeft="318dp" />
@@ -241,7 +235,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="162dp">
 
-                        <View
+                        <Button
                             android:id="@+id/ellipse_ek22"
                             android:layout_width="25.45dp"
                             android:layout_height="24.04dp"
@@ -272,13 +266,13 @@
 
                 <RelativeLayout
                     android:id="@+id/group__ek6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-78dp">
 
                     <View
                         android:id="@+id/rectangle_2_16_ek8"
-                        android:layout_width="375dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="166.76dp"
                         android:layout_marginTop="71dp"
                         android:background="@drawable/rectangle_2_16_ek8_shape" />
@@ -288,9 +282,9 @@
                         android:id="@+id/_list_1_ek3"
                         android:layout_width="30dp"
                         android:layout_height="23.28dp"
-                        android:layout_marginStart="325dp"
+                        android:layout_marginStart="355dp"
                         android:layout_marginLeft="325dp"
-                        android:layout_marginTop="139dp"
+                        android:layout_marginTop="120dp"
                         android:contentDescription="_list_1_ek3"
                         android:src="@drawable/_list_1_ek3" />
 
@@ -298,6 +292,7 @@
                         android:id="@+id/avatr_ek4"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginStart="137dp"
                         android:layout_marginLeft="137dp"
                         android:layout_marginTop="178dp"
@@ -306,43 +301,6 @@
 
                 </RelativeLayout>
 
-
-                <RelativeLayout android:id="@+id/external_assets_apple_status_bar_ek9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
-
-
-                    <RelativeLayout android:id="@+id/battery_ek9"
-                        android:layout_marginTop="17.33dp"
-                        android:layout_marginStart="348.33dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="348.33dp">
-
-
-
-                        <ImageView android:id="@+id/cap_ek9"
-                            android:src="@drawable/cap_ek9"
-                            android:contentDescription="cap_ek9"
-                            android:alpha="0.40000000596046"
-                            android:layout_marginStart="23dp"
-                            android:layout_marginTop="4dp"
-                            android:layout_width="1.33dp"
-                            android:layout_height="4dp"
-                            android:layout_marginLeft="23dp" />
-
-
-                    </RelativeLayout>
-
-
-
-
-
-
-                </RelativeLayout>
-
-            </RelativeLayout>
         </RelativeLayout>
 
     </LinearLayout>
