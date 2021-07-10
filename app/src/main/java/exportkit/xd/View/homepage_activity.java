@@ -37,7 +37,7 @@
 
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.homepage);
-			ProfileButton = (ImageButton) findViewById(R.id._profile);
+			ProfileButton = (ImageButton) findViewById(R.id.ellipse_ek23);
 			db= new AppDBController(this);
 			name = (TextView) findViewById(R.id.hello);
 			SessionManager s= new SessionManager(this);
