@@ -48,10 +48,11 @@ public class userController implements IUserController{
 
     @Override
     public void login(String email, String password) {
-        long id = db.loginValidation(email,password);
+        long i = db.loginValidation(email,password);
 
-        if(id>0){
-            openSession(id);
+        if(i>0){
+            System.out.println("User id " + db.GetUserID(email)) ;
+            openSession(db.GetUserID(email));
             registerview.onLoginSuccess("Login Successfully");
         }
         else
