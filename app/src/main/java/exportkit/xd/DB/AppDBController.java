@@ -68,7 +68,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return id;
     }
-    public long loginValidation(String email, String password) {
+    public boolean loginValidation(String email, String password) {
         String[] columns = {DB_col_ID};
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = DB_col_email + " =?" + " AND " + DB_col_password + " =?";
@@ -81,9 +81,10 @@ public class AppDBController extends SQLiteOpenHelper {
                 null,
                 null);
 
-        long id = cursor.getCount();
-     //   System.out.println("id + " + id ) ;
-        return id;
+       if (cursor.getCount()>0) return true ;
+       else
+           return false ;
+
     }
     public int GetUserID(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -103,7 +104,7 @@ public class AppDBController extends SQLiteOpenHelper {
         values.put(DB_col_password, phoneNumber);
         values.put(DB_col_phonenumber, password);
         // updating row
-        System.out.println("name = " + name + " " + " id = " + id );
+     //   System.out.println("name = " + name + " " + " id = " + id );
         int result =  db.update(DB_User_Table, values, DB_col_ID + " =?",
                 new String[]{String.valueOf(id)});
         db.close();
