@@ -87,13 +87,12 @@ public class AppDBController extends SQLiteOpenHelper {
     }
     public int GetUserID(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String where = DB_col_email+" LIKE '%"+email+"%'";
-        Cursor c = db.query(true, DB_User_Table, null,
-                where, null, null, null, null, null);
-        if(c.getCount()>0)
-            return c.getInt(0);
-        else
-            return 0;
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_ID}, DB_col_email + "=?",
+                new String[] { String.valueOf(email) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getInt(0) ;
     }
     public boolean edituser(int id , String name, String username, String email, String phoneNumber, String password) {
         SQLiteDatabase db = this.getWritableDatabase();

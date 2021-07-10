@@ -80,13 +80,12 @@ public class log_in_activity extends Activity implements IRegisterView {
 				else
 				{
 					loginController.login(Email,Pass);
-				//	System.out.println("User id " + db.GetUserID(Email)) ;
+					System.out.println("User id " + db.GetUserID(Email)) ;
 
 				}
 
 			}
 		});
-
 	}
 
 	@Override
