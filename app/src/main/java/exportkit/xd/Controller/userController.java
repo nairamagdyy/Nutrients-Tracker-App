@@ -48,10 +48,11 @@ public class userController implements IUserController{
 
     @Override
     public void login(String email, String password) {
-        long id = db.loginValidation(email,password);
+        boolean i = db.loginValidation(email,password);
 
-        if(id>0){
-            openSession(id);
+        if(i){
+            System.out.println("User id " + db.GetUserID(email)) ;
+            openSession(db.GetUserID(email));
             registerview.onLoginSuccess("Login Successfully");
         }
         else
@@ -68,7 +69,7 @@ public class userController implements IUserController{
     public void EditProfile(int id , String name, String username, String email, String phoneNumber, String password){
 
         Boolean data = db.edituser(id ,name, username, email,  phoneNumber, password);
-        if(data==true)
+        if(data)
             profileview.onEditSuccess("Edit Operation is Successfully");
         else
             profileview.onEditError("email exists or username , enter new one!!!!");

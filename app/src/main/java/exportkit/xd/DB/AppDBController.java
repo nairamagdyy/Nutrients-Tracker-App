@@ -53,9 +53,6 @@ public class AppDBController extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
-    /*
-      This method is to create user // Register
-     */
     public long Register(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -71,49 +68,70 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return id;
     }
-    /**
-     * This method to check user exist or not
-     *
-     * @param email
-     * @param password
-     * @return true/false
-     */
-    public long loginValidation(String email, String password) {
-        // array of columns to fetch
+    public boolean loginValidation(String email, String password) {
         String[] columns = {DB_col_ID};
         SQLiteDatabase db = this.getReadableDatabase();
-        // selection criteria
         String selection = DB_col_email + " =?" + " AND " + DB_col_password + " =?";
-        // selection arguments
         String[] selectionArgs = {email, password};
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = '' AND user_password = '';
-         */
-        Cursor cursor = db.query(DB_User_Table, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
+        Cursor cursor = db.query(DB_User_Table,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
 
-        long id = cursor.getCount();
-        return id;
+       if (cursor.getCount()>0) return true ;
+       else
+           return false ;
+
     }
+    public int GetUserID(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_ID}, DB_col_email + "=?",
+                new String[] { String.valueOf(email) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
 
+        return cursor.getInt(0) ;
+    }
+    public String GetName(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_name}, DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getString(cursor.getColumnIndex(DB_col_name));
+    }
+    public String GetUserName(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_username}, DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getString(cursor.getColumnIndex(DB_col_username));
+    }
+    public String GetUserEmail(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(DB_User_Table, new String[] {DB_col_email}, DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getString(cursor.getColumnIndex(DB_col_email));
+    }
     public boolean edituser(int id , String name, String username, String email, String phoneNumber, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DB_col_name, name);
         values.put(DB_col_username,username) ;
         values.put(DB_col_email, email);
-        values.put(DB_col_password, phoneNumber);
-        values.put(DB_col_phonenumber, password);
+        values.put(DB_col_password, password);
+        values.put(DB_col_phonenumber, phoneNumber);
         // updating row
-        System.out.println("name = " + name + " " + " id = " + id );
+     //   System.out.println("name = " + name + " " + " id = " + id );
         int result =  db.update(DB_User_Table, values, DB_col_ID + " =?",
                 new String[]{String.valueOf(id)});
         db.close();
