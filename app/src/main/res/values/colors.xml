@@ -29,4 +29,15 @@
 	<color name="capacity_ek6_color">#FCFCFE</color>
 	<color name="_bg__onboarding_2___track_nutrients_ek2_color">#230B34</color>
 	<color name="change_profile_photo_color">#2749E7</color>
+
+	<color name="_bg__upload_recipe_step_2_ek2_color">#FFFFFF</color>
+	<color name="_2_2_color">#3D5480</color>
+	<color name="__up_to_12_mb__color">#9FA5C0</color>
+	<color name="overlay_color">#000000</color>
+	<color name="your_recipe_has_been_uploaded__you_can_see_it_on_your_profile_color">#2D3D5C</color>
+	<color name="rectangle_197_color">#C4C4C4</color>
+	<color name="cancel_color">#FF6363</color>
+	<color name="spacing_color">#F4F5F7</color>
+	<color name="home_indicator_ek3_color">#E3E3E3</color>
+	<color name="_bg__primary___small_ek9_color">#1FCC79</color>
 </resources>
