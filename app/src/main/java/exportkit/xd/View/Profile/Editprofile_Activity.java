@@ -6,23 +6,31 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
+import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.homepage_activity;
+
 public class Editprofile_Activity extends Activity implements IMyProfileView {
     IUserController Controller;
     private TextView email, password, phone, name, username;
+    String Name,UserName;
     private ImageButton editButton, hidden;
+    private Button cancel ;
+    AppDBController db ;
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
+        db= new AppDBController(this);
         Controller = new userController((IMyProfileView) this) ;
         email= (TextView) findViewById(R.id.editmail);
         password= (TextView) findViewById(R.id.editpass);
@@ -30,10 +38,12 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         name = (TextView) findViewById(R.id.editname);
         username = (TextView) findViewById(R.id.editusername);
         editButton = (ImageButton) findViewById(R.id.done);
+        cancel = (Button)findViewById(R.id.cancel);
         hidden = (ImageButton) findViewById(R.id.pass);
         SessionManager s= new SessionManager(this);
         int  id= (int) s.getUserFromSession();
-
+        Name = db.GetName(id) ;
+        name.setText(Name) ;
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Fullname = name.getText().toString();
@@ -52,14 +62,23 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
                 }
                 else
                 {
-                          System.out.println(id + " , " +    Fullname + " , " +Username + " , " +Email + ", " +Phone + ", " +Password);
-                    Controller.EditProfile(id , Fullname, Username,  Email, Phone, Password);
+                     //     System.out.println(id + " , " +    Fullname + " , " +Username + " , " +Email + ", " +Phone + ", " +Password);
+                          Controller.EditProfile(id , Fullname, Username,  Email, Phone, Password);
 
                 }
 
 
             }
 
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                startActivity(nextScreen);
+
+            }
         });
 
         hidden.setOnTouchListener(new View.OnTouchListener() {

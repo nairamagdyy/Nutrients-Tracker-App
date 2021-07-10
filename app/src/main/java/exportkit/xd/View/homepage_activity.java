@@ -1,22 +1,5 @@
 
-
-	/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc
-	 *	@file 		untitled
-	 *	@date 		1621375453134
-	 *	@title 		Page 1
-	 *	@author
-	 *	@keywords
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-
-
 	package exportkit.xd.View;
-
 	import android.app.Activity;
 	import android.content.Intent;
 	import android.os.Bundle;
