@@ -79,6 +79,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 				}
 				else
 				{
+					System.out.println(Email +  "  " + Pass) ;
 					loginController.login(Email,Pass);
 
 

@@ -69,7 +69,7 @@ public class userController implements IUserController{
     public void EditProfile(int id , String name, String username, String email, String phoneNumber, String password){
 
         Boolean data = db.edituser(id ,name, username, email,  phoneNumber, password);
-        if(data==true)
+        if(data)
             profileview.onEditSuccess("Edit Operation is Successfully");
         else
             profileview.onEditError("email exists or username , enter new one!!!!");
