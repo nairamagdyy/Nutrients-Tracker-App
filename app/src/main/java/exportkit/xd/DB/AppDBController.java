@@ -53,9 +53,6 @@ public class AppDBController extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
-    /*
-      This method is to create user // Register
-     */
     public long Register(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -71,39 +68,33 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return id;
     }
-    /**
-     * This method to check user exist or not
-     *
-     * @param email
-     * @param password
-     * @return true/false
-     */
     public long loginValidation(String email, String password) {
-        // array of columns to fetch
         String[] columns = {DB_col_ID};
         SQLiteDatabase db = this.getReadableDatabase();
-        // selection criteria
         String selection = DB_col_email + " =?" + " AND " + DB_col_password + " =?";
-        // selection arguments
         String[] selectionArgs = {email, password};
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = '' AND user_password = '';
-         */
-        Cursor cursor = db.query(DB_User_Table, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
+        Cursor cursor = db.query(DB_User_Table,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
 
         long id = cursor.getCount();
+     //   System.out.println("id + " + id ) ;
         return id;
     }
-
+    public int GetUserID(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String where = DB_col_email+" LIKE '%"+email+"%'";
+        Cursor c = db.query(true, DB_User_Table, null,
+                where, null, null, null, null, null);
+        if(c.getCount()>0)
+            return c.getInt(0);
+        else
+            return 0;
+    }
     public boolean edituser(int id , String name, String username, String email, String phoneNumber, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

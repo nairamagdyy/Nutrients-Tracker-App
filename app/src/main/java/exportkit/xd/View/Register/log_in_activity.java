@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
+import exportkit.xd.DB.AppDBController;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.Editprofile_Activity;
 import exportkit.xd.View.Profile.myProfile_activity;
@@ -21,7 +22,7 @@ import exportkit.xd.View.Profile.myProfile_activity;
 public class log_in_activity extends Activity implements IRegisterView {
 
 	IUserController loginController;
-
+	AppDBController db;
 	private TextView email, password,
 			loginb, signUpb;
 	private ImageView hidden;
@@ -32,7 +33,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.log_in);
 		loginController = new userController(this);
-
+		db = new AppDBController(this)  ;
 		email= (TextView) findViewById(R.id.email_or_username);
 		password = (TextView) findViewById(R.id.password);
 
@@ -79,6 +80,7 @@ public class log_in_activity extends Activity implements IRegisterView {
 				else
 				{
 					loginController.login(Email,Pass);
+				//	System.out.println("User id " + db.GetUserID(Email)) ;
 
 				}
 

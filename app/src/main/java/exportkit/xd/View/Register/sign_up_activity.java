@@ -17,6 +17,7 @@
 	import exportkit.xd.Controller.userController;
 	import exportkit.xd.Model.User;
 	import exportkit.xd.R;
+	import exportkit.xd.View.Profile.Editprofile_Activity;
 	import exportkit.xd.View.homepage_activity;
 
 	public class sign_up_activity extends Activity implements IRegisterView {
@@ -97,7 +98,7 @@
 		@Override
 		public void onLoginSuccess(String message) {
 			Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-			Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+			Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
 			startActivity(nextScreen);
 		}
 
