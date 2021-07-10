@@ -22,7 +22,7 @@ import exportkit.xd.View.homepage_activity;
 public class Editprofile_Activity extends Activity implements IMyProfileView {
     IUserController Controller;
     private TextView email, password, phone, name, username;
-    String Name,UserName;
+    String Name,UserName,Email;
     private ImageButton editButton, hidden;
     private Button cancel ;
     AppDBController db ;
@@ -43,7 +43,11 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         SessionManager s= new SessionManager(this);
         int  id= (int) s.getUserFromSession();
         Name = db.GetName(id) ;
+        UserName =db.GetUserName(id);
+        Email = db.GetUserEmail(id);
         name.setText(Name) ;
+        username.setText(UserName) ;
+        email.setText(Email) ;
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Fullname = name.getText().toString();
