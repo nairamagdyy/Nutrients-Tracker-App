@@ -20,20 +20,13 @@
 	import android.app.Activity;
 	import android.content.Intent;
 	import android.os.Bundle;
-
-
 	import android.view.View;
-	import android.widget.Button;
 	import android.widget.ImageButton;
 	import android.widget.TextView;
-	import android.widget.ImageView;
-
 	import exportkit.xd.DB.AppDBController;
 	import exportkit.xd.DB.SessionManager;
 	import exportkit.xd.R;
 	import exportkit.xd.View.Profile.myProfile_activity;
-	import exportkit.xd.View.Register.sign_up_activity;
-
 	public class homepage_activity extends Activity {
     	String Name ;
 		private TextView name;
@@ -60,9 +53,7 @@
 
 				}
 			});
-
 			//custom code goes here
-
 		}
 	}
 	
