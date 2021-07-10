@@ -18,13 +18,13 @@ public class myProfile_activity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
-
+/*
         name = (TextView) findViewById(R.id.textView);
 
         SessionManager s= new SessionManager(this);
         long id= s.getUserFromSession();
         name.setText("nadaaaa   "+id);
-
+*/
         /*
         AppDBController db= new AppDBController(this);
         db.Register(user);
