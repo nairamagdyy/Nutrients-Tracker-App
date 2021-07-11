@@ -256,7 +256,6 @@
 
             </RelativeLayout>
 
-
             <Button
                 android:id="@+id/login_ek1"
                 android:layout_width="fill_parent"
@@ -266,7 +265,7 @@
                 android:layout_marginTop="800dp"
                 android:background="@drawable/round"
                 android:gravity="center"
-                android:text="Trace"
+                android:text="Track"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_alignParentBottom="true"
