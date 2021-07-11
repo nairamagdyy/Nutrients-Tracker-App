@@ -29,7 +29,6 @@ public class SessionManager {
 
     public long getUserFromSession() {
         long userID= userSession.getLong(KEY_USERID,0);
-
         return userID;
     }
 

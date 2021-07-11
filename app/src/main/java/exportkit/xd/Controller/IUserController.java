@@ -9,4 +9,8 @@ public interface IUserController {
     void login(String Email, String password);
     void logout();
     void EditProfile(int id , String name, String username, String email, String phoneNumber, String password) ;
+    String GetName(int id);
+    String GetUserName(int id);
+    String GetEmail(int id);
+    int GetUserid(String Email) ;
 }
