@@ -14,89 +14,128 @@
             android:layout_height="match_parent"
             android:background="#ffffff">
 
-            <TextView
-                android:id="@+id/ingredients"
-                android:layout_width="114dp"
-                android:layout_height="38.5dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="100dp"
-                android:text="Ingredients "
-                android:textColor="#000000"
+            <TextView android:id="@+id/food_name"
+                android:textStyle="bold"
                 android:textSize="17sp"
-                android:textStyle="bold" />
-
-
-                <LinearLayout android:id="@+id/linearLayout1"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="315dp"
-                    android:layout_centerHorizontal="true"
-                    >
-                    <Button android:id="@+id/ingredient"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_horizontal|center"
-                        android:gravity="center"
-                        android:background="@null"
-                        android:textSize="17sp"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+Ingredient"
-                        android:layout_centerHorizontal="true"
-                        />
-                </LinearLayout>
-
-
-            <RelativeLayout android:id="@+id/text_input___empty_ek4"
-                android:layout_marginTop="153dp"
-                android:layout_marginStart="56dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="250dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="56dp"
-                android:layout_centerHorizontal="true">
+                android:text="Food Name"
+                />
 
 
-                <RelativeLayout android:id="@+id/text_input___validation___empty_ek2"
+            <RelativeLayout android:id="@+id/text_input___empty"
+                android:layout_marginTop="285dp"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp">
+
+
+                <RelativeLayout android:id="@+id/text_input___validation___empty"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="wrap_content" >
 
-                    >
-
-                    <View android:id="@+id/rectangle_33_ek4"
-                        android:background="@drawable/rectangle_33_ek4_shape"
+                    <View android:id="@+id/rectangle_33"
+                        android:background="@drawable/rectangle_33_shape"
                         android:layout_width="329dp"
-                        android:layout_height="58dp"
+                        android:layout_height="58dp" />
 
-                        />
-
-                    <EditText android:id="@+id/enter_ingredient"
+                    <EditText android:id="@+id/enter_food_name"
                         android:textStyle="bold"
                         android:textSize="17sp"
-                        android:layout_marginLeft="21.65dp"
+                        android:layout_marginLeft="24dp"
                         android:layout_marginTop="19dp"
-                        android:layout_width="156dp"
+                        android:layout_width="158dp"
                         android:layout_height="38.5dp"
-                        android:hint="Enter ingredient "
+                        android:hint="Enter food name "
                         />
 
                 </RelativeLayout>
 
             </RelativeLayout>
 
-
-            <RelativeLayout android:id="@+id/text_input___empty_ek5"
-                android:layout_marginTop="229dp"
-                android:layout_marginStart="57dp"
+            <TextView android:id="@+id/optional"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginLeft="297.73dp"
+                android:layout_marginTop="220dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="57dp"
-                android:layout_centerHorizontal="true">
+                android:text="optional"
+                />
+
+            <TextView android:id="@+id/description"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="360dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                />
+
+
+            <RelativeLayout android:id="@+id/text_input___empty_ek1"
+                android:layout_marginTop="395dp"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp">
+
+                <View android:id="@+id/rectangle_33_ek1"
+                    android:background="@drawable/rectangle_33_ek1_shape"
+                    android:layout_width="329dp"
+                    android:layout_height="82dp" />
+
+                <EditText android:id="@+id/tell_a_little_about_your_food"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="249dp"
+                    android:layout_height="38.5dp"
+                    android:hint="Tell a little about your food"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout android:id="@+id/linearLayout1"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="525dp"
+                    >
+                    <Button android:id="@+id/ingredient"
+                        android:textStyle="bold"
+                        android:background="@null"
+                        android:textSize="16sp"
+                        android:layout_marginStart="280dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+Ingredient"
+                        android:layout_marginLeft="280dp" />
+            </LinearLayout>
+
+            <TextView android:id="@+id/ingr"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="490dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                />
+
+            <RelativeLayout android:id="@+id/text_input___empty_ek5"
+                android:layout_marginTop="525dp"
+                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+               >
 
 
                 <RelativeLayout android:id="@+id/text_input___validation___empty_ek3"
@@ -106,7 +145,7 @@
 
                     <View android:id="@+id/rectangle_33_ek5"
                         android:background="@drawable/rectangle_33_ek5_shape"
-                        android:layout_width="329dp"
+                        android:layout_width="250dp"
                         android:layout_height="58dp"
                         />
 
@@ -123,24 +162,6 @@
                 </RelativeLayout>
 
             </RelativeLayout>
-
-            <TextView
-                android:id="@+id/_1_2"
-                android:layout_width="41dp"
-                android:layout_height="38.5dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center_horizontal|center"
-                android:layout_marginLeft="329dp"
-                android:layout_marginTop="34dp"
-                android:layout_marginEnd="23dp"
-                android:layout_marginRight="23dp"
-                android:gravity="center"
-                android:text="1/2"
-                android:textColor="#000000"
-                android:textSize="17sp"
-                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/cancel"
@@ -159,20 +180,6 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/steps"
-                android:layout_width="65dp"
-                android:layout_height="38.5dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="22dp"
-                android:layout_marginLeft="22dp"
-                android:layout_marginTop="406dp"
-                android:text="Steps"
-                android:textSize="19sp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
-            <TextView
                 android:id="@+id/option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -180,102 +187,11 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="40dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginTop="406dp"
+                android:layout_marginTop="360dp"
                 android:hint="Optional"
-                android:textSize="19sp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:textColor="#000000"/>
-
-            <LinearLayout
-                android:id="@+id/addstep"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="603dp">
-                    <Button
-                        android:id="@+id/step"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center"
-                        android:layout_marginLeft="22dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:text="+Step"
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:layout_centerHorizontal="true"/>
-
-            </LinearLayout>
-
-            <RelativeLayout android:id="@+id/text_input___empty_ek6"
-                android:layout_marginTop="450dp"
-                android:layout_marginStart="56dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="56dp"
-                android:layout_centerHorizontal="true">
-
-
-                <RelativeLayout android:id="@+id/text_input___validation___empty_ek4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <View android:id="@+id/rectangle_33_ek6"
-                        android:background="@drawable/rectangle_33_ek6_shape"
-                        android:layout_width="329dp"
-                        android:layout_height="58dp"
-                        />
-
-                    <EditText android:id="@+id/enter_step_1"
-                        android:textStyle="bold"
-                        android:textSize="17sp"
-                        android:layout_marginLeft="21.65dp"
-                        android:layout_marginTop="19dp"
-                        android:layout_width="118dp"
-                        android:layout_height="38.5dp"
-                        android:hint="Enter step 1 "
-                        />
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-
-            <RelativeLayout android:id="@+id/text_input___empty_ek7"
-                android:layout_marginTop="521dp"
-                android:layout_marginStart="55dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
-                android:layout_centerHorizontal="true">
-
-
-                <RelativeLayout android:id="@+id/text_input___validation___empty_ek5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <View android:id="@+id/rectangle_33_ek7"
-                        android:background="@drawable/rectangle_33_ek7_shape"
-                        android:layout_width="329dp"
-                        android:layout_height="58dp"
-                         />
-
-                    <EditText android:id="@+id/enter_step_2"
-                        android:textStyle="bold"
-                        android:textSize="17sp"
-                        android:layout_marginLeft="21.65dp"
-                        android:layout_marginTop="19dp"
-                        android:layout_width="120dp"
-                        android:layout_height="38.5dp"
-                        android:hint="Enter step 2"
-                        />
-
-                </RelativeLayout>
-
-            </RelativeLayout>
 
             <Button
                 android:id="@+id/login_ek1"
@@ -283,12 +199,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center"
                 android:layout_marginLeft="155dp"
-                android:layout_marginTop="690dp"
+                android:layout_marginTop="800dp"
                 android:background="@drawable/round"
                 android:gravity="center"
-                android:text="Next"
+                android:text="Track"
                 android:textStyle="bold"
                 android:textSize="18sp"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true" />
 
         </RelativeLayout>

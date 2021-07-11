@@ -22,15 +22,11 @@ import exportkit.xd.View.homepage_activity;
 public class Editprofile_Activity extends Activity implements IMyProfileView {
     IUserController Controller;
     private TextView email, password, phone, name, username;
-    String Name,UserName,Email;
     private ImageButton editButton, hidden;
     private Button cancel ;
-    AppDBController db ;
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
-        db= new AppDBController(this);
         Controller = new userController((IMyProfileView) this) ;
         email= (TextView) findViewById(R.id.editmail);
         password= (TextView) findViewById(R.id.editpass);
@@ -42,12 +38,9 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         hidden = (ImageButton) findViewById(R.id.pass);
         SessionManager s= new SessionManager(this);
         int  id= (int) s.getUserFromSession();
-        Name = db.GetName(id) ;
-        UserName =db.GetUserName(id);
-        Email = db.GetUserEmail(id);
-        name.setText(Name) ;
-        username.setText(UserName) ;
-        email.setText(Email) ;
+        name.setText(Controller.GetName(id)) ;
+        username.setText(Controller.GetUserName(id)) ;
+        email.setText(Controller.GetEmail(id)) ;
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Fullname = name.getText().toString();

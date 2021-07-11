@@ -7,17 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
 import exportkit.xd.View.homepage_activity;
 
-public class myFavorites_activity extends Activity {
-    String Name,UserName;
+public class myFavorites_activity extends Activity implements IMyProfileView  {
     private TextView name , username ;
-    AppDBController db ;
     SessionManager s ;
+    userController UController;
     private ImageButton Homebutton;
     Button recipesbtn ;
     public void onCreate(Bundle savedInstanceState) {
@@ -27,13 +28,11 @@ public class myFavorites_activity extends Activity {
         recipesbtn = (Button) findViewById(R.id.recipes_ek2) ;
         Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
-        db= new AppDBController(this);
         s = new SessionManager(this);
+        UController = new userController((IMyProfileView) this);
         long id= s.getUserFromSession();
-        Name =  db.GetName((int) id)  ;
-        UserName  = db.GetUserName((int) id) ;
-        name.setText(Name);
-        username.setText(UserName);
+        name.setText(UController.GetName((int) id));
+        username.setText(UController.GetUserName((int) id));
         recipesbtn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -51,6 +50,17 @@ public class myFavorites_activity extends Activity {
 
             }
         });
+
+    }
+    @Override
+    public void onEditSuccess(String message) {
+        Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
+        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+        startActivity(nextScreen);
+    }
+    @Override
+    public void onEditError(String message) {
+        Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }
 }
