@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,6 +26,10 @@ public class cameraController{
 
     public cameraController(Activity view) {
         this.view= view;
+
+        /*** init permission array */
+        cameraPermissions= new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        storagePermissions= new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
     }
 
     public void imagePickDialog(){
@@ -60,7 +65,7 @@ public class cameraController{
     //---------------------------------------------------------------------------------------------
 
     public boolean checkStoragePermission(){
-        boolean result= ContextCompat.checkSelfPermission(this.view, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        boolean result= ContextCompat.checkSelfPermission((Context)this.view, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == (PackageManager.PERMISSION_GRANTED);
 
         return result;
@@ -71,9 +76,9 @@ public class cameraController{
     }
 
     public boolean checkCameraPermission(){
-        boolean result= ContextCompat.checkSelfPermission(this.view,Manifest.permission.CAMERA)
+        boolean result= ContextCompat.checkSelfPermission((Context)this.view,Manifest.permission.CAMERA)
                 == (PackageManager.PERMISSION_GRANTED);
-        boolean result1= ContextCompat.checkSelfPermission(this.view,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        boolean result1= ContextCompat.checkSelfPermission((Context)this.view,Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == (PackageManager.PERMISSION_GRANTED);
 
         return result && result1;

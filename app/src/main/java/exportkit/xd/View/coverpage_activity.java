@@ -47,10 +47,9 @@
 
                 public void onClick(View v) {
 
+                    //Intent nextScreen = new Intent(getApplicationContext(), log_in_activity.class);
                     Intent nextScreen = new Intent(getApplicationContext(), log_in_activity.class);
                     startActivity(nextScreen);
-
-
                 }
             });
 
