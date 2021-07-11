@@ -3,10 +3,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
 import exportkit.xd.R;
 
 public class dynamic_view extends Activity implements OnClickListener{
@@ -15,7 +13,7 @@ public class dynamic_view extends Activity implements OnClickListener{
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.add_recipe);
+            setContentView(R.layout.addrecipe_one);
             View buttonAdd = findViewById(R.id.ingredient);
             buttonAdd.setOnClickListener(this);
         }
