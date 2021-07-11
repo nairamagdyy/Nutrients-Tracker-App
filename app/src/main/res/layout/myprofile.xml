@@ -217,7 +217,6 @@
                 android:textSize="15sp"
                 android:layout_centerHorizontal="true"
                 android:textColor="#000000"
-                android:layout_marginLeft="160dp"
                 android:layout_marginTop="224dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -252,7 +251,7 @@
                         android:layout_height="40dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="120dp"
+                        android:layout_marginTop="100dp"
                         android:background="@null"/>
                     <TextView
                         android:id="@+id/logout22"
@@ -262,7 +261,7 @@
                         android:layout_marginLeft="245dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="150dp"
+                        android:layout_marginTop="130dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         />
