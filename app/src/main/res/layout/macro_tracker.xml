@@ -335,11 +335,11 @@
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:layout_marginLeft="19dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="315dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#696969"
+                    android:background="@null"
                     android:text="nutritions"
                     />
 
@@ -354,7 +354,7 @@
                 android:layout_marginTop="315dp"
                 android:layout_marginEnd="35dp"
                 android:layout_marginRight="40dp"
-                android:background="#696969"
+                android:background="@null"
                 android:gravity="center"
                 android:shadowColor="#ffffff"
                 android:shadowDx="1"
