@@ -16,8 +16,8 @@ import exportkit.xd.R;
 public class dynamic_view extends AppCompatActivity implements OnClickListener {
 
     LinearLayout newlayer, newstep;
-    Button buttonAdd, step;
-    ScrollView sv = new ScrollView(this);
+    Button buttonAdd, step1;
+//    ScrollView sv = new ScrollView(this);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,10 +25,10 @@ public class dynamic_view extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.addrecipe_one);
         buttonAdd = findViewById(R.id.ingredient);
         newlayer = findViewById(R.id.linearLayout1);
-        step = findViewById(R.id.step);
+        step1 = findViewById(R.id.step);
         newstep = findViewById(R.id.addstep);
         buttonAdd.setOnClickListener(this);
-        step.setOnClickListener(this);
+        step1.setOnClickListener(this);
     }
 
     @Override
@@ -36,19 +36,12 @@ public class dynamic_view extends AppCompatActivity implements OnClickListener {
         switch (v.getId()) {
             case R.id.ingredient:
                 addingredient();
-            case R.id.step:
-                addstep();
         }
     }
 
     public void addingredient() {
         View view = getLayoutInflater().inflate(R.layout.hidden, null);
         newlayer.addView(view);
-    }
-
-    public void addstep() {
-        View view = getLayoutInflater().inflate(R.layout.hiddenstep, null);
-        newstep.addView(view);
     }
 
 }

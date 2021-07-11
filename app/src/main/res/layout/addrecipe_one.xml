@@ -193,69 +193,6 @@
                 android:textStyle="bold"
                 android:textColor="#000000"/>
 
-            <TextView android:id="@+id/ste"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="595dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Steps"
-                />
-
-            <LinearLayout
-                android:id="@+id/addstep"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="630dp">
-                    <Button
-                        android:id="@+id/step"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="270dp"
-                        android:layout_marginLeft="22dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@null"
-                        android:text="+Step"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        />
-
-            </LinearLayout>
-
-            <RelativeLayout android:id="@+id/text_input___empty_ek6"
-                android:layout_marginTop="630dp"
-                android:layout_marginStart="24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                >
-
-                <RelativeLayout android:id="@+id/text_input___validation___empty_ek4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <View android:id="@+id/rectangle_33_ek6"
-                        android:background="@drawable/rectangle_33_ek6_shape"
-                        android:layout_width="250dp"
-                        android:layout_height="58dp"
-                        />
-
-                    <EditText android:id="@+id/enter_step_1"
-                        android:textStyle="bold"
-                        android:textSize="17sp"
-                        android:layout_marginLeft="21.65dp"
-                        android:layout_marginTop="19dp"
-                        android:layout_width="118dp"
-                        android:layout_height="38.5dp"
-                        android:hint="Enter step "
-                        />
-
-                </RelativeLayout>
-
-            </RelativeLayout>
-
             <Button
                 android:id="@+id/login_ek1"
                 android:layout_width="fill_parent"
