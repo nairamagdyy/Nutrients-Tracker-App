@@ -13,10 +13,10 @@ public class userController implements IUserController{
 
     AppDBController db;
     SessionManager session;
-
+    int id  ;
+    String Name,UserName,Email;
     IRegisterView registerview;
     IMyProfileView profileview;
-    static long idUser ;
 
     public userController(IRegisterView view) {
         this.registerview = view;
@@ -65,6 +65,28 @@ public class userController implements IUserController{
             session.logoutUserFromSession();
     }
 
+    public String GetName (int id )
+    {
+        Name = db.GetName(id) ;
+        return Name ;
+    }
+    public String GetUserName (int id )
+    {
+        UserName = db.GetUserName(id) ;
+        return UserName ;
+    }
+    public String GetEmail (int id )
+    {
+        Email = db.GetUserName(id) ;
+        return Email ;
+    }
+
+    @Override
+    public int GetUserid(String Email) {
+        id = db.GetUserID(Email)  ;
+        return id ;
+    }
+
     @Override
     public void EditProfile(int id , String name, String username, String email, String phoneNumber, String password){
 
@@ -74,6 +96,7 @@ public class userController implements IUserController{
         else
             profileview.onEditError("email exists or username , enter new one!!!!");
     }
+
 
 }
 
