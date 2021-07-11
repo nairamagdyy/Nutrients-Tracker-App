@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import exportkit.xd.Controller.userController;
-import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
 import exportkit.xd.View.homepage_activity;
