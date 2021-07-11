@@ -5,6 +5,10 @@
 	<color name="colorPrimary">#008577</color>
 	<color name="colorPrimaryDark">#00574B</color>
 	<color name="colorAccent">#D81B60</color>
+	<color name="colorBlack">#000</color>
+	<color name="colorWhite">#fff</color>
+	<color name="colorGray">#e4e4e4</color>
+	<color name="colorGray1">#C0B6B6</color>
 
 	<color name="_bg__cover_ek2_color">#200E32</color>
 	<color name="start_tracking_color">#FFFFFF</color>
