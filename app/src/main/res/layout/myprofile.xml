@@ -224,6 +224,7 @@
                 android:text="girl name"
                 />
 
+
                 <RelativeLayout android:id="@+id/group__ek3"
                     android:layout_marginTop="-78dp"
                     android:layout_width="match_parent"
@@ -236,16 +237,36 @@
                         android:layout_width="wrap_content"
                         android:layout_height="166.76dp" />
 
+                    <ImageButton android:id="@+id/edit11"
+                        android:src="@drawable/ic_edit"
+                        android:layout_marginLeft="245dp"
+                        android:layout_marginTop="303dp"
+                        android:layout_width="15.43dp"
+                        android:layout_height="15.43dp" />
+
 
 
                     <ImageButton android:id="@+id/_list_1"
-                        android:src="@drawable/_list_1"
-                        android:layout_width="30dp"
-                        android:layout_height="23.28dp"
+                        android:src="@drawable/ic_logout"
+                        android:layout_width="45dp"
+                        android:layout_height="40dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="120dp"
                         android:background="@null"/>
+                    <TextView
+                        android:id="@+id/logout22"
+                        android:text="Log Out"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_marginLeft="245dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="150dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+
 
                     <ImageView
                         android:id="@+id/avatr_ek4"
