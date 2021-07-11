@@ -9,19 +9,21 @@ public class Recipe {
     String name ;
     HashMap<String,Double> ingredients;
     Vector<String> steps;
-    Bitmap image;
     User cook;
     HashMap<String,Double> nutrientsFacts;
     String description;
+    String image;
 
-
+    //---------------------------------------------------------------------------------------------
     public Recipe(User user, String name,  HashMap<String,Double> ingredients)
     {
         this.name = name;
         this.cook = user;
         this.ingredients = ingredients;
     }
-    public void setImage( Bitmap image){
+
+    //---------------------------------------Setter-------------------------------------------------
+    public void setImage( String image){
         this.image= image;
     }
     public void setSteps(Vector<String> steps){
@@ -36,6 +38,7 @@ public class Recipe {
     public void setId(int id){
         this.id = id;
     }
+    //---------------------------------------Getter-------------------------------------------------
     //getter
     public int getId() {
         return id;
@@ -49,7 +52,7 @@ public class Recipe {
     public HashMap<String,Double> getIngredients() {
         return ingredients;
     }
-    public Bitmap getImage() {
+    public String getImage() {
         return image;
     }
     public Vector<String> getSteps() {

@@ -18,7 +18,7 @@ public class addRecipe_activity extends Activity  implements IAddRecipeView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_recipe);
+        setContentView(R.layout.addrecipe_one);
         RecipeController = new recipeController(this);
     }
 
