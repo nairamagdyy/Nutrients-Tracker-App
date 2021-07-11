@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +17,7 @@ public class dynamic_view extends AppCompatActivity implements OnClickListener {
 
     LinearLayout newlayer, newstep;
     Button buttonAdd, step;
+    ScrollView sv = new ScrollView(this);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
