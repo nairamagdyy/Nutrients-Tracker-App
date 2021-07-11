@@ -3,6 +3,9 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical">
+	<ScrollView android:id="@+id/scroll"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent" >
 
 	<LinearLayout
 		android:id="@+id/sign_up"
@@ -139,12 +142,12 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal|center"
-				android:layout_marginTop="620dp"
+				android:layout_marginTop="630dp"
 				android:background="@drawable/round"
 				android:gravity="center"
 				android:text="@string/_sign_up_ek2_string"
 				android:textSize="15sp"
-				android:layout_marginLeft="150dp"
+				android:layout_alignParentBottom="true"
 				android:layout_centerHorizontal="true"
 				/>
 
@@ -433,4 +436,5 @@
 		</RelativeLayout>
 
 	</LinearLayout>
+	</ScrollView>
 </LinearLayout>

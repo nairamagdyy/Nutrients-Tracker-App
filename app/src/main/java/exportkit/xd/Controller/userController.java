@@ -77,7 +77,7 @@ public class userController implements IUserController{
     }
     public String GetEmail (int id )
     {
-        Email = db.GetUserName(id) ;
+        Email = db.GetUserEmail(id) ;
         return Email ;
     }
 
