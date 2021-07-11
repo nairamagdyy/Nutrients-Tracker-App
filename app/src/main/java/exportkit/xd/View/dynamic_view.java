@@ -15,8 +15,8 @@ import exportkit.xd.R;
 
 public class dynamic_view extends AppCompatActivity implements OnClickListener {
 
-    LinearLayout newlayer, newstep;
-    Button buttonAdd, step1;
+    LinearLayout newlayer;
+    Button buttonAdd;
 //    ScrollView sv = new ScrollView(this);
 
     @Override
@@ -25,10 +25,7 @@ public class dynamic_view extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.addrecipe_one);
         buttonAdd = findViewById(R.id.ingredient);
         newlayer = findViewById(R.id.linearLayout1);
-        step1 = findViewById(R.id.step);
-        newstep = findViewById(R.id.addstep);
         buttonAdd.setOnClickListener(this);
-        step1.setOnClickListener(this);
     }
 
     @Override
