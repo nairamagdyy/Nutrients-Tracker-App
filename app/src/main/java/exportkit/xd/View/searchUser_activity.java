@@ -43,10 +43,17 @@ public class searchUser_activity extends Activity implements IMyProfileView {
         String Username = username.getText().toString();
         db = new AppDBController(this) ;
         List<User> userinfo = new ArrayList<>() ;
-        userinfo = db.searchUser("alaafa");
+        userinfo = db.searchUser(Username);
         userinfo.forEach(user -> {
             System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
+        done.setOnClickListener(new View.OnClickListener() {
 
+            public void onClick(View v) {
+
+                Intent nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
+                startActivity(nextScreen);
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
