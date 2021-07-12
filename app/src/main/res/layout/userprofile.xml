@@ -43,85 +43,6 @@
                     </RelativeLayout>
 
 
-                    <RelativeLayout android:id="@+id/recipe_card_ek1"
-                        android:layout_marginTop="610dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="19dp"
-                        android:layout_alignParentLeft="true">
-
-                        <ImageButton android:id="@+id/image_3_ek1"
-                            android:src="@drawable/image_3_ek1"
-                            android:layout_width="151dp"
-                            android:layout_height="151dp" />
-
-                        <TextView android:id="@+id/pancake_ek1"
-                            android:textSize="14sp"
-                            android:textColor="@color/sign_up_success_color"
-                            android:layout_marginTop="167dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pancake_ek1_string"
-                            android:textStyle="bold"
-                            />
-
-                    </RelativeLayout>
-
-
-                    <RelativeLayout android:id="@+id/recipe_card_ek2"
-                        android:layout_marginTop="406dp"
-                        android:layout_marginRight="19dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        >
-
-                        <ImageButton android:id="@+id/image_1_ek1"
-                            android:src="@drawable/image_1_ek1"
-                            android:layout_width="151dp"
-                            android:layout_height="151dp"
-                            android:layout_marginRight="19dp"/>
-
-                        <TextView android:id="@+id/salad"
-                            android:textSize="14sp"
-                            android:textColor="@color/sign_up_success_color"
-                            android:layout_marginTop="167dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/salad_string"
-                            android:textStyle="bold"
-                            />
-
-                    </RelativeLayout>
-
-
-                    <RelativeLayout android:id="@+id/recipe_card_ek3"
-                        android:layout_marginTop="610dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="19dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        >
-
-                        <ImageButton android:id="@+id/image_2"
-                            android:src="@drawable/image_2"
-                            android:layout_width="151dp"
-                            android:layout_height="151dp"
-                            android:layout_marginRight="19dp"/>
-
-                        <TextView android:id="@+id/salad_ek1"
-                            android:textSize="14sp"
-                            android:textColor="@color/sign_up_success_color"
-                            android:layout_marginTop="167dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/salad_ek1_string"
-                            android:textStyle="bold"
-                            />
-
-                    </RelativeLayout>
-
-
 
                     <TextView android:id="@+id/__tayshelby_ek2"
                         android:textSize="16sp"
@@ -172,15 +93,9 @@
                                 android:layout_height="wrap_content"
                                 >
 
-                                <View android:id="@+id/rectangle_193"
-                                    android:background="@drawable/rectangle_193_shape"
-                                    android:layout_marginTop="34dp"
-                                    android:layout_width="400dp"
-                                    android:layout_height="3dp" />
-
                                 <TextView android:id="@+id/recipes"
                                     android:textSize="30sp"
-                                    android:textColor="@color/sign_up_success_color"
+                                    android:textColor="#000000"
                                     android:layout_marginLeft="160dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -205,6 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="girl name"
+                        android:textStyle="bold"
                         />
 
 
@@ -219,6 +135,18 @@
                             android:layout_marginTop="71dp"
                             android:layout_width="wrap_content"
                             android:layout_height="166.76dp" />
+
+                        <Button
+                            android:id="@+id/back_ek6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal|center"
+                            android:layout_marginTop="90dp"
+                            android:layout_marginBottom="0dp"
+                            android:background="@drawable/ic_back"
+                            android:gravity="center"
+                            android:text="@string/back_string"
+                            android:textSize="15sp" />
 
                         <ImageView
                             android:id="@+id/profilepic"
@@ -243,62 +171,12 @@
                 android:background="#ffffff"
                 >
 
-                <RelativeLayout android:id="@+id/iconly_bold_home_ek2"
-                    android:layout_marginStart="40dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
-                    android:layout_marginTop="15dp">
 
 
-                    <RelativeLayout android:id="@+id/home_ek10"
-                        android:layout_marginTop="2.5dp"
-                        android:layout_marginStart="3.13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3.13dp">
-
-                        <ImageButton android:id="@+id/home_ek11"
-                            android:src="@drawable/home_ek11"
-                            android:contentDescription="home_ek11"
-                            android:layout_width="23.75dp"
-                            android:layout_height="25dp" />
-
-                    </RelativeLayout>
-
-                </RelativeLayout>
 
 
-                <RelativeLayout android:id="@+id/group_2_ek11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="162dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_centerHorizontal="true">
 
-                    <Button
-                        android:id="@+id/ellipse_ek22"
-                        android:layout_width="25.45dp"
-                        android:layout_height="24.04dp"
-                        android:background="@drawable/ellipse_ek22_shape" />
 
-                    <View android:id="@+id/rectangle_2_ek4"
-                        android:background="@drawable/rectangle_2_ek4_shape"
-                        android:layout_marginStart="19dp"
-                        android:layout_marginTop="17dp"
-                        android:layout_width="2.9dp"
-                        android:layout_height="9.11dp"
-                        android:layout_marginLeft="19dp" />
-
-                </RelativeLayout>
-
-                <ImageButton android:id="@+id/ellipse_ek23"
-                    android:src="@drawable/ic_logout"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="30dp" />
 
             </RelativeLayout>
 

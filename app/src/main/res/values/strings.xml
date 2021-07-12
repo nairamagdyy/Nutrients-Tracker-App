@@ -2,7 +2,7 @@
 <resources>
 	<!-- untitled strings -->
 
-	<string name="app_name">Page 1</string>
+	<string name="app_name">Nutrients tracker App</string>
 	<string name="ek_img_content">ExportKit Image</string>
 	<string name="start_tracking_string">Start Tracking</string>
 	<string name="let_s_join_our_community_to_track_nutrients_in_your_food__string">Lets join our communityto track nutrients in your food!</string>
@@ -13,6 +13,7 @@
 	<string name="password_string">Password</string>
 	<string name="login_ek1_string">Login</string>
 	<string name="_sign_up_ek2_string">Sign Up</string>
+	<string name="back_string">Back</string>
 	<string name="don_t_have_any_account__string">Dont have any account?</string>
 	<string name="welcome_back__string">Welcome Back!</string>
 	<string name="please_enter_your_account_here_string">Please enter your account here</string>
