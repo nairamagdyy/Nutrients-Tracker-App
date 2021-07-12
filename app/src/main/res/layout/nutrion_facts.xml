@@ -88,10 +88,108 @@
 
 
                     <RelativeLayout android:id="@+id/prim"
-                        android:layout_marginTop="720dp"
-                        android:layout_width="fill_parent"
-                        android:layout_height="100dp"
-                        android:background="#ffffff">
+                        android:layout_marginTop="500dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="350dp">
+
+                        <TableLayout
+                            android:id="@+id/table"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:stretchColumns="1">
+                            <TableRow
+
+                                android:id="@+id/row1"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <TextView
+
+                                    android:id="@+id/text1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="#b0b0b0"
+                                    android:padding="25dip"
+                                    android:text="Protien"
+                                    android:textColor="#000"
+                                    android:textSize="14dp" />
+
+                                <TextView
+
+                                    android:id="@+id/text2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="#b0b0b0"
+                                    android:padding="25dip"
+                                    android:text="Text 2"
+                                    android:textColor="#000"
+                                    android:textSize="14dp" />
+
+                            </TableRow>
+                            <TableRow
+
+                                android:id="@+id/Row2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <TextView
+
+                                    android:id="@+id/text11"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="#b0b0b0"
+                                    android:padding="25dip"
+                                    android:text="fats"
+                                    android:textColor="#000"
+                                    android:textSize="14dp" />
+
+                                <TextView
+
+                                    android:id="@+id/text22"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="#b0b0b0"
+                                    android:padding="25dip"
+                                    android:text="Text 2"
+                                    android:textColor="#000"
+                                    android:textSize="14dp" />
+
+                            </TableRow>
+                            <TableRow
+
+                                android:id="@+id/row3"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <TextView
+
+                                    android:id="@+id/text111"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="#b0b0b0"
+                                    android:padding="25dip"
+                                    android:text="carbs"
+                                    android:textColor="#000"
+                                    android:textSize="14dp" />
+
+                                <TextView
+
+                                    android:id="@+id/text222"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="#b0b0b0"
+                                    android:padding="25dip"
+                                    android:text="Text 2"
+                                    android:textColor="#000"
+                                    android:textSize="14dp" />
+
+                            </TableRow>
+
+                        </TableLayout>
+
                     </RelativeLayout>
 
                     <ImageView android:id="@+id/_11_1_ek1"
