@@ -23,6 +23,6 @@ public class recipeController implements IRecipeController {
             addRecipeView.onAddSuccess("Add Successfully");
         }
         else
-            addRecipeView.onAddError("email exists or username, enter new one!!!!");
+            addRecipeView.onAddError("FAILED");
     }
 }
