@@ -12,5 +12,6 @@ public interface IUserController {
     String GetName(int id);
     String GetUserName(int id);
     String GetEmail(int id);
+    User SearchUser(String username) ;
     int GetUserid(String Email) ;
 }

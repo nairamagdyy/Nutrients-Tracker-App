@@ -82,6 +82,20 @@ public class userController implements IUserController{
         return Email ;
     }
 
+    @Override
+    public User SearchUser(String username) {
+        User user = new User() ;
+        user = db.searchUser(username) ;
+        if (user == null ) {
+            return null ;
+        }
+        else
+            {
+            return user ;
+            }
+
+    }
+
     public int GetUserid(String Email) {
         id = db.GetUserID(Email)  ;
         return id ;
