@@ -22,7 +22,7 @@ import exportkit.xd.View.homepage_activity;
 
 
 public  class myProfile_activity extends Activity implements IAppViews {
-    private CircularImageView uploadedImage;
+    private CircularImageView uploadedImage, ProfileIcon;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
     private Button FavButton , SearchButton ;
@@ -33,19 +33,19 @@ public  class myProfile_activity extends Activity implements IAppViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
 
+        userController = new userController(this) ;
+
         // finds views
         uploadedImage = findViewById(R.id.avatar);
         name = (TextView) findViewById(R.id.name);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
-
-        HomeButton = (ImageButton) findViewById(R.id.home_ek11);
         FavButton = (Button) findViewById(R.id.FavoriteButton) ;
-        SearchButton = (Button) findViewById(R.id.ellipse_ek22);
         editButton = (ImageButton) findViewById(R.id.edit11) ;
         logoutBtn= (ImageButton) findViewById(R.id._list_1) ;
 
-
-        userController = new userController(this) ;
+        SearchButton = (Button) findViewById(R.id.ellipse_ek22);
+        HomeButton = (ImageButton) findViewById(R.id.home_ek11);
+        ProfileIcon = findViewById(R.id.ellipse_ek23);
 
         // get logged user
         SessionManager session = new SessionManager(this);
@@ -53,8 +53,10 @@ public  class myProfile_activity extends Activity implements IAppViews {
         User user= userController.getUser((int)loggedUser);
 
         //display profile info
-        if(user.getAvatar() != null)
+        if(user.getAvatar() != null) {
             uploadedImage.setImageURI(Uri.parse(user.getAvatar()));
+            ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
+        }
         name.setText(user.getName());
         username.setText(user.getUsername());
 
@@ -63,7 +65,6 @@ public  class myProfile_activity extends Activity implements IAppViews {
             public void onClick(View v) {
                 Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
                 startActivity(nextScreen);
-
             }
         });
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -74,27 +75,19 @@ public  class myProfile_activity extends Activity implements IAppViews {
             }
         });
         editButton.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 Intent nextScreen = new Intent(getApplicationContext(), editProfileActivity.class);
                 startActivity(nextScreen);
-
             }
         });
         FavButton.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 Intent nextScreen = new Intent(getApplicationContext(), myFavorites_activity.class);
                 startActivity(nextScreen);
-
             }
         });
         SearchButton.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
                 startActivity(nextScreen);
 
