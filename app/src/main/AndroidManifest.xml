@@ -21,15 +21,16 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="exportkit.xd.View.Register.log_in_activity" />
-		<activity android:name="exportkit.xd.View.Register.sign_up_activity"/>
-		<activity android:name="exportkit.xd.View.Profile.myProfile_activity"/>
-		<activity android:name="exportkit.xd.View.Profile.myFavorites_activity"/>
-		<activity android:name="exportkit.xd.View.homepage_activity"/>
-		<activity android:name="exportkit.xd.View.Profile.editProfileActivity"/>
+		<activity android:name="exportkit.xd.View.Register.log_in_activity"></activity>
+		<activity android:name="exportkit.xd.View.Register.sign_up_activity"></activity>
+		<activity android:name="exportkit.xd.View.Profile.myProfile_activity"></activity>
+		<activity android:name="exportkit.xd.View.Profile.myFavorites_activity"></activity>
+		<activity android:name="exportkit.xd.View.homepage_activity" />
+		<activity android:name="exportkit.xd.View.Profile.editProfileActivity"></activity>
 		<activity android:name="exportkit.xd.View.Recipe.addRecipe_activity" />
 		<activity android:name="exportkit.xd.View.searchUser_activity" />
 		<activity android:name="exportkit.xd.View.macroTracker_activity" />
+
 
 		<!-- Image cropper activity -->
 		<activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
