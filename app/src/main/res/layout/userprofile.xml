@@ -130,16 +130,18 @@
                             android:layout_height="166.76dp" />
 
 
-                        <ImageView
-                            android:id="@+id/profilepic"
+                        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                            android:id="@+id/avatar"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginStart="137dp"
                             android:layout_marginLeft="137dp"
                             android:layout_marginTop="178dp"
-                            android:contentDescription="avatr_ek4"
-                            android:src="@drawable/avatr_ek4" />
+                            android:src="@drawable/ic_logout"
+                            app:c_background_color="@color/colorGray1"
+                            app:c_border="true"
+                            app:c_border_color="@color/colorGray1"
+                            app:c_border_width="1dp" />
 
                     </RelativeLayout>
                 </RelativeLayout>
