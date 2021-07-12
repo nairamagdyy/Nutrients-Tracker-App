@@ -251,7 +251,8 @@
 					<ImageButton android:id="@+id/done"
                         android:src="@drawable/_icon_awesome_check_circle"
                         android:contentDescription="_icon_awesome_check_circle"
-                        android:layout_marginLeft="300.72dp"
+						android:layout_alignParentRight="true"
+						android:layout_marginRight="20dp"
                         android:layout_marginTop="30dp"
                         android:layout_width="22.42dp"
                         android:layout_height="21.84dp" />
