@@ -165,6 +165,50 @@
                         />
 
                 </RelativeLayout>
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/simpleTableLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:stretchColumns="1"> <!-- stretch the second column of the layout-->
+
+                    <!-- first row of the table layout-->
+                    <TableRow
+
+                        android:id="@+id/firstRow"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- first element of the row-->
+                        <Button android:id="@+id/signup"
+                            android:textStyle="bold"
+                            android:layout_gravity="center_horizontal|center"
+                            android:gravity="center"
+                            android:textSize="22sp"
+                            android:shadowRadius="4"
+                            android:shadowColor="#000000"
+                            android:shadowDx="0"
+                            android:shadowDy="4"
+                            android:textColor="@color/start_tracking_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#b0b0b0"
+                            android:padding="18dip"
+                            android:text="Signup"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/simpleTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#FF0000"
+                            android:padding="18dip"
+                            android:text="Text 2"
+                            android:textColor="#000"
+                            android:textSize="14dp" />
+
+                    </TableRow>
+                </TableLayout>
 
                 <ImageView
                     android:id="@+id/ellipse_3_ek1"

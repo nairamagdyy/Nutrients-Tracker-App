@@ -37,18 +37,18 @@
                         android:textSize="19sp"
                         android:textStyle="bold"
                         android:textColor="#000000"/>
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
+                <RelativeLayout android:id="@+id/content_container11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="374dp"
+                    android:layout_centerHorizontal="true"
+                    >
 
                     <View android:id="@+id/ellipse_17_ek1"
-                        android:background="@drawable/ellipse_17_ek1_shape"
-                        android:layout_marginStart="21dp"
-                        android:layout_marginTop="461dp"
+                        android:background="@drawable/cal"
                         android:layout_width="74dp"
                         android:layout_height="74dp"
-                        android:layout_marginLeft="21dp" />
+                        />
 
                     <TextView android:id="@+id/fats"
                         android:textStyle="bold"
@@ -56,15 +56,15 @@
                         android:gravity="center"
                         android:textSize="17sp"
                         android:shadowRadius="4"
+                        android:layout_marginTop="30dp"
+                        android:layout_centerHorizontal="true"
                         android:shadowColor="#000000"
                         android:shadowDx="0"
                         android:shadowDy="4"
-                        android:layout_marginLeft="-23dp"
-                        android:layout_marginTop="475dp"
-                        android:layout_width="161dp"
-                        android:layout_height="54.5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:textColor="#ffffff"
-                        android:text="Fats"
+                        android:text="Kcal"
                         />
 
                     <TextView android:id="@+id/_35g_ek1"
@@ -76,14 +76,14 @@
                         android:shadowColor="#000000"
                         android:shadowDx="0"
                         android:shadowDy="4"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="469dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10g"
+                        android:text="10"
                         android:textColor="#ffffff"
-                        android:layout_marginLeft="25dp" />
-
+                         />
+                </RelativeLayout>
 
 
 
@@ -164,6 +164,7 @@
                         android:textColor="#ffffff"
                         android:text="Sandwich, Egg, Avocado"
                         />
+
                 </RelativeLayout>
             </ScrollView>
             <RelativeLayout android:id="@+id/navigation_bar_ek2"
