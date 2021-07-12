@@ -32,7 +32,7 @@ public class myFavorites_activity extends Activity implements IAppViews {
         setContentView(R.layout.my_favourite);
 
         userController = new userController(this);
-
+        // find views
         uploadedImage = findViewById(R.id.avatar);
         name = (TextView) findViewById(R.id.name);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;

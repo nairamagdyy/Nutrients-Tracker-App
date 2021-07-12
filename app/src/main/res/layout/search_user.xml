@@ -13,29 +13,7 @@
 
 
 
-                <RelativeLayout android:id="@+id/primary___small_ek1"
-                    android:layout_marginTop="140dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="194dp"
-                    android:layout_alignParentRight="true"
-                    >
 
-                    <Button android:id="@+id/users"
-                        android:textStyle="bold"
-                        android:textSize="17sp"
-                        android:shadowRadius="4"
-                        android:shadowColor="#ffffff"
-                        android:shadowDx="0"
-                        android:shadowDy="4"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Users"
-                        android:background="#3CB371"
-                        android:textAllCaps="false"
-                        />
-
-                </RelativeLayout>
 
 
 
@@ -88,7 +66,7 @@
                                     android:layout_height="20dp"
                                     android:layout_marginLeft="40dp"
                                     android:layout_marginTop="4dp"
-                                    android:src="@drawable/ic_baseline_cancel_24" />
+                                    android:src="@drawable/_icon_awesome_check_circle" />
 
                             </RelativeLayout>
 
@@ -128,12 +106,7 @@
 
                     </RelativeLayout>
 
-                    <View android:id="@+id/spacing"
-                        android:background="@drawable/spacing_shape"
-                        android:layout_marginTop="119dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="8dp"
-                      />
+
 
                 </RelativeLayout>
 

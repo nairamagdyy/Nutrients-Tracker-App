@@ -56,21 +56,6 @@ public class userController{
         if(session.checkLogin())
             session.logoutUserFromSession();
     }
-    /*
-        @Override
-        public List<User> SearchUser(String username) {
-            User user = new User() ;
-            user = db.searchUser(username) ;
-            if (user == null ) {
-                return null ;
-            }
-            else
-                {
-                return user ;
-                }
-
-        }
-    */
     public User getUser(int id){
         return db.getUser(id);
     }
@@ -83,7 +68,6 @@ public class userController{
         else
             view.onError("email exists or username , enter new one!!!!");
     }
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void SearchUser(String username) {
         List<User> userinfo = new ArrayList<>() ;
@@ -98,7 +82,6 @@ public class userController{
             view.onSuccess("Done , Search Operation Done");
         }
     }
-
 
 }
 
