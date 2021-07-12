@@ -41,17 +41,10 @@ public class searchUser_activity extends Activity implements IMyProfileView {
         done = (ImageButton) findViewById(R.id.vector_ek1) ;
         String Username = username.getText().toString();
         db = new AppDBController(this) ;
-        done.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                List<User> userinfo = new ArrayList<>() ;
-                userinfo = db.searchUser(Username);
-                userinfo.forEach(user -> {
-                    System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
-
-            }
-        });
+        List<User> userinfo = new ArrayList<>() ;
+        userinfo = db.searchUser("alaafa");
+        userinfo.forEach(user -> {
+            System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
 
 
 
