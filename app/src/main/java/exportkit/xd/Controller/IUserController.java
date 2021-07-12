@@ -9,6 +9,7 @@ public interface IUserController {
     void login(String Email, String password);
     void logout();
     void EditProfile(User user) ;
+    User getUser(int id);
     String GetName(int id);
     String GetUserName(int id);
     String GetEmail(int id);

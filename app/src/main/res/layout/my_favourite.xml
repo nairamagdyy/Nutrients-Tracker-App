@@ -241,7 +241,7 @@
                         />
 
                     <ImageView
-                        android:id="@+id/avatr_ek4"
+                        android:id="@+id/profilepic"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_centerHorizontal="true"

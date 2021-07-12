@@ -79,6 +79,30 @@ public class AppDBController extends SQLiteOpenHelper {
 
     }
 
+    public User getUser(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(userTable.DB_User_Table,
+                new String[] {userTable.DB_col_username, userTable.DB_col_name,
+                              userTable.DB_col_email, userTable.DB_col_phoneNumber,
+                              userTable.DB_col_password, userTable.DB_col_IMAGE},
+                userTable.DB_col_ID + "=?",
+                new String[] { String.valueOf(id) },
+                null, null, null, null
+        );
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        User user= new User();
+        user.setUsername(cursor.getString(cursor.getColumnIndex(userTable.DB_col_username)));
+        user.setName(cursor.getString(cursor.getColumnIndex(userTable.DB_col_name)));
+        user.setEmail(cursor.getString(cursor.getColumnIndex(userTable.DB_col_email)));
+        user.setPhoneNumber(cursor.getString(cursor.getColumnIndex(userTable.DB_col_phoneNumber)));
+        user.setPassword(cursor.getString(cursor.getColumnIndex(userTable.DB_col_password)));
+        user.setAvatar(cursor.getString(cursor.getColumnIndex(userTable.DB_col_IMAGE)));
+
+        return user;
+    }
+
     public int GetUserID(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_email + "=?",
@@ -88,7 +112,6 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getInt(0) ;
     }
-
     public String GetTheNameOfUser(int id ) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_name}, userTable.DB_col_ID + "=?",
@@ -98,7 +121,6 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getString(cursor.getColumnIndex(userTable.DB_col_name));
     }
-
     public String GetUserName(int id ) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_username}, userTable.DB_col_ID + "=?",
@@ -108,7 +130,6 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getString(cursor.getColumnIndex(userTable.DB_col_username));
     }
-
     public String GetUserEmail(int id ) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_email}, userTable.DB_col_ID + "=?",

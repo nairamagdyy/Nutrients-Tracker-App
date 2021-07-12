@@ -1,5 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <LinearLayout android:id="@+id/my_profile"
         android:layout_width="match_parent"
@@ -266,17 +270,18 @@
                         android:layout_height="wrap_content"
                         />
 
-
-                    <ImageView
-                        android:id="@+id/avatr_ek4"
+                    <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                        android:id="@+id/avatar"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginStart="137dp"
                         android:layout_marginLeft="137dp"
                         android:layout_marginTop="178dp"
-                        android:contentDescription="avatr_ek4"
-                        android:src="@drawable/avatr_ek4" />
+                        android:src="@drawable/ic_logout"
+                        app:c_background_color="@color/colorGray1"
+                        app:c_border="true"
+                        app:c_border_color="@color/colorGray1"
+                        app:c_border_width="1dp" />
 
                 </RelativeLayout>
         </RelativeLayout>
