@@ -85,7 +85,7 @@ public class AppDBController extends SQLiteOpenHelper {
         return cursor.getInt(0) ;
     }
 
-    public String GetName(int id ) {
+    public String GetTheNameOftheUser(int id ) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_name}, userTable.DB_col_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);

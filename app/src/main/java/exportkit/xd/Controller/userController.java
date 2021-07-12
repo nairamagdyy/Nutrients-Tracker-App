@@ -60,14 +60,15 @@ public class userController implements IUserController{
     }
 
     @Override
-    public void logout(){
+    public void logout() {
         if(session.checkLogin())
             session.logoutUserFromSession();
     }
 
+
     public String GetName (int id )
     {
-        Name = db.GetName(id) ;
+        Name = db.GetTheNameOftheUser(id) ;
         return Name ;
     }
     public String GetUserName (int id )
