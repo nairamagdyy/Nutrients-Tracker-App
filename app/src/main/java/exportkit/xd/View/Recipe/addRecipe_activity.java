@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,8 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
 
     //variables
     private TextView name, description, ingredients;
-    private Button saveBtn, cancelBtn;
+    private ImageButton saveBtn ;
+    private Button cancelBtn;
 
     IRecipeController RecipeController;
 
@@ -63,7 +65,7 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
         name= findViewById(R.id.enter_food_name);
         description= findViewById(R.id.enter_description);
         ingredients= findViewById(R.id.enter_ingredient);
-        saveBtn = findViewById(R.id.add_recipe);
+        saveBtn = findViewById(R.id.done);
         cancelBtn= findViewById(R.id.cancel);
 
         uploadedImage.setOnClickListener(new View.OnClickListener() {

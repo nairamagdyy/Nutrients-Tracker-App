@@ -1,0 +1,308 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+
+    <LinearLayout android:id="@+id/userprofile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+            <ScrollView android:id="@+id/scroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffffff">
+                <RelativeLayout android:id="@+id/cont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff">
+                    <RelativeLayout android:id="@+id/recipe_card"
+                        android:layout_marginTop="406dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="19dp"
+                        android:layout_alignParentLeft="true">
+
+                        <ImageButton android:id="@+id/recipe"
+                            android:src="@drawable/rectangle_188_ek1"
+                            android:layout_width="151dp"
+                            android:layout_height="151dp" />
+
+                        <TextView android:id="@+id/pancake"
+                            android:textSize="14sp"
+                            android:textColor="@color/sign_up_success_color"
+                            android:layout_marginTop="167dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="@string/pancake_string"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout android:id="@+id/recipe_card_ek1"
+                        android:layout_marginTop="610dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="19dp"
+                        android:layout_alignParentLeft="true">
+
+                        <ImageButton android:id="@+id/image_3_ek1"
+                            android:src="@drawable/image_3_ek1"
+                            android:layout_width="151dp"
+                            android:layout_height="151dp" />
+
+                        <TextView android:id="@+id/pancake_ek1"
+                            android:textSize="14sp"
+                            android:textColor="@color/sign_up_success_color"
+                            android:layout_marginTop="167dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pancake_ek1_string"
+                            android:textStyle="bold"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout android:id="@+id/recipe_card_ek2"
+                        android:layout_marginTop="406dp"
+                        android:layout_marginRight="19dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageButton android:id="@+id/image_1_ek1"
+                            android:src="@drawable/image_1_ek1"
+                            android:layout_width="151dp"
+                            android:layout_height="151dp"
+                            android:layout_marginRight="19dp"/>
+
+                        <TextView android:id="@+id/salad"
+                            android:textSize="14sp"
+                            android:textColor="@color/sign_up_success_color"
+                            android:layout_marginTop="167dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/salad_string"
+                            android:textStyle="bold"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout android:id="@+id/recipe_card_ek3"
+                        android:layout_marginTop="610dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="19dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <ImageButton android:id="@+id/image_2"
+                            android:src="@drawable/image_2"
+                            android:layout_width="151dp"
+                            android:layout_height="151dp"
+                            android:layout_marginRight="19dp"/>
+
+                        <TextView android:id="@+id/salad_ek1"
+                            android:textSize="14sp"
+                            android:textColor="@color/sign_up_success_color"
+                            android:layout_marginTop="167dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/salad_ek1_string"
+                            android:textStyle="bold"
+                            />
+
+                    </RelativeLayout>
+
+
+
+                    <TextView android:id="@+id/__tayshelby_ek2"
+                        android:textSize="16sp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/__tayshelby_color"
+                        android:layout_marginTop="251dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="name"
+                        />
+
+                    <View android:id="@+id/spacing"
+                        android:background="@drawable/spacing_shape"
+                        android:layout_marginTop="284dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp" />
+
+
+                    <RelativeLayout android:id="@+id/tab"
+                        android:layout_marginTop="330dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+
+                        <RelativeLayout android:id="@+id/tab_ek1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+
+
+                            <RelativeLayout android:id="@+id/tab___indicator"
+                                android:layout_marginTop="36dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <View android:id="@+id/tabs___indicator"
+                                    android:background="@drawable/tabs___indicator_shape"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp" />
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout android:id="@+id/tab___active"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <View android:id="@+id/rectangle_193"
+                                    android:background="@drawable/rectangle_193_shape"
+                                    android:layout_marginTop="34dp"
+                                    android:layout_width="400dp"
+                                    android:layout_height="3dp" />
+
+                                <TextView android:id="@+id/recipes"
+                                    android:textSize="30sp"
+                                    android:textColor="@color/sign_up_success_color"
+                                    android:layout_marginLeft="160dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/recipes_string"
+                                    android:textStyle="bold"
+                                    />
+
+                            </RelativeLayout>
+
+
+
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <TextView android:id="@+id/name"
+                        android:textSize="17sp"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="#000000"
+                        android:layout_marginTop="224dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="girl name"
+                        />
+
+
+                    <RelativeLayout android:id="@+id/group__ek3"
+                        android:layout_marginTop="-78dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <View android:id="@+id/rectangle_2_16_ek5"
+                            android:background="@drawable/rectangle_2_16_ek5_shape"
+                            android:layout_marginTop="71dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="166.76dp" />
+
+                        <ImageView
+                            android:id="@+id/avatr_ek4"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="137dp"
+                            android:layout_marginLeft="137dp"
+                            android:layout_marginTop="178dp"
+                            android:contentDescription="avatr_ek4"
+                            android:src="@drawable/avatr_ek4" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </ScrollView>
+
+            <RelativeLayout android:id="@+id/navigation_bar_ek2"
+                android:layout_marginTop="800dp"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="#ffffff"
+                >
+
+                <RelativeLayout android:id="@+id/iconly_bold_home_ek2"
+                    android:layout_marginStart="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="15dp">
+
+
+                    <RelativeLayout android:id="@+id/home_ek10"
+                        android:layout_marginTop="2.5dp"
+                        android:layout_marginStart="3.13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3.13dp">
+
+                        <ImageButton android:id="@+id/home_ek11"
+                            android:src="@drawable/home_ek11"
+                            android:contentDescription="home_ek11"
+                            android:layout_width="23.75dp"
+                            android:layout_height="25dp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout android:id="@+id/group_2_ek11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="162dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true">
+
+                    <Button
+                        android:id="@+id/ellipse_ek22"
+                        android:layout_width="25.45dp"
+                        android:layout_height="24.04dp"
+                        android:background="@drawable/ellipse_ek22_shape" />
+
+                    <View android:id="@+id/rectangle_2_ek4"
+                        android:background="@drawable/rectangle_2_ek4_shape"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_width="2.9dp"
+                        android:layout_height="9.11dp"
+                        android:layout_marginLeft="19dp" />
+
+                </RelativeLayout>
+
+                <ImageButton android:id="@+id/ellipse_ek23"
+                    android:src="@drawable/ellipse_ek23"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="30dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

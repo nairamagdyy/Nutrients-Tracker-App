@@ -32,7 +32,6 @@
 
             login = (Button) findViewById(R.id.login);
 
-
             signup.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {

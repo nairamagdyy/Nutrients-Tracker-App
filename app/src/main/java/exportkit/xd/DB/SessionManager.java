@@ -19,7 +19,6 @@ public class SessionManager {
         editor = userSession.edit();
     }
 
-
     public void createLoginSession(long id){
         editor.putBoolean(IS_LOGIN, true);
         editor.putLong(KEY_USERID, id);
