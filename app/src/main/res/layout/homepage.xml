@@ -75,14 +75,7 @@
 					android:textStyle="bold"
 					/>
 
-				<View
-					android:id="@+id/rectangle"
-					android:layout_width="329dp"
-					android:layout_height="50dp"
-					android:layout_marginStart="23dp"
-					android:layout_marginLeft="23dp"
-					android:layout_marginTop="147dp"
-					android:background="@drawable/rectangle_shape" />
+
 
 
 				<RelativeLayout
@@ -101,15 +94,7 @@
 						android:layout_marginStart="0dp"
 						android:layout_marginLeft="0dp"
 						android:layout_marginTop="0dp">
-
-						<View
-							android:id="@+id/ellipse_ek8"
-							android:layout_width="15.05dp"
-							android:layout_height="14.95dp"
-							android:layout_marginStart="0dp"
-							android:layout_marginLeft="0dp"
-							android:layout_marginTop="0dp"
-							android:background="@drawable/ellipse_ek8_shape" />
+						
 
 						<View
 							android:id="@+id/rectangle_2"
@@ -137,15 +122,7 @@
 					android:textSize="15sp"
 					android:textStyle="bold"/>
 
-				<EditText
-					android:id="@+id/search_"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginLeft="68dp"
-					android:layout_marginTop="150dp"
-					android:hint="@string/search__string"
-					android:textColor="@color/rectangle_2_color"
-					android:textSize="15sp" />
+
 
 
 				<RelativeLayout
