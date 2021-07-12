@@ -45,10 +45,6 @@ public class searchUser_activity extends Activity implements IMyProfileView {
         userinfo = db.searchUser("alaafa");
         userinfo.forEach(user -> {
             System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
-
-
-
-
         //custom code goes here
     }
 

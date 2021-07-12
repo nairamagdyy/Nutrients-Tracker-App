@@ -22,7 +22,6 @@ public class AppDBController extends SQLiteOpenHelper {
     //Tables
     UserTableConstants userTable= new UserTableConstants();
     RecipeTableConstants recipeTable= new RecipeTableConstants();
-
     //------------------------------------DATABASE------------------------------------------------
     public AppDBController(@Nullable Context context) {
         super(context, DB_Name, null, DB_version);
@@ -34,7 +33,6 @@ public class AppDBController extends SQLiteOpenHelper {
         db.execSQL(recipeTable.CREATE_RECIPE_TABLE);
 
     }
-
     @Override
     // i -> means old version , i1 -> means new version
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
@@ -120,7 +118,24 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getString(cursor.getColumnIndex(userTable.DB_col_email));
     }
+    public String GetUserPassword(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_password}, userTable.DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
 
+        return cursor.getString(cursor.getColumnIndex(userTable.DB_col_password));
+    }
+    public String GetUserPhoneNumber(int id ) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_phoneNumber}, userTable.DB_col_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getString(cursor.getColumnIndex(userTable.DB_col_phoneNumber));
+    }
     public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
