@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
+import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 
 public class AppDBController extends SQLiteOpenHelper {
@@ -17,8 +18,9 @@ public class AppDBController extends SQLiteOpenHelper {
     public static final String DB_Name = "App" ;
     // Database Version
     public static final int DB_version = 6;
-   //User Table
+    //Tables
     UserTableConstants userTable;
+    RecipeTableConstants recipeTable;
 
     //------------------------------------DATABASE------------------------------------------------
     public AppDBController(@Nullable Context context) {
@@ -28,6 +30,8 @@ public class AppDBController extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(userTable.CREATE_USER_TABLE);
+        db.execSQL(recipeTable.CREATE_RECIPE_TABLE);
+
     }
 
     @Override
@@ -35,6 +39,7 @@ public class AppDBController extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         //Drop User Table if exist
         db.execSQL(userTable.DROP_USER_TABLE);
+        db.execSQL(recipeTable.DROP_RECIPE_TABLE);
         // Create tables again
         onCreate(db);
     }
@@ -131,8 +136,8 @@ public class AppDBController extends SQLiteOpenHelper {
         else
             return true ;
     }
-    public User searchUser(String username)
-    {
+
+    public User searchUser(String username) {
         User userInfo =null;
 
         SQLiteDatabase db = getReadableDatabase();
@@ -146,6 +151,25 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return userInfo;
     }
-    //------------------------------------RECIPE TABLE------------------------------------------------
+
+    //------------------------------------RECIPE TABLE----------------------------------------------
+    public Long insertRecipe(Recipe recipe){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(recipeTable.DB_col_IMAGE,recipe.getImage());
+        values.put(recipeTable.DB_col_NAME,recipe.getName()) ;
+        values.put(recipeTable.DB_col_DESCRIPTION, recipe.getDescription());
+        values.put(recipeTable.DB_col_INGREDIENTS, recipe.getIngredients());
+        values.put(recipeTable.DB_col_USERID, recipe.getUserID());
+
+        // Inserting Row
+        long id = db.insert(recipeTable.DB_Table, null, values);
+        db.close();
+
+        return id;
+
+    }
+
 }
 

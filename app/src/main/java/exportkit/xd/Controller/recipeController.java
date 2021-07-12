@@ -3,6 +3,7 @@ package exportkit.xd.Controller;
 import android.content.Context;
 
 import exportkit.xd.DB.AppDBController;
+import exportkit.xd.Model.Recipe;
 import exportkit.xd.View.Recipe.IAddRecipeView;
 
 public class recipeController implements IRecipeController {
@@ -13,5 +14,15 @@ public class recipeController implements IRecipeController {
     public recipeController(IAddRecipeView view) {
         this.addRecipeView = view;
         db = new AppDBController((Context) this.addRecipeView);
+    }
+
+    @Override
+    public void addRecipe(Recipe recipe) {
+        long id = db.insertRecipe(recipe);
+        if(id>0) {
+            addRecipeView.onAddSuccess("Add Successfully");
+        }
+        else
+            addRecipeView.onAddError("email exists or username, enter new one!!!!");
     }
 }

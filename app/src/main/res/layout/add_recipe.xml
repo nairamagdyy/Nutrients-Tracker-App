@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <LinearLayout android:id="@+id/upload_recipe_step1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,14 +43,12 @@
                         android:text="Food Name"
                         />
 
-
                     <RelativeLayout android:id="@+id/text_input___empty"
                         android:layout_marginTop="285dp"
                         android:layout_marginStart="24dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="24dp">
-
 
                         <RelativeLayout android:id="@+id/text_input___validation___empty"
                             android:layout_width="wrap_content"
@@ -94,7 +93,6 @@
                         android:text="Description"
                         />
 
-
                     <RelativeLayout android:id="@+id/text_input___empty_ek1"
                         android:layout_marginTop="395dp"
                         android:layout_marginStart="24dp"
@@ -107,7 +105,7 @@
                             android:layout_width="329dp"
                             android:layout_height="82dp" />
 
-                        <EditText android:id="@+id/tell_a_little_about_your_food"
+                        <EditText android:id="@+id/enter_description"
                             android:textStyle="bold"
                             android:textSize="17sp"
                             android:layout_marginLeft="16dp"
@@ -125,7 +123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="525dp"
                         >
-                        <Button android:id="@+id/ingredient"
+                        <Button android:id="@+id/addIngredientBtn"
                             android:textStyle="bold"
                             android:background="@null"
                             android:textSize="16sp"
@@ -137,7 +135,7 @@
                             android:layout_marginLeft="280dp" />
                     </LinearLayout>
 
-                    <TextView android:id="@+id/ingr"
+                    <TextView android:id="@+id/ingredient"
                         android:textStyle="bold"
                         android:textSize="17sp"
                         android:layout_marginLeft="24dp"
@@ -167,7 +165,7 @@
                                 android:layout_height="58dp"
                                 />
 
-                            <EditText android:id="@+id/enter_ingredient_ek1"
+                            <EditText android:id="@+id/enter_ingredient"
                                 android:textStyle="bold"
                                 android:textSize="17sp"
                                 android:layout_marginLeft="21.65dp"
@@ -212,6 +210,7 @@
                         />
                 </RelativeLayout>
             </ScrollView>
+
             <RelativeLayout android:id="@+id/content_container00"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
@@ -219,19 +218,20 @@
                 android:layout_alignParentBottom="true"
                 >
                 <Button
-                    android:id="@+id/login_ek1"
+                    android:id="@+id/add_recipe"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center"
                     android:layout_marginLeft="155dp"
                     android:background="@drawable/round"
                     android:gravity="center"
-                    android:text="Track"
+                    android:text="Add"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>
+
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

@@ -80,7 +80,7 @@
 					}
                      else
 					{
-						User newUser= new User(Fullname, Username,  Email, Phone, Password , gender );
+						User newUser= new User(Fullname, Username,  Email, Phone, Password , gender);
 						signUpController.signUp(newUser);
 
 					}

@@ -13,21 +13,26 @@ import android.widget.Toast;
 
 import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
-import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
-import exportkit.xd.Model.User;
 import exportkit.xd.R;
-import exportkit.xd.View.homepage_activity;
 
 public class Editprofile_Activity extends Activity implements IMyProfileView {
-    IUserController Controller;
+    IUserController userController;
+
     private TextView email, password, phone, name, username;
     private ImageButton editButton, hidden;
     private Button cancel ;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
-        Controller = new userController((IMyProfileView) this) ;
+
+        userController = new userController((IMyProfileView) this) ;
+
+        SessionManager session= new SessionManager(this);
+        int loggedUser = (int) session.getUserFromSession();
+
+        //get input
         email= (TextView) findViewById(R.id.editmail);
         password= (TextView) findViewById(R.id.editpass);
         phone = (TextView) findViewById(R.id.editphonenumber);
@@ -36,11 +41,12 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         editButton = (ImageButton) findViewById(R.id.done);
         cancel = (Button)findViewById(R.id.cancel);
         hidden = (ImageButton) findViewById(R.id.pass);
-        SessionManager s= new SessionManager(this);
-        int  id= (int) s.getUserFromSession();
-        name.setText(Controller.GetName(id)) ;
-        username.setText(Controller.GetUserName(id)) ;
-        email.setText(Controller.GetEmail(id)) ;
+
+        //set current information for logged user
+        name.setText(userController.GetName(loggedUser)) ;
+        username.setText(userController.GetUserName(loggedUser)) ;
+        email.setText(userController.GetEmail(loggedUser)) ;
+
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Fullname = name.getText().toString();
@@ -55,47 +61,36 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
                         || Phone.equalsIgnoreCase(""))
                 {
                     Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
-
                 }
                 else
                 {
                      //     System.out.println(id + " , " +    Fullname + " , " +Username + " , " +Email + ", " +Phone + ", " +Password);
-                          Controller.EditProfile(id , Fullname, Username,  Email, Phone, Password);
-
+                          userController.EditProfile(loggedUser, Fullname, Username,  Email, Phone, Password);
                 }
-
-
             }
-
         });
         cancel.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
                 startActivity(nextScreen);
-
             }
         });
 
         hidden.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
-
                 switch ( event.getAction() ) {
-
                     case MotionEvent.ACTION_UP:
                         password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                         break;
-
                     case MotionEvent.ACTION_DOWN:
                         password.setInputType(InputType.TYPE_CLASS_TEXT);
                         break;
-
                 }
                 return true;
             }
         });
     }
+
     @Override
     public void onEditSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
