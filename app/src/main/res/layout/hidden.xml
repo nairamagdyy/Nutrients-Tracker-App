@@ -11,22 +11,22 @@
         android:layout_marginTop="24dp"
         >
 
-            <View android:id="@+id/rectangle_33_ek4"
-                android:background="@drawable/rectangle_33_ek4_shape"
-                android:layout_width="329dp"
-                android:layout_height="58dp"
+        <View android:id="@+id/rectangle_33_ek4"
+            android:background="@drawable/rectangle_33_ek4_shape"
+            android:layout_width="329dp"
+            android:layout_height="58dp"
 
-                />
+            />
 
-            <EditText android:id="@+id/enter_ingredient2"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:layout_marginLeft="21.65dp"
-                android:layout_marginTop="19dp"
-                android:layout_width="156dp"
-                android:layout_height="38.5dp"
-                android:hint="Enter ingredient "
-                />
+        <EditText android:id="@+id/enter_ingredient2"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_marginLeft="21.65dp"
+            android:layout_marginTop="19dp"
+            android:layout_width="156dp"
+            android:layout_height="38.5dp"
+            android:hint="Enter ingredient "
+            />
 
-        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>
