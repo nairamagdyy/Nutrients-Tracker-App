@@ -107,4 +107,5 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }
+
 }

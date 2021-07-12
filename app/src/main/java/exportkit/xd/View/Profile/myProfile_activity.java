@@ -12,12 +12,13 @@ import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
+import exportkit.xd.View.Register.log_in_activity;
 import exportkit.xd.View.homepage_activity;
 
 
-public class myProfile_activity extends Activity implements IMyProfileView {
+public  class myProfile_activity extends Activity implements IMyProfileView  {
     private TextView name , username ;
-    private ImageButton Homebutton;
+    private ImageButton Homebutton , editButton , logoutBtn ;
     private Button FavButton;
     userController UController;
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,8 @@ public class myProfile_activity extends Activity implements IMyProfileView {
         setContentView(R.layout.myprofile);
         Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         FavButton = (Button) findViewById(R.id.FavoriteButton) ;
+        editButton = (ImageButton) findViewById(R.id.edit11) ;
+        logoutBtn= (ImageButton) findViewById(R.id._list_1) ;
         UController = new userController((IMyProfileView)this) ;
         name = (TextView) findViewById(R.id.name);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
@@ -41,6 +44,24 @@ public class myProfile_activity extends Activity implements IMyProfileView {
 
             }
         });
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                s.logoutUserFromSession();
+                Intent nextScreen = new Intent(getApplicationContext(), log_in_activity.class);
+                startActivity(nextScreen);
+
+            }
+        });
+        editButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
+                startActivity(nextScreen);
+
+            }
+        });
         FavButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -51,7 +72,6 @@ public class myProfile_activity extends Activity implements IMyProfileView {
             }
         });
     }
-
     @Override
     public void onEditSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
@@ -63,4 +83,5 @@ public class myProfile_activity extends Activity implements IMyProfileView {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }
+
 }

@@ -51,7 +51,7 @@ public class userController implements IUserController{
         boolean i = db.loginValidation(email,password);
 
         if(i){
-            System.out.println("User id " + db.GetUserID(email)) ;
+          //  System.out.println("User id " + db.GetUserID(email)) ;
             openSession(db.GetUserID(email));
             registerview.onLoginSuccess("Login Successfully");
         }
@@ -81,7 +81,6 @@ public class userController implements IUserController{
         return Email ;
     }
 
-    @Override
     public int GetUserid(String Email) {
         id = db.GetUserID(Email)  ;
         return id ;

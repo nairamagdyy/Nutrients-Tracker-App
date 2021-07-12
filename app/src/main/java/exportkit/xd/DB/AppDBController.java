@@ -124,7 +124,6 @@ public class AppDBController extends SQLiteOpenHelper {
         values.put(userTable.DB_col_password, password);
         values.put(userTable.DB_col_phonenumber, phoneNumber);
         // updating row
-     //   System.out.println("name = " + name + " " + " id = " + id );
         int result =  db.update(userTable.DB_User_Table, values, userTable.DB_col_ID + " =?",
                 new String[]{String.valueOf(id)});
         db.close();

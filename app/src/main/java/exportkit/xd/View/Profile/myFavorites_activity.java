@@ -14,7 +14,7 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
 import exportkit.xd.View.homepage_activity;
 
-public class myFavorites_activity extends Activity implements IMyProfileView  {
+public class myFavorites_activity extends Activity implements IMyProfileView{
     private TextView name , username ;
     SessionManager s ;
     userController UController;
@@ -28,7 +28,9 @@ public class myFavorites_activity extends Activity implements IMyProfileView  {
         Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
         s = new SessionManager(this);
+
         UController = new userController((IMyProfileView) this);
+
         long id= s.getUserFromSession();
         name.setText(UController.GetName((int) id));
         username.setText(UController.GetUserName((int) id));
@@ -51,6 +53,7 @@ public class myFavorites_activity extends Activity implements IMyProfileView  {
         });
 
     }
+
     @Override
     public void onEditSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
@@ -62,4 +65,5 @@ public class myFavorites_activity extends Activity implements IMyProfileView  {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }
+
 }
