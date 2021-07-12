@@ -61,15 +61,17 @@ public class userController implements IUserController{
         if(session.checkLogin())
             session.logoutUserFromSession();
     }
-
+    @Override
     public String GetName (int id )
     {
         return db.GetTheNameOfUser(id) ;
     }
+    @Override
     public String GetUserName (int id )
     {
         return db.GetUserName(id) ;
     }
+    @Override
     public String GetEmail (int id )
     {
         return db.GetUserEmail(id) ;
@@ -89,6 +91,7 @@ public class userController implements IUserController{
 
     }
 */
+    @Override
     public int GetUserid(String Email) {
         return db.GetUserID(Email)  ;
     }

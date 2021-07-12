@@ -24,18 +24,21 @@ public  class myProfile_activity extends Activity implements IMyProfileView  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
+        // finds views
         Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         FavButton = (Button) findViewById(R.id.FavoriteButton) ;
         SearchButton = (Button) findViewById(R.id.ellipse_ek22);
         editButton = (ImageButton) findViewById(R.id.edit11) ;
         logoutBtn= (ImageButton) findViewById(R.id._list_1) ;
-        UController = new userController((IMyProfileView)this) ;
         name = (TextView) findViewById(R.id.name);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
-        SessionManager s= new SessionManager(this);
+        UController = new userController((IMyProfileView)this) ;
+        // get logged user
+        SessionManager s = new SessionManager(this);
         long id= s.getUserFromSession();
         name.setText(UController.GetName((int) id));
         username.setText(UController.GetUserName((int) id));
+        // buttons functions
         Homebutton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
