@@ -88,7 +88,7 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
                     recipe.setName(recipeName);
                     recipe.setDescription(recipeDescription);
                     recipe.setIngredients(recipeIngredients);
-                    //RecipeController.addRecipe(recipe);
+                    RecipeController.addRecipe(recipe);
                 }
             }
         });

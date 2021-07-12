@@ -19,8 +19,8 @@ public class AppDBController extends SQLiteOpenHelper {
     // Database Version
     public static final int DB_version = 6;
     //Tables
-    UserTableConstants userTable;
-    RecipeTableConstants recipeTable;
+    UserTableConstants userTable= new UserTableConstants();
+    RecipeTableConstants recipeTable= new RecipeTableConstants();
 
     //------------------------------------DATABASE------------------------------------------------
     public AppDBController(@Nullable Context context) {
