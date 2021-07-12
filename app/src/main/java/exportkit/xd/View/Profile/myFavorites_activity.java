@@ -12,9 +12,10 @@ import android.widget.Toast;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
+import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.homepage_activity;
 
-public class myFavorites_activity extends Activity implements IMyProfileView{
+public class myFavorites_activity extends Activity implements IAppViews {
     private TextView name , username ;
     SessionManager s ;
     userController UController;
@@ -29,7 +30,7 @@ public class myFavorites_activity extends Activity implements IMyProfileView{
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
         s = new SessionManager(this);
 
-        UController = new userController((IMyProfileView) this);
+        UController = new userController(this);
 
         long id= s.getUserFromSession();
         name.setText(UController.GetName((int) id));
@@ -55,13 +56,13 @@ public class myFavorites_activity extends Activity implements IMyProfileView{
     }
 
     @Override
-    public void onEditSuccess(String message) {
+    public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
         Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
         startActivity(nextScreen);
     }
     @Override
-    public void onEditError(String message) {
+    public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }

@@ -12,9 +12,13 @@ public interface IUserController {
     User getUser(int id);
     String GetName(int id);
     String GetUserName(int id);
+<<<<<<< HEAD
     String GetEmail(int id);
     String GetPassword(int id);
     String GetPhoneNumber(int id);
     void SearchUser(String username) ;
+=======
+   // User SearchUser(String username) ;
+>>>>>>> 5b390090549718aa3a33872c6a07cf6858aaf6e6
     int GetUserid(String Email) ;
 }

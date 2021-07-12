@@ -14,8 +14,9 @@
 	import exportkit.xd.Controller.userController;
 	import exportkit.xd.Model.User;
 	import exportkit.xd.R;
+	import exportkit.xd.View.IAppViews;
 	import exportkit.xd.View.homepage_activity;
-	public class sign_up_activity extends Activity implements IRegisterView {
+	public class sign_up_activity extends Activity implements IAppViews{
 
 		IUserController signUpController;
 		private TextView email, password, phone, name, username,signUpb;
@@ -90,14 +91,14 @@
 		}
 
 		@Override
-		public void onLoginSuccess(String message) {
+		public void onSuccess(String message) {
 			Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
 			Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
 			startActivity(nextScreen);
 		}
 
 		@Override
-		public void onLoginError(String message) {
+		public void onError(String message) {
 			Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
 		}

@@ -15,12 +15,13 @@ import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Register.log_in_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.homepage_activity;
 
 
-public  class myProfile_activity extends Activity implements IMyProfileView  {
+public  class myProfile_activity extends Activity implements IAppViews {
     private CircularImageView uploadedImage;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
@@ -44,7 +45,7 @@ public  class myProfile_activity extends Activity implements IMyProfileView  {
         logoutBtn= (ImageButton) findViewById(R.id._list_1) ;
 
 
-        userController = new userController((IMyProfileView)this) ;
+        userController = new userController(this) ;
 
         // get logged user
         SessionManager session = new SessionManager(this);
@@ -101,13 +102,13 @@ public  class myProfile_activity extends Activity implements IMyProfileView  {
         });
     }
     @Override
-    public void onEditSuccess(String message) {
+    public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
         Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
         startActivity(nextScreen);
     }
     @Override
-    public void onEditError(String message) {
+    public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
     }
 
