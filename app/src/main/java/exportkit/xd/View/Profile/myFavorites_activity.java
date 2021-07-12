@@ -24,7 +24,7 @@ public class myFavorites_activity extends Activity implements IMyProfileView  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_favourite);
         name = (TextView) findViewById(R.id.name);
-        recipesbtn = (Button) findViewById(R.id.recipes_ek2) ;
+        recipesbtn = (Button) findViewById(R.id.recipes) ;
         Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
         s = new SessionManager(this);
