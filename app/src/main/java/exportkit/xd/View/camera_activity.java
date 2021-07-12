@@ -21,7 +21,7 @@ import static exportkit.xd.DB.CameraConstants.IMAGE_PICK_GALLERY_CODE;
 import static exportkit.xd.DB.CameraConstants.STORAGE_REQUEST_CODE;
 
 public abstract class camera_activity extends AppCompatActivity {
-    public cameraController CamController=null;
+    public cameraController CamController;
     public CircularImageView uploadedImage;
 
     @Override
@@ -88,10 +88,9 @@ public abstract class camera_activity extends AppCompatActivity {
                 //cropped image received
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
                 if(resultCode == RESULT_OK){
-                    Uri resultUri= result.getUri();
-                    CamController.imageUri= resultUri;
+                    CamController.imageUri= result.getUri();
                     //set image
-                    uploadedImage.setImageURI(resultUri);
+                    uploadedImage.setImageURI(CamController.imageUri);
                 }
                 else if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
                     //error

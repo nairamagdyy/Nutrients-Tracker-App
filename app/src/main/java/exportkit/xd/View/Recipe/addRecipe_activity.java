@@ -29,7 +29,6 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
     //variables
     private TextView name, description, ingredients;
     private Button saveBtn, cancelBtn;
-    private Recipe recipe;
 
     IRecipeController RecipeController;
 
@@ -54,13 +53,12 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
         //get logged user
         SessionManager session= new SessionManager(this);
         int loggedUser = (int) session.getUserFromSession();
-        recipe= new Recipe(loggedUser);
 
         //start to get input
         RecipeController = new recipeController(this);
         CamController = new cameraController(this);
 
-        //get inputs
+        //find views
         uploadedImage= (CircularImageView)findViewById(R.id.uploadImage);
         name= findViewById(R.id.enter_food_name);
         description= findViewById(R.id.enter_description);
@@ -72,7 +70,6 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
             public void onClick(View v) {
                 //show image pick dialog
                 CamController.imagePickDialog();
-                recipe.setImage(""+CamController.imageUri);
             }
         });
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +82,8 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
                     Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
                 else
                 {
+                    Recipe recipe= new Recipe(loggedUser);
+                    recipe.setImage(""+CamController.imageUri);
                     recipe.setName(recipeName);
                     recipe.setDescription(recipeDescription);
                     recipe.setIngredients(recipeIngredients);

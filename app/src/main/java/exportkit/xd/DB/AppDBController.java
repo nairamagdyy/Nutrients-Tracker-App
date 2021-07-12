@@ -54,7 +54,7 @@ public class AppDBController extends SQLiteOpenHelper {
         values.put(userTable.DB_col_email, user.getEmail());
         values.put(userTable.DB_col_password, user.getPassword());
         values.put(userTable.DB_col_gender, user.getGender());
-        values.put(userTable.DB_col_phonenumber, user.getPhoneNumber());
+        values.put(userTable.DB_col_phoneNumber, user.getPhoneNumber());
         // Inserting Row
         long id = db.insert(userTable.DB_User_Table, null, values);
         db.close();
@@ -91,7 +91,7 @@ public class AppDBController extends SQLiteOpenHelper {
         return cursor.getInt(0) ;
     }
 
-    public String GetTheNameOftheUser(int id ) {
+    public String GetTheNameOfUser(int id ) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_name}, userTable.DB_col_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
@@ -121,17 +121,17 @@ public class AppDBController extends SQLiteOpenHelper {
         return cursor.getString(cursor.getColumnIndex(userTable.DB_col_email));
     }
 
-    public boolean edituser(int id , String name, String username, String email, String phoneNumber, String password) {
+    public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(userTable.DB_col_name, name);
-        values.put(userTable.DB_col_username,username) ;
-        values.put(userTable.DB_col_email, email);
-        values.put(userTable.DB_col_password, password);
-        values.put(userTable.DB_col_phonenumber, phoneNumber);
+        values.put(userTable.DB_col_name, user.getName());
+        values.put(userTable.DB_col_username,user.getUsername()) ;
+        values.put(userTable.DB_col_email, user.getEmail());
+        values.put(userTable.DB_col_password, user.getPassword());
+        values.put(userTable.DB_col_phoneNumber, user.getPhoneNumber());
         // updating row
         int result =  db.update(userTable.DB_User_Table, values, userTable.DB_col_ID + " =?",
-                new String[]{String.valueOf(id)});
+                new String[]{String.valueOf(user.getId())});
         db.close();
         if (result < 0) return false ;
         else

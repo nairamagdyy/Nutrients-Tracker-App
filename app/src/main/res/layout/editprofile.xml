@@ -1,8 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical">
 	<ScrollView android:id="@+id/scroll"
 		android:layout_width="wrap_content"
 		android:layout_height="match_parent"
@@ -234,19 +235,23 @@
 						android:alpha="0.15000000596046"
 						android:background="@drawable/ellipse_ek1_shape" />
 
-                    <ImageView android:id="@+id/avatr_ek3"
-                        android:src="@drawable/avatr_ek3"
-                        android:contentDescription="avatr_ek3"
-                        android:layout_marginLeft="138dp"
-                        android:layout_marginTop="127dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-						android:layout_centerHorizontal="true"/>
+					<com.blogspot.atifsoftwares.circularimageview.CircularImageView
+						android:id="@+id/avatar"
+						android:layout_width="100dp"
+						android:layout_height="100dp"
+						android:layout_centerHorizontal="true"
+						android:layout_marginLeft="138dp"
+						android:layout_marginTop="127dp"
+						android:src="@drawable/ic_addimage"
+						app:c_border="true"
+						app:c_border_color="@color/colorGray1"
+						app:c_border_width="1dp" />
 
-                    <ImageButton android:id="@+id/done"
+
+					<ImageButton android:id="@+id/done"
                         android:src="@drawable/_icon_awesome_check_circle"
                         android:contentDescription="_icon_awesome_check_circle"
-                        android:layout_marginLeft="360.72dp"
+                        android:layout_marginLeft="300.72dp"
                         android:layout_marginTop="30dp"
                         android:layout_width="22.42dp"
                         android:layout_height="21.84dp" />
