@@ -1,5 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:orientation="vertical">
 
 	<LinearLayout
@@ -310,13 +313,17 @@
 
 			</RelativeLayout>
 
-			<ImageButton android:id="@+id/ellipse_ek23"
-				android:src="@drawable/ic_logout"
+			<com.blogspot.atifsoftwares.circularimageview.CircularImageView
+				android:id="@+id/ellipse_ek23"
 				android:layout_alignParentRight="true"
 				android:layout_width="40dp"
 				android:layout_height="40dp"
 				android:layout_marginTop="15dp"
-				android:layout_marginRight="30dp" />
+				android:layout_marginRight="30dp"
+				android:src="@drawable/ic_logout"
+				app:c_border="true"
+				app:c_border_color="@color/colorGray1"
+				app:c_border_width="1dp" />
 
 		</RelativeLayout>
 

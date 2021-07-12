@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -17,14 +16,11 @@ import java.util.List;
 
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.AppDBController;
-import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
-import exportkit.xd.View.Profile.IMyProfileView;
 import exportkit.xd.View.Profile.myProfile_activity;
-import exportkit.xd.View.Recipe.addRecipe_activity;
 
-public class searchUser_activity extends Activity implements IMyProfileView {
+public class searchUser_activity extends Activity implements IAppViews {
     EditText username  ;
     userController UController ;
     User user  = null ;
@@ -36,7 +32,7 @@ public class searchUser_activity extends Activity implements IMyProfileView {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_user);
-        UController = new userController((IMyProfileView)this)  ;
+        UController = new userController(this)  ;
         username = (EditText) findViewById(R.id.search);
         done = (ImageButton) findViewById(R.id.vector_ek1) ;
         back = (ImageButton) findViewById(R.id.backk) ;
@@ -66,13 +62,13 @@ public class searchUser_activity extends Activity implements IMyProfileView {
     }
 
     @Override
-    public void onEditSuccess(String message) {
+    public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
         Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
         startActivity(nextScreen);
     }
     @Override
-    public void onEditError(String message) {
+    public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }

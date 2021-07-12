@@ -5,29 +5,22 @@ import android.content.Context;
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
-import exportkit.xd.View.Profile.IMyProfileView;
-import exportkit.xd.View.Register.IRegisterView;
+import exportkit.xd.View.IAppViews;
 
 public class userController implements IUserController{
 
     AppDBController db;
     SessionManager session;
-    IRegisterView registerview;
-    IMyProfileView profileview;
+    IAppViews view;
 
-    public userController(IRegisterView view) {
-        this.registerview = view;
-        db = new AppDBController((Context) this.registerview);
-    }
-
-    public userController(IMyProfileView view) {
-        this.profileview = view ;
-        db = new AppDBController((Context) this.profileview);
+    public userController(IAppViews view) {
+        this.view = view;
+        db = new AppDBController((Context) this.view);
     }
 
     @Override
     public void openSession(long id) {
-        session= new SessionManager((Context) this.registerview);
+        session= new SessionManager((Context) this.view);
         session.createLoginSession(id);
     }
 
@@ -37,10 +30,10 @@ public class userController implements IUserController{
 
         if(id>0) {
             openSession(id);
-            registerview.onLoginSuccess("Registration Successfully");
+            view.onSuccess("Registration Successfully");
         }
         else
-            registerview.onLoginError("email exists or username, enter new one!!!!");
+            view.onError("email exists or username, enter new one!!!!");
     }
 
     @Override
@@ -50,10 +43,10 @@ public class userController implements IUserController{
         if(i){
           //  System.out.println("User id " + db.GetUserID(email)) ;
             openSession(db.GetUserID(email));
-            registerview.onLoginSuccess("Login Successfully");
+            view.onSuccess("Login Successfully");
         }
         else
-            registerview.onLoginError("Try Again !!!!");
+            view.onError("Try Again !!!!");
     }
 
     @Override
@@ -70,21 +63,6 @@ public class userController implements IUserController{
     public String GetUserName (int id )
     {
         return db.GetUserName(id) ;
-    }
-    @Override
-    public String GetEmail (int id )
-    {
-        return db.GetUserEmail(id) ;
-    }
-
-    @Override
-    public String GetPassword(int id) {
-        return db.GetUserPassword(id) ;
-    }
-
-    @Override
-    public String GetPhoneNumber(int id) {
-        return db.GetUserPhoneNumber(id) ;
     }
 
     /*
@@ -117,9 +95,9 @@ public class userController implements IUserController{
 
         Boolean data = db.editUser(user);
         if(data)
-            profileview.onEditSuccess("Edit Operation is Successfully");
+            view.onSuccess("Edit Operation is Successfully");
         else
-            profileview.onEditError("email exists or username , enter new one!!!!");
+            view.onError("email exists or username , enter new one!!!!");
     }
 
 
