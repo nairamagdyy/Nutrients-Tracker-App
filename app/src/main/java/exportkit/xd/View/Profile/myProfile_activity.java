@@ -107,6 +107,8 @@ public  class myProfile_activity extends Activity implements IAppViews {
 
             }
         });
+
+        //recipes
         titles.add("First Item");
         titles.add("Second Item");
         titles.add("Third Item");
