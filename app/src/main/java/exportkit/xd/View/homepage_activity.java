@@ -15,6 +15,7 @@ import exportkit.xd.R;
 import exportkit.xd.View.Profile.IMyProfileView;
 import exportkit.xd.View.Profile.myProfile_activity;
 import exportkit.xd.View.Recipe.addRecipe_activity;
+import exportkit.xd.View.Search.SearchUser_activity;
 
 public class homepage_activity extends Activity implements IMyProfileView{
 	String Name ;
@@ -49,7 +50,7 @@ public class homepage_activity extends Activity implements IMyProfileView{
 
 			public void onClick(View v) {
 
-				Intent nextScreen = new Intent(getApplicationContext(), searchUser_activity.class);
+				Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
 				startActivity(nextScreen);
 
 			}

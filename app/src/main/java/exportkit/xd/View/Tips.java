@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.myProfile_activity;
+import exportkit.xd.View.Search.SearchUser_activity;
 
 public class Tips extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class Tips extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                Intent nextScreen = new Intent(getApplicationContext(), searchUser_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
                 startActivity(nextScreen);
 
             }

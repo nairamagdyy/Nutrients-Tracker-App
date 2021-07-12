@@ -1,4 +1,4 @@
-package exportkit.xd.View;
+package exportkit.xd.View.Search;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -17,18 +16,16 @@ import java.util.List;
 
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.AppDBController;
-import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.IMyProfileView;
 import exportkit.xd.View.Profile.myProfile_activity;
-import exportkit.xd.View.Recipe.addRecipe_activity;
+import exportkit.xd.View.Search.userprofile_Search;
+import exportkit.xd.View.homepage_activity;
 
-public class searchUser_activity extends Activity implements IMyProfileView {
+public class SearchUser_activity extends Activity implements ISearchView {
     EditText username  ;
     userController UController ;
-    User user  = null ;
-    AppDBController db  ;
     ImageButton done , back   ;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -36,22 +33,21 @@ public class searchUser_activity extends Activity implements IMyProfileView {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_user);
-        UController = new userController((IMyProfileView)this)  ;
+        // find views
+        UController = new userController((ISearchView)this)  ;
         username = (EditText) findViewById(R.id.search);
         done = (ImageButton) findViewById(R.id.vector_ek1) ;
         back = (ImageButton) findViewById(R.id.backk) ;
-        String Username = username.getText().toString();
-        db = new AppDBController(this) ;
-        List<User> userinfo = new ArrayList<>() ;
-        userinfo = db.searchUser(Username);
+        /*
         userinfo.forEach(user -> {
             System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
+            */
+        // buttons functions
         done.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-
-                Intent nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
-                startActivity(nextScreen);
+                String Username = username.getText().toString();
+                UController.SearchUser(Username) ;
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -65,15 +61,16 @@ public class searchUser_activity extends Activity implements IMyProfileView {
         //custom code goes here
     }
 
+
     @Override
-    public void onEditSuccess(String message) {
+    public void onSearchSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
         startActivity(nextScreen);
     }
-    @Override
-    public void onEditError(String message) {
-        Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
+    @Override
+    public void onSearchError(String message) {
+        Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
     }
 }

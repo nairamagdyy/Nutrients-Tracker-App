@@ -10,24 +10,7 @@
             android:background="#ffffff">
 
 
-                <RelativeLayout android:id="@+id/primary___small"
-                    android:layout_marginTop="140dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    >
 
-                    <Button android:id="@+id/meals"
-                        android:textSize="17sp"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Meals"
-                        android:textAllCaps="false"
-                        android:layout_marginEnd="194dp"
-                        android:layout_marginRight="194dp"
-                        android:background="#DCDCDC"/>
-
-                </RelativeLayout>
 
 
                 <RelativeLayout android:id="@+id/primary___small_ek1"
