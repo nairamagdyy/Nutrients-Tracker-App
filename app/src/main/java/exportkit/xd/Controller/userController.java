@@ -2,21 +2,16 @@ package exportkit.xd.Controller;
 
 import android.content.Context;
 
-import java.util.List;
-
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.View.Profile.IMyProfileView;
 import exportkit.xd.View.Register.IRegisterView;
-import exportkit.xd.View.Profile.myProfile_activity;
 
 public class userController implements IUserController{
 
     AppDBController db;
     SessionManager session;
-    int id  ;
-    String Name,UserName,Email;
     IRegisterView registerview;
     IMyProfileView profileview;
 
@@ -67,21 +62,17 @@ public class userController implements IUserController{
             session.logoutUserFromSession();
     }
 
-
     public String GetName (int id )
     {
-        Name = db.GetTheNameOftheUser(id) ;
-        return Name ;
+        return db.GetTheNameOfUser(id) ;
     }
     public String GetUserName (int id )
     {
-        UserName = db.GetUserName(id) ;
-        return UserName ;
+        return db.GetUserName(id) ;
     }
     public String GetEmail (int id )
     {
-        Email = db.GetUserEmail(id) ;
-        return Email ;
+        return db.GetUserEmail(id) ;
     }
 /*
     @Override
@@ -99,14 +90,13 @@ public class userController implements IUserController{
     }
 */
     public int GetUserid(String Email) {
-        id = db.GetUserID(Email)  ;
-        return id ;
+        return db.GetUserID(Email)  ;
     }
 
     @Override
-    public void EditProfile(int id , String name, String username, String email, String phoneNumber, String password){
+    public void EditProfile(User user){
 
-        Boolean data = db.edituser(id ,name, username, email,  phoneNumber, password);
+        Boolean data = db.editUser(user);
         if(data)
             profileview.onEditSuccess("Edit Operation is Successfully");
         else

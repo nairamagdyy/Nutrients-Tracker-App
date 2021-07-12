@@ -18,7 +18,7 @@ public class AppDBController extends SQLiteOpenHelper {
     // Database Name
     public static final String DB_Name = "App" ;
     // Database Version
-    public static final int DB_version = 6;
+    public static final int DB_version = 7;
     //Tables
     UserTableConstants userTable= new UserTableConstants();
     RecipeTableConstants recipeTable= new RecipeTableConstants();
@@ -129,6 +129,7 @@ public class AppDBController extends SQLiteOpenHelper {
         values.put(userTable.DB_col_email, user.getEmail());
         values.put(userTable.DB_col_password, user.getPassword());
         values.put(userTable.DB_col_phoneNumber, user.getPhoneNumber());
+        values.put(userTable.DB_col_IMAGE, user.getAvatar());
         // updating row
         int result =  db.update(userTable.DB_User_Table, values, userTable.DB_col_ID + " =?",
                 new String[]{String.valueOf(user.getId())});

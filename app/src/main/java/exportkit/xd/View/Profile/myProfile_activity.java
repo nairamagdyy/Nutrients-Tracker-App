@@ -9,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import exportkit.xd.Controller.userController;
-import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
 import exportkit.xd.View.Register.log_in_activity;
@@ -59,7 +58,7 @@ public  class myProfile_activity extends Activity implements IMyProfileView  {
 
             public void onClick(View v) {
 
-                Intent nextScreen = new Intent(getApplicationContext(), Editprofile_Activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), editProfileActivity.class);
                 startActivity(nextScreen);
 
             }
