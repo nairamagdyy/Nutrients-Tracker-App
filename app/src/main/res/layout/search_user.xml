@@ -11,49 +11,52 @@
 
 
                 <RelativeLayout android:id="@+id/primary___small"
-                    android:layout_marginTop="135dp"
-                    android:layout_width="match_parent"
+                    android:layout_marginTop="140dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     >
 
                     <Button android:id="@+id/meals"
-                        android:layout_gravity="center_horizontal|center"
-                        android:gravity="center"
                         android:textSize="17sp"
-                        android:layout_marginLeft="58dp"
-                        android:layout_marginTop="9dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="38.5dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
                         android:text="Meals"
-                        />
+                        android:textAllCaps="false"
+                        android:layout_marginEnd="194dp"
+                        android:layout_marginRight="194dp"
+                        android:background="#DCDCDC"/>
 
                 </RelativeLayout>
 
 
                 <RelativeLayout android:id="@+id/primary___small_ek1"
-                    android:layout_marginTop="135dp"
-                    android:layout_marginStart="194dp"
-                    android:layout_width="match_parent"
+                    android:layout_marginTop="140dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="194dp">
+                    android:layout_marginLeft="194dp"
+                    android:layout_alignParentRight="true"
+                    >
 
                     <Button android:id="@+id/users"
                         android:textStyle="bold"
                         android:textSize="17sp"
+                        android:shadowRadius="4"
+                        android:shadowColor="#ffffff"
                         android:shadowDx="0"
                         android:shadowDy="4"
-                        android:layout_marginLeft="74dp"
-                        android:layout_marginTop="9dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="38.5dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
                         android:text="Users"
+                        android:background="#3CB371"
+                        android:textAllCaps="false"
                         />
 
                 </RelativeLayout>
 
                 <TextView android:id="@+id/choirul_syafril"
                     android:textStyle="bold"
-                    android:textSize="17sp"
+                    android:textSize="18sp"
                     android:textColor="#000000"
                     android:layout_marginLeft="78dp"
                     android:layout_marginTop="226dp"
@@ -73,18 +76,18 @@
 
 
                 <RelativeLayout android:id="@+id/text_input___filled"
-                    android:layout_marginTop="65dp"
-                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="60dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="72dp">
+                    >
 
 
                     <View
                         android:id="@+id/rectangle_33"
-                        android:layout_width="292dp"
-                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="60dp"
                         android:layout_height="56dp"
+                        android:layout_marginRight="20dp"
                         android:background="@drawable/rectangle_33_shape" />
 
                     <ImageButton android:id="@+id/backk"
@@ -98,7 +101,7 @@
 
                     <RelativeLayout android:id="@+id/close_circle_1"
                         android:layout_marginTop="16dp"
-                        android:layout_marginStart="231.32dp"
+                        android:layout_marginStart="290dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="231.32dp">
@@ -115,14 +118,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content">
 
-
                                 <ImageButton
-                                    android:id="@+id/vector_ek1\"
+                                    android:id="@+id/vector_ek1"
                                     android:layout_width="25.28dp"
                                     android:layout_height="20dp"
                                     android:layout_marginLeft="40dp"
                                     android:layout_marginTop="4dp"
-                                    android:contentDescription="vector_ek1"
                                     android:src="@drawable/ic_baseline_cancel_24" />
 
                             </RelativeLayout>
@@ -134,25 +135,43 @@
                     <EditText android:id="@+id/chsyafril"
                         android:textStyle="bold"
                         android:textSize="17sp"
-                        android:layout_marginLeft="65dp"
-                        android:layout_marginTop="14dp"
+                        android:layout_marginLeft="120dp"
+                        android:layout_marginTop="13dp"
                         android:layout_width="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_height="38.5dp"
-                        android:hint="Search"
+                        android:hint="Search "
                         />
+                    <RelativeLayout android:id="@+id/group_2_ek11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="90dp"
+                        android:layout_marginTop="18dp"
+                        >
 
+                        <Button
+                            android:id="@+id/ellipse_ek22"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/ellipse_ek22_shape" />
+
+                        <View android:id="@+id/rectangle_2_ek4"
+                            android:background="@drawable/rectangle_2_ek4_shape"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="13dp"
+                            android:layout_width="2.9dp"
+                            android:layout_height="9.11dp"
+                            android:layout_marginLeft="0dp" />
+
+                    </RelativeLayout>
 
                     <View android:id="@+id/spacing"
                         android:background="@drawable/spacing_shape"
-                        android:layout_marginStart="-73dp"
                         android:layout_marginTop="119dp"
                         android:layout_width="match_parent"
-                        android:layout_height="6dp"
-                        android:layout_marginLeft="-73dp" />
+                        android:layout_height="8dp"
+                      />
 
                 </RelativeLayout>
-
 
                 </RelativeLayout>
 
