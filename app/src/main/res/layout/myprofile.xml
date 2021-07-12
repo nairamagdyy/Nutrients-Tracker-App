@@ -22,110 +22,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#ffffff">
-                <RelativeLayout android:id="@+id/recipe_card"
-                    android:layout_marginTop="406dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="19dp"
-                    android:layout_alignParentLeft="true">
+            <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginTop="406dp">
 
-                    <ImageButton android:id="@+id/recipe"
-                        android:src="@drawable/rectangle_188_ek1"
-                        android:layout_width="151dp"
-                        android:layout_height="151dp" />
-
-                    <TextView android:id="@+id/pancake"
-                        android:textSize="14sp"
-                        android:textColor="@color/sign_up_success_color"
-                        android:layout_marginTop="167dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:text="@string/pancake_string"
-                        />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout android:id="@+id/recipe_card_ek1"
-                    android:layout_marginTop="610dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="19dp"
-                    android:layout_alignParentLeft="true">
-
-                    <ImageButton android:id="@+id/image_3_ek1"
-                        android:src="@drawable/image_3_ek1"
-                        android:layout_width="151dp"
-                        android:layout_height="151dp" />
-
-                    <TextView android:id="@+id/pancake_ek1"
-                        android:textSize="14sp"
-                        android:textColor="@color/sign_up_success_color"
-                        android:layout_marginTop="167dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pancake_ek1_string"
-                        android:textStyle="bold"
-                        />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout android:id="@+id/recipe_card_ek2"
-                    android:layout_marginTop="406dp"
-                    android:layout_marginRight="19dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
-
-                    <ImageButton android:id="@+id/image_1_ek1"
-                        android:src="@drawable/image_1_ek1"
-                        android:layout_width="151dp"
-                        android:layout_height="151dp"
-                        android:layout_marginRight="19dp"/>
-
-                    <TextView android:id="@+id/salad"
-                        android:textSize="14sp"
-                        android:textColor="@color/sign_up_success_color"
-                        android:layout_marginTop="167dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/salad_string"
-                        android:textStyle="bold"
-                        />
-
-                </RelativeLayout>
-
-
-                <RelativeLayout android:id="@+id/recipe_card_ek3"
-                    android:layout_marginTop="610dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="19dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                   >
-
-                    <ImageButton android:id="@+id/image_2"
-                        android:src="@drawable/image_2"
-                        android:layout_width="151dp"
-                        android:layout_height="151dp"
-                        android:layout_marginRight="19dp"/>
-
-
-                    <TextView android:id="@+id/salad_ek1"
-                        android:textSize="14sp"
-                        android:textColor="@color/sign_up_success_color"
-                        android:layout_marginTop="167dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/salad_ek1_string"
-                        android:textStyle="bold"
-                        />
-
-                </RelativeLayout>
-
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dataList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="10dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <TextView android:id="@+id/__tayshelby_ek2"
