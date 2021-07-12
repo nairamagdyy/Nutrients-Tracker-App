@@ -2,6 +2,7 @@ package exportkit.xd.View;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,18 +10,27 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import exportkit.xd.Controller.userController;
+import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.IMyProfileView;
 import exportkit.xd.View.Profile.myProfile_activity;
+import exportkit.xd.View.Recipe.addRecipe_activity;
 
 public class searchUser_activity extends Activity implements IMyProfileView {
     EditText username  ;
     userController UController ;
     User user  = null ;
-
+    AppDBController db  ;
+    ImageButton done  ;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -28,10 +38,22 @@ public class searchUser_activity extends Activity implements IMyProfileView {
         setContentView(R.layout.search_user);
         UController = new userController((IMyProfileView)this)  ;
         username = (EditText) findViewById(R.id.search);
+        done = (ImageButton) findViewById(R.id.vector_ek1) ;
         String Username = username.getText().toString();
-//        UController.SearchUser(Username) ;
-  //      user = UController.SearchUser(Username) ;
-  //      System.out.println(user.getName()) ;
+        db = new AppDBController(this) ;
+        done.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                List<User> userinfo = new ArrayList<>() ;
+                userinfo = db.searchUser(Username);
+                userinfo.forEach(user -> {
+                    System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
+
+            }
+        });
+
+
 
 
         //custom code goes here
