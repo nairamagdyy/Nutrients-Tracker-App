@@ -52,7 +52,8 @@ public class editProfileActivity extends camera_activity implements IMyProfileVi
         name.setText(userController.GetName(loggedUserID)) ;
         username.setText(userController.GetUserName(loggedUserID)) ;
         email.setText(userController.GetEmail(loggedUserID)) ;
-
+        password.setText(userController.GetPassword(loggedUserID)) ;
+        phone.setText(userController.GetPhoneNumber(loggedUserID)) ;
         uploadedImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //show image pick dialog
