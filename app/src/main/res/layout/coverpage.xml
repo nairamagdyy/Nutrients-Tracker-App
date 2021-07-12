@@ -138,52 +138,22 @@
                     android:contentDescription="image_4"
                     android:src="@drawable/image_4"
                     />
-
-                <RelativeLayout android:id="@+id/group_1542"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginEnd="191.99dp"
-                    android:layout_marginRight="0dp">
-
-                    <Button android:id="@+id/signup"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_horizontal|center"
-                        android:gravity="center"
-                        android:textSize="22sp"
-                        android:shadowRadius="4"
-                        android:shadowColor="#000000"
-                        android:shadowDx="0"
-                        android:shadowDy="4"
-                        android:textColor="@color/start_tracking_color"
-                        android:layout_marginTop="26dp"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:text="@string/signup_string"
-                        android:background="#3CB371"
-                        />
-
-                </RelativeLayout>
                 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/simpleTableLayout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:stretchColumns="*">
 
-                    android:stretchColumns="1"> <!-- stretch the second column of the layout-->
-
-                    <!-- first row of the table layout-->
                     <TableRow
 
                         android:id="@+id/firstRow"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
 
-                        <!-- first element of the row-->
                         <Button android:id="@+id/signup"
+                            android:background="#3CB371"
                             android:textStyle="bold"
-                            android:layout_gravity="center_horizontal|center"
-                            android:gravity="center"
                             android:textSize="22sp"
                             android:shadowRadius="4"
                             android:shadowColor="#000000"
@@ -192,20 +162,24 @@
                             android:textColor="@color/start_tracking_color"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#b0b0b0"
                             android:padding="18dip"
                             android:text="Signup"
-                            android:textSize="12dp" />
+                            />
 
-                        <TextView
-                            android:id="@+id/simpleTextView"
+                        <Button android:id="@+id/login"
+                            android:textStyle="bold"
+                            android:textSize="22sp"
+                            android:shadowRadius="4"
+                            android:shadowColor="#000000"
+                            android:shadowDx="0"
+                            android:shadowDy="4"
+                            android:textColor="@color/login_color"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="#FF0000"
+                            android:background="#FFFFFF"
                             android:padding="18dip"
-                            android:text="Text 2"
-                            android:textColor="#000"
-                            android:textSize="14dp" />
+                            android:text="Login"
+                            />
 
                     </TableRow>
                 </TableLayout>
@@ -240,34 +214,6 @@
                     android:layout_marginRight="161dp"
                     android:contentDescription="mask_group"
                     android:src="@drawable/mask_group" />
-
-
-                <RelativeLayout android:id="@+id/group_1545"
-                    android:layout_marginStart="191.99dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true">
-
-                    <Button android:id="@+id/login"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_horizontal|center"
-                        android:gravity="center"
-                        android:textSize="22sp"
-                        android:shadowRadius="4"
-                        android:shadowColor="#000000"
-                        android:shadowDx="0"
-                        android:shadowDy="4"
-                        android:textColor="@color/login_color"
-                        android:layout_marginTop="26dp"
-                        android:layout_width="fill_parent"
-                        android:layout_height="60dp"
-                        android:text="@string/login_string"
-                        android:background="#FFFFFF"
-                        />
-
-                </RelativeLayout>
 
             </RelativeLayout>
 
