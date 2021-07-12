@@ -103,6 +103,11 @@ public class userController implements IUserController{
         }
     */
     @Override
+    public User getUser(int id){
+        return db.getUser(id);
+    }
+
+    @Override
     public int GetUserid(String Email) {
         return db.GetUserID(Email)  ;
     }

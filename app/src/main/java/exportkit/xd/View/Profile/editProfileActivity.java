@@ -1,6 +1,7 @@
 package exportkit.xd.View.Profile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
@@ -36,6 +37,7 @@ public class editProfileActivity extends camera_activity implements IMyProfileVi
 
         SessionManager session= new SessionManager(this);
         int loggedUserID = (int) session.getUserFromSession();
+        User user= userController.getUser((int)loggedUserID);
 
         //find views
         uploadedImage= (CircularImageView)findViewById(R.id.avatar);
@@ -49,11 +51,17 @@ public class editProfileActivity extends camera_activity implements IMyProfileVi
         hidden = (ImageButton) findViewById(R.id.pass);
 
         //set current information for logged user
-        name.setText(userController.GetName(loggedUserID)) ;
-        username.setText(userController.GetUserName(loggedUserID)) ;
-        email.setText(userController.GetEmail(loggedUserID)) ;
-        password.setText(userController.GetPassword(loggedUserID)) ;
-        phone.setText(userController.GetPhoneNumber(loggedUserID)) ;
+        if(user.getAvatar() != null){
+            uploadedImage.setImageURI(Uri.parse(user.getAvatar()));
+            CamController.imageUri= Uri.parse(user.getAvatar());
+        }
+        name.setText(user.getName());
+        username.setText(user.getUsername());
+        email.setText(user.getEmail()) ;
+        password.setText(user.getPassword()) ;
+        phone.setText(user.getPhoneNumber()) ;
+
+        //Buttons
         uploadedImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //show image pick dialog
