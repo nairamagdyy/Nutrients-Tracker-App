@@ -26,7 +26,6 @@ public  class myProfile_activity extends Activity implements IAppViews {
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
     private Button FavButton , SearchButton ;
-
     userController userController;
 
     public void onCreate(Bundle savedInstanceState) {

@@ -28,10 +28,10 @@ public class SearchUser_activity extends Activity implements IAppViews {
         setContentView(R.layout.search_user);
         // find views
         userController = new userController(this)  ;
-
         username = (EditText) findViewById(R.id.search);
         done = (ImageButton) findViewById(R.id.vector_ek1) ;
         back = (ImageButton) findViewById(R.id.backk) ;
+
         /*
         userinfo.forEach(user -> {
             System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
@@ -42,6 +42,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
             public void onClick(View v) {
                 String Username = username.getText().toString();
                 userController.SearchUser(Username) ;
+                
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
