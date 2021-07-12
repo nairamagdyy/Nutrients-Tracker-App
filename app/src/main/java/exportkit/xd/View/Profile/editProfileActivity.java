@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
-import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.cameraController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
@@ -23,7 +22,7 @@ import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.camera_activity;
 
 public class editProfileActivity extends camera_activity implements IAppViews {
-    IUserController userController;
+    userController userController;
 
     private TextView email, password, phone, name, username;
     private ImageButton editButton, hidden;

@@ -25,6 +25,7 @@ public class homepage_activity extends Activity implements IAppViews{
 	private ImageButton addrecipeButton;
 	private CircularImageView ProfileButton;
 	private Button SearchButton;
+
 	userController userController;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,7 @@ public class homepage_activity extends Activity implements IAppViews{
 		});
 		SearchButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-<<<<<<< HEAD
-
 				Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
-=======
-				Intent nextScreen = new Intent(getApplicationContext(), searchUser_activity.class);
->>>>>>> 5b390090549718aa3a33872c6a07cf6858aaf6e6
 				startActivity(nextScreen);
 			}
 		});

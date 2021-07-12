@@ -2,6 +2,7 @@ package exportkit.xd.View.Profile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,47 +10,74 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
+
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
+import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.homepage_activity;
 
 public class myFavorites_activity extends Activity implements IAppViews {
-    private TextView name , username ;
-    SessionManager s ;
-    userController UController;
+    private CircularImageView uploadedImage,ProfileButton;
+    private TextView name , username;
+    userController userController;
     private ImageButton Homebutton;
-    Button recipesbtn ;
+    Button recipesbtn, SearchButton ;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_favourite);
+
+        userController = new userController(this);
+
+        uploadedImage = findViewById(R.id.avatar);
         name = (TextView) findViewById(R.id.name);
-        recipesbtn = (Button) findViewById(R.id.recipes) ;
-        Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
-        s = new SessionManager(this);
+        recipesbtn = (Button) findViewById(R.id.recipes) ;
 
-        UController = new userController(this);
+        Homebutton = (ImageButton) findViewById(R.id.home_ek11);
+        SearchButton = (Button) findViewById(R.id.ellipse_ek22);
+        ProfileButton = findViewById(R.id.ellipse_ek23);
 
-        long id= s.getUserFromSession();
-        name.setText(UController.GetName((int) id));
-        username.setText(UController.GetUserName((int) id));
+        // get logged user
+        SessionManager session = new SessionManager(this);
+        long loggedUser= session.getUserFromSession();
+        User user= userController.getUser((int)loggedUser);
+
+        //display profile info
+        if(user.getAvatar() != null) {
+            uploadedImage.setImageURI(Uri.parse(user.getAvatar()));
+            ProfileButton.setImageURI(Uri.parse(user.getAvatar()));
+        }
+        name.setText(user.getName());
+        username.setText(user.getUsername());
+
         recipesbtn.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
                 startActivity(nextScreen);
 
             }
         });
         Homebutton.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
                 Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
                 startActivity(nextScreen);
-
+            }
+        });
+        ProfileButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                startActivity(nextScreen);
+            }
+        });
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
+                startActivity(nextScreen);
             }
         });
 

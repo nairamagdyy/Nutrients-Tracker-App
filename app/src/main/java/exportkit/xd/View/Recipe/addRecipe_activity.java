@@ -11,18 +11,18 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
-import exportkit.xd.Controller.IRecipeController;
 import exportkit.xd.Controller.cameraController;
 import exportkit.xd.Controller.recipeController;
 
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.R;
+import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.camera_activity;
 import exportkit.xd.View.homepage_activity;
 import exportkit.xd.View.macroTracker_activity;
 
-public class addRecipe_activity extends camera_activity implements IAddRecipeView {
+public class addRecipe_activity extends camera_activity implements IAppViews {
     //dynamic view
     LinearLayout newLayer;
     Button dynamicAddBtn;
@@ -32,7 +32,7 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
     private ImageButton saveBtn ;
     private Button cancelBtn;
 
-    IRecipeController RecipeController;
+    recipeController RecipeController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,14 +102,14 @@ public class addRecipe_activity extends camera_activity implements IAddRecipeVie
     }
 
     @Override
-    public void onAddSuccess(String message) {
+    public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
         Intent nextScreen = new Intent(getApplicationContext(), macroTracker_activity.class);
         startActivity(nextScreen);
     }
 
     @Override
-    public void onAddError(String message) {
+    public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }

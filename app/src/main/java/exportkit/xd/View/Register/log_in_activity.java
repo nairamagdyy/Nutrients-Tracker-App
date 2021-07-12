@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
 
-import exportkit.xd.Controller.IUserController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.R;
@@ -22,7 +21,7 @@ import exportkit.xd.View.homepage_activity;
 
 public class log_in_activity extends Activity implements IAppViews {
 
-	IUserController loginController;
+	userController loginController;
 	AppDBController db;
 	private TextView email, password,
 			loginb, signUpb;

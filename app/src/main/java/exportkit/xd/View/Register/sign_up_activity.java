@@ -10,15 +10,15 @@
 	import android.widget.RadioGroup;
 	import android.widget.TextView;
     import android.widget.Toast;
-	import exportkit.xd.Controller.IUserController;
-	import exportkit.xd.Controller.userController;
+
+    import exportkit.xd.Controller.userController;
 	import exportkit.xd.Model.User;
 	import exportkit.xd.R;
 	import exportkit.xd.View.IAppViews;
 	import exportkit.xd.View.homepage_activity;
 	public class sign_up_activity extends Activity implements IAppViews{
 
-		IUserController signUpController;
+		userController signUpController;
 		private TextView email, password, phone, name, username,signUpb;
 		private RadioGroup radioSexGroup;
 		private RadioButton radioSexButton;

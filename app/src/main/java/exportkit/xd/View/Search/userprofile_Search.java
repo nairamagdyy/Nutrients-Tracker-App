@@ -11,10 +11,11 @@ import android.widget.Toast;
 
 import exportkit.xd.Controller.userController;
 import exportkit.xd.R;
+import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.homepage_activity;
 
 
-public class userprofile_Search extends Activity implements ISearchView {
+public class userprofile_Search extends Activity implements IAppViews {
     EditText username1 ;
     TextView name , username2  ;
     userController UController ;
@@ -25,7 +26,7 @@ public class userprofile_Search extends Activity implements ISearchView {
         setContentView(R.layout.userprofile);
         // find views
         back = (Button) findViewById(R.id.back_ek6) ;
-        UController = new userController((ISearchView) this) ;
+        UController = new userController(this) ;
         back.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -37,14 +38,14 @@ public class userprofile_Search extends Activity implements ISearchView {
     }
 
     @Override
-    public void onSearchSuccess(String message) {
+    public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
         Intent nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
         startActivity(nextScreen);
     }
 
     @Override
-    public void onSearchError(String message) {
+    public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
     }
 }
