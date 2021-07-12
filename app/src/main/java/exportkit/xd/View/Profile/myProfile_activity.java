@@ -9,7 +9,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
@@ -18,6 +24,7 @@ import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Register.log_in_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
+import exportkit.xd.View.adapter;
 import exportkit.xd.View.homepage_activity;
 
 
@@ -27,12 +34,20 @@ public  class myProfile_activity extends Activity implements IAppViews {
     private ImageButton HomeButton, editButton , logoutBtn ;
     private Button FavButton , SearchButton ;
     userController userController;
+    RecyclerView dataList;
+    List<String> titles;
+    List<Integer> images;
+    adapter Adapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
 
         userController = new userController(this) ;
+        dataList = findViewById(R.id.dataList);
+
+        titles = new ArrayList<>();
+        images = new ArrayList<>();
 
         // finds views
         uploadedImage = findViewById(R.id.avatar);
@@ -92,6 +107,20 @@ public  class myProfile_activity extends Activity implements IAppViews {
 
             }
         });
+        titles.add("First Item");
+        titles.add("Second Item");
+        titles.add("Third Item");
+
+        images.add(R.drawable.rectangle_188_ek1);
+        images.add(R.drawable.rectangle_188_ek1);
+        images.add(R.drawable.rectangle_188_ek1);
+
+        Adapter = new adapter(this,titles,images);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+        dataList.setLayoutManager(gridLayoutManager);
+        dataList.setAdapter(Adapter);
+
     }
     @Override
     public void onSuccess(String message) {
