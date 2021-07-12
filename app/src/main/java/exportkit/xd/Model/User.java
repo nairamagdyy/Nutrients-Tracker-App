@@ -7,19 +7,10 @@ public class User {
     String email ;
     String phoneNumber ;
     String password ;
-    String  gender ;
+    String gender ;
+    String avatar;
 
-
-    public User(int id, String name, String username, String email, String phoneNumber, String password, String gender) {
-        this.id = id;
-        this.name = name;
-        this.username = username;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.gender = gender;
-    }
-
+    public User(){}
     public User(String name, String username, String email, String phoneNumber, String password ,String gender) {
         this.name = name;
         this.username = username;
@@ -29,6 +20,7 @@ public class User {
         this.gender = gender ;
 
     }
+
     public User(String name, String username, String email, String phoneNumber, String password) {
         this.name = name;
         this.username = username;
@@ -37,19 +29,6 @@ public class User {
         this.password = password;
 
     }
-
-    public User(int id, String name, String username, String email, String phoneNumber, String password) {
-        this.id = id;
-        this.name = name;
-        this.username = username;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-    }
-
-    public User() {
-    }
-
 
     public int getId() {
         return id;
@@ -107,5 +86,11 @@ public class User {
         this.gender = gender;
     }
 
-
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+    
+    public String getAvatar() {
+        return avatar;
+    }
 }

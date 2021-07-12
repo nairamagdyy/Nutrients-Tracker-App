@@ -1,6 +1,5 @@
 package exportkit.xd.View.Profile;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -11,12 +10,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
+
 import exportkit.xd.Controller.IUserController;
+import exportkit.xd.Controller.cameraController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.camera_activity;
 
-public class Editprofile_Activity extends Activity implements IMyProfileView {
+public class editProfileActivity extends camera_activity implements IMyProfileView {
     IUserController userController;
 
     private TextView email, password, phone, name, username;
@@ -27,12 +31,14 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
 
-        userController = new userController((IMyProfileView) this) ;
+        userController = new userController((IMyProfileView) this);
+        CamController = new cameraController(this);
 
         SessionManager session= new SessionManager(this);
-        int loggedUser = (int) session.getUserFromSession();
+        int loggedUserID = (int) session.getUserFromSession();
 
-        //get input
+        //find views
+        uploadedImage= (CircularImageView)findViewById(R.id.avatar);
         email= (TextView) findViewById(R.id.editmail);
         password= (TextView) findViewById(R.id.editpass);
         phone = (TextView) findViewById(R.id.editphonenumber);
@@ -43,10 +49,16 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
         hidden = (ImageButton) findViewById(R.id.pass);
 
         //set current information for logged user
-        name.setText(userController.GetName(loggedUser)) ;
-        username.setText(userController.GetUserName(loggedUser)) ;
-        email.setText(userController.GetEmail(loggedUser)) ;
+        name.setText(userController.GetName(loggedUserID)) ;
+        username.setText(userController.GetUserName(loggedUserID)) ;
+        email.setText(userController.GetEmail(loggedUserID)) ;
 
+        uploadedImage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //show image pick dialog
+                CamController.imagePickDialog();
+            }
+        });
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Fullname = name.getText().toString();
@@ -64,8 +76,10 @@ public class Editprofile_Activity extends Activity implements IMyProfileView {
                 }
                 else
                 {
-                     //     System.out.println(id + " , " +    Fullname + " , " +Username + " , " +Email + ", " +Phone + ", " +Password);
-                          userController.EditProfile(loggedUser, Fullname, Username,  Email, Phone, Password);
+                    User user = new User(Fullname, Username, Email, Phone, Password);
+                    user.setId(loggedUserID);
+                    user.setAvatar(""+CamController.imageUri);
+                    userController.EditProfile(user);
                 }
             }
         });
