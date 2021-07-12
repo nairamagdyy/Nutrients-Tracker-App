@@ -132,7 +132,7 @@
 
                     </RelativeLayout>
 
-                    <EditText android:id="@+id/chsyafril"
+                    <EditText android:id="@+id/search"
                         android:textStyle="bold"
                         android:textSize="17sp"
                         android:layout_marginLeft="120dp"
