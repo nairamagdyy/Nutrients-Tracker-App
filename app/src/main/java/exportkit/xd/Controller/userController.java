@@ -1,12 +1,19 @@
 package exportkit.xd.Controller;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.View.Profile.IMyProfileView;
 import exportkit.xd.View.Register.IRegisterView;
+import exportkit.xd.View.Search.ISearchView;
 
 public class userController implements IUserController{
 
@@ -14,12 +21,15 @@ public class userController implements IUserController{
     SessionManager session;
     IRegisterView registerview;
     IMyProfileView profileview;
-
+    ISearchView searchview;
     public userController(IRegisterView view) {
         this.registerview = view;
         db = new AppDBController((Context) this.registerview);
     }
-
+    public userController(ISearchView view) {
+        this.searchview = view ;
+        db = new AppDBController((Context) this.searchview);
+    }
     public userController(IMyProfileView view) {
         this.profileview = view ;
         db = new AppDBController((Context) this.profileview);
@@ -87,21 +97,20 @@ public class userController implements IUserController{
         return db.GetUserPhoneNumber(id) ;
     }
 
-    /*
-        @Override
-        public List<User> SearchUser(String username) {
-            User user = new User() ;
-            user = db.searchUser(username) ;
-            if (user == null ) {
-                return null ;
-            }
-            else
-                {
-                return user ;
-                }
-
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void SearchUser(String username) {
+        List<User> userinfo = new ArrayList<>() ;
+        userinfo = db.searchUser(username) ;
+        userinfo.forEach(user -> {
+            System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
+        if (userinfo.isEmpty()) {
+            searchview.onSearchError("The username Doesn't exist");
         }
-    */
+        else
+        {
+            searchview.onSearchSuccess("Done , Search Operation Done");
+        }
+    }
     @Override
     public User getUser(int id){
         return db.getUser(id);

@@ -16,8 +16,8 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.Register.log_in_activity;
+import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.homepage_activity;
-import exportkit.xd.View.searchUser_activity;
 
 
 public  class myProfile_activity extends Activity implements IMyProfileView  {
@@ -94,7 +94,7 @@ public  class myProfile_activity extends Activity implements IMyProfileView  {
 
             public void onClick(View v) {
 
-                Intent nextScreen = new Intent(getApplicationContext(), searchUser_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
                 startActivity(nextScreen);
 
             }
