@@ -108,7 +108,7 @@ public  class myProfile_activity extends Activity implements IAppViews {
             }
         });
 
-        //recipes
+        //Recyclerview as GridView for recipes
         titles.add("First Item");
         titles.add("Second Item");
         titles.add("Third Item");
