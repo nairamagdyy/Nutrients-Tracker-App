@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -19,7 +20,8 @@ import exportkit.xd.View.homepage_activity;
 public class SearchUser_activity extends Activity implements IAppViews {
     EditText username  ;
     userController userController;
-    ImageButton done , back   ;
+    Button done ;
+    ImageButton  back   ;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,10 +31,9 @@ public class SearchUser_activity extends Activity implements IAppViews {
         // find views
         userController = new userController(this)  ;
         username = (EditText) findViewById(R.id.search);
-        done = (ImageButton) findViewById(R.id.vector_ek1) ;
+        done = (Button) findViewById(R.id.ellipse_ek22) ;
         back = (ImageButton) findViewById(R.id.backk) ;
-
-
+        
         // buttons functions
         done.setOnClickListener(new View.OnClickListener() {
 

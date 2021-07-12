@@ -9,15 +9,6 @@
             android:layout_height="match_parent"
             android:background="#ffffff">
 
-
-
-
-
-
-
-
-
-
                 <RelativeLayout android:id="@+id/text_input___filled"
                     android:layout_marginTop="60dp"
                     android:layout_width="match_parent"
@@ -55,20 +46,7 @@
                             >
 
 
-                            <RelativeLayout
-                                android:id="@+id/close_circle"
-                                android:layout_width="53dp"
-                                android:layout_height="wrap_content">
 
-                                <ImageButton
-                                    android:id="@+id/vector_ek1"
-                                    android:layout_width="25.28dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginLeft="40dp"
-                                    android:layout_marginTop="4dp"
-                                    android:src="@drawable/_icon_awesome_check_circle" />
-
-                            </RelativeLayout>
 
                         </RelativeLayout>
 
@@ -77,7 +55,7 @@
                     <EditText android:id="@+id/search"
                         android:textStyle="bold"
                         android:textSize="17sp"
-                        android:layout_marginLeft="120dp"
+                        android:layout_marginLeft="160dp"
                         android:layout_marginTop="13dp"
                         android:layout_width="wrap_content"
                         android:layout_height="38.5dp"
