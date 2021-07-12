@@ -29,7 +29,7 @@ public class searchUser_activity extends Activity implements IMyProfileView {
     userController UController ;
     User user  = null ;
     AppDBController db  ;
-    ImageButton done  ;
+    ImageButton done , back   ;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,12 +39,22 @@ public class searchUser_activity extends Activity implements IMyProfileView {
         UController = new userController((IMyProfileView)this)  ;
         username = (EditText) findViewById(R.id.search);
         done = (ImageButton) findViewById(R.id.vector_ek1) ;
+        back = (ImageButton) findViewById(R.id.backk) ;
         String Username = username.getText().toString();
         db = new AppDBController(this) ;
         List<User> userinfo = new ArrayList<>() ;
         userinfo = db.searchUser("alaafa");
         userinfo.forEach(user -> {
             System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
+
+        back.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                startActivity(nextScreen);
+            }
+        });
         //custom code goes here
     }
 
