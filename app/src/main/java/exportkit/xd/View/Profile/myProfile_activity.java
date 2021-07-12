@@ -14,18 +14,20 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.R;
 import exportkit.xd.View.Register.log_in_activity;
 import exportkit.xd.View.homepage_activity;
+import exportkit.xd.View.searchUser_activity;
 
 
 public  class myProfile_activity extends Activity implements IMyProfileView  {
     private TextView name , username ;
     private ImageButton Homebutton , editButton , logoutBtn ;
-    private Button FavButton;
+    private Button FavButton , SearchButton ;
     userController UController;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
         Homebutton = (ImageButton) findViewById(R.id.home_ek11);
         FavButton = (Button) findViewById(R.id.FavoriteButton) ;
+        SearchButton = (Button) findViewById(R.id.ellipse_ek22);
         editButton = (ImageButton) findViewById(R.id.edit11) ;
         logoutBtn= (ImageButton) findViewById(R.id._list_1) ;
         UController = new userController((IMyProfileView)this) ;
@@ -67,6 +69,15 @@ public  class myProfile_activity extends Activity implements IMyProfileView  {
             public void onClick(View v) {
 
                 Intent nextScreen = new Intent(getApplicationContext(), myFavorites_activity.class);
+                startActivity(nextScreen);
+
+            }
+        });
+        SearchButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                Intent nextScreen = new Intent(getApplicationContext(), searchUser_activity.class);
                 startActivity(nextScreen);
 
             }
