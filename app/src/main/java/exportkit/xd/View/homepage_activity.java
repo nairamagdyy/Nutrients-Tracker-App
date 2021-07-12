@@ -14,10 +14,12 @@
 	import exportkit.xd.R;
 	import exportkit.xd.View.Profile.IMyProfileView;
 	import exportkit.xd.View.Profile.myProfile_activity;
+	import exportkit.xd.View.Recipe.addRecipe_activity;
+
 	public class homepage_activity extends Activity implements IMyProfileView{
     	String Name ;
 		private TextView name;
-		private ImageButton ProfileButton , Homebutton  ;
+		private ImageButton ProfileButton , Homebutton  , addrecipeButton;
 		private Button SearchButton;
 		userController uController ;
 		@Override
@@ -26,6 +28,7 @@
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.homepage);
 			ProfileButton = (ImageButton) findViewById(R.id.ellipse_ek23);
+			addrecipeButton = (ImageButton) findViewById(R.id.addrecipebutton);
 			Homebutton = (ImageButton) findViewById(R.id.home_ek11);
 			SearchButton = (Button) findViewById(R.id.ellipse_ek22);
 			uController= new userController((IMyProfileView) this) ;
@@ -47,6 +50,15 @@
 				public void onClick(View v) {
 
 					Intent nextScreen = new Intent(getApplicationContext(), searchUser_activity.class);
+					startActivity(nextScreen);
+
+				}
+			});
+			addrecipeButton.setOnClickListener(new View.OnClickListener() {
+
+				public void onClick(View v) {
+
+					Intent nextScreen = new Intent(getApplicationContext(), addRecipe_activity.class);
 					startActivity(nextScreen);
 
 				}

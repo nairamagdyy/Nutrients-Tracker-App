@@ -243,8 +243,8 @@
 						android:contentDescription="foodcam_1_ek1"
 						android:src="@drawable/foodcam_1_ek1" />
 
-					<ImageView
-						android:id="@+id/overlay_ek2"
+					<ImageButton
+						android:id="@+id/addrecipebutton"
 						android:layout_width="338dp"
 						android:layout_height="158dp"
 						android:alpha="0.60000002384186"
