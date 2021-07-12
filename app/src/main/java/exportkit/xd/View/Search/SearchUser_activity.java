@@ -32,10 +32,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
         done = (ImageButton) findViewById(R.id.vector_ek1) ;
         back = (ImageButton) findViewById(R.id.backk) ;
 
-        /*
-        userinfo.forEach(user -> {
-            System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
-            */
+
         // buttons functions
         done.setOnClickListener(new View.OnClickListener() {
 

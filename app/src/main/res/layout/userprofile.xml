@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+    android:layout_width="match_parent" android:layout_height="match_parent"         xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:orientation="vertical">
 
     <LinearLayout android:id="@+id/userprofile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <RelativeLayout android:id="@+id/content_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -80,10 +80,7 @@
                                 android:layout_height="wrap_content"
                                 >
 
-                                <View android:id="@+id/tabs___indicator"
-                                    android:background="@drawable/tabs___indicator_shape"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp" />
+
 
                             </RelativeLayout>
 
@@ -92,21 +89,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 >
-
                                 <TextView android:id="@+id/recipes"
-                                    android:textSize="30sp"
+                                    android:textSize="20dp"
                                     android:textColor="#000000"
-                                    android:layout_marginLeft="160dp"
+                                    android:layout_marginLeft="175dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
                                     android:text="@string/recipes_string"
                                     android:textStyle="bold"
                                     />
-
                             </RelativeLayout>
-
-
-
 
                         </RelativeLayout>
 
@@ -136,17 +129,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="166.76dp" />
 
-                        <Button
-                            android:id="@+id/back_ek6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal|center"
-                            android:layout_marginTop="90dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/ic_back"
-                            android:gravity="center"
-                            android:text="@string/back_string"
-                            android:textSize="15sp" />
 
                         <ImageView
                             android:id="@+id/profilepic"
@@ -171,12 +153,66 @@
                 android:background="#ffffff"
                 >
 
+                <RelativeLayout android:id="@+id/iconly_bold_home_ek2"
+                    android:layout_marginStart="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="15dp">
 
 
+                    <RelativeLayout android:id="@+id/home_ek10"
+                        android:layout_marginTop="2.5dp"
+                        android:layout_marginStart="3.13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3.13dp">
+
+                        <ImageButton android:id="@+id/home1"
+                            android:src="@drawable/home_ek11"
+                            android:contentDescription="home_ek11"
+                            android:layout_width="23.75dp"
+                            android:layout_height="25dp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
 
 
+                <RelativeLayout android:id="@+id/group_2_ek11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="162dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true">
 
+                    <Button
+                        android:id="@+id/search1"
+                        android:layout_width="25.45dp"
+                        android:layout_height="24.04dp"
+                        android:background="@drawable/ellipse_ek22_shape" />
 
+                    <View android:id="@+id/rectangle_2_ek4"
+                        android:background="@drawable/rectangle_2_ek4_shape"
+                        android:layout_marginStart="19dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_width="2.9dp"
+                        android:layout_height="9.11dp"
+                        android:layout_marginLeft="19dp" />
+
+                </RelativeLayout>
+
+                <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+                    android:id="@+id/profile1"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="30dp"
+                    android:src="@drawable/ic_logout"
+                    app:c_border="true"
+                    app:c_border_color="@color/colorGray1"
+                    app:c_border_width="1dp" />
 
             </RelativeLayout>
 

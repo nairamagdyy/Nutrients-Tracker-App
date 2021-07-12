@@ -44,7 +44,6 @@ public class userController{
         boolean i = db.loginValidation(email,password);
 
         if(i){
-            //  System.out.println("User id " + db.GetUserID(email)) ;
             openSession(db.GetUserID(email));
             view.onSuccess("Login Successfully");
         }
@@ -72,8 +71,8 @@ public class userController{
     public void SearchUser(String username) {
         List<User> userinfo = new ArrayList<>() ;
         userinfo = db.searchUser(username) ;
-        userinfo.forEach(user -> {
-            System.out.println("Name : " + user.getName() + ", id : " + user.getId()); });
+    /*    userinfo.forEach(user -> {
+            System.out.println("Name : " + user.getName() + ", id : " + user.getId()); }); */
         if (userinfo.isEmpty()) {
             view.onError("The username Doesn't exist");
         }

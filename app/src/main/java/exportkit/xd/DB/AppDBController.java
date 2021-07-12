@@ -121,6 +121,16 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getString(cursor.getColumnIndex(userTable.DB_col_name));
     }
+    public int GetUserIdbyUsername(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_username + "=?",
+                new String[] { String.valueOf(username) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursor.getInt(0) ;
+    }
+
     public String GetUserName(int id ) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_username}, userTable.DB_col_ID + "=?",
