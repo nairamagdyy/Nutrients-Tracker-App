@@ -29,8 +29,9 @@ public class searchUser_activity extends Activity implements IMyProfileView {
         UController = new userController((IMyProfileView)this)  ;
         username = (EditText) findViewById(R.id.search);
         String Username = username.getText().toString();
-        UController.SearchUser(Username) ;
-        user = UController.SearchUser(Username) ;
+//        UController.SearchUser(Username) ;
+  //      user = UController.SearchUser(Username) ;
+  //      System.out.println(user.getName()) ;
 
 
         //custom code goes here

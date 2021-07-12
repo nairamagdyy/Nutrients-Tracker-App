@@ -2,6 +2,8 @@ package exportkit.xd.Controller;
 
 import android.content.Context;
 
+import java.util.List;
+
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
@@ -81,9 +83,9 @@ public class userController implements IUserController{
         Email = db.GetUserEmail(id) ;
         return Email ;
     }
-
+/*
     @Override
-    public User SearchUser(String username) {
+    public List<User> SearchUser(String username) {
         User user = new User() ;
         user = db.searchUser(username) ;
         if (user == null ) {
@@ -95,7 +97,7 @@ public class userController implements IUserController{
             }
 
     }
-
+*/
     public int GetUserid(String Email) {
         id = db.GetUserID(Email)  ;
         return id ;

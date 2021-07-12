@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import exportkit.xd.Model.Recipe;
@@ -137,32 +138,34 @@ public class AppDBController extends SQLiteOpenHelper {
             return true ;
     }
 
-    public User searchUser(String username) {
-        User userInfo =null;
-
+    public List<User> searchUser(String username) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + userTable.DB_User_Table + " WHERE userTable.DB_col_username = ?" ,new String[]{username} );
-        if (cursor.moveToFirst()){
-            userInfo = new User();
-            userInfo.setId(cursor.getInt(0));
-            userInfo.setName(cursor.getString(cursor.getColumnIndex(userTable.DB_col_name)));
-            userInfo.setUsername(cursor.getString(cursor.getColumnIndex(userTable.DB_col_username)));
+        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_name , userTable.DB_col_ID ,userTable.DB_col_username}, userTable.DB_col_username + "=?",
+                new String[] { String.valueOf(username) }, null, null, null, null);
+        List<User> result = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                User userInfo = new User() ;
+                userInfo.setId(cursor.getInt(cursor.getColumnIndex(userTable.DB_col_ID)));
+                userInfo.setName(cursor.getString(cursor.getColumnIndex(userTable.DB_col_name)));
+                userInfo.setUsername(cursor.getString(cursor.getColumnIndex(userTable.DB_col_username)));
+                result.add(userInfo) ;
+            }
+            while (cursor.moveToNext());
         }
 
-        return userInfo;
+        return result;
     }
 
     //------------------------------------RECIPE TABLE----------------------------------------------
     public Long insertRecipe(Recipe recipe){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
         values.put(recipeTable.DB_col_IMAGE,recipe.getImage());
         values.put(recipeTable.DB_col_NAME,recipe.getName()) ;
         values.put(recipeTable.DB_col_DESCRIPTION, recipe.getDescription());
         values.put(recipeTable.DB_col_INGREDIENTS, recipe.getIngredients());
         values.put(recipeTable.DB_col_USERID, recipe.getUserID());
-
         // Inserting Row
         long id = db.insert(recipeTable.DB_Table, null, values);
         db.close();
