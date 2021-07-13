@@ -173,7 +173,6 @@
                                 android:layout_width="156dp"
                                 android:layout_height="38.5dp"
                                 android:hint="Ingredient Name "
-                                android:inputType="text"
                                 />
                             <View android:id="@+id/rectangle_33_ek4hn"
                                 android:background="@drawable/rectangle_33_ek4_shape"
@@ -240,6 +239,15 @@
                         android:layout_height="21.84dp" />
                 </RelativeLayout>
             </ScrollView>
+            <TextView
+                android:id="@+id/tvResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="143dp"
+                android:textSize="30sp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

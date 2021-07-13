@@ -26,7 +26,6 @@
             android:layout_width="156dp"
             android:layout_height="38.5dp"
             android:hint="Ingredient Name "
-            android:inputType="text"
             />
         <View android:id="@+id/rectangle_33_ek4hn"
             android:background="@drawable/rectangle_33_ek4_shape"

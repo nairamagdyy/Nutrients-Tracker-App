@@ -59,7 +59,10 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
             public void onClick(View v) {
                 addIngredient();
             };
+
+
         });
+
 
         //get logged user
         SessionManager session= new SessionManager(this);
@@ -139,11 +142,6 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
 
     private void addIngredient() {
          final View view = getLayoutInflater().inflate(R.layout.hidden, null, false);
-         EditText name = (EditText)view.findViewById(R.id.name),
-                  amount = (EditText)view.findViewById(R.id.amount);
-
-        System.out.println(name+"--------------------------------------"+amount);
-
         /*ImageView imageClose = (ImageView)view.findViewById(R.id.image_remove);
         imageClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,21 +150,26 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
             }
             */
          ingredients_layoutList.addView(view);
+        EditText name = (EditText)findViewById(R.id.name),
+                amount = (EditText)findViewById(R.id.amount);
+        String name1 = name.getText().toString();
+        //System.out.println(name1+"--------------------------------------"+amount);
     }
 
     private boolean checkIfValidAndRead() {
         ingredientsList.clear();
         boolean result = true;
 
-        for(int i=0;i<ingredients_layoutList.getChildCount();i++){
+        for(int i=0;i<=ingredients_layoutList.getChildCount();i++){
 
             View ingredientView = ingredients_layoutList.getChildAt(i);
             System.out.println("............................................."+ingredientView);
 
-            EditText TextName= (EditText)ingredientView.findViewById(R.id.name),
-                    TextAmount= (EditText)ingredientView.findViewById(R.id.amount);
+            EditText TextName= (EditText)findViewById(R.id.name),
+                    TextAmount= (EditText)findViewById(R.id.amount);
+            String name1 = TextName.getText().toString();
 
-            System.out.println(TextName+"--------------------------------------"+TextAmount);
+            System.out.println(name1+"--------------------------------------"+TextAmount);
 
             Ingredient ingredient = new Ingredient();
 
