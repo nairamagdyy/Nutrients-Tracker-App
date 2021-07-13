@@ -25,7 +25,6 @@ public class userprofile_Search extends Activity implements IAppViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userprofile);
         // find views
-        back = (Button) findViewById(R.id.back_ek6) ;
         UController = new userController(this) ;
         back.setOnClickListener(new View.OnClickListener() {
 

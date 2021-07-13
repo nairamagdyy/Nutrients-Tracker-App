@@ -1,0 +1,254 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffffff">
+    <LinearLayout android:id="@+id/upload_recipe_step1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout android:id="@+id/content_container0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+    <ScrollView android:id="@+id/detail_recipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout android:id="@+id/page_detail_recipe_ek1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView android:id="@+id/food_picture"
+                    android:src="@drawable/food_picture"
+                    android:layout_width="fill_parent"
+                    android:layout_height="375dp" />
+
+                <View android:id="@+id/pop_up"
+                    android:background="@drawable/pop_up_shape"
+                    android:layout_marginTop="309dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="503dp"
+                    />
+
+                <TextView android:id="@+id/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="493dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dfghn"
+                    />
+
+                <View android:id="@+id/line_spacing"
+                    android:background="@drawable/line_spacing_shape"
+                    android:layout_marginTop="437dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"/>
+
+                <View android:id="@+id/line_spacing_ek1"
+                    android:background="@drawable/line_spacing_ek1_shape"
+                    android:layout_marginTop="587dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    />
+
+                <TextView android:id="@+id/foodname"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="@color/cacao_maca_walnut_milk_color"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="353dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food name"
+                    />
+
+                <TextView android:id="@+id/description"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="@color/cacao_maca_walnut_milk_color"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="450dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    />
+
+                <TextView android:id="@+id/ingredients"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="@color/cacao_maca_walnut_milk_color"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="604dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredients"
+                    />
+
+                <View android:id="@+id/home_indicator_ek1"
+                    android:background="@drawable/home_indicator_ek1_shape"
+                    android:layout_marginStart="173dp"
+                    android:layout_marginTop="325dp"
+                    android:layout_width="40dp"
+                    android:layout_height="5dp"
+                    android:layout_marginLeft="173dp" />
+
+
+                <RelativeLayout android:id="@+id/back_button"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp">
+
+                    <View android:id="@+id/rectangle_206"
+                        android:background="@drawable/rectangle_206_shape"
+                        android:alpha="0.20000000298023"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp" />
+
+
+                    <RelativeLayout android:id="@+id/arrow_ios_back_outline__1__1"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp">
+
+
+                        <RelativeLayout android:id="@+id/layer_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            >
+
+
+                            <RelativeLayout android:id="@+id/arrow_ios_back"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <ImageView android:id="@+id/vector_ek4"
+                                    android:src="@drawable/vector_ek4"
+                                    android:contentDescription="vector_ek4"
+                                    android:alpha="0"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp" />
+
+                                <ImageButton android:id="@+id/back"
+                                    android:src="@drawable/vector_ek5"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_width="7dp"
+                                    android:layout_height="14dp"
+                                    android:layout_marginLeft="8dp" />
+
+                            </RelativeLayout>
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <ImageButton android:id="@+id/fav"
+                    android:src="@drawable/star_1"
+                    android:layout_marginStart="313dp"
+                    android:layout_marginTop="350dp"
+                    android:layout_width="38dp"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="313dp"
+                    android:background="@null"
+                    />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+    <RelativeLayout android:id="@+id/navigation_bar_ek2"
+        android:layout_marginTop="800dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#ffffff"
+        >
+
+        <RelativeLayout android:id="@+id/iconly_bold_home_ek2"
+            android:layout_marginStart="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="15dp">
+
+
+            <RelativeLayout android:id="@+id/home_ek10"
+                android:layout_marginTop="2.5dp"
+                android:layout_marginStart="3.13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3.13dp">
+
+                <ImageButton android:id="@+id/home_ek11"
+                    android:src="@drawable/home_ek11"
+                    android:contentDescription="home_ek11"
+                    android:layout_width="23.75dp"
+                    android:layout_height="25dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout android:id="@+id/group_2_ek11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="162dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/ellipse_ek22"
+                android:layout_width="25.45dp"
+                android:layout_height="24.04dp"
+                android:background="@drawable/ellipse_ek22_shape" />
+
+            <View android:id="@+id/rectangle_2_ek4"
+                android:background="@drawable/rectangle_2_ek4_shape"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="17dp"
+                android:layout_width="2.9dp"
+                android:layout_height="9.11dp"
+                android:layout_marginLeft="19dp" />
+
+        </RelativeLayout>
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/ellipse_ek23"
+            android:layout_alignParentRight="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_logout"
+            app:c_border="true"
+            app:c_border_color="@color/colorGray1"
+            app:c_border_width="1dp" />
+
+    </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
