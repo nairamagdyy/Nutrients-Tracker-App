@@ -89,7 +89,7 @@
                     android:text="Description"
                     />
 
-                <TextView android:id="@+id/ingredients"
+                <TextView android:id="@+id/ingredient_"
                     android:textStyle="bold"
                     android:textSize="17sp"
                     android:textColor="@color/cacao_maca_walnut_milk_color"
@@ -98,6 +98,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ingredients"
+                    />
+                <TextView android:id="@+id/ingredients"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="650dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dfghn"
                     />
 
                 <View android:id="@+id/home_indicator_ek1"
