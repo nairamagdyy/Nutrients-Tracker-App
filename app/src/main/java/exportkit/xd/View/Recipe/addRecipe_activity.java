@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import exportkit.xd.View.camera_activity;
 import exportkit.xd.View.homepage_activity;
 import exportkit.xd.View.macroTracker_activity;
 
-class Ingredient{
+class Ingredient implements Serializable {
     public String name;
     public double amount;
     public Ingredient() {}
@@ -38,7 +39,6 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
     Button dynamicAddBtn;
 
     //variables
-    List<String> amountList = new ArrayList<>();
     ArrayList<Ingredient> ingredientsList = new ArrayList<>();
 
     private TextView name, description;
@@ -87,18 +87,30 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
             public void onClick(View v) {
                 String recipeName= name.getText().toString().trim(),
                         recipeDescription= ""+description.getText().toString().trim();
-                        //recipeIngredients= ingredients.getText().toString().trim();
 
-                if (recipeName.equalsIgnoreCase("")  )//|| recipeIngredients.equals(""))
+                if (recipeName.equalsIgnoreCase(""))//|| recipeIngredients.equals(""))
                     Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
                 else
                 {
-                    Recipe recipe= new Recipe(loggedUser);
-                    recipe.setImage(""+CamController.imageUri);
-                    recipe.setName(recipeName);
-                    recipe.setDescription(recipeDescription);
-                   // recipe.setIngredients(recipeIngredients);
-                    RecipeController.addRecipe(recipe);
+                    if(checkIfValidAndRead()){
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("list",ingredientsList);
+
+                        //read ingredientsList as a one string
+                        String all_ingredients="";
+                        for(int i=0; i<ingredientsList.size(); i++) {
+                            String name= ingredientsList.get(i).name;
+                            String amount= String.valueOf(ingredientsList.get(i).amount);
+                            String record= String.valueOf(i)+": "+amount+" Cups of "+name+"end";
+                            all_ingredients+=record;
+                        }
+                        Recipe recipe= new Recipe(loggedUser);
+                        recipe.setImage(""+CamController.imageUri);
+                        recipe.setName(recipeName);
+                        recipe.setDescription(recipeDescription);
+                        recipe.setIngredients(all_ingredients);
+                        RecipeController.addRecipe(recipe);
+                    }
                 }
             }
         });
@@ -126,8 +138,20 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
     //----------------------------------------------------------------------------------------------
 
     private void addIngredient() {
-        View view = getLayoutInflater().inflate(R.layout.hidden, null);
-        ingredients_layoutList.addView(view);
+         final View view = getLayoutInflater().inflate(R.layout.hidden, null, false);
+         EditText name = (EditText)view.findViewById(R.id.name),
+                  amount = (EditText)view.findViewById(R.id.amount);
+
+        System.out.println(name+"--------------------------------------"+amount);
+
+        /*ImageView imageClose = (ImageView)view.findViewById(R.id.image_remove);
+        imageClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeView(cricketerView);
+            }
+            */
+         ingredients_layoutList.addView(view);
     }
 
     private boolean checkIfValidAndRead() {
@@ -137,20 +161,17 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
         for(int i=0;i<ingredients_layoutList.getChildCount();i++){
 
             View ingredientView = ingredients_layoutList.getChildAt(i);
+            System.out.println("............................................."+ingredientView);
 
-            EditText TextName = (EditText)ingredientView.findViewById(R.id.name),
-                    TextAmount = (EditText)ingredientView.findViewById(R.id.amount);
+            EditText TextName= (EditText)ingredientView.findViewById(R.id.name),
+                    TextAmount= (EditText)ingredientView.findViewById(R.id.amount);
+
+            System.out.println(TextName+"--------------------------------------"+TextAmount);
 
             Ingredient ingredient = new Ingredient();
 
-            if(!TextName.getText().toString().equals("")){
+            if(!TextName.getText().toString().equals("") || TextAmount.getText().toString().equals("")){
                 ingredient.name= TextName.getText().toString();
-            }else {
-                result = false;
-                break;
-            }
-
-            if(TextAmount.getText().toString().equals("")){
                 ingredient.amount= Double.parseDouble(TextAmount.getText().toString());
             }else {
                 result = false;
@@ -161,7 +182,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
 
         if(ingredientsList.size()==0){
             result = false;
-            Toast.makeText(this, "Add Cricketers First!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Add Ingredient First!", Toast.LENGTH_SHORT).show();
         }else if(!result){
             Toast.makeText(this, "Enter All Details Correctly!", Toast.LENGTH_SHORT).show();
         }
