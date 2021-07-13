@@ -121,7 +121,7 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="525dp"
+                        android:layout_marginTop="595dp"
                         >
                         <Button android:id="@+id/addIngredientBtn"
                             android:textStyle="bold"
@@ -174,6 +174,27 @@
                                 android:layout_height="38.5dp"
                                 android:hint="Enter ingredient "
                                 />
+                            <View android:id="@+id/rectangle_33_ek4hn"
+                                android:background="@drawable/rectangle_33_ek4_shape"
+                                android:layout_width="100dp"
+                                android:layout_height="58dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="20dp"
+
+                                />
+
+                            <EditText android:id="@+id/cap"
+                                android:textStyle="bold"
+                                android:textSize="17sp"
+                                android:layout_marginLeft="21.65dp"
+                                android:layout_marginTop="19dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="38.5dp"
+                                android:hint="/cap "
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="50dp"
+                                />
+
 
                         </RelativeLayout>
 
