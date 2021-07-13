@@ -11,7 +11,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,11 +38,15 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    implementation "org.apache.poi:poi-ooxml:3.17"
+    implementation "org.apache.poi:poi:3.17"
+    implementation 'com.android.support:multidex:1.0.3'
     //image cropper
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
     //circular imageview
     implementation 'com.github.mohammadatif:CircularImageView:1.0.1'
+
+    implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '3.0.1'
 
 }
