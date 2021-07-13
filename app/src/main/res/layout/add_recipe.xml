@@ -172,7 +172,7 @@
                                 android:layout_marginTop="19dp"
                                 android:layout_width="156dp"
                                 android:layout_height="38.5dp"
-                                android:hint="Enter ingredient "
+                                android:hint="Ingredient Name "
                                 android:inputType="number"
                                 />
                             <View android:id="@+id/rectangle_33_ek4hn"
@@ -184,14 +184,14 @@
 
                                 />
 
-                            <EditText android:id="@+id/cap"
+                            <EditText android:id="@+id/amount"
                                 android:textStyle="bold"
                                 android:textSize="17sp"
                                 android:layout_marginLeft="21.65dp"
                                 android:layout_marginTop="19dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="38.5dp"
-                                android:hint="/cap "
+                                android:hint="/cup "
                                 android:layout_alignParentRight="true"
                                 android:layout_marginRight="50dp"
                                 />
