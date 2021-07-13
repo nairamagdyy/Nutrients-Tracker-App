@@ -51,7 +51,7 @@
                     />
 
                 <View android:id="@+id/line_spacing"
-                    android:background="@drawable/line_spacing_shape"
+                    android:background="@drawable/line_spacing_ek1_shape"
                     android:layout_marginTop="437dp"
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
