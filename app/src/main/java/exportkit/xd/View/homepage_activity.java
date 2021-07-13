@@ -47,7 +47,7 @@ public class homepage_activity extends Activity implements IAppViews{
 		if(user.getAvatar() != null){
 			ProfileButton.setImageURI(Uri.parse(user.getAvatar()));
 		}
-		name.setText(user.getName());
+		name.setText("Hello " + user.getName());
 
 		ProfileButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
