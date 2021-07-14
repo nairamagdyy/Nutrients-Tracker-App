@@ -23,7 +23,6 @@ import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.camera_activity;
 import exportkit.xd.View.homepage_activity;
-import exportkit.xd.View.macroTracker_activity;
 
 class Ingredient {
     public String name;
@@ -50,30 +49,21 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_recipe);
 
+        RecipeController = new recipeController(this);
+        CamController = new cameraController(this);
+
         //dynamic view
         dynamicAddBtn = findViewById(R.id.addIngredientBtn);
         ingredients_layoutList = findViewById(R.id.dyanamicLinearLayout);
-        dynamicAddBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                addIngredient();
-            };
-
-
-        });
 
         //get logged user
         SessionManager session= new SessionManager(this);
         int loggedUser = (int) session.getUserFromSession();
 
-        //start to get input
-        RecipeController = new recipeController(this);
-        CamController = new cameraController(this);
-
         //find views
         uploadedImage= (CircularImageView)findViewById(R.id.uploadImage);
         name= findViewById(R.id.enter_food_name);
         description= findViewById(R.id.enter_description);
-        //ingredients= findViewById(R.id.enter_ingredient);
         saveBtn = findViewById(R.id.done);
         cancelBtn= findViewById(R.id.cancel);
 
@@ -83,6 +73,15 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
                 CamController.imagePickDialog();
             }
         });
+
+        dynamicAddBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                addView();
+            };
+
+
+        });
+
         saveBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String recipeName= name.getText().toString().trim(),
@@ -92,7 +91,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
                     Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
                 else
                 {
-                    if(checkIfValidAndRead()){
+                    if(readDynamicView()){
                         //read ingredientsList as a one string
                         String all_ingredients="";
                         for(int i=0; i<ingredientsList.size(); i++) {
@@ -111,6 +110,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
                 }
             }
         });
+
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
@@ -134,7 +134,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
 
     //----------------------------------------------------------------------------------------------
 
-    private void addIngredient() {
+    private void addView() {
          View view = getLayoutInflater().inflate(R.layout.hidden, null, false);
 
          ImageView imageClose = (ImageView)view.findViewById(R.id.image_remove);
@@ -152,7 +152,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
             ingredients_layoutList.removeView(view);
     }
 
-    private boolean checkIfValidAndRead() {
+    private boolean readDynamicView() {
         ingredientsList.clear();
         boolean result = true;
 
@@ -165,10 +165,11 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
 
             Ingredient ingredient = new Ingredient();
 
-            if(!TextName.getText().toString().equals("") || TextAmount.getText().toString().equals("")){
+            if(!TextName.getText().toString().equals("") && !TextAmount.getText().toString().equals("")){
                 ingredient.name= TextName.getText().toString();
                 ingredient.amount= Double.parseDouble(TextAmount.getText().toString());
-            }else {
+            }
+            else{
                 result = false;
                 break;
             }
