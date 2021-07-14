@@ -122,7 +122,7 @@ public class AppDBController extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        return cursor.getInt(0) ;
+        return cursor.getInt(cursor.getColumnIndex(userTable.DB_col_ID)) ;
     }
     public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
