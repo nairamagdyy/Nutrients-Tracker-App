@@ -134,6 +134,7 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
         Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
+        bundle.putString("profile","myProfile");
         nextScreen.putExtras(bundle);
         startActivity(nextScreen);
     }

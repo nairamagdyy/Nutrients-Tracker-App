@@ -12,53 +12,84 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
+import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import exportkit.xd.Controller.userController;
+import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
+import exportkit.xd.View.Profile.myProfile_activity;
 import exportkit.xd.View.homepage_activity;
 
 public class SearchUser_activity extends Activity implements IAppViews {
-    EditText username  ;
+    EditText username;
+    Button done;
+    ImageButton back, HomeButton;
+    private CircularImageView ProfileIcon;
+    int userID;
+
     userController userController;
-    Button done ;
-    ImageButton  back   ;
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_user);
-        // find views
-        userController = new userController(this)  ;
-        username = (EditText) findViewById(R.id.search);
-        done = (Button) findViewById(R.id.ellipse_ek22) ;
-        back = (ImageButton) findViewById(R.id.backk) ;
-        
-        // buttons functions
-        done.setOnClickListener(new View.OnClickListener() {
 
+        userController = new userController(this);
+
+        //find views
+        username = (EditText) findViewById(R.id.search);
+        done = (Button) findViewById(R.id.ellipse_ek22);
+        back = (ImageButton) findViewById(R.id.backk);
+        HomeButton = (ImageButton) findViewById(R.id.home1);
+        ProfileIcon = findViewById(R.id.profile1);
+        
+        //buttons functions
+        done.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String Username = username.getText().toString();
-                userController.SearchUser(Username) ;
-                
+                List<User> userinfo = userController.SearchUser(Username);
+
+                if (userinfo.isEmpty()) {
+                    onError("The username Doesn't exist");
+                }
+                else
+                {
+                    userID= userinfo.get(0).getId();
+                    onSuccess("");
+                }
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-
                 Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
                 startActivity(nextScreen);
             }
         });
-        //custom code goes here
+        HomeButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                startActivity(nextScreen);
+            }
+        });
+        ProfileIcon.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                startActivity(nextScreen);
+            }
+        });
     }
-
 
     @Override
     public void onSuccess(String message) {
-        Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
         Intent nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", userID);
+        nextScreen.putExtras(bundle);
         startActivity(nextScreen);
     }
 

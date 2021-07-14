@@ -174,7 +174,7 @@
 
                 </RelativeLayout>
 
-                <ImageButton android:id="@+id/delete"
+                <ImageButton android:id="@+id/edit"
                     android:src="@drawable/ic_delete"
                     android:layout_marginStart="313dp"
                     android:layout_marginTop="330dp"

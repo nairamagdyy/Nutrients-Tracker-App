@@ -22,6 +22,7 @@ import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.myProfile_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
+import exportkit.xd.View.Search.userprofile_Search;
 import exportkit.xd.View.homepage_activity;
 
 public class recipeDetails_activity extends Activity implements IAppViews {
@@ -29,13 +30,14 @@ public class recipeDetails_activity extends Activity implements IAppViews {
     userController UserController;
     ImageView image;
     TextView name, description, ingredient;
-    private ImageButton deleteButton, HomeButton, backButton;
+    private ImageButton editButton, HomeButton, backButton;
     private Button SearchButton;
     private CircularImageView ProfileIcon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.recipe_details);
 
         RecipeController= new recipeController(this);
@@ -48,6 +50,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
 
         //retrieve recipe id
         int id= getIntent().getExtras().getInt("id");
+        String PROFILE_KEY= getIntent().getExtras().getString("profile");
 
         // finds views
         image= findViewById(R.id.food_picture);
@@ -56,7 +59,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         ingredient= findViewById(R.id.ingredients);
 
         backButton = findViewById(R.id.back);
-        deleteButton= findViewById(R.id.delete);
+        editButton= findViewById(R.id.edit);
         SearchButton= findViewById(R.id.ellipse_ek22);
         HomeButton= findViewById(R.id.home_ek11);
         ProfileIcon= findViewById(R.id.ellipse_ek23);
@@ -65,6 +68,12 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         if(user.getAvatar() != null) {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
+        //select delete icon or fav icon
+        if(PROFILE_KEY.equals("myProfile"))
+            editButton.setImageResource(R.drawable.ic_delete);
+        else
+            editButton.setImageResource(R.drawable.star_1);
+
 
         //get recipe info from db
         Recipe recipe= RecipeController.getRecipe(id);
@@ -79,14 +88,24 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         ingredient.setText(recipe.getIngredients());
 
         //buttons
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                RecipeController.deleteRecipe(id);
+        editButton.setOnClickListener(new View.OnClickListener() {
+                 public void onClick(View v) {
+                     if(PROFILE_KEY.equals("myProfile"))
+                         RecipeController.deleteRecipe(id);
+                     else {}
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                Intent nextScreen;
+                if(PROFILE_KEY.equals("myProfile"))
+                    nextScreen= new Intent(getApplicationContext(), myProfile_activity.class);
+                else {
+                    nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id",getIntent().getExtras().getInt("userId"));
+                    nextScreen.putExtras(bundle);
+                }
                 startActivity(nextScreen);
             }
         });

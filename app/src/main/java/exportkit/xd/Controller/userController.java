@@ -67,20 +67,10 @@ public class userController{
         else
             view.onError("email exists or username , enter new one!!!!");
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void SearchUser(String username) {
-        List<User> userinfo = new ArrayList<>() ;
-        userinfo = db.searchUser(username) ;
-        int id  ;
-        if (userinfo.isEmpty()) {
-            view.onError("The username Doesn't exist");
-        }
-        else
-        {
-            id = db.getUserIDByUsername(username) ;
-            System.out.println(id) ;
-            view.onSuccess("Done , Search Operation Done");
-        }
+    public List<User> SearchUser(String username) {
+         return db.searchUser(username);
     }
 
 }
