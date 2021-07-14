@@ -58,7 +58,6 @@ public class userController{
     public User getUser(int id){
         return db.getUser(id);
     }
-
     public void EditProfile(User user){
 
         Boolean data = db.editUser(user);
@@ -67,13 +66,10 @@ public class userController{
         else
             view.onError("email exists or username , enter new one!!!!");
     }
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void SearchUser(String username) {
-        List<User> userinfo = new ArrayList<>() ;
-        userinfo = db.searchUser(username) ;
-    /*    userinfo.forEach(user -> {
-            System.out.println("Name : " + user.getName() + ", id : " + user.getId()); }); */
-        if (userinfo.isEmpty()) {
+        int id  = db.getUserIDByUsername(username) ;
+        System.out.println(id) ;
+        if (id<0) {
             view.onError("The username Doesn't exist");
         }
         else

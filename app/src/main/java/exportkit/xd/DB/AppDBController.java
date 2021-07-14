@@ -115,7 +115,15 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getInt(0) ;
     }
+    public int getUserIDByUsername(String username) {
+        db = this.getReadableDatabase();
+        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_username+ "=?",
+                new String[] { String.valueOf(username) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
 
+        return cursor.getInt(0) ;
+    }
     public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
