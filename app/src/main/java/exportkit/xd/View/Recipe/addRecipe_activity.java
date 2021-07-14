@@ -21,6 +21,7 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
+import exportkit.xd.View.Profile.myProfile_activity;
 import exportkit.xd.View.camera_activity;
 import exportkit.xd.View.homepage_activity;
 
@@ -122,7 +123,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
         startActivity(nextScreen);
     }
 

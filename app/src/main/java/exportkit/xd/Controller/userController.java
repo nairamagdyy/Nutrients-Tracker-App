@@ -44,7 +44,7 @@ public class userController{
         boolean i = db.loginValidation(email,password);
 
         if(i){
-            openSession(db.GetUserID(email));
+            openSession(db.getUserID(email));
             view.onSuccess("Login Successfully");
         }
         else

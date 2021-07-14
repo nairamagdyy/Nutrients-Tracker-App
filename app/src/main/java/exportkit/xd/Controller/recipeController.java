@@ -2,6 +2,8 @@ package exportkit.xd.Controller;
 
 import android.content.Context;
 
+import java.util.Vector;
+
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.View.IAppViews;
@@ -23,5 +25,13 @@ public class recipeController {
         }
         else
             addRecipeView.onError("FAILED");
+    }
+
+    public Vector<Integer> viewRecipeList(int userId){
+        return db.getRecipeList(userId);
+    }
+
+    public Recipe getRecipe(int id){
+        return  db.getRecipe(id);
     }
 }

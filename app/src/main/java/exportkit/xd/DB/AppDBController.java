@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
@@ -93,6 +94,7 @@ public class AppDBController extends SQLiteOpenHelper {
             cursor.moveToFirst();
 
         User user= new User();
+        user.setId(id);
         user.setUsername(cursor.getString(cursor.getColumnIndex(userTable.DB_col_username)));
         user.setName(cursor.getString(cursor.getColumnIndex(userTable.DB_col_name)));
         user.setEmail(cursor.getString(cursor.getColumnIndex(userTable.DB_col_email)));
@@ -103,7 +105,7 @@ public class AppDBController extends SQLiteOpenHelper {
         return user;
     }
 
-    public int GetUserID(String email) {
+    public int getUserID(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_email + "=?",
                 new String[] { String.valueOf(email) }, null, null, null, null);
@@ -112,61 +114,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getInt(0) ;
     }
-    public String GetTheNameOfUser(int id ) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_name}, userTable.DB_col_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
 
-        return cursor.getString(cursor.getColumnIndex(userTable.DB_col_name));
-    }
-    public int GetUserIdbyUsername(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_username + "=?",
-                new String[] { String.valueOf(username) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        return cursor.getInt(0) ;
-    }
-
-    public String GetUserName(int id ) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_username}, userTable.DB_col_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        return cursor.getString(cursor.getColumnIndex(userTable.DB_col_username));
-    }
-    public String GetUserEmail(int id ) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_email}, userTable.DB_col_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        return cursor.getString(cursor.getColumnIndex(userTable.DB_col_email));
-    }
-    public String GetUserPassword(int id ) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_password}, userTable.DB_col_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        return cursor.getString(cursor.getColumnIndex(userTable.DB_col_password));
-    }
-    public String GetUserPhoneNumber(int id ) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_phoneNumber}, userTable.DB_col_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        return cursor.getString(cursor.getColumnIndex(userTable.DB_col_phoneNumber));
-    }
     public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -219,6 +167,46 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return id;
 
+    }
+
+    public Vector<Integer> getRecipeList(int userId){
+        Vector<Integer> recipesIdList= new Vector<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(recipeTable.DB_Table, new String[] {recipeTable.DB_col_ID},
+                recipeTable.DB_col_USERID + "=?", new String[] { String.valueOf(userId) },
+                null, null, null, null);
+        if (cursor != null) {
+            while(cursor.moveToNext())
+                recipesIdList.add(cursor.getInt(0));
+        }
+
+        return recipesIdList;
+    }
+
+    public Recipe getRecipe(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(recipeTable.DB_Table,
+                new String[] {recipeTable.DB_col_IMAGE, recipeTable.DB_col_NAME,
+                        recipeTable.DB_col_DESCRIPTION, recipeTable.DB_col_INGREDIENTS,
+                        recipeTable.DB_col_USERID},
+                recipeTable.DB_col_ID + "=?",
+                new String[] { String.valueOf(id) },
+                null, null, null, null
+        );
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        int userId= cursor.getInt(cursor.getColumnIndex(recipeTable.DB_col_USERID));
+        Recipe recipe= new Recipe(userId);
+        recipe.setId(id);
+        recipe.setImage(cursor.getString(cursor.getColumnIndex(recipeTable.DB_col_IMAGE)));
+        recipe.setName(cursor.getString(cursor.getColumnIndex(recipeTable.DB_col_NAME)));
+        recipe.setDescription(cursor.getString(cursor.getColumnIndex(recipeTable.DB_col_DESCRIPTION)));
+        recipe.setIngredients(cursor.getString(cursor.getColumnIndex(recipeTable.DB_col_INGREDIENTS)));
+        recipe.setFacts(cursor.getString(cursor.getColumnIndex(recipeTable.DB_col_IMAGE)));
+
+        return recipe;
     }
 
 }

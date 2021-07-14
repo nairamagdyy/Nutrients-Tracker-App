@@ -1,6 +1,7 @@
 package exportkit.xd.View;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,10 @@ import exportkit.xd.R;
 
 public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
 
-    List<String> titles;
-    List<Integer> images;
+    List<String> titles, images;
     LayoutInflater inflater;
 
-    public adapter(Context ctx, List<String> titles, List<Integer> images){
+    public adapter(Context ctx, List<String> titles, List<String> images){
         this.titles = titles;
         this.images = images;
         this.inflater = LayoutInflater.from(ctx);
@@ -38,7 +38,10 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.title.setText(titles.get(position));
-        holder.gridIcon.setImageResource(images.get(position));
+        if(images.get(position).equals("null"))
+            holder.gridIcon.setImageResource(R.drawable.recipeimage);
+        else
+            holder.gridIcon.setImageURI(Uri.parse(images.get(position)));
     }
 
     @Override

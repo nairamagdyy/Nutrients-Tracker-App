@@ -16,9 +16,12 @@ import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import exportkit.xd.Controller.userController;
+import exportkit.xd.Controller.recipeController;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
@@ -27,29 +30,29 @@ import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.adapter;
 import exportkit.xd.View.homepage_activity;
 
-
-public  class myProfile_activity extends Activity implements IAppViews {
+    public  class myProfile_activity extends Activity implements IAppViews {
     private CircularImageView uploadedImage, ProfileIcon;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
     private Button FavButton , SearchButton ;
-    userController userController;
-    RecyclerView dataList;
-    List<String> titles;
-    List<Integer> images;
+
+    userController UserController;
+    recipeController RecipeController;
+
+    RecyclerView recycleRecipeList;
+    List<String>  recipeNameList = new ArrayList<>();
+    List recipeImageList = new ArrayList<>();
     adapter Adapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myprofile);
 
-        userController = new userController(this) ;
-        dataList = findViewById(R.id.dataList);
-
-        titles = new ArrayList<>();
-        images = new ArrayList<>();
+        UserController = new userController(this);
+        RecipeController= new recipeController(this);
 
         // finds views
+        recycleRecipeList = findViewById(R.id.recipeList);
         uploadedImage = findViewById(R.id.avatar);
         name = (TextView) findViewById(R.id.name);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
@@ -64,7 +67,7 @@ public  class myProfile_activity extends Activity implements IAppViews {
         // get logged user
         SessionManager session = new SessionManager(this);
         long loggedUser= session.getUserFromSession();
-        User user= userController.getUser((int)loggedUser);
+        User user= UserController.getUser((int)loggedUser);
 
         //display profile info
         if(user.getAvatar() != null) {
@@ -73,6 +76,20 @@ public  class myProfile_activity extends Activity implements IAppViews {
         }
         name.setText(user.getName());
         username.setText(user.getUsername());
+
+        //Recyclerview as GridView for recipes
+        //get user recipe from db
+        Vector<Integer> recipesIdList= RecipeController.viewRecipeList((int) loggedUser);
+        for(int i=0; i<recipesIdList.size();i++){
+            Recipe recipe= RecipeController.getRecipe(recipesIdList.get(i));
+            recipeNameList.add(recipe.getName());
+            recipeImageList.add(recipe.getImage());
+        }
+
+        Adapter = new adapter(this,recipeNameList,recipeImageList);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+        recycleRecipeList.setLayoutManager(gridLayoutManager);
+        recycleRecipeList.setAdapter(Adapter);
 
         // buttons functions
         HomeButton.setOnClickListener(new View.OnClickListener() {
@@ -107,22 +124,6 @@ public  class myProfile_activity extends Activity implements IAppViews {
 
             }
         });
-
-        //Recyclerview as GridView for recipes
-        titles.add("First Item");
-        titles.add("Second Item");
-        titles.add("Third Item");
-
-        images.add(R.drawable.rectangle_188_ek1);
-        images.add(R.drawable.rectangle_188_ek1);
-        images.add(R.drawable.rectangle_188_ek1);
-
-        Adapter = new adapter(this,titles,images);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
-        dataList.setLayoutManager(gridLayoutManager);
-        dataList.setAdapter(Adapter);
-
     }
     @Override
     public void onSuccess(String message) {

@@ -221,7 +221,7 @@
 						android:layout_width="335dp"
 						android:layout_height="158dp"
 						android:contentDescription="foodcam_1_ek1"
-						android:src="@drawable/foodcam_1_ek1" />
+						android:src="@drawable/recipeimage" />
 
 					<ImageButton
 						android:id="@+id/addrecipebutton"
