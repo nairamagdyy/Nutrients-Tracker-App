@@ -62,7 +62,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
         int loggedUser = (int) session.getUserFromSession();
 
         //find views
-        uploadedImage= (CircularImageView)findViewById(R.id.uploadImage);
+        uploadedImage= findViewById(R.id.uploadImage);
         name= findViewById(R.id.enter_food_name);
         description= findViewById(R.id.enter_description);
         saveBtn = findViewById(R.id.done);

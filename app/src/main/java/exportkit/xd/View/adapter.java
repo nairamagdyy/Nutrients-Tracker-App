@@ -15,16 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import exportkit.xd.R;
+import exportkit.xd.View.Profile.IProfile;
 
-public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
+public class adapter extends RecyclerView.Adapter<adapter.ViewHolder>{
 
     List<String> titles, images;
     LayoutInflater inflater;
+    IProfile view;
 
     public adapter(Context ctx, List<String> titles, List<String> images){
         this.titles = titles;
         this.images = images;
         this.inflater = LayoutInflater.from(ctx);
+        this.view= (IProfile) ctx;
     }
 
 
@@ -49,6 +52,7 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         return titles.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView title;
         ImageView gridIcon;
@@ -60,8 +64,8 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Clicked -> " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                public void onClick(View v){
+                    view.viewRecipeDetails(getAdapterPosition()+1);
                 }
             });
         }

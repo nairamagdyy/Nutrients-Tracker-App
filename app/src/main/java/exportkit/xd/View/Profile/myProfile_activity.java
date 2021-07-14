@@ -25,23 +25,24 @@ import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
+import exportkit.xd.View.Recipe.recipeDetails_activity;
 import exportkit.xd.View.Register.log_in_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.adapter;
 import exportkit.xd.View.homepage_activity;
 
-    public  class myProfile_activity extends Activity implements IAppViews {
+public  class myProfile_activity extends Activity implements IProfile, IAppViews {
     private CircularImageView uploadedImage, ProfileIcon;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
-    private Button FavButton , SearchButton ;
+    private Button FavButton , SearchButton;
 
     userController UserController;
     recipeController RecipeController;
 
     RecyclerView recycleRecipeList;
     List<String>  recipeNameList = new ArrayList<>();
-    List recipeImageList = new ArrayList<>();
+    List<String> recipeImageList = new ArrayList<>();
     adapter Adapter;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -82,11 +83,12 @@ import exportkit.xd.View.homepage_activity;
         Vector<Integer> recipesIdList= RecipeController.viewRecipeList((int) loggedUser);
         for(int i=0; i<recipesIdList.size();i++){
             Recipe recipe= RecipeController.getRecipe(recipesIdList.get(i));
+
             recipeNameList.add(recipe.getName());
             recipeImageList.add(recipe.getImage());
         }
 
-        Adapter = new adapter(this,recipeNameList,recipeImageList);
+        Adapter = new adapter(this, recipeNameList, recipeImageList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
         recycleRecipeList.setLayoutManager(gridLayoutManager);
         recycleRecipeList.setAdapter(Adapter);
@@ -124,7 +126,18 @@ import exportkit.xd.View.homepage_activity;
 
             }
         });
+
     }
+
+    @Override
+    public void viewRecipeDetails(int id) {
+        Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("id",id);
+        nextScreen.putExtras(bundle);
+        startActivity(nextScreen);
+    }
+
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
