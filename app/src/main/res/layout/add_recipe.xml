@@ -76,8 +76,8 @@
                     <TextView android:id="@+id/optional"
                         android:textStyle="bold"
                         android:textSize="17sp"
-                        android:layout_marginLeft="297.73dp"
-                        android:layout_marginTop="220dp"
+                        android:layout_marginLeft="280.73dp"
+                        android:layout_marginTop="200dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="optional"
@@ -91,6 +91,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Description"
+                        />
+
+                    <TextView
+                        android:id="@+id/option"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="360dp"
+                        android:text="optional"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
                         />
 
                     <RelativeLayout android:id="@+id/text_input___empty_ek1"
@@ -117,24 +131,6 @@
 
                     </RelativeLayout>
 
-                    <LinearLayout android:id="@+id/linearLayout1"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="595dp"
-                        >
-                        <Button android:id="@+id/addIngredientBtn"
-                            android:textStyle="bold"
-                            android:background="@null"
-                            android:textSize="16sp"
-                            android:layout_marginStart="280dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+Ingredient"
-                            android:layout_marginLeft="280dp" />
-                    </LinearLayout>
-
                     <TextView android:id="@+id/ingredient"
                         android:textStyle="bold"
                         android:textSize="17sp"
@@ -144,6 +140,26 @@
                         android:layout_height="wrap_content"
                         android:text="Ingredients"
                         />
+
+                    <LinearLayout android:id="@+id/dyanamicLinearLayout"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="580dp"
+                        />
+
+                    <Button android:id="@+id/addIngredientBtn"
+                        android:background="@drawable/primary"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:layout_marginStart="280dp"
+                        android:layout_marginTop="500dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+Ingredient"
+                        android:textColor="@color/colorWhite"
+                        android:layout_marginLeft="280dp" />
+
 
                     <Button
                         android:id="@+id/cancel"
@@ -161,19 +177,6 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/option"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginTop="360dp"
-                        android:text="optional"
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        />
                     <ImageButton android:id="@+id/done"
                         android:src="@drawable/_icon_awesome_check_circle"
                         android:contentDescription="_icon_awesome_check_circle"
