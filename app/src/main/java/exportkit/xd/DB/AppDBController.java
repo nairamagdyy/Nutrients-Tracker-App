@@ -16,6 +16,7 @@ import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 
 public class AppDBController extends SQLiteOpenHelper {
+    SQLiteDatabase db;
     // Database Name
     public static final String DB_Name = "App" ;
     // Database Version
@@ -46,7 +47,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
     //------------------------------------USER TABLE------------------------------------------------
     public long Register(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(userTable.DB_col_name, user.getName());
         values.put(userTable.DB_col_username,user.getUsername()) ;
@@ -63,7 +64,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
     public boolean loginValidation(String email, String password) {
         String[] columns = {userTable.DB_col_ID};
-        SQLiteDatabase db = this.getReadableDatabase();
+        db = this.getReadableDatabase();
         String selection = userTable.DB_col_email + " =?" + " AND " + userTable.DB_col_password + " =?";
         String[] selectionArgs = {email, password};
         Cursor cursor = db.query(userTable.DB_User_Table,
@@ -81,7 +82,7 @@ public class AppDBController extends SQLiteOpenHelper {
     }
 
     public User getUser(int id){
-        SQLiteDatabase db = this.getReadableDatabase();
+        db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table,
                 new String[] {userTable.DB_col_username, userTable.DB_col_name,
                               userTable.DB_col_email, userTable.DB_col_phoneNumber,
@@ -106,7 +107,7 @@ public class AppDBController extends SQLiteOpenHelper {
     }
 
     public int getUserID(String email) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_email + "=?",
                 new String[] { String.valueOf(email) }, null, null, null, null);
         if (cursor != null)
@@ -154,7 +155,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
     //------------------------------------RECIPE TABLE----------------------------------------------
     public Long insertRecipe(Recipe recipe){
-        SQLiteDatabase db = this.getWritableDatabase();
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(recipeTable.DB_col_IMAGE,recipe.getImage());
         values.put(recipeTable.DB_col_NAME,recipe.getName()) ;
@@ -172,7 +173,7 @@ public class AppDBController extends SQLiteOpenHelper {
     public Vector<Integer> getRecipeList(int userId){
         Vector<Integer> recipesIdList= new Vector<>();
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        db = this.getReadableDatabase();
         Cursor cursor = db.query(recipeTable.DB_Table, new String[] {recipeTable.DB_col_ID},
                 recipeTable.DB_col_USERID + "=?", new String[] { String.valueOf(userId) },
                 null, null, null, null);
@@ -185,7 +186,7 @@ public class AppDBController extends SQLiteOpenHelper {
     }
 
     public Recipe getRecipe(int id){
-        SQLiteDatabase db = this.getReadableDatabase();
+        db = this.getReadableDatabase();
         Cursor cursor = db.query(recipeTable.DB_Table,
                 new String[] {recipeTable.DB_col_IMAGE, recipeTable.DB_col_NAME,
                         recipeTable.DB_col_DESCRIPTION, recipeTable.DB_col_INGREDIENTS,
@@ -207,6 +208,12 @@ public class AppDBController extends SQLiteOpenHelper {
         recipe.setFacts(cursor.getString(cursor.getColumnIndex(recipeTable.DB_col_IMAGE)));
 
         return recipe;
+    }
+
+    public boolean deleteRecipe(int id){
+        db= this.getReadableDatabase();
+        return db.delete(recipeTable.DB_Table, recipeTable.DB_col_ID+"=?", new String[]{String.valueOf(id)})
+                > 0;
     }
 
 }

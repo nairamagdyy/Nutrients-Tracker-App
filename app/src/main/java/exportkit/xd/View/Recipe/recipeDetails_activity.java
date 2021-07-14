@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
@@ -28,7 +29,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
     userController UserController;
     ImageView image;
     TextView name, description, ingredient;
-    private ImageButton FavButton, HomeButton, editButton , logoutBtn ;
+    private ImageButton deleteButton, HomeButton, backButton;
     private Button SearchButton;
     private CircularImageView ProfileIcon;
 
@@ -54,7 +55,8 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         description= findViewById(R.id.getDescription);
         ingredient= findViewById(R.id.ingredients);
 
-        FavButton= findViewById(R.id.fav);
+        backButton = findViewById(R.id.back);
+        deleteButton= findViewById(R.id.delete);
         SearchButton= findViewById(R.id.ellipse_ek22);
         HomeButton= findViewById(R.id.home_ek11);
         ProfileIcon= findViewById(R.id.ellipse_ek23);
@@ -68,12 +70,26 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         Recipe recipe= RecipeController.getRecipe(id);
 
         //display info
-        image.setImageURI(Uri.parse(recipe.getImage()));
+        if(recipe.getImage().equals("null"))
+            image.setImageResource(R.drawable.recipeimage);
+        else
+            image.setImageURI(Uri.parse(recipe.getImage()));
         name.setText(recipe.getName());
         description.setText(recipe.getDescription());
         ingredient.setText(recipe.getIngredients());
 
         //buttons
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                RecipeController.deleteRecipe(id);
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                startActivity(nextScreen);
+            }
+        });
         HomeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
@@ -93,21 +109,18 @@ public class recipeDetails_activity extends Activity implements IAppViews {
                 startActivity(nextScreen);
             }
         });
-
-
-
-
-
-
     }
 
     @Override
     public void onSuccess(String message) {
-
+        Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
+        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+        startActivity(nextScreen);
     }
 
     @Override
     public void onError(String message) {
+        Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
 
     }
 }

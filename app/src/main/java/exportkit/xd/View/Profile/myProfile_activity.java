@@ -88,7 +88,7 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
             recipeImageList.add(recipe.getImage());
         }
 
-        Adapter = new adapter(this, recipeNameList, recipeImageList);
+        Adapter = new adapter(this, recipesIdList, recipeNameList, recipeImageList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
         recycleRecipeList.setLayoutManager(gridLayoutManager);
         recycleRecipeList.setAdapter(Adapter);

@@ -10,21 +10,21 @@ import exportkit.xd.View.IAppViews;
 
 public class recipeController {
 
-    IAppViews addRecipeView;
+    IAppViews view;
     AppDBController db;
 
     public recipeController(IAppViews view) {
-        this.addRecipeView = view;
-        db = new AppDBController((Context) this.addRecipeView);
+        this.view = view;
+        db = new AppDBController((Context) this.view);
     }
 
     public void addRecipe(Recipe recipe) {
         long id = db.insertRecipe(recipe);
         if(id>0) {
-            addRecipeView.onSuccess("Add Successfully");
+            view.onSuccess("Add Successfully");
         }
         else
-            addRecipeView.onError("FAILED");
+            view.onError("FAILED");
     }
 
     public Vector<Integer> viewRecipeList(int userId){
@@ -33,5 +33,15 @@ public class recipeController {
 
     public Recipe getRecipe(int id){
         return  db.getRecipe(id);
+    }
+
+    public void deleteRecipe(int id){
+        boolean remove= db.deleteRecipe(id);
+        if(remove) {
+            view.onSuccess("Delete Successfully");
+        }
+        else
+            view.onError("FAILED");
+
     }
 }
