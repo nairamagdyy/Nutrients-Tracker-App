@@ -39,7 +39,7 @@
                     android:layout_height="503dp"
                     />
 
-                <TextView android:id="@+id/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your"
+                <TextView android:id="@+id/getDescription"
                     android:textStyle="bold"
                     android:textSize="17sp"
                     android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
@@ -67,7 +67,7 @@
                     android:layout_height="1dp"
                     />
 
-                <TextView android:id="@+id/foodname"
+                <TextView android:id="@+id/foodName"
                     android:textStyle="bold"
                     android:textSize="17sp"
                     android:textColor="@color/cacao_maca_walnut_milk_color"
@@ -99,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="Ingredients"
                     />
+
                 <TextView android:id="@+id/ingredients"
                     android:textStyle="bold"
                     android:textSize="17sp"
@@ -117,7 +118,6 @@
                     android:layout_width="40dp"
                     android:layout_height="5dp"
                     android:layout_marginLeft="173dp" />
-
 
                 <RelativeLayout android:id="@+id/back_button"
                     android:layout_marginTop="50dp"
@@ -188,6 +188,7 @@
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
+
     <RelativeLayout android:id="@+id/navigation_bar_ek2"
         android:layout_marginTop="800dp"
         android:layout_alignParentBottom="true"
