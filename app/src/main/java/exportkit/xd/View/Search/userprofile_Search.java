@@ -26,14 +26,7 @@ public class userprofile_Search extends Activity implements IAppViews {
         setContentView(R.layout.userprofile);
         // find views
         UController = new userController(this) ;
-        back.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
-                startActivity(nextScreen);
-            }
-        });
     }
 
     @Override
