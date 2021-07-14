@@ -48,7 +48,7 @@ public  class userprofile_Search extends Activity implements IProfile, IAppViews
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myprofile);
+        setContentView(R.layout.profile);
 
         UserController = new userController(this);
         RecipeController= new recipeController(this);
