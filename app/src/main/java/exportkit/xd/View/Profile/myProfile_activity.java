@@ -41,10 +41,12 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
     userController UserController;
     recipeController RecipeController;
 
-    RecyclerView recycleRecipeList;
+    RecyclerView recycleRecipeList, recycleFavList;
     List<String>  recipeNameList = new ArrayList<>();
     List<String> recipeImageList = new ArrayList<>();
     adapter Adapter;
+
+    String KEY_VALUE="myProfile";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
 
         // finds views
         recycleRecipeList = findViewById(R.id.recipeList);
+        recycleFavList= findViewById(R.id.favList);
         uploadedImage = findViewById(R.id.avatar);
         name = (TextView) findViewById(R.id.name);
         username = (TextView) findViewById(R.id.__tayshelby_ek2) ;
@@ -82,18 +85,18 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
 
         //Recyclerview as GridView for recipes
         //get user recipe from db
+        recycleRecipeList.setVisibility(View.VISIBLE);
         Vector<Integer> recipesIdList= RecipeController.viewRecipeList((int) loggedUser);
         for(int i=0; i<recipesIdList.size();i++){
             Recipe recipe= RecipeController.getRecipe(recipesIdList.get(i));
-
             recipeNameList.add(recipe.getName());
             recipeImageList.add(recipe.getImage());
         }
-
+        viewDynamic(recycleRecipeList ,recipesIdList);/*
         Adapter = new adapter(this, recipesIdList, recipeNameList, recipeImageList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
         recycleRecipeList.setLayoutManager(gridLayoutManager);
-        recycleRecipeList.setAdapter(Adapter);
+        recycleRecipeList.setAdapter(Adapter);*/
 
         // buttons functions
         HomeButton.setOnClickListener(new View.OnClickListener() {
@@ -126,14 +129,19 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
             public void onClick(View v) {
                 RecipeButton.setTextColor(R.color.choice);
                 FavButton.setTextColor(R.color.select);
+                recycleRecipeList.setVisibility(View.GONE);
+                recycleFavList.setVisibility(View.VISIBLE);
+                KEY_VALUE="userProfile";
 
                 //Recyclerview as GridView for recipes
                 //get user recipe from db
                 Vector<Integer> favRecipesIdList= RecipeController.viewFavList((int) loggedUser);
+                //System.out.println(loggedUser+"------------------------------------------------------------------------------"+favRecipesIdList);
                 for(int i=0; i<favRecipesIdList.size();i++){
                     Recipe fav= RecipeController.getRecipe(favRecipesIdList.get(i));
                     recipeNameList.add(fav.getName());
                     recipeImageList.add(fav.getImage());
+                    viewDynamic(recycleFavList, favRecipesIdList);
                 }
             }
         });
@@ -147,12 +155,18 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
 
     }
 
+    private void viewDynamic(RecyclerView recycle, List<Integer> recipesIdList){
+        Adapter = new adapter(this, recipesIdList, recipeNameList, recipeImageList);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2, GridLayoutManager.VERTICAL,false);
+        recycle.setLayoutManager(gridLayoutManager);
+        recycle.setAdapter(Adapter);
+    }
     @Override
     public void viewRecipeDetails(int id) {
         Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
-        bundle.putString("profile","myProfile");
+        bundle.putString("profile",KEY_VALUE);
         nextScreen.putExtras(bundle);
         startActivity(nextScreen);
     }

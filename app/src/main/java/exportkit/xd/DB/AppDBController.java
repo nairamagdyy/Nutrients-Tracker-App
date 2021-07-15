@@ -119,6 +119,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getInt(0) ;
     }
+
     public int getUserIDByUsername(String username) {
         db = this.getReadableDatabase();
         Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_username+ "=?",
@@ -128,6 +129,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return cursor.getInt(cursor.getColumnIndex(userTable.DB_col_ID)) ;
     }
+
     public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -224,8 +226,10 @@ public class AppDBController extends SQLiteOpenHelper {
 
     public boolean deleteRecipe(int id){
         db= this.getReadableDatabase();
-        return db.delete(recipeTable.DB_Table, recipeTable.DB_col_ID+"=?", new String[]{String.valueOf(id)})
-                > 0;
+        int recTable= db.delete(recipeTable.DB_Table, recipeTable.DB_col_ID+"=?", new String[]{String.valueOf(id)}),
+               favTable= db.delete(favListTable.DB_Table, favListTable.DB_col_RecipeID+"=?", new String[]{String.valueOf(id)});
+
+        return recTable>0 & favTable>0;
     }
 
     public long insertToFavList(int userID, int recipeID){
@@ -253,8 +257,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
         if (cursor != null) {
             while(cursor.moveToNext())
-                favRecipesList.add(cursor.getInt(0));
-
+                favRecipesList.add(cursor.getInt((cursor.getColumnIndex(favListTable.DB_col_RecipeID))));
         }
 
         return favRecipesList;

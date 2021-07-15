@@ -31,7 +31,7 @@ import exportkit.xd.View.Recipe.recipeDetails_activity;
 import exportkit.xd.View.adapter;
 import exportkit.xd.View.homepage_activity;
 
-public  class userprofile_Search extends Activity implements IProfile, IAppViews {
+public class userprofile_Search extends Activity implements IProfile, IAppViews {
     private CircularImageView uploadedImage, ProfileIcon;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
