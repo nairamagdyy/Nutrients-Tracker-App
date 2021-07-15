@@ -56,12 +56,6 @@ public class recipeController {
     }
 
     public void unFavRecipe(int userId, int recipeId){
-        boolean remove= false; //db.deleteRecipe(id);
-        if(remove) {
-            view.onSuccess("Un Favorite Recipe");
-        }
-        else
-            view.onError("FAILED");
-
+       db.deleteRecipeFromFavList(userId, recipeId);
     }
 }

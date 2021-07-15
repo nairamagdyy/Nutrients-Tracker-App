@@ -112,8 +112,10 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         });
         favButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) { //remove from favorite List
-                //RecipeController.deleteRecipe(recipeId);
-
+                RecipeController.unFavRecipe((int) loggedUser,recipeId);
+                favButton.setVisibility(View.GONE);
+                editButton.setImageResource(R.drawable.star_1);
+                editButton.setVisibility(View.VISIBLE);
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {

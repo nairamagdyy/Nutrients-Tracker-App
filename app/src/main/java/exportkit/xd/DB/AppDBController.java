@@ -263,23 +263,12 @@ public class AppDBController extends SQLiteOpenHelper {
         return favRecipesList;
     }
 
-    public boolean deleteRecipeFromFavList(int id){
+    public void deleteRecipeFromFavList(int userID, int recipeID){
         db= this.getReadableDatabase();
-        return db.delete(favListTable.DB_Table, favListTable.DB_col_ID+"=?", new String[]{String.valueOf(id)})
-                > 0;
+        String query= "DELETE FROM "+favListTable.DB_Table+" WHERE "
+                +favListTable.DB_col_UserID+" = "+userID
+                +" AND "+favListTable.DB_col_RecipeID+" = "+recipeID;
+        db.execSQL(query);
     }
-  /*
-    public int getFavID(int userID, int recipeID){
-            db = this.getReadableDatabase();
-            Cursor cursor = db.query(favListTable.DB_Table,
-                    new String[] {favListTable.DB_col_ID},
-                    userTable.DB_col_email + "=?",
-                    new String[] { String.valueOf(email) }, null, null, null, null);
-            if (cursor != null)
-                cursor.moveToFirst();
-
-            return cursor.getInt(0) ;
-    }
-*/
 }
 
