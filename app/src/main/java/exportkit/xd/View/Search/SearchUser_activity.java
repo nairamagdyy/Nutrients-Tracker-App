@@ -2,6 +2,7 @@ package exportkit.xd.View.Search;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exportkit.xd.Controller.userController;
+import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
@@ -47,7 +49,16 @@ public class SearchUser_activity extends Activity implements IAppViews {
         back = (ImageButton) findViewById(R.id.backk);
         HomeButton = (ImageButton) findViewById(R.id.home1);
         ProfileIcon = findViewById(R.id.profile1);
-        
+
+        //display profile icon
+        // get logged user
+        SessionManager session = new SessionManager(this);
+        long loggedUser= session.getUserFromSession();
+        User user= userController.getUser((int)loggedUser);
+        if(user.getAvatar() != null) {
+            ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
+        }
+
         //buttons functions
         done.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
