@@ -15,7 +15,6 @@ import androidx.annotation.RequiresApi;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import exportkit.xd.Controller.userController;
@@ -23,7 +22,7 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Profile.myProfile_activity;
+import exportkit.xd.View.Profile.profile_activity;
 import exportkit.xd.View.homepage_activity;
 
 public class SearchUser_activity extends Activity implements IAppViews {
@@ -50,7 +49,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
         HomeButton = (ImageButton) findViewById(R.id.home1);
         ProfileIcon = findViewById(R.id.profile1);
 
-        //display profile icon
+        //display IProfile icon
         // get logged user
         SessionManager session = new SessionManager(this);
         long loggedUser= session.getUserFromSession();
@@ -89,7 +88,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
         });
         ProfileIcon.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
                 startActivity(nextScreen);
             }
         });

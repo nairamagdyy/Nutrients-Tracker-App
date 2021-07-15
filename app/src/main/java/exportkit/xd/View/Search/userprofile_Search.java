@@ -26,7 +26,7 @@ import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.IProfile;
-import exportkit.xd.View.Profile.myProfile_activity;
+import exportkit.xd.View.Profile.profile_activity;
 import exportkit.xd.View.Recipe.recipeDetails_activity;
 import exportkit.xd.View.adapter;
 import exportkit.xd.View.homepage_activity;
@@ -84,7 +84,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
         userID= getIntent().getExtras().getInt("id");
         user= UserController.getUser(userID);
 
-        //display profile info
+        //display IProfile info
         if(user.getAvatar() != null) {
             uploadedImage.setImageURI(Uri.parse(user.getAvatar()));
         }
@@ -122,7 +122,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
         });
         ProfileIcon.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -134,7 +134,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
         Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
-        bundle.putString("profile","searchProfile");
+        bundle.putString("IProfile","searchProfile");
         bundle.putInt("userId", userID);
         nextScreen.putExtras(bundle);
         startActivity(nextScreen);
@@ -143,7 +143,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
         startActivity(nextScreen);
     }
     @Override

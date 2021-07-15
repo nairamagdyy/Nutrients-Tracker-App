@@ -32,7 +32,7 @@ import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.adapter;
 import exportkit.xd.View.homepage_activity;
 
-public  class myProfile_activity extends Activity implements IProfile, IAppViews {
+public  class profile_activity extends Activity implements IProfile, IAppViews {
     private CircularImageView uploadedImage, ProfileIcon;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
@@ -75,7 +75,7 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
         long loggedUser= session.getUserFromSession();
         User user= UserController.getUser((int)loggedUser);
 
-        //display profile info
+        //display IProfile info
         if(user.getAvatar() != null) {
             uploadedImage.setImageURI(Uri.parse(user.getAvatar()));
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
@@ -120,7 +120,7 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
         });
         RecipeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -166,7 +166,7 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
         Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
-        bundle.putString("profile",KEY_VALUE);
+        bundle.putString("IProfile",KEY_VALUE);
         nextScreen.putExtras(bundle);
         startActivity(nextScreen);
     }
@@ -174,7 +174,7 @@ public  class myProfile_activity extends Activity implements IProfile, IAppViews
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
         startActivity(nextScreen);
     }
     @Override

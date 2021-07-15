@@ -13,7 +13,7 @@ import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
-import exportkit.xd.View.Profile.myProfile_activity;
+import exportkit.xd.View.Profile.profile_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 
 public class macroTracker_activity extends camera_activity implements IAppViews {
@@ -44,7 +44,7 @@ public class macroTracker_activity extends camera_activity implements IAppViews 
 
         ProfileButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
                 startActivity(nextScreen);
             }
         });

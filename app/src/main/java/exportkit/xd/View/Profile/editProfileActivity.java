@@ -94,7 +94,7 @@ public class editProfileActivity extends camera_activity implements IAppViews {
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -117,7 +117,7 @@ public class editProfileActivity extends camera_activity implements IAppViews {
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
         startActivity(nextScreen);
     }
     @Override

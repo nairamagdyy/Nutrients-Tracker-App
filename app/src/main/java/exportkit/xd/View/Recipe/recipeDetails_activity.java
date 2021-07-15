@@ -22,7 +22,7 @@ import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Profile.myProfile_activity;
+import exportkit.xd.View.Profile.profile_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.Search.userprofile_Search;
 import exportkit.xd.View.homepage_activity;
@@ -52,7 +52,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
 
         //retrieve recipe id
         int recipeId= getIntent().getExtras().getInt("id");
-        String PROFILE_KEY= getIntent().getExtras().getString("profile");
+        String PROFILE_KEY= getIntent().getExtras().getString("IProfile");
 
         // finds views
         image= findViewById(R.id.food_picture);
@@ -67,12 +67,12 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         HomeButton= findViewById(R.id.home_ek11);
         ProfileIcon= findViewById(R.id.ellipse_ek23);
 
-        //display profile icon
+        //display IProfile icon
         if(user.getAvatar() != null) {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
-         //if is it current logged user profile -> already show delete icon
-        //if is another user profile -> is it in my favList -> show favButton; else show star icon to can add it to favList
+         //if is it current logged user IProfile -> already show delete icon
+        //if is another user IProfile -> is it in my favList -> show favButton; else show star icon to can add it to favList
         if(!PROFILE_KEY.equals("myProfile")){
             Vector<Integer> favList=  RecipeController.viewFavList((int)loggedUser);
             if(favList.contains(recipeId)){ //already added into favList
@@ -122,7 +122,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
             public void onClick(View v) {
                 Intent nextScreen;
                 if(PROFILE_KEY.equals("myProfile"))
-                    nextScreen= new Intent(getApplicationContext(), myProfile_activity.class);
+                    nextScreen= new Intent(getApplicationContext(), profile_activity.class);
                 else {
                     nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
                     Bundle bundle = new Bundle();
@@ -147,7 +147,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         });
         ProfileIcon.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -156,7 +156,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), myProfile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
         startActivity(nextScreen);
     }
 

@@ -24,8 +24,7 @@
 		<activity android:name="exportkit.xd.View.Register.log_in_activity"/>
 		<activity android:name="exportkit.xd.View.Register.sign_up_activity"/>
 		<activity android:name="exportkit.xd.View.homepage_activity" />
-		<activity android:name="exportkit.xd.View.Profile.myProfile_activity"/>
-		<activity android:name="exportkit.xd.View.Profile.myFavorites_activity"/>
+		<activity android:name="exportkit.xd.View.Profile.profile_activity"/>
 		<activity android:name="exportkit.xd.View.Profile.editProfileActivity"/>
 		<activity android:name="exportkit.xd.View.Search.SearchUser_activity" />
 		<activity android:name="exportkit.xd.View.Search.userprofile_Search" />
