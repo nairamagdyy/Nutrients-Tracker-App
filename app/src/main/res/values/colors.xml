@@ -17,7 +17,7 @@
 	<color name="home_indicator_ek2_color">#E3E3E3</color>
 	<color name="_bg__cover_ek2_color">#200E32</color>
 	<color name="start_tracking_color">#FFFFFF</color>
-	<color name="let_s_join_our_community_to_track_nutrients_in_your_food__color">#9FA5C0</color>
+	<color name="choice">#9FA5C0</color>
 	<color name="ellipse_2_3_color">#2CD992</color>
 	<color name="_ellipse_2_4_color">#DBDBDB</color>
 	<color name="login_color">#2D3D5C</color>
@@ -27,7 +27,7 @@
 	<color name="please_enter_your_account_here_color">#F4F5F7</color>
 	<color name="capacity_ek1_color">#000000</color>
 	<color name="male_color">#C4C4C4</color>
-	<color name="sign_up_success_color">#3D5480</color>
+	<color name="select">#3D5480</color>
 	<color name="_bg__homepage_ek2_color">#FBFDFF</color>
 	<color name="rectangle_2_color">#D2D2D2</color>
 	<color name="rectangle_2_18_color">#FFFEFE</color>

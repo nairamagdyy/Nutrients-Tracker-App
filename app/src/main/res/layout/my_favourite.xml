@@ -94,7 +94,7 @@
                             <Button android:id="@+id/recipes"
                                 android:textSize="16sp"
                                 android:background="@null"
-                                android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                                android:textColor="@color/choice"
                                 android:layout_marginLeft="67dp"
                                 android:layout_marginTop="-14dp"
                                 android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/tabs___default_string"
-                                android:textColor="@color/sign_up_success_color"
+                                android:textColor="@color/select"
                                 android:textStyle="bold"
                                 />
 
@@ -151,7 +151,7 @@
 
                     <TextView android:id="@+id/fruites"
                         android:textSize="14sp"
-                        android:textColor="@color/sign_up_success_color"
+                        android:textColor="@color/select"
                         android:layout_marginLeft="7dp"
                         android:layout_marginTop="167dp"
                         android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
 
                 <TextView android:id="@+id/cacao_maca_walnut_milk"
                     android:textSize="12sp"
-                    android:textColor="@color/sign_up_success_color"
+                    android:textColor="@color/select"
                     android:layout_marginLeft="226.89dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

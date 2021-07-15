@@ -71,13 +71,11 @@
                         android:layout_height="wrap_content"
                         >
 
-
                         <RelativeLayout android:id="@+id/tab___indicator"
                             android:layout_marginTop="36dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             >
-
                             <View android:id="@+id/tabs___indicator"
                                 android:background="@drawable/tabs___indicator_shape"
                                 android:layout_width="match_parent"
@@ -85,28 +83,22 @@
 
                         </RelativeLayout>
 
-
                         <RelativeLayout android:id="@+id/tab___active"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
                             >
-
-                            <View android:id="@+id/rectangle_193"
-                                android:background="@drawable/rectangle_193_shape"
-                                android:layout_marginTop="34dp"
-                                android:layout_width="187dp"
-                                android:layout_height="3dp" />
-
-                            <TextView android:id="@+id/recipes"
+                            <Button android:id="@+id/recipes"
+                                android:background="#ffffff"
                                 android:textSize="16sp"
-                                android:textColor="@color/sign_up_success_color"
+                                android:textColor="@color/select"
+                                android:layout_marginTop="-14dp"
                                 android:layout_marginLeft="67dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/recipes_string"
+                                android:text="RECIPES"
                                 android:textStyle="bold"
                                 />
-
                         </RelativeLayout>
 
 
@@ -118,8 +110,8 @@
 
                             <Button android:id="@+id/FavoriteButton"
                                 android:background="#ffffff"
-                                android:textSize="14sp"
-                                android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                                android:textSize="16sp"
+                                android:textColor="@color/choice"
                                 android:layout_marginTop="-14dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

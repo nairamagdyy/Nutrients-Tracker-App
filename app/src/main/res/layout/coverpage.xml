@@ -33,7 +33,7 @@
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
                     android:textSize="22sp"
-                    android:textColor="@color/let_s_join_our_community_to_track_nutrients_in_your_food__color"
+                    android:textColor="@color/choice"
                     android:layout_marginTop="500dp"
                     android:layout_width="353dp"
                     android:layout_height="79dp"
