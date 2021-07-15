@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
+import java.util.Vector;
+
 import exportkit.xd.Controller.recipeController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
@@ -30,7 +32,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
     userController UserController;
     ImageView image;
     TextView name, description, ingredient;
-    private ImageButton editButton, HomeButton, backButton;
+    private ImageButton editButton, HomeButton, backButton, favButton;
     private Button SearchButton;
     private CircularImageView ProfileIcon;
 
@@ -49,7 +51,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         User user= UserController.getUser((int)loggedUser);
 
         //retrieve recipe id
-        int id= getIntent().getExtras().getInt("id");
+        int recipeId= getIntent().getExtras().getInt("id");
         String PROFILE_KEY= getIntent().getExtras().getString("profile");
 
         // finds views
@@ -60,6 +62,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
 
         backButton = findViewById(R.id.back);
         editButton= findViewById(R.id.edit);
+        favButton= findViewById(R.id.favorite);
         SearchButton= findViewById(R.id.ellipse_ek22);
         HomeButton= findViewById(R.id.home_ek11);
         ProfileIcon= findViewById(R.id.ellipse_ek23);
@@ -68,15 +71,19 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         if(user.getAvatar() != null) {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
-        //select delete icon or fav icon
-        if(PROFILE_KEY.equals("myProfile"))
-            editButton.setImageResource(R.drawable.ic_delete);
-        else
-            editButton.setImageResource(R.drawable.star_1);
-
+         //if is it current logged user profile -> already show delete icon
+        //if is another user profile -> is it in my favList -> show favButton; else show star icon to can add it to favList
+        if(!PROFILE_KEY.equals("myProfile")){
+            Vector<Integer> favList=  RecipeController.viewFavList((int)loggedUser);
+            if(favList.contains(recipeId)){ //already added into favList
+                editButton.setVisibility(View.GONE);
+                favButton.setVisibility(View.VISIBLE);
+            }else
+                editButton.setImageResource(R.drawable.star_1);
+        }
 
         //get recipe info from db
-        Recipe recipe= RecipeController.getRecipe(id);
+        Recipe recipe= RecipeController.getRecipe(recipeId);
 
         //display info
         if(recipe.getImage().equals("null"))
@@ -89,10 +96,24 @@ public class recipeDetails_activity extends Activity implements IAppViews {
 
         //buttons
         editButton.setOnClickListener(new View.OnClickListener() {
-                 public void onClick(View v) {
-                     if(PROFILE_KEY.equals("myProfile"))
-                         RecipeController.deleteRecipe(id);
-                     else {}
+             public void onClick(View v) {
+                 if(PROFILE_KEY.equals("myProfile")) //delete recipe
+                     RecipeController.deleteRecipe(recipeId);
+
+                 else {//add to favoriteList
+                     long id= RecipeController.addToFavList((int) loggedUser, recipeId);
+                     if(id>0) {
+                         editButton.setVisibility(View.GONE);
+                         favButton.setVisibility(View.VISIBLE);
+                     }else
+                         onError("FAILED");
+                 }
+             }
+        });
+        favButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) { //remove from favorite List
+                //RecipeController.deleteRecipe(recipeId);
+
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {

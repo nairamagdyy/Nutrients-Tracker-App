@@ -24,6 +24,8 @@ public class AppDBController extends SQLiteOpenHelper {
     //Tables
     UserTableConstants userTable= new UserTableConstants();
     RecipeTableConstants recipeTable= new RecipeTableConstants();
+    UserFavoriteListTableConstants favListTable= new UserFavoriteListTableConstants();
+
     //------------------------------------DATABASE------------------------------------------------
     public AppDBController(@Nullable Context context) {
         super(context, DB_Name, null, DB_version);
@@ -33,6 +35,7 @@ public class AppDBController extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(userTable.CREATE_USER_TABLE);
         db.execSQL(recipeTable.CREATE_RECIPE_TABLE);
+        db.execSQL(favListTable.CREATE_TABLE);
 
     }
     @Override
@@ -41,6 +44,7 @@ public class AppDBController extends SQLiteOpenHelper {
         //Drop User Table if exist
         db.execSQL(userTable.DROP_USER_TABLE);
         db.execSQL(recipeTable.DROP_RECIPE_TABLE);
+        db.execSQL(favListTable.DROP_TABLE);
         // Create tables again
         onCreate(db);
     }
@@ -224,5 +228,55 @@ public class AppDBController extends SQLiteOpenHelper {
                 > 0;
     }
 
+    public long insertToFavList(int userID, int recipeID){
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(favListTable.DB_col_UserID, userID);
+        values.put(favListTable.DB_col_RecipeID, recipeID);
+
+        // Inserting Row
+        long id = db.insert(favListTable.DB_Table, null, values);
+        db.close();
+
+        return id;
+    }
+
+    public  Vector<Integer> getFavList(int userID){
+        Vector<Integer> favRecipesList= new Vector<>();
+
+        db = this.getReadableDatabase();
+        Cursor cursor = db.query(favListTable.DB_Table,
+                new String[] {favListTable.DB_col_RecipeID},
+                favListTable.DB_col_UserID + "=?",
+                new String[] { String.valueOf(userID)},
+                null, null, null, null);
+
+        if (cursor != null) {
+            while(cursor.moveToNext())
+                favRecipesList.add(cursor.getInt(0));
+
+        }
+
+        return favRecipesList;
+    }
+
+    public boolean deleteRecipeFromFavList(int id){
+        db= this.getReadableDatabase();
+        return db.delete(favListTable.DB_Table, favListTable.DB_col_ID+"=?", new String[]{String.valueOf(id)})
+                > 0;
+    }
+  /*
+    public int getFavID(int userID, int recipeID){
+            db = this.getReadableDatabase();
+            Cursor cursor = db.query(favListTable.DB_Table,
+                    new String[] {favListTable.DB_col_ID},
+                    userTable.DB_col_email + "=?",
+                    new String[] { String.valueOf(email) }, null, null, null, null);
+            if (cursor != null)
+                cursor.moveToFirst();
+
+            return cursor.getInt(0) ;
+    }
+*/
 }
 

@@ -146,25 +146,27 @@
                             android:layout_height="wrap_content"
                             >
 
-                            <RelativeLayout android:id="@+id/arrow_ios_back"
+                            <RelativeLayout
+                                android:id="@+id/arrow_ios_back"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                >
+                                android:layout_height="wrap_content">
 
-                                <ImageView android:id="@+id/vector_ek4"
-                                    android:src="@drawable/vector_ek4"
-                                    android:contentDescription="vector_ek4"
-                                    android:alpha="0"
+                                <ImageView
+                                    android:id="@+id/vector_ek4"
                                     android:layout_width="24dp"
-                                    android:layout_height="24dp" />
+                                    android:layout_height="24dp"
+                                    android:alpha="0"
+                                    android:contentDescription="vector_ek4"
+                                    android:src="@drawable/vector_ek4" />
 
-                                <ImageButton android:id="@+id/back"
-                                    android:src="@drawable/vector_ek5"
-                                    android:layout_marginStart="8dp"
-                                    android:layout_marginTop="5dp"
+                                <ImageButton
+                                    android:id="@+id/back"
                                     android:layout_width="20dp"
                                     android:layout_height="14dp"
-                                    android:layout_marginLeft="1dp" />
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginLeft="1dp"
+                                    android:layout_marginTop="5dp"
+                                    android:src="@drawable/vector_ek5" />
 
                             </RelativeLayout>
 
@@ -175,14 +177,25 @@
                 </RelativeLayout>
 
                 <ImageButton android:id="@+id/edit"
+                    android:background="@null"
                     android:src="@drawable/ic_delete"
                     android:layout_marginStart="313dp"
-                    android:layout_marginTop="330dp"
                     android:layout_width="38dp"
                     android:layout_height="34dp"
+                    android:layout_marginTop="320dp"
+                    android:layout_marginLeft="350dp" />
+
+                <ImageButton android:id="@+id/favorite"
+                    android:background="@drawable/round2"
+                    android:src="@drawable/star_1"
+                    android:layout_marginStart="313dp"
+                    android:layout_width="38dp"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="320dp"
                     android:layout_marginLeft="350dp"
-                    android:background="@null"
+                    android:visibility="invisible"
                     />
+
 
             </RelativeLayout>
         </RelativeLayout>

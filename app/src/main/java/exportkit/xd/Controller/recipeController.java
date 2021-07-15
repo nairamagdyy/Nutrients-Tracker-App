@@ -1,11 +1,13 @@
 package exportkit.xd.Controller;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.Vector;
 
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.Model.Recipe;
+import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 
 public class recipeController {
@@ -39,6 +41,24 @@ public class recipeController {
         boolean remove= db.deleteRecipe(id);
         if(remove) {
             view.onSuccess("Delete Successfully");
+        }
+        else
+            view.onError("FAILED");
+
+    }
+
+    public long addToFavList(int userID, int recipeID){
+        return db.insertToFavList(userID, recipeID);
+    }
+
+    public Vector<Integer> viewFavList(int userId){
+        return db.getFavList(userId);
+    }
+
+    public void unFavRecipe(int userId, int recipeId){
+        boolean remove= false; //db.deleteRecipe(id);
+        if(remove) {
+            view.onSuccess("Un Favorite Recipe");
         }
         else
             view.onError("FAILED");
