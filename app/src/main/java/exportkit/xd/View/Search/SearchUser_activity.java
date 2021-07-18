@@ -61,7 +61,8 @@ public class SearchUser_activity extends Activity implements IAppViews {
         //buttons functions
         done.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String Username = username.getText().toString();
+                String txtName = username.getText().toString(),
+                        Username= txtName.replaceAll("\\s",""); //remove all spaces
                 List<User> userinfo = userController.SearchUser(Username);
 
                 if (userinfo.isEmpty()) {

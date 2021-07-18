@@ -229,7 +229,7 @@ public class AppDBController extends SQLiteOpenHelper {
         int recTable= db.delete(recipeTable.DB_Table, recipeTable.DB_col_ID+"=?", new String[]{String.valueOf(id)}),
                favTable= db.delete(favListTable.DB_Table, favListTable.DB_col_RecipeID+"=?", new String[]{String.valueOf(id)});
 
-        return recTable>0 & favTable>0;
+        return recTable>0;
     }
 
     public long insertToFavList(int userID, int recipeID){

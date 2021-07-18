@@ -71,8 +71,8 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         if(user.getAvatar() != null) {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
-         //if is it current logged user IProfile -> already show delete icon
-        //if is another user IProfile -> is it in my favList -> show favButton; else show star icon to can add it to favList
+         //if current logged user IProfile -> already show delete icon
+        //if another user IProfile -> is it in my favList -> show favButton; else show star icon to can add it to favList
         if(!PROFILE_KEY.equals("myProfile")){
             Vector<Integer> favList=  RecipeController.viewFavList((int)loggedUser);
             if(favList.contains(recipeId)){ //already added into favList
@@ -106,7 +106,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
                          editButton.setVisibility(View.GONE);
                          favButton.setVisibility(View.VISIBLE);
                      }else
-                         onError("FAILED");
+                         onError("FAILED!!");
                  }
              }
         });
