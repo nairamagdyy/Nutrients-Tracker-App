@@ -161,6 +161,7 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
         recycle.setLayoutManager(gridLayoutManager);
         recycle.setAdapter(Adapter);
     }
+
     @Override
     public void viewRecipeDetails(int id) {
         Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
@@ -177,9 +178,9 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
         Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
         startActivity(nextScreen);
     }
+
     @Override
     public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
     }
-
 }
