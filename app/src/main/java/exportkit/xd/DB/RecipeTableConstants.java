@@ -9,6 +9,7 @@ public class RecipeTableConstants {
     public static final String DB_col_NAME = "NAME" ;
     public static final String DB_col_DESCRIPTION = "DESCRIPTION" ;
     public static final String DB_col_INGREDIENTS = "INGREDIENTS" ;
+    public static final String DB_col_NUTRIENTSID = "NUTRIENTSID" ;
     public static final String DB_col_USERID = "USERID" ;
 
     public String CREATE_RECIPE_TABLE = "CREATE TABLE "
@@ -18,7 +19,9 @@ public class RecipeTableConstants {
             + DB_col_NAME + " TEXT, "
             + DB_col_DESCRIPTION + " TEXT, "
             + DB_col_INGREDIENTS + " TEXT, "
-            + DB_col_USERID + " INTEGER " +")";
+            + DB_col_NUTRIENTSID+ " INTEGER, "
+            + DB_col_USERID + " INTEGER)";
+
     // drop table sql query
     public String DROP_RECIPE_TABLE = "DROP TABLE IF EXISTS " + DB_Table;
 }

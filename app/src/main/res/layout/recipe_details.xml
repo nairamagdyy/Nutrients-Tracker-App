@@ -27,10 +27,11 @@
                 android:layout_height="wrap_content"
                 >
 
-                <ImageView android:id="@+id/food_picture"
-                    android:src="@drawable/food_picture"
+                <ImageView
+                    android:id="@+id/food_picture"
                     android:layout_width="fill_parent"
-                    android:layout_height="375dp" />
+                    android:layout_height="375dp"
+                    android:src="@drawable/food_picture" />
 
                 <View android:id="@+id/pop_up"
                     android:background="@drawable/pop_up_shape"
@@ -44,7 +45,7 @@
                     android:textSize="17sp"
                     android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
                     android:layout_marginLeft="18dp"
-                    android:layout_marginTop="493dp"
+                    android:layout_marginTop="460dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="dfghn"
@@ -52,7 +53,7 @@
 
                 <View android:id="@+id/line_spacing"
                     android:background="@drawable/line_spacing_ek1_shape"
-                    android:layout_marginTop="437dp"
+                    android:layout_marginTop="410dp"
                     android:layout_width="wrap_content"
                     android:layout_height="1dp"
                     android:layout_marginLeft="30dp"
@@ -60,7 +61,7 @@
 
                 <View android:id="@+id/line_spacing_ek1"
                     android:background="@drawable/line_spacing_ek1_shape"
-                    android:layout_marginTop="587dp"
+                    android:layout_marginTop="520dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="30dp"
                     android:layout_width="wrap_content"
@@ -83,10 +84,43 @@
                     android:textSize="17sp"
                     android:textColor="@color/cacao_maca_walnut_milk_color"
                     android:layout_marginLeft="18dp"
-                    android:layout_marginTop="450dp"
+                    android:layout_marginTop="430dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description"
+                    />
+
+
+                <TextView android:id="@+id/nutrients_"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="@color/cacao_maca_walnut_milk_color"
+                    android:layout_marginLeft="22dp"
+                    android:layout_marginTop="550dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="nutrition Facts"
+                    />
+
+                <TextView android:id="@+id/nutritionFacts"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="580dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dfghn"
+                    />
+
+
+                <View android:id="@+id/line_spacing_ek15"
+                    android:background="@drawable/line_spacing_ek1_shape"
+                    android:layout_marginTop="650dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
                     />
 
                 <TextView android:id="@+id/ingredient_"
@@ -94,7 +128,7 @@
                     android:textSize="17sp"
                     android:textColor="@color/cacao_maca_walnut_milk_color"
                     android:layout_marginLeft="22dp"
-                    android:layout_marginTop="604dp"
+                    android:layout_marginTop="670dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ingredients"
@@ -105,7 +139,7 @@
                     android:textSize="17sp"
                     android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
                     android:layout_marginLeft="18dp"
-                    android:layout_marginTop="650dp"
+                    android:layout_marginTop="690dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="dfghn"

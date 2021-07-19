@@ -35,7 +35,7 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.recipe_dynamic_display,parent,false);
+        View view = inflater.inflate(R.layout.recipe_display_profile,parent,false);
         return new ViewHolder(view);
     }
 

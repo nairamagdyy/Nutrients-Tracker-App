@@ -1,14 +1,14 @@
 package exportkit.xd.Controller;
 
 import android.content.Context;
-import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.Model.Recipe;
-import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
+import exportkit.xd.View.Recipe.Item;
 
 public class recipeController {
 
@@ -27,6 +27,14 @@ public class recipeController {
         }
         else
             view.onError("FAILED");
+    }
+
+    public long addRecipeNutrients(ArrayList<Item> facts){
+        return db.insertRecipeNutrients(facts);
+    }
+
+    public Vector<String> getRecipeNutrients(int id){
+        return db.getRecipeNutrients(id);
     }
 
     public Vector<Integer> viewRecipeList(int userId){
@@ -58,4 +66,6 @@ public class recipeController {
     public void unFavRecipe(int userId, int recipeId){
        db.deleteRecipeFromFavList(userId, recipeId);
     }
+
+
 }

@@ -31,7 +31,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
     recipeController RecipeController;
     userController UserController;
     ImageView image;
-    TextView name, description, ingredient;
+    TextView name, description, ingredient, nutrients;
     private ImageButton editButton, HomeButton, backButton, favButton;
     private Button SearchButton;
     private CircularImageView ProfileIcon;
@@ -59,6 +59,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         name= findViewById(R.id.foodName);
         description= findViewById(R.id.getDescription);
         ingredient= findViewById(R.id.ingredients);
+        nutrients= findViewById(R.id.nutritionFacts);
 
         backButton = findViewById(R.id.back);
         editButton= findViewById(R.id.edit);
@@ -86,13 +87,18 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         Recipe recipe= RecipeController.getRecipe(recipeId);
 
         //display info
-        if(recipe.getImage().equals("null"))
+        if(recipe.getImage().equals("null")) {
             image.setImageResource(R.drawable.recipeimage);
-        else
+        }else {
             image.setImageURI(Uri.parse(recipe.getImage()));
+        }
         name.setText(recipe.getName());
         description.setText(recipe.getDescription());
         ingredient.setText(recipe.getIngredients());
+        //get facts information
+        Vector<String> facts= RecipeController.getRecipeNutrients(recipe.getNutrientsID());
+        nutrients.setText(String.valueOf(facts));
+
 
         //buttons
         editButton.setOnClickListener(new View.OnClickListener() {

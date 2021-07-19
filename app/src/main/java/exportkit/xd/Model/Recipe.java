@@ -1,8 +1,6 @@
 package exportkit.xd.Model;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Vector;
 
 public class Recipe implements Serializable {
     int id ;
@@ -10,7 +8,7 @@ public class Recipe implements Serializable {
     String name ;
     String description;
     String ingredients;
-    String nutrientsFacts;
+    int nutrientsFacts; // foreign key to link between recipe and its nutrients facts
     int user; // foreign key to link between user and his recipes
 
     //----------------------------------------------------------------------------------------------
@@ -25,8 +23,8 @@ public class Recipe implements Serializable {
     public void setName(String name){this.name= name;}
     public void setDescription(String description){this.description= description;}
     public void setIngredients(String ingredients){ this.ingredients = ingredients; }
-    public void setFacts(String nutrients){
-        this.nutrientsFacts= nutrients;
+    public void setNutrientsID(int nutrientsID){
+        this.nutrientsFacts= nutrientsID;
     }
 
     //---------------------------------------Getter-------------------------------------------------
@@ -46,7 +44,7 @@ public class Recipe implements Serializable {
     public String getImage() {
         return image;
     }
-    public String getFacts() {
+    public int getNutrientsID() {
         return nutrientsFacts;
     }
     public String getDescription(){
