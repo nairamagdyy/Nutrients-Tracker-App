@@ -129,7 +129,6 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
     @Override
     public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
-
     }
 
     //----------------------------------------------------------------------------------------------
