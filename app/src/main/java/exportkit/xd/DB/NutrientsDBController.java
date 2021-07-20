@@ -22,7 +22,6 @@ public class NutrientsDBController {
     public HashMap<String, ArrayList<Item>> getNutrientsInfo(ArrayList<Item> ingredients)
     {
         HashMap<String, ArrayList<Item>> Map = new HashMap<>();
-        ArrayList<Item> Facts = new ArrayList<>();
 
         try{
             AssetManager assetManager= context.getAssets();
@@ -37,12 +36,13 @@ public class NutrientsDBController {
             for(int k=0; k<ingredients.size(); k++) { //loop on my ingredients list
                 for (int i=1; i<numberOfRows; i++) { //loop on excel rows, start with 1 ; row 0 has headers
                     Cell[] curRow = sheet.getRow(i);
-                    String ingredientName = curRow[0].getContents();
+                    String ingredientName = curRow[0].getContents().trim();
                     if(ingredients.get(k).name.equals(ingredientName)){ // if this row = curr ingredient
+                        ArrayList<Item> Facts = new ArrayList<>();
                         for(int c=1; c<numberOfColumns; c++) { //get nutrients information
                             Item fact = new Item();
-                            fact.name = headerRow[c].getContents();//title
-                            fact.amount = Double.parseDouble(curRow[c].getContents());
+                            fact.name = headerRow[c].getContents().replaceAll("\\s","");//title
+                            fact.amount = Double.parseDouble(curRow[c].getContents().replaceAll("\\s",""));
                             Facts.add(fact);
                         }
 
