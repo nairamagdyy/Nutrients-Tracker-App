@@ -1,9 +1,7 @@
 package exportkit.xd.View;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,10 +13,10 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import exportkit.xd.Controller.cameraController;
 
-import static exportkit.xd.DB.CameraConstants.CAMERA_REQUEST_CODE;
-import static exportkit.xd.DB.CameraConstants.IMAGE_PICK_CAMERA_CODE;
-import static exportkit.xd.DB.CameraConstants.IMAGE_PICK_GALLERY_CODE;
-import static exportkit.xd.DB.CameraConstants.STORAGE_REQUEST_CODE;
+import static exportkit.xd.DB.Constatnts.CameraConstants.CAMERA_REQUEST_CODE;
+import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_CAMERA_CODE;
+import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_GALLERY_CODE;
+import static exportkit.xd.DB.Constatnts.CameraConstants.STORAGE_REQUEST_CODE;
 
 public abstract class camera_activity extends AppCompatActivity {
     public cameraController CamController;

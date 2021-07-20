@@ -1,4 +1,4 @@
-package exportkit.xd.DB;
+package exportkit.xd.DB.Constatnts;
 
 public class CameraConstants {
     //permission constants

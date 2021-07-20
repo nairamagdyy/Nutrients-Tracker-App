@@ -1,49 +1,48 @@
 package exportkit.xd.DB;
 
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.util.CellReference;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import android.content.Context;
+import android.content.res.AssetManager;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import exportkit.xd.View.Recipe.Item;
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
 
 public class NutrientsDBController {
 
-    static String SheetPath= "./Files/NutritionFacts.csv";
-    private static Row row ;
+    Context context;
+    public NutrientsDBController(Context cntx) {
+        this.context= cntx;
+    }
 
-    public static HashMap<String, ArrayList<Item>> getNutrientsInfo(ArrayList<Item> ingredients)
+    public HashMap<String, ArrayList<Item>> getNutrientsInfo(ArrayList<Item> ingredients)
     {
         HashMap<String, ArrayList<Item>> Map = new HashMap<>();
         ArrayList<Item> Facts = new ArrayList<>();
 
-        try {
-            FileInputStream fileInput = new FileInputStream(SheetPath);
-            Workbook workbook = new XSSFWorkbook(fileInput);
-            Sheet sheet = workbook.getSheetAt(0);
+        try{
+            AssetManager assetManager= context.getAssets();
+            InputStream inputStreams= assetManager.open("NutritionFacts.xls");
+            Workbook workbook= Workbook.getWorkbook(inputStreams);
+            Sheet sheet= workbook.getSheet(0);
+            int numberOfRows= sheet.getRows(),
+                    numberOfColumns=sheet.getColumns();
 
-            row = sheet.getRow(0);
-            int numberOfColumns = row.getLastCellNum();
-            int numberOfRows = sheet.getLastRowNum() ; // number of rows in excel sheet
+            Cell[] headerRow= sheet.getRow(0);
 
             for(int k=0; k<ingredients.size(); k++) { //loop on my ingredients list
-                for (int i=0; i<numberOfRows; i++) { //loop on excel rows
-                    row = sheet.getRow(i);
-
-                    String ingredientName = row.getCell(0).getStringCellValue();
+                for (int i=1; i<numberOfRows; i++) { //loop on excel rows, start with 1 ; row 0 has headers
+                    Cell[] curRow = sheet.getRow(i);
+                    String ingredientName = curRow[0].getContents();
                     if(ingredients.get(k).name.equals(ingredientName)){ // if this row = curr ingredient
-
-                        for(int j=1; j<numberOfColumns; j++) { //get nutrients information
+                        for(int c=1; c<numberOfColumns; c++) { //get nutrients information
                             Item fact = new Item();
-                            fact.name = CellReference.convertNumToColString(i);
-                            fact.amount = Double.parseDouble(row.getCell(j).getStringCellValue().trim());
+                            fact.name = headerRow[c].getContents();//title
+                            fact.amount = Double.parseDouble(curRow[c].getContents());
                             Facts.add(fact);
                         }
 
@@ -52,16 +51,10 @@ public class NutrientsDBController {
                     }
                 }
             }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        catch (Exception e){ }
+
 
         return Map ;
     }
-
-
-
 }

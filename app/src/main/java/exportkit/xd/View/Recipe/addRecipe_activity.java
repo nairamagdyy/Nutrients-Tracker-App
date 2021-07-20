@@ -17,7 +17,6 @@ import exportkit.xd.Controller.NutrientsController;
 import exportkit.xd.Controller.cameraController;
 import exportkit.xd.Controller.recipeController;
 import exportkit.xd.DB.SessionManager;
-import exportkit.xd.Model.Recipe;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.profile_activity;
@@ -46,7 +45,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
 
         RecipeController = new recipeController(this);
         CamController = new cameraController(this);
-        nutrientsController= new NutrientsController();
+        nutrientsController= new NutrientsController(this);
 
         //dynamic view
         dynamicAddBtn = findViewById(R.id.addIngredientBtn);
@@ -97,7 +96,9 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
                             all_ingredients+=record;
                         }
                         //calculate Nutrients Facts for the recipe then insert it
+                        System.out.println("--------------------------------------------------------------begin");
                         ArrayList<Item> facts= nutrientsController.calculateNutrients(ingredientsList);
+                        /*
                         long nutrientsID= RecipeController.addRecipeNutrients(facts);
 
                         //save recipe with all information in DB
@@ -107,7 +108,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
                         recipe.setDescription(recipeDescription);
                         recipe.setIngredients(all_ingredients);
                         recipe.setNutrientsID((int)nutrientsID);
-                        RecipeController.addRecipe(recipe);
+                        RecipeController.addRecipe(recipe);*/
                     }
                 }
             }
