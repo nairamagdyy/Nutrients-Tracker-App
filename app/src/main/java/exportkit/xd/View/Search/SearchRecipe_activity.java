@@ -52,8 +52,9 @@ public class SearchRecipe_activity extends Activity implements IAppViews {
         ProfileIcon = findViewById(R.id.profile1);
         recipesButton = (Button) findViewById(R.id.recipes);
         usersButton = (Button) findViewById(R.id.users) ;
+
         //display IProfile icon
-        // get logged user
+        //get logged user
         SessionManager session = new SessionManager(this);
         long loggedUser= session.getUserFromSession();
         User user= userController.getUser((int)loggedUser);
@@ -65,13 +66,13 @@ public class SearchRecipe_activity extends Activity implements IAppViews {
         done.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v) {
-                List<Recipe> recipeinfo = recipeController.SearchRecipe(recipeName.getText().toString());
-                if (recipeinfo.isEmpty()) {
+                List<Recipe> recipeInfo = recipeController.SearchRecipe(recipeName.getText().toString());
+                if (recipeInfo.isEmpty()) {
                     onError("Recipe Name Doesn't exist");
                 }
                 else
                 {
-                    RecipeId= recipeinfo.get(0).getId();
+                    RecipeId= recipeInfo.get(0).getId();
                     onSuccess("");
                 }
             }
@@ -102,8 +103,6 @@ public class SearchRecipe_activity extends Activity implements IAppViews {
                 startActivity(nextScreen);
             }
         });
-
-
     }
 
     @Override

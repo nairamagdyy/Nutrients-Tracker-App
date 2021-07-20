@@ -1,4 +1,5 @@
-package exportkit.xd.View.Search;
+package exportkit.xd.View.Profile;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,40 +19,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import exportkit.xd.Controller.userController;
-import exportkit.xd.Controller.recipeController;
+import exportkit.xd.Controller.RecipeController;
+import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.Adapter;
+import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Profile.IProfile;
-import exportkit.xd.View.Profile.profile_activity;
-import exportkit.xd.View.Recipe.recipeDetails_activity;
-import exportkit.xd.View.adapter;
-import exportkit.xd.View.homepage_activity;
+import exportkit.xd.View.Recipe.RecipeDetails_activity;
+import exportkit.xd.View.Search.SearchUser_activity;
 
-public class userprofile_Search extends Activity implements IProfile, IAppViews {
+public class UserProfile_activity extends Activity implements IProfile, IAppViews {
     private CircularImageView uploadedImage, ProfileIcon;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
     private Button FavButton , SearchButton;
 
     int userID;
-    userController UserController;
-    recipeController RecipeController;
+    UserController userController;
+    RecipeController recipeController;
 
     RecyclerView recycleRecipeList;
     List<String>  recipeNameList = new ArrayList<>();
     List<String> recipeImageList = new ArrayList<>();
-    adapter Adapter;
+    exportkit.xd.View.Adapter Adapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        UserController = new userController(this);
-        RecipeController= new recipeController(this);
+        userController = new UserController(this);
+        recipeController = new RecipeController(this);
 
         // finds views
         recycleRecipeList = findViewById(R.id.recipeList);
@@ -64,7 +64,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
 
         SearchButton = (Button) findViewById(R.id.ellipse_ek22);
         HomeButton = (ImageButton) findViewById(R.id.home_ek11);
-        ProfileIcon = findViewById(R.id.ellipse_ek23);
+        ProfileIcon = findViewById(R.id.profile1);
 
         //hide unuseful buttons
         FavButton.setVisibility(View.GONE);
@@ -75,14 +75,14 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
         // get logged user
         SessionManager session = new SessionManager(this);
         long loggedUser= session.getUserFromSession();
-        User user= UserController.getUser((int)loggedUser);
+        User user= userController.getUser((int)loggedUser);
         if(user.getAvatar() != null) {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
 
         //retrieve user id
         userID= getIntent().getExtras().getInt("id");
-        user= UserController.getUser(userID);
+        user= userController.getUser(userID);
 
         //display IProfile info
         if(user.getAvatar() != null) {
@@ -93,15 +93,15 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
 
         //Recyclerview as GridView for recipes
         //get user recipe from db
-        Vector<Integer> recipesIdList= RecipeController.viewRecipeList(userID);
+        Vector<Integer> recipesIdList= recipeController.viewRecipeList(userID);
         for(int i=0; i<recipesIdList.size();i++){
-            Recipe recipe= RecipeController.getRecipe(recipesIdList.get(i));
+            Recipe recipe= recipeController.getRecipe(recipesIdList.get(i));
 
             recipeNameList.add(recipe.getName());
             recipeImageList.add(recipe.getImage());
         }
 
-        Adapter = new adapter(this, recipesIdList, recipeNameList, recipeImageList);
+        Adapter = new Adapter(this, recipesIdList, recipeNameList, recipeImageList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
         recycleRecipeList.setLayoutManager(gridLayoutManager);
         recycleRecipeList.setAdapter(Adapter);
@@ -109,7 +109,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
         // buttons functions
         HomeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -122,7 +122,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
         });
         ProfileIcon.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -131,7 +131,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
 
     @Override
     public void viewRecipeDetails(int id) {
-        Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), RecipeDetails_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
         bundle.putString("IProfile","searchProfile");
@@ -143,7 +143,7 @@ public class userprofile_Search extends Activity implements IProfile, IAppViews 
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
         startActivity(nextScreen);
     }
     @Override
