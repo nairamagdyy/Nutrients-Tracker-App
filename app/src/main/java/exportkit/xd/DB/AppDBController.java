@@ -128,15 +128,6 @@ public class AppDBController extends SQLiteOpenHelper {
         return cursor.getInt(0) ;
     }
 
-    public int getUserIDByUsername(String username) {
-        db = this.getReadableDatabase();
-        Cursor cursor = db.query(userTable.DB_User_Table, new String[] {userTable.DB_col_ID}, userTable.DB_col_username+ "=?",
-                new String[] { String.valueOf(username) }, null, null, null, null);
-        if (cursor != null)
-            cursor.moveToFirst();
-
-        return cursor.getInt(cursor.getColumnIndex(userTable.DB_col_ID)) ;
-    }
 
     public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -165,8 +156,6 @@ public class AppDBController extends SQLiteOpenHelper {
             do {
                 User userInfo = new User() ;
                 userInfo.setId(cursor.getInt(cursor.getColumnIndex(userTable.DB_col_ID)));
-                userInfo.setName(cursor.getString(cursor.getColumnIndex(userTable.DB_col_name)));
-                userInfo.setUsername(cursor.getString(cursor.getColumnIndex(userTable.DB_col_username)));
                 result.add(userInfo) ;
             }
             while (cursor.moveToNext());
@@ -240,6 +229,21 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return recTable>0;
     }
+    public List<Recipe> searchRecipe(String recipename) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(recipeTable.DB_Table, new String[] {recipeTable.DB_col_ID}, recipeTable.DB_col_NAME + "=?",
+                new String[] { String.valueOf(recipename) }, null, null, null, null);
+        List<Recipe> result = new ArrayList<>();
+        if (cursor.moveToFirst()) {
+            do {
+                Recipe recipeInfo = new Recipe() ;
+                recipeInfo.setId(cursor.getInt(cursor.getColumnIndex(recipeTable.DB_col_ID)));
+                result.add(recipeInfo) ;
+            }
+            while (cursor.moveToNext());
+        }
+        return result;
+    }
 
     //---------------------------------Favorite List TABLE------------------------------------------
     public long insertToFavList(int userID, int recipeID){
@@ -280,6 +284,7 @@ public class AppDBController extends SQLiteOpenHelper {
                 +" AND "+favListTable.DB_col_RecipeID+" = "+recipeID;
         db.execSQL(query);
     }
+
 
     //---------------------------------RECIPE NUTRIENTS TABLE---------------------------------------
     public long insertRecipeNutrients(ArrayList<Item> facts){

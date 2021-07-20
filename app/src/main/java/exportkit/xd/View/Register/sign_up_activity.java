@@ -62,30 +62,34 @@
 					String Fullname = name.getText().toString();
 					String Username = username.getText().toString();
 					String Email = email.getText().toString();
-					String Password = password.getText().toString() ;
+					String Password = password.getText().toString();
 					String Phone = phone.getText().toString();
 					// get selected radio button from radioGroup
 					int selectedId = radioSexGroup.getCheckedRadioButtonId();
-					// find the radiobutton by returned id
-					radioSexButton = (RadioButton) findViewById(selectedId);
-					String gender = radioSexButton.getText().toString();
+					if (selectedId < 0) {
+						Toast.makeText(getApplication(), "you should fill the empty fields", Toast.LENGTH_LONG).show();
+					} else {
+						// find the radiobutton by returned id
+						radioSexButton = (RadioButton) findViewById(selectedId);
 
-					if (Fullname.equalsIgnoreCase("")
-							|| Username.equalsIgnoreCase("")
-							|| Email.equalsIgnoreCase("")
-							|| Password.equalsIgnoreCase("")
-							|| Phone.equalsIgnoreCase(""))
-					{
-						Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
+						String gender = radioSexButton.getText().toString();
+						System.out.println("Gender = " + gender);
+						if (Fullname.equalsIgnoreCase("")
+								|| Username.equalsIgnoreCase("")
+								|| Email.equalsIgnoreCase("")
+								|| Password.equalsIgnoreCase("")
+								|| Phone.equalsIgnoreCase("")
+						) {
+							Toast.makeText(getApplication(), "you should fill the empty fields", Toast.LENGTH_LONG).show();
 
-					}
-                     else
-					{
-						User newUser= new User(Fullname, Username,  Email, Phone, Password , gender);
-						signUpController.signUp(newUser);
+						} else {
+							User newUser = new User(Fullname, Username, Email, Phone, Password, gender);
+							signUpController.signUp(newUser);
 
-					}
-				}
+						}
+
+					}}
+
 			});
 
 		}

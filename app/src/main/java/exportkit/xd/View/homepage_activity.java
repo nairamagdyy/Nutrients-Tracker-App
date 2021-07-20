@@ -59,6 +59,8 @@ public class homepage_activity extends Activity implements IAppViews{
 			public void onClick(View v) {
 				Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
 				startActivity(nextScreen);
+				Toast.makeText(getApplication(),"Now You are On Search User Mode",Toast.LENGTH_LONG).show();
+
 			}
 		});
 		addrecipeButton.setOnClickListener(new View.OnClickListener() {

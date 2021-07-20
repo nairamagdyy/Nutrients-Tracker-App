@@ -239,7 +239,7 @@
                             android:src="@drawable/home_ek11"
                             android:contentDescription="home_ek11"
                             android:layout_width="23.75dp"
-                            android:layout_height="25dp" />
+                            android:layout_height="30dp" />
 
                     </RelativeLayout>
 

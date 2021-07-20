@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/search_user"
+        android:id="@+id/search_recipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -47,7 +47,8 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="194dp"
                         android:layout_marginRight="194dp"
-                        android:background="#3CB371"
+                        android:background="@color/_bg__detail_recipe_ek2_color"
+                        android:shadowColor="#ffffff"
                         android:shadowDx="0"
                         android:shadowDy="4"
                         android:shadowRadius="4"
@@ -73,7 +74,8 @@
                         android:layout_marginStart="25dp"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="0dp"
-                        android:background="@color/_bg__detail_recipe_ek2_color"
+                        android:background="#3CB371"
+
                         android:shadowColor="#ffffff"
                         android:shadowDx="0"
                         android:shadowDy="4"

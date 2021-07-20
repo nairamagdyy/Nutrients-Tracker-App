@@ -37,7 +37,7 @@ public class userController{
             view.onSuccess("Registration Successfully");
         }
         else
-            view.onError("email exists or username, enter new one!!!!");
+            view.onError("email or username exits, enter new one!!!!");
     }
 
     public void login(String email, String password) {
@@ -65,7 +65,7 @@ public class userController{
         if(data)
             view.onSuccess("Edit Operation is Successfully");
         else
-            view.onError("email exists or username , enter new one!!!!");
+            view.onError("username Exits, enter new one!!!!");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)

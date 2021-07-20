@@ -17,33 +17,34 @@ import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
 import java.util.List;
 
+import exportkit.xd.Controller.recipeController;
 import exportkit.xd.Controller.userController;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.profile_activity;
+import exportkit.xd.View.Recipe.recipeDetails_activity;
 import exportkit.xd.View.homepage_activity;
 
-public class SearchUser_activity extends Activity implements IAppViews {
-    EditText username;
+public class SearchRecipe_activity extends Activity implements IAppViews {
+    EditText recipename;
     Button done , recipesButton , usersButton ;
     ImageButton back, HomeButton;
-    private CircularImageView ProfileIcon;
-    int userID;
-
     userController UController;
+    recipeController RController;
+    int RecipeId ;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
+    private CircularImageView ProfileIcon;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_user);
-
+        setContentView(R.layout.search_recipe);
         UController = new userController(this);
+        RController = new recipeController(this);
 
         //find views
-        username = (EditText) findViewById(R.id.search);
+        recipename = (EditText) findViewById(R.id.search);
         done = (Button) findViewById(R.id.ellipse_ek22);
         back = (ImageButton) findViewById(R.id.backk);
         HomeButton = (ImageButton) findViewById(R.id.home1);
@@ -59,22 +60,21 @@ public class SearchUser_activity extends Activity implements IAppViews {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
 
-        //buttons functions
+        // buttons Functions
         done.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v) {
-                String txtName = username.getText().toString(), Username= txtName.replaceAll("\\s",""); //remove all spaces
-                List<User> userinfo = UController.SearchUser(Username);
-                if (userinfo.isEmpty()) {
-                    onError("The username Doesn't exist");
+                List<Recipe> recipeinfo = RController.SearchRecipe(recipename.getText().toString());
+                if (recipeinfo.isEmpty()) {
+                    onError("Recipe Name Doesn't exist");
                 }
                 else
                 {
-                    userID= userinfo.get(0).getId();
+                    RecipeId= recipeinfo.get(0).getId();
                     onSuccess("");
                 }
             }
         });
-
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
@@ -87,11 +87,11 @@ public class SearchUser_activity extends Activity implements IAppViews {
                 startActivity(nextScreen);
             }
         });
-        recipesButton.setOnClickListener(new View.OnClickListener() {
+        usersButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), SearchRecipe_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
                 startActivity(nextScreen);
-                Toast.makeText(getApplication(),"Now You are On Search Recipe Mode",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(),"Now You are On Search User Mode",Toast.LENGTH_LONG).show();
 
             }
         });
@@ -101,13 +101,16 @@ public class SearchUser_activity extends Activity implements IAppViews {
                 startActivity(nextScreen);
             }
         });
+
+
     }
 
     @Override
     public void onSuccess(String message) {
-        Intent nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
+        Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("id", userID);
+        bundle.putInt("id", RecipeId);
+        bundle.putString("IProfile","myProfile");
         nextScreen.putExtras(bundle);
         startActivity(nextScreen);
     }

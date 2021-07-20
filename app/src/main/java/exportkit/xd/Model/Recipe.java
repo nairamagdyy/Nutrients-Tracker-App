@@ -17,6 +17,10 @@ public class Recipe implements Serializable {
         this.user = Userid;
     }
 
+    public Recipe() {
+
+    }
+
     //---------------------------------------Setter-------------------------------------------------
     public void setId(int id) { this.id = id; }
     public void setImage(String image){ this.image= image;}

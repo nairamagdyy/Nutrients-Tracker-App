@@ -258,11 +258,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3.13dp">
 
-                <ImageButton android:id="@+id/home_ek11"
-                    android:src="@drawable/home_ek11"
+                <ImageButton
+                    android:id="@+id/home_ek11"
+                    android:layout_width="23.5dp"
+                    android:layout_height="30dp"
                     android:contentDescription="home_ek11"
-                    android:layout_width="23.75dp"
-                    android:layout_height="25dp" />
+                    android:src="@drawable/home_ek11" />
 
             </RelativeLayout>
 

@@ -29,6 +29,7 @@ public class User {
         this.password = password;
 
     }
+
     public User(int id , String name, String username, String email) {
         this.id= id ;
         this.name = name;
