@@ -37,7 +37,7 @@ public class userController{
             view.onSuccess("Registration Successfully");
         }
         else
-            view.onError("email or username exits, enter new one!!!!");
+            view.onError("email or username exist, enter new one!!!!");
     }
 
     public void login(String email, String password) {
