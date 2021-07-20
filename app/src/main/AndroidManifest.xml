@@ -26,13 +26,14 @@
 		<activity android:name="exportkit.xd.View.Register.SignUp_activity"/>
 		<activity android:name="exportkit.xd.View.Homepage_activity" />
 		<activity android:name="exportkit.xd.View.Profile.Profile_activity"/>
-		<activity android:name="exportkit.xd.View.Profile.EditProfile_activity"/>
+		<activity android:name="exportkit.xd.View.Profile.EditProfile_"/>
 		<activity android:name="exportkit.xd.View.Search.SearchUser_activity" />
 		<activity android:name="exportkit.xd.View.Profile.UserProfile_activity" />
-		<activity android:name="exportkit.xd.View.Recipe.AddRecipe_activity" />
-		<activity android:name="exportkit.xd.View.Recipe.MacroTracker_activity" />
+		<activity android:name="exportkit.xd.View.Recipe.AddRecipe_" />
+		<activity android:name="exportkit.xd.View.Recipe.MacroTracker_" />
 		<activity android:name="exportkit.xd.View.Search.SearchRecipe_activity" />
 		<activity android:name="exportkit.xd.View.Recipe.RecipeDetails_activity" />
+		<activity android:name="exportkit.xd.View.Scanner.Scanner_activity" />
 		<!-- Image cropper activity -->
 		<activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
 			android:theme="@style/AppTheme"/>

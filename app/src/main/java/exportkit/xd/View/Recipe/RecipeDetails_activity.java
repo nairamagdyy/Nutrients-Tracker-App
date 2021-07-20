@@ -127,7 +127,7 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
         });
         MacroTracker.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) { //remove from favorite List
-                Intent nextScreen = new Intent(getApplicationContext(), MacroTracker_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), MacroTracker_.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("recipeID",recipeId);
                 bundle.putString("IProfile", PROFILE_KEY);

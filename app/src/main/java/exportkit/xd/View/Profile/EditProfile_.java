@@ -19,9 +19,9 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Camera_activity;
+import exportkit.xd.View.Scanner.Camera;
 
-public class EditProfile_activity extends Camera_activity implements IAppViews {
+public class EditProfile_ extends Camera implements IAppViews {
     UserController userController;
 
     private TextView email, password, phone, name, username;

@@ -19,12 +19,12 @@ import exportkit.xd.Controller.RecipeController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.R;
-import exportkit.xd.View.Camera_activity;
+import exportkit.xd.View.Scanner.Camera;
 import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.Profile_activity;
 
-public class AddRecipe_activity extends Camera_activity implements IAppViews {
+public class AddRecipe_ extends Camera implements IAppViews {
     //dynamic view
     LinearLayout ingredients_layoutList;
     Button dynamicAddBtn;

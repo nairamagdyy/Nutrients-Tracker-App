@@ -1,4 +1,4 @@
-package exportkit.xd.View;
+package exportkit.xd.View.Scanner;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,9 +18,9 @@ import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_CAMERA_CODE;
 import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_GALLERY_CODE;
 import static exportkit.xd.DB.Constatnts.CameraConstants.STORAGE_REQUEST_CODE;
 
-public abstract class Camera_activity extends AppCompatActivity {
+public abstract class Camera extends AppCompatActivity {
     public CameraController cameraController;
-    public CircularImageView uploadedImage;
+    public CircularImageView uploadedImage; //in view/ xml file
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

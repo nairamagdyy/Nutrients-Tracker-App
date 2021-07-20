@@ -115,7 +115,7 @@ public class Profile_activity extends Activity implements IProfile, IAppViews {
         });
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), EditProfile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), EditProfile_.class);
                 startActivity(nextScreen);
             }
         });
