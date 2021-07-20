@@ -5,7 +5,6 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import exportkit.xd.DB.AppDBController;
@@ -13,13 +12,13 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.View.IAppViews;
 
-public class userController{
+public class UserController{
 
     AppDBController db;
     SessionManager session;
     IAppViews view;
 
-    public userController(IAppViews view) {
+    public UserController(IAppViews view) {
         this.view = view;
         db = new AppDBController((Context) this.view);
     }

@@ -12,32 +12,33 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
-import exportkit.xd.Controller.userController;
+import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
-import exportkit.xd.View.Profile.profile_activity;
-import exportkit.xd.View.Recipe.addRecipe_activity;
+import exportkit.xd.View.Profile.Profile_activity;
+import exportkit.xd.View.Recipe.AddRecipe_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 
-public class homepage_activity extends Activity implements IAppViews{
+public class Homepage_activity extends Activity implements IAppViews{
 	private TextView name;
 	private ImageButton addrecipeButton;
 	private CircularImageView ProfileButton;
 	private Button SearchButton;
 
-	userController userController;
+	UserController userController;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.homepage);
 
+		userController = new UserController(this) ;
+
 		name = (TextView) findViewById(R.id.hello);
 		addrecipeButton = (ImageButton) findViewById(R.id.addrecipebutton);
-		ProfileButton = findViewById(R.id.ellipse_ek23);
+		ProfileButton = findViewById(R.id.profile1);
 		SearchButton = (Button) findViewById(R.id.ellipse_ek22);
 
-		userController = new userController(this) ;
 
 		SessionManager session= new SessionManager(this);
 		long loggedUserID= session.getUserFromSession();
@@ -51,7 +52,7 @@ public class homepage_activity extends Activity implements IAppViews{
 
 		ProfileButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+				Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
 				startActivity(nextScreen);
 			}
 		});
@@ -65,7 +66,7 @@ public class homepage_activity extends Activity implements IAppViews{
 		});
 		addrecipeButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent nextScreen = new Intent(getApplicationContext(), addRecipe_activity.class);
+				Intent nextScreen = new Intent(getApplicationContext(), AddRecipe_activity.class);
 				startActivity(nextScreen);
 			}
 		});
@@ -74,7 +75,7 @@ public class homepage_activity extends Activity implements IAppViews{
 	@Override
 	public void onSuccess(String message) {
 		Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-		Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+		Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
 		startActivity(nextScreen);
 	}
 	@Override

@@ -16,14 +16,14 @@ import java.util.List;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.IProfile;
 
-public class adapter extends RecyclerView.Adapter<adapter.ViewHolder>{
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
     List<String> titles, images;
     List<Integer> ids;
     LayoutInflater inflater;
     IProfile view;
 
-    public adapter(Context ctx, List<Integer> ids, List<String> titles, List<String> images){
+    public Adapter(Context ctx, List<Integer> ids, List<String> titles, List<String> images){
         this.titles = titles;
         this.images = images;
         this.ids= ids;

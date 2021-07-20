@@ -11,16 +11,15 @@ import java.util.Vector;
 
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.Model.Recipe;
-import exportkit.xd.Model.User;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Recipe.Item;
 
-public class recipeController {
+public class RecipeController {
 
     IAppViews view;
     AppDBController db;
 
-    public recipeController(IAppViews view) {
+    public RecipeController(IAppViews view) {
         this.view = view;
         db = new AppDBController((Context) this.view);
     }

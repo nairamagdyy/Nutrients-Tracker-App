@@ -11,15 +11,15 @@ import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import exportkit.xd.Controller.cameraController;
+import exportkit.xd.Controller.CameraController;
 
 import static exportkit.xd.DB.Constatnts.CameraConstants.CAMERA_REQUEST_CODE;
 import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_CAMERA_CODE;
 import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_GALLERY_CODE;
 import static exportkit.xd.DB.Constatnts.CameraConstants.STORAGE_REQUEST_CODE;
 
-public abstract class camera_activity extends AppCompatActivity {
-    public cameraController CamController;
+public abstract class Camera_activity extends AppCompatActivity {
+    public CameraController cameraController;
     public CircularImageView uploadedImage;
 
     @Override
@@ -36,7 +36,7 @@ public abstract class camera_activity extends AppCompatActivity {
 
                     if(cameraAccepted && storageAccepted){
                         //both permission allowed
-                        CamController.pickFromCamera();
+                        cameraController.pickFromCamera();
                     }
                     else{
                         Toast.makeText(this, "Camera & Storage permissions are required...", Toast.LENGTH_SHORT).show();
@@ -50,7 +50,7 @@ public abstract class camera_activity extends AppCompatActivity {
                     boolean storageAccepted= grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     if(storageAccepted){
                         //storage permission allowed
-                        CamController.pickFromGallery();
+                        cameraController.pickFromGallery();
                     }
                     else{
                         Toast.makeText(this, "Storage permissions is required...", Toast.LENGTH_SHORT).show();
@@ -77,7 +77,7 @@ public abstract class camera_activity extends AppCompatActivity {
             else if(requestCode == IMAGE_PICK_CAMERA_CODE){
                 //picked from camera
                 //crop image
-                CropImage.activity(CamController.imageUri)
+                CropImage.activity(cameraController.imageUri)
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .setAspectRatio(1,1)
                         .start(this);
@@ -86,9 +86,9 @@ public abstract class camera_activity extends AppCompatActivity {
                 //cropped image received
                 CropImage.ActivityResult result = CropImage.getActivityResult(data);
                 if(resultCode == RESULT_OK){
-                    CamController.imageUri= result.getUri();
+                    cameraController.imageUri= result.getUri();
                     //set image
-                    uploadedImage.setImageURI(CamController.imageUri);
+                    uploadedImage.setImageURI(cameraController.imageUri);
                 }
                 else if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE){
                     //error

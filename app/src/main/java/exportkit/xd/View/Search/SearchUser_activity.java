@@ -17,22 +17,23 @@ import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
 import java.util.List;
 
-import exportkit.xd.Controller.userController;
+import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Profile.profile_activity;
-import exportkit.xd.View.homepage_activity;
+import exportkit.xd.View.Profile.Profile_activity;
+import exportkit.xd.View.Profile.UserProfile_activity;
 
 public class SearchUser_activity extends Activity implements IAppViews {
+    UserController userController;
+
     EditText username;
     Button done , recipesButton , usersButton ;
     ImageButton back, HomeButton;
     private CircularImageView ProfileIcon;
     int userID;
-
-    userController UController;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -40,7 +41,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_user);
 
-        UController = new userController(this);
+        userController = new UserController(this);
 
         //find views
         username = (EditText) findViewById(R.id.search);
@@ -54,7 +55,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
         // get logged user
         SessionManager session = new SessionManager(this);
         long loggedUser= session.getUserFromSession();
-        User user= UController.getUser((int)loggedUser);
+        User user= userController.getUser((int)loggedUser);
         if(user.getAvatar() != null) {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
@@ -63,7 +64,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
         done.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String txtName = username.getText().toString(), Username= txtName.replaceAll("\\s",""); //remove all spaces
-                List<User> userinfo = UController.SearchUser(Username);
+                List<User> userinfo = userController.SearchUser(Username);
                 if (userinfo.isEmpty()) {
                     onError("The username Doesn't exist");
                 }
@@ -77,13 +78,13 @@ public class SearchUser_activity extends Activity implements IAppViews {
 
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
                 startActivity(nextScreen);
             }
         });
         HomeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -97,7 +98,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
         });
         ProfileIcon.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -105,7 +106,7 @@ public class SearchUser_activity extends Activity implements IAppViews {
 
     @Override
     public void onSuccess(String message) {
-        Intent nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
+        Intent nextScreen = new Intent(getApplicationContext(), UserProfile_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id", userID);
         nextScreen.putExtras(bundle);

@@ -1,4 +1,5 @@
 	package exportkit.xd.View.Register;
+
 	import android.app.Activity;
 	import android.content.Intent;
 	import android.os.Bundle;
@@ -9,16 +10,16 @@
 	import android.widget.RadioButton;
 	import android.widget.RadioGroup;
 	import android.widget.TextView;
-    import android.widget.Toast;
+	import android.widget.Toast;
 
-    import exportkit.xd.Controller.userController;
+	import exportkit.xd.Controller.UserController;
 	import exportkit.xd.Model.User;
 	import exportkit.xd.R;
+	import exportkit.xd.View.Homepage_activity;
 	import exportkit.xd.View.IAppViews;
-	import exportkit.xd.View.homepage_activity;
-	public class sign_up_activity extends Activity implements IAppViews{
+	public class SignUp_activity extends Activity implements IAppViews{
 
-		userController signUpController;
+		UserController userController;
 		private TextView email, password, phone, name, username,signUpb;
 		private RadioGroup radioSexGroup;
 		private RadioButton radioSexButton;
@@ -27,8 +28,8 @@
 		public void onCreate(Bundle savedInstanceState) {
 
 			super.onCreate(savedInstanceState);
-			setContentView(R.layout.sign_up);
-			signUpController = new userController(this);
+			setContentView(R.layout.signup);
+			userController = new UserController(this);
 
 			email= (TextView) findViewById(R.id.email_address);
 			password= (TextView) findViewById(R.id.password_ek1);
@@ -84,7 +85,7 @@
 
 						} else {
 							User newUser = new User(Fullname, Username, Email, Phone, Password, gender);
-							signUpController.signUp(newUser);
+							userController.signUp(newUser);
 
 						}
 
@@ -97,7 +98,7 @@
 		@Override
 		public void onSuccess(String message) {
 			Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-			Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+			Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
 			startActivity(nextScreen);
 		}
 

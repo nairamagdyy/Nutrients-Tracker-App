@@ -14,7 +14,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import exportkit.xd.DB.Constatnts.CameraConstants;
 
-public class cameraController{
+public class CameraController{
     Activity view;
     CameraConstants constants = new CameraConstants();
 
@@ -24,7 +24,7 @@ public class cameraController{
     //variables (will contain data to save)
     public Uri imageUri;
 
-    public cameraController(Activity view) {
+    public CameraController(Activity view) {
         this.view= view;
 
         /*** init permission array */

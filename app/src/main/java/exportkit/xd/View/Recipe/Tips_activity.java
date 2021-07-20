@@ -1,4 +1,4 @@
-package exportkit.xd.View;
+package exportkit.xd.View.Recipe;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,10 +11,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import exportkit.xd.R;
-import exportkit.xd.View.Profile.profile_activity;
+import exportkit.xd.View.Homepage_activity;
+import exportkit.xd.View.Profile.Profile_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 
-public class Tips extends AppCompatActivity {
+public class Tips_activity extends AppCompatActivity {
 
     Button increase_fats,increase_carbs,increase_proteins, search;
     ImageButton home, profile;
@@ -26,14 +27,7 @@ public class Tips extends AppCompatActivity {
         search = findViewById(R.id.search1);
         home = (ImageButton)findViewById(R.id.home1);
         profile = (ImageButton)findViewById(R.id.profile1);
-        increase_fats = findViewById(R.id.increasefats);
-        increase_proteins = findViewById(R.id.increaseproteins);
-        increase_fats.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fats();
-            }
-        });
+
         search.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -47,7 +41,7 @@ public class Tips extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
                 startActivity(nextScreen);
 
             }
@@ -56,16 +50,16 @@ public class Tips extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
                 startActivity(nextScreen);
 
             }
         });
     }
-    /*Display Tips*/
+    /*Display Tips_activity*/
     private void fats() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        dialogBuilder.setTitle("Tips");
+        dialogBuilder.setTitle("Tips_activity");
         dialogBuilder.setMessage("Some informative message for the user to do that.");
         dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override

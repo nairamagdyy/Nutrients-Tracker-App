@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#ffffff">
+
     <LinearLayout android:id="@+id/upload_recipe_step1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,6 +40,57 @@
                     android:layout_width="fill_parent"
                     android:layout_height="503dp"
                     />
+
+                <View android:id="@+id/overlay_ek4"
+                    android:background="@drawable/overlay_ek4_shape"
+                    android:alpha="0.4"
+                    android:layout_marginTop="305dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    />
+
+                <View android:id="@+id/home_indicator_ek17"
+                    android:background="@drawable/home_indicator_ek17_shape"
+                    android:layout_marginTop="315dp"
+                    android:layout_width="1.5dp"
+                    android:layout_height="40.63dp"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <Button android:id="@+id/recipeTap"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal|center"
+                    android:gravity="center"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="310dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="Recipe Details"
+                    android:textColor="#ffffff"
+                    android:shadowColor="#ffffff"
+                    android:shadowDx="1"
+                    android:shadowDy="2"
+                    android:shadowRadius="6"
+                    />
+
+                <Button
+                    android:id="@+id/macroTrackerTap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_horizontal|center"
+                    android:layout_marginLeft="170dp"
+                    android:layout_marginTop="310dp"
+                    android:layout_marginEnd="37dp"
+                    android:layout_marginRight="67dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:text="Macro Tracker"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView android:id="@+id/getDescription"
                     android:textStyle="bold"
@@ -89,7 +141,6 @@
                     android:layout_height="wrap_content"
                     android:text="Description"
                     />
-
 
                 <TextView android:id="@+id/nutrients_"
                     android:textStyle="bold"
@@ -144,14 +195,6 @@
                     android:layout_height="wrap_content"
                     android:text="dfghn"
                     />
-
-                <View android:id="@+id/home_indicator_ek1"
-                    android:background="@drawable/home_indicator_ek1_shape"
-                    android:layout_marginStart="173dp"
-                    android:layout_marginTop="325dp"
-                    android:layout_width="40dp"
-                    android:layout_height="5dp"
-                    android:layout_marginLeft="173dp" />
 
                 <RelativeLayout android:id="@+id/back_button"
                     android:layout_marginTop="50dp"
@@ -216,7 +259,7 @@
                     android:layout_marginStart="313dp"
                     android:layout_width="38dp"
                     android:layout_height="34dp"
-                    android:layout_marginTop="320dp"
+                    android:layout_marginTop="365dp"
                     android:layout_marginLeft="350dp" />
 
                 <ImageButton android:id="@+id/favorite"
@@ -225,7 +268,7 @@
                     android:layout_marginStart="313dp"
                     android:layout_width="38dp"
                     android:layout_height="34dp"
-                    android:layout_marginTop="320dp"
+                    android:layout_marginTop="365dp"
                     android:layout_marginLeft="350dp"
                     android:visibility="invisible"
                     />
@@ -294,7 +337,7 @@
         </RelativeLayout>
 
         <com.blogspot.atifsoftwares.circularimageview.CircularImageView
-            android:id="@+id/ellipse_ek23"
+            android:id="@+id/profile1"
             android:layout_alignParentRight="true"
             android:layout_width="40dp"
             android:layout_height="40dp"

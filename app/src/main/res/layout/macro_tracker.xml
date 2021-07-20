@@ -3,49 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <LinearLayout android:id="@+id/macro_tracker_request"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
         android:orientation="vertical">
-
         <RelativeLayout android:id="@+id/content_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
         <ScrollView android:id="@+id/scroll"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#ffffff">
+            android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/page_fcf_ek1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/macro_tracker_ek1"
-                android:layout_width="201dp"
-                android:layout_height="40.5dp"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="center_horizontal|center"
-                android:layout_marginLeft="-26dp"
-                android:layout_marginTop="393dp"
-                android:gravity="center"
-                android:shadowColor="#000000"
-                android:shadowDx="0"
-                android:shadowDy="4"
-                android:shadowRadius="4"
-                android:text="Macro Tracker"
-                android:textSize="19sp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
-
                 <View android:id="@+id/ellipse_17_ek1"
                     android:background="@drawable/ellipse_17_ek1_shape"
                     android:layout_marginStart="21dp"
-                    android:layout_marginTop="461dp"
+                    android:layout_marginTop="393dp"
                     android:layout_width="74dp"
                     android:layout_height="74dp"
                     android:layout_marginLeft="21dp" />
@@ -60,34 +42,35 @@
                     android:shadowDx="0"
                     android:shadowDy="4"
                     android:layout_marginLeft="-23dp"
-                    android:layout_marginTop="475dp"
+                    android:layout_marginTop="407dp"
                     android:layout_width="161dp"
                     android:layout_height="54.5dp"
                     android:textColor="#ffffff"
                     android:text="Fats"
                     />
 
-                <TextView android:id="@+id/_35g_ek1"
+                <TextView
+                    android:id="@+id/fatsMeasure"
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
-                    android:textSize="17sp"
+                    android:textSize="12sp"
                     android:shadowRadius="4"
                     android:shadowColor="#000000"
                     android:shadowDx="0"
                     android:shadowDy="4"
                     android:layout_marginStart="40dp"
-                    android:layout_marginTop="469dp"
+                    android:layout_marginTop="405dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10g"
                     android:textColor="#ffffff"
-                    android:layout_marginLeft="25dp" />
+                    android:layout_marginLeft="0dp" />
 
                 <View android:id="@+id/ellipse_18"
                     android:background="@drawable/ellipse_18_shape"
                     android:layout_marginStart="19dp"
-                    android:layout_marginTop="558dp"
+                    android:layout_marginTop="480dp"
                     android:layout_width="75dp"
                     android:layout_height="74dp"
                     android:layout_marginLeft="19dp" />
@@ -102,23 +85,23 @@
                     android:shadowDx="0"
                     android:shadowDy="4"
                     android:layout_marginLeft="-23dp"
-                    android:layout_marginTop="570dp"
+                    android:layout_marginTop="495dp"
                     android:layout_width="161dp"
                     android:layout_height="54.5dp"
                     android:text="Proteins"
                     android:textColor="#ffffff"
                     />
 
-                <TextView android:id="@+id/_11g_ek1"
+                <TextView android:id="@+id/proteinsMeasure"
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
-                    android:textSize="17sp"
+                    android:textSize="12sp"
                     android:shadowRadius="4"
                     android:shadowColor="#000000"
                     android:shadowDx="0"
                     android:shadowDy="4"
-                    android:layout_marginTop="565dp"
+                    android:layout_marginTop="492dp"
                     android:layout_marginStart="40dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,7 +112,7 @@
                 <View android:id="@+id/ellipse_19"
                     android:background="@drawable/ellipse_19_shape"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="649dp"
+                    android:layout_marginTop="569dp"
                     android:layout_width="74dp"
                     android:layout_height="74dp"
                     android:layout_marginLeft="20dp" />
@@ -144,39 +127,38 @@
                     android:shadowDx="0"
                     android:shadowDy="4"
                     android:layout_marginLeft="-23dp"
-                    android:layout_marginTop="665dp"
+                    android:layout_marginTop="583dp"
                     android:layout_width="161dp"
                     android:layout_height="54.5dp"
                     android:text="Carbs"
                     android:textColor="#ffffff"
                     />
 
-                <TextView android:id="@+id/_5g_ek1"
+                <TextView android:id="@+id/carbsMeasure"
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
-                    android:textSize="17sp"
+                    android:textSize="12sp"
                     android:shadowRadius="4"
                     android:shadowColor="#000000"
                     android:shadowDx="0"
                     android:shadowDy="4"
-                    android:layout_marginStart="45dp"
-                    android:layout_marginTop="660dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="580dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5g"
                     android:textColor="#ffffff"
-                    android:layout_marginLeft="40dp" />
-
+                    android:layout_marginLeft="0dp" />
 
                 <RelativeLayout android:id="@+id/primary___small"
-                    android:layout_marginTop="461dp"
+                    android:layout_marginTop="400dp"
                     android:layout_marginStart="104dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="104dp">
 
-                    <Button android:id="@+id/increasefats"
+                    <Button android:id="@+id/increaseFats"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal|center"
                         android:gravity="center"
@@ -190,15 +172,14 @@
 
                 </RelativeLayout>
 
-
                 <RelativeLayout android:id="@+id/primary___small_ek1"
-                    android:layout_marginTop="460dp"
+                    android:layout_marginTop="400dp"
                     android:layout_marginStart="236dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="236dp">
 
-                    <Button android:id="@+id/tips_to_decrease"
+                    <Button android:id="@+id/decreaseFats"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal|center"
                         android:gravity="center"
@@ -212,15 +193,14 @@
 
                 </RelativeLayout>
 
-
                 <RelativeLayout android:id="@+id/primary___small_ek2"
-                    android:layout_marginTop="649dp"
+                    android:layout_marginTop="577dp"
                     android:layout_marginStart="103dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="103dp">
 
-                    <Button android:id="@+id/tips_to_increase_ek1"
+                    <Button android:id="@+id/increaseCarbs"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal|center"
                         android:gravity="center"
@@ -235,13 +215,13 @@
                 </RelativeLayout>
 
                 <RelativeLayout android:id="@+id/primary___small_ek4"
-                    android:layout_marginTop="558dp"
+                    android:layout_marginTop="490dp"
                     android:layout_marginStart="103dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="103dp">
 
-                    <Button android:id="@+id/increaseproteins"
+                    <Button android:id="@+id/increaseProteins"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal|center"
                         android:gravity="center"
@@ -255,15 +235,14 @@
 
                 </RelativeLayout>
 
-
                 <RelativeLayout android:id="@+id/primary___small_ek5"
-                    android:layout_marginTop="558dp"
+                    android:layout_marginTop="490dp"
                     android:layout_marginStart="236dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="236dp">
 
-                    <Button android:id="@+id/tips_to_decrease_ek1"
+                    <Button android:id="@+id/decreaseProteins"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal|center"
                         android:gravity="center"
@@ -276,16 +255,15 @@
                         />
 
                 </RelativeLayout>
-
 
                 <RelativeLayout android:id="@+id/primary___small_ek6"
-                    android:layout_marginTop="649dp"
+                    android:layout_marginTop="575dp"
                     android:layout_marginStart="236dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="236dp">
 
-                    <Button android:id="@+id/tips_to_decrease_ek2"
+                    <Button android:id="@+id/decreaseCarbs"
                         android:textStyle="bold"
                         android:layout_gravity="center_horizontal|center"
                         android:gravity="center"
@@ -298,14 +276,8 @@
                         />
 
                 </RelativeLayout>
-            <RelativeLayout android:id="@+id/prim"
-                android:layout_marginTop="720dp"
-                android:layout_width="fill_parent"
-                android:layout_height="100dp"
-                android:background="#ffffff">
-            </RelativeLayout>
 
-                <ImageView android:id="@+id/_11_1_ek1"
+                <ImageView android:id="@+id/recipeImage"
                     android:src="@drawable/_11_1_ek1"
                     android:contentDescription="_11_1_ek1"
                     android:layout_marginTop="-22dp"
@@ -320,15 +292,7 @@
                     android:layout_height="60dp"
                      />
 
-                <View android:id="@+id/home_indicator_ek17"
-                    android:background="@drawable/home_indicator_ek17_shape"
-                    android:layout_marginTop="315dp"
-                    android:layout_width="1.5dp"
-                    android:layout_height="40.63dp"
-                    android:layout_centerHorizontal="true"
-                    />
-
-                <Button android:id="@+id/_nutritions_ek1"
+                <Button android:id="@+id/recipeDetailsTap"
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
@@ -338,8 +302,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:text="nutritions"
+                    android:text="Recipe Details"
                     />
+
+            <View android:id="@+id/home_indicator_ek17"
+                android:background="@drawable/home_indicator_ek17_shape"
+                android:layout_marginTop="315dp"
+                android:layout_width="1.5dp"
+                android:layout_height="40.63dp"
+                android:layout_centerHorizontal="true"
+                />
 
             <Button
                 android:id="@+id/macro_tracker_ek2"
@@ -348,10 +320,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_horizontal|center"
-                android:layout_marginLeft="190dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="71dp"
                 android:layout_marginTop="315dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginEnd="47dp"
+                android:layout_marginRight="57dp"
+                android:layout_toEndOf="@+id/home_indicator_ek17"
+                android:layout_toRightOf="@+id/home_indicator_ek17"
                 android:background="@null"
                 android:gravity="center"
                 android:shadowColor="#ffffff"
@@ -363,18 +338,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-                <TextView android:id="@+id/sandwich__egg__avocado_ek1"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_horizontal|center"
-                    android:gravity="center"
-                    android:textSize="17sp"
-                    android:layout_marginLeft="-64dp"
-                    android:layout_marginTop="267dp"
-                    android:layout_width="358dp"
-                    android:layout_height="40.5dp"
-                    android:textColor="#ffffff"
-                    android:text="Sandwich, Egg, Avocado"
-                    />
         </RelativeLayout>
         </ScrollView>
             <RelativeLayout android:id="@+id/navigation_bar_ek2"

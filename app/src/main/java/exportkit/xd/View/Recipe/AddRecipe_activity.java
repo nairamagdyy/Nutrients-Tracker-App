@@ -13,18 +13,18 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import exportkit.xd.Controller.CameraController;
 import exportkit.xd.Controller.NutrientsController;
-import exportkit.xd.Controller.cameraController;
-import exportkit.xd.Controller.recipeController;
+import exportkit.xd.Controller.RecipeController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.R;
+import exportkit.xd.View.Camera_activity;
+import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Profile.profile_activity;
-import exportkit.xd.View.camera_activity;
-import exportkit.xd.View.homepage_activity;
+import exportkit.xd.View.Profile.Profile_activity;
 
-public class addRecipe_activity extends camera_activity implements IAppViews {
+public class AddRecipe_activity extends Camera_activity implements IAppViews {
     //dynamic view
     LinearLayout ingredients_layoutList;
     Button dynamicAddBtn;
@@ -36,7 +36,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
     private ImageButton saveBtn ;
     private Button cancelBtn;
 
-    recipeController RecipeController;
+    RecipeController recipeController;
     NutrientsController nutrientsController;
 
     @Override
@@ -44,8 +44,8 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_recipe);
 
-        RecipeController = new recipeController(this);
-        CamController = new cameraController(this);
+        recipeController = new RecipeController(this);
+        cameraController = new CameraController(this);
         nutrientsController= new NutrientsController(this);
 
         //dynamic view
@@ -66,7 +66,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
         uploadedImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //show image pick dialog
-                CamController.imagePickDialog();
+                cameraController.imagePickDialog();
             }
         });
 
@@ -96,16 +96,16 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
                         }
                         //calculate Nutrients Facts for the recipe then insert it
                         ArrayList<Item> facts= nutrientsController.calculateNutrients(ingredientsList);
-                        long nutrientsID= RecipeController.addRecipeNutrients(facts);
+                        long nutrientsID= recipeController.addRecipeNutrients(facts);
 
                         //save recipe with all information in DB
                         Recipe recipe= new Recipe(loggedUser);
-                        recipe.setImage(""+CamController.imageUri);
+                        recipe.setImage(""+ cameraController.imageUri);
                         recipe.setName(recipeName);
                         recipe.setDescription(recipeDescription);
                         recipe.setIngredients(all_ingredients);
                         recipe.setNutrientsID((int)nutrientsID);
-                        RecipeController.addRecipe(recipe);
+                        recipeController.addRecipe(recipe);
                     }
                 }
             }
@@ -113,7 +113,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
 
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -122,7 +122,7 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
         startActivity(nextScreen);
     }
 

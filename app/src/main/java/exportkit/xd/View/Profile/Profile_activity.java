@@ -1,4 +1,5 @@
 package exportkit.xd.View.Profile;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -19,32 +20,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import exportkit.xd.Controller.userController;
-import exportkit.xd.Controller.recipeController;
+import exportkit.xd.Controller.RecipeController;
+import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.Adapter;
+import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Recipe.recipeDetails_activity;
-import exportkit.xd.View.Register.log_in_activity;
+import exportkit.xd.View.Recipe.RecipeDetails_activity;
+import exportkit.xd.View.Register.Login_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
-import exportkit.xd.View.adapter;
-import exportkit.xd.View.homepage_activity;
 
-public class profile_activity extends Activity implements IProfile, IAppViews {
+public class Profile_activity extends Activity implements IProfile, IAppViews {
     private CircularImageView uploadedImage, ProfileIcon;
     private TextView name , username ;
     private ImageButton HomeButton, editButton , logoutBtn ;
     private Button FavButton, SearchButton, RecipeButton;
 
-    userController UserController;
-    recipeController RecipeController;
+    UserController userController;
+    RecipeController recipeController;
 
     RecyclerView recycleRecipeList, recycleFavList;
     List<String>  recipeNameList = new ArrayList<>();
     List<String> recipeImageList = new ArrayList<>();
-    adapter Adapter;
+    exportkit.xd.View.Adapter Adapter;
 
     String KEY_VALUE="myProfile";
 
@@ -52,8 +53,8 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        UserController = new userController(this);
-        RecipeController= new recipeController(this);
+        userController = new UserController(this);
+        recipeController = new RecipeController(this);
 
         // finds views
         recycleRecipeList = findViewById(R.id.recipeList);
@@ -68,12 +69,12 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
 
         SearchButton = (Button) findViewById(R.id.ellipse_ek22);
         HomeButton = (ImageButton) findViewById(R.id.home_ek11);
-        ProfileIcon = findViewById(R.id.ellipse_ek23);
+        ProfileIcon = findViewById(R.id.profile1);
 
         // get logged user
         SessionManager session = new SessionManager(this);
         long loggedUser= session.getUserFromSession();
-        User user= UserController.getUser((int)loggedUser);
+        User user= userController.getUser((int)loggedUser);
 
         //display IProfile info
         if(user.getAvatar() != null) {
@@ -86,14 +87,14 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
         //Recyclerview as GridView for recipes
         //get user recipe from db
         recycleRecipeList.setVisibility(View.VISIBLE);
-        Vector<Integer> recipesIdList= RecipeController.viewRecipeList((int) loggedUser);
+        Vector<Integer> recipesIdList= recipeController.viewRecipeList((int) loggedUser);
         for(int i=0; i<recipesIdList.size();i++){
-            Recipe recipe= RecipeController.getRecipe(recipesIdList.get(i));
+            Recipe recipe= recipeController.getRecipe(recipesIdList.get(i));
             recipeNameList.add(recipe.getName());
             recipeImageList.add(recipe.getImage());
         }
         viewDynamic(recycleRecipeList ,recipesIdList);/*
-        Adapter = new adapter(this, recipesIdList, recipeNameList, recipeImageList);
+        Adapter = new Adapter(this, recipesIdList, recipeNameList, recipeImageList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
         recycleRecipeList.setLayoutManager(gridLayoutManager);
         recycleRecipeList.setAdapter(Adapter);*/
@@ -101,26 +102,26 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
         // buttons functions
         HomeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
                 startActivity(nextScreen);
             }
         });
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 session.logoutUserFromSession();
-                Intent nextScreen = new Intent(getApplicationContext(), log_in_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Login_activity.class);
                 startActivity(nextScreen);
             }
         });
         editButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), editProfileActivity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), EditProfile_activity.class);
                 startActivity(nextScreen);
             }
         });
         RecipeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -135,10 +136,10 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
 
                 //Recyclerview as GridView for recipes
                 //get user recipe from db
-                Vector<Integer> favRecipesIdList= RecipeController.viewFavList((int) loggedUser);
+                Vector<Integer> favRecipesIdList= recipeController.viewFavList((int) loggedUser);
                 //System.out.println(loggedUser+"------------------------------------------------------------------------------"+favRecipesIdList);
                 for(int i=0; i<favRecipesIdList.size();i++){
-                    Recipe fav= RecipeController.getRecipe(favRecipesIdList.get(i));
+                    Recipe fav= recipeController.getRecipe(favRecipesIdList.get(i));
                     recipeNameList.add(fav.getName());
                     recipeImageList.add(fav.getImage());
                     viewDynamic(recycleFavList, favRecipesIdList);
@@ -158,7 +159,7 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
     }
 
     private void viewDynamic(RecyclerView recycle, List<Integer> recipesIdList){
-        Adapter = new adapter(this, recipesIdList, recipeNameList, recipeImageList);
+        Adapter = new Adapter(this, recipesIdList, recipeNameList, recipeImageList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),2, GridLayoutManager.VERTICAL,false);
         recycle.setLayoutManager(gridLayoutManager);
         recycle.setAdapter(Adapter);
@@ -166,7 +167,7 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
 
     @Override
     public void viewRecipeDetails(int id) {
-        Intent nextScreen = new Intent(getApplicationContext(), recipeDetails_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), RecipeDetails_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id",id);
         bundle.putString("IProfile",KEY_VALUE);
@@ -177,7 +178,7 @@ public class profile_activity extends Activity implements IProfile, IAppViews {
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
         startActivity(nextScreen);
     }
 

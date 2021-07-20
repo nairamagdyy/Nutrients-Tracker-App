@@ -15,25 +15,25 @@ import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
 import java.util.Vector;
 
-import exportkit.xd.Controller.recipeController;
-import exportkit.xd.Controller.userController;
+import exportkit.xd.Controller.RecipeController;
+import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Profile.profile_activity;
+import exportkit.xd.View.Profile.Profile_activity;
+import exportkit.xd.View.Profile.UserProfile_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
-import exportkit.xd.View.Search.userprofile_Search;
-import exportkit.xd.View.homepage_activity;
 
-public class recipeDetails_activity extends Activity implements IAppViews {
-    recipeController RecipeController;
-    userController UserController;
+public class RecipeDetails_activity extends Activity implements IAppViews {
+    RecipeController recipeController;
+    UserController userController;
     ImageView image;
     TextView name, description, ingredient, nutrients;
     private ImageButton editButton, HomeButton, backButton, favButton;
-    private Button SearchButton;
+    private Button SearchButton, MacroTracker;
     private CircularImageView ProfileIcon;
 
     @Override
@@ -42,13 +42,13 @@ public class recipeDetails_activity extends Activity implements IAppViews {
 
         setContentView(R.layout.recipe_details);
 
-        RecipeController= new recipeController(this);
-        UserController= new userController(this);
+        recipeController = new RecipeController(this);
+        userController = new UserController(this);
 
         // get logged user
         SessionManager session = new SessionManager(this);
         long loggedUser= session.getUserFromSession();
-        User user= UserController.getUser((int)loggedUser);
+        User user= userController.getUser((int)loggedUser);
 
         //retrieve recipe id
         int recipeId= getIntent().getExtras().getInt("id");
@@ -64,18 +64,19 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         backButton = findViewById(R.id.back);
         editButton= findViewById(R.id.edit);
         favButton= findViewById(R.id.favorite);
+        MacroTracker= findViewById(R.id.macroTrackerTap);
         SearchButton= findViewById(R.id.ellipse_ek22);
         HomeButton= findViewById(R.id.home_ek11);
-        ProfileIcon= findViewById(R.id.ellipse_ek23);
+        ProfileIcon= findViewById(R.id.profile1);
 
         //display IProfile icon
         if(user.getAvatar() != null) {
             ProfileIcon.setImageURI(Uri.parse(user.getAvatar()));
         }
-         //if current logged user IProfile -> already show delete icon
+        //if current logged user IProfile -> already show delete icon
         //if another user IProfile -> is it in my favList -> show favButton; else show star icon to can add it to favList
         if(!PROFILE_KEY.equals("myProfile")){
-            Vector<Integer> favList=  RecipeController.viewFavList((int)loggedUser);
+            Vector<Integer> favList=  recipeController.viewFavList((int)loggedUser);
             if(favList.contains(recipeId)){ //already added into favList
                 editButton.setVisibility(View.GONE);
                 favButton.setVisibility(View.VISIBLE);
@@ -84,7 +85,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         }
 
         //get recipe info from db
-        Recipe recipe= RecipeController.getRecipe(recipeId);
+        Recipe recipe= recipeController.getRecipe(recipeId);
 
         //display info
         if(recipe.getImage().equals("null")) {
@@ -96,41 +97,54 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         description.setText(recipe.getDescription());
         ingredient.setText(recipe.getIngredients());
         //get facts information
-        Vector<String> facts= RecipeController.getRecipeNutrients(recipe.getNutrientsID());
+        Vector<String> facts= recipeController.getRecipeNutrients(recipe.getNutrientsID());
         nutrients.setText(String.valueOf(facts));
 
 
         //buttons
         editButton.setOnClickListener(new View.OnClickListener() {
-             public void onClick(View v) {
-                 if(PROFILE_KEY.equals("myProfile")) //delete recipe
-                     RecipeController.deleteRecipe(recipeId);
+            public void onClick(View v) {
+                if(PROFILE_KEY.equals("myProfile")) //delete recipe
+                    recipeController.deleteRecipe(recipeId);
 
-                 else {//add to favoriteList
-                     long id= RecipeController.addToFavList((int) loggedUser, recipeId);
-                     if(id>0) {
-                         editButton.setVisibility(View.GONE);
-                         favButton.setVisibility(View.VISIBLE);
-                     }else
-                         onError("FAILED!!");
-                 }
-             }
+                else {//add to favoriteList
+                    long id= recipeController.addToFavList((int) loggedUser, recipeId);
+                    if(id>0) {
+                        editButton.setVisibility(View.GONE);
+                        favButton.setVisibility(View.VISIBLE);
+                    }else
+                        onError("FAILED!!");
+                }
+            }
         });
         favButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) { //remove from favorite List
-                RecipeController.unFavRecipe((int) loggedUser,recipeId);
+                recipeController.unFavRecipe((int) loggedUser,recipeId);
                 favButton.setVisibility(View.GONE);
                 editButton.setImageResource(R.drawable.star_1);
                 editButton.setVisibility(View.VISIBLE);
+            }
+        });
+        MacroTracker.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) { //remove from favorite List
+                Intent nextScreen = new Intent(getApplicationContext(), MacroTracker_activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("recipeID",recipeId);
+                bundle.putString("IProfile", PROFILE_KEY);
+                if(!PROFILE_KEY.equals("myProfile"))
+                    bundle.putInt("userId",getIntent().getExtras().getInt("userId"));
+                bundle.putString("image",recipe.getImage());
+                nextScreen.putExtras(bundle);
+                startActivity(nextScreen);
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent nextScreen;
                 if(PROFILE_KEY.equals("myProfile"))
-                    nextScreen= new Intent(getApplicationContext(), profile_activity.class);
+                    nextScreen= new Intent(getApplicationContext(), Profile_activity.class);
                 else {
-                    nextScreen = new Intent(getApplicationContext(), userprofile_Search.class);
+                    nextScreen = new Intent(getApplicationContext(), UserProfile_activity.class);
                     Bundle bundle = new Bundle();
                     bundle.putInt("id",getIntent().getExtras().getInt("userId"));
                     nextScreen.putExtras(bundle);
@@ -140,7 +154,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         });
         HomeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -153,7 +167,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
         });
         ProfileIcon.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -162,7 +176,7 @@ public class recipeDetails_activity extends Activity implements IAppViews {
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
         startActivity(nextScreen);
     }
 

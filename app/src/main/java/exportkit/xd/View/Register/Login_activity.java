@@ -1,27 +1,25 @@
 package exportkit.xd.View.Register;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.Intent;
 import android.widget.Toast;
 
-import exportkit.xd.Controller.userController;
+import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.R;
-
+import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.homepage_activity;
 
-public class log_in_activity extends Activity implements IAppViews {
+public class Login_activity extends Activity implements IAppViews {
 
-	userController loginController;
+	UserController userController;
 	AppDBController db;
 	private TextView email, password,
 			loginb, signUpb;
@@ -31,8 +29,8 @@ public class log_in_activity extends Activity implements IAppViews {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.log_in);
-		loginController = new userController(this);
+		setContentView(R.layout.login);
+		userController = new UserController(this);
 		db = new AppDBController(this)  ;
 		email= (TextView) findViewById(R.id.email_or_username);
 		password = (TextView) findViewById(R.id.password);
@@ -61,7 +59,7 @@ public class log_in_activity extends Activity implements IAppViews {
 
 		signUpb.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent nextScreen = new Intent(getApplicationContext(), sign_up_activity.class);
+				Intent nextScreen = new Intent(getApplicationContext(), SignUp_activity.class);
 				startActivity(nextScreen);
 
 			}
@@ -80,7 +78,7 @@ public class log_in_activity extends Activity implements IAppViews {
 				else
 				{
 					System.out.println(Email +  "  " + Pass) ;
-					loginController.login(Email,Pass);
+					userController.login(Email,Pass);
 				}
 			}
 		});
@@ -89,7 +87,7 @@ public class log_in_activity extends Activity implements IAppViews {
 	@Override
 	public void onSuccess(String message) {
 		Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-		Intent nextScreen = new Intent(getApplicationContext(), homepage_activity.class);
+		Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
 		startActivity(nextScreen);
 	}
 	@Override

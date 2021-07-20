@@ -13,16 +13,16 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
-import exportkit.xd.Controller.cameraController;
-import exportkit.xd.Controller.userController;
+import exportkit.xd.Controller.CameraController;
+import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.camera_activity;
+import exportkit.xd.View.Camera_activity;
 
-public class editProfileActivity extends camera_activity implements IAppViews {
-    userController userController;
+public class EditProfile_activity extends Camera_activity implements IAppViews {
+    UserController userController;
 
     private TextView email, password, phone, name, username;
     private ImageButton editButton, hidden;
@@ -30,10 +30,10 @@ public class editProfileActivity extends camera_activity implements IAppViews {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.editprofile);
+        setContentView(R.layout.edit_profile);
 
-        userController = new userController((IAppViews) this);
-        CamController = new cameraController(this);
+        userController = new UserController((IAppViews) this);
+        cameraController = new CameraController(this);
 
         SessionManager session= new SessionManager(this);
         int loggedUserID = (int) session.getUserFromSession();
@@ -53,7 +53,7 @@ public class editProfileActivity extends camera_activity implements IAppViews {
         //set current information for logged user
         if(user.getAvatar() != null){
             uploadedImage.setImageURI(Uri.parse(user.getAvatar()));
-            CamController.imageUri= Uri.parse(user.getAvatar());
+            cameraController.imageUri= Uri.parse(user.getAvatar());
         }
         name.setText(user.getName());
         username.setText(user.getUsername());
@@ -65,7 +65,7 @@ public class editProfileActivity extends camera_activity implements IAppViews {
         uploadedImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //show image pick dialog
-                CamController.imagePickDialog();
+                cameraController.imagePickDialog();
             }
         });
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -87,14 +87,14 @@ public class editProfileActivity extends camera_activity implements IAppViews {
                 {
                     User user = new User(Fullname, Username, Email, Phone, Password);
                     user.setId(loggedUserID);
-                    user.setAvatar(""+CamController.imageUri);
+                    user.setAvatar(""+ cameraController.imageUri);
                     userController.EditProfile(user);
                 }
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
                 startActivity(nextScreen);
             }
         });
@@ -117,7 +117,7 @@ public class editProfileActivity extends camera_activity implements IAppViews {
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();
-        Intent nextScreen = new Intent(getApplicationContext(), profile_activity.class);
+        Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
         startActivity(nextScreen);
     }
     @Override
