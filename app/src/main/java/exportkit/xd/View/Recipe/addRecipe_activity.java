@@ -184,5 +184,4 @@ public class addRecipe_activity extends camera_activity implements IAppViews {
 
         return result;
     }
-
 }
