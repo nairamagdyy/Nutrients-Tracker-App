@@ -34,6 +34,8 @@ public class Scanner_activity extends Camera {
 
         displayBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                uploadedImage.setVisibility(View.GONE);
+                displayBtn.setVisibility(View.GONE);
                 image.setImageURI(cameraController.imageUri);
             }
         });
