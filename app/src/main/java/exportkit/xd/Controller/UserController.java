@@ -64,7 +64,7 @@ public class UserController{
         if(data)
             view.onSuccess("Edit Operation is Successfully");
         else
-            view.onError("username Exits, enter new one!!!!");
+            view.onError("username Exists, enter new one!!!!");
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
