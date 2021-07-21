@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -255,6 +254,13 @@
                         />
 
                 </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/page_sign_up_ek4"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_height="60dp"
+                android:layout_marginTop="650dp">
+            </RelativeLayout>
 
                 <RelativeLayout android:id="@+id/primary___small_ek6"
                     android:layout_marginTop="575dp"
@@ -275,7 +281,7 @@
                         android:background="@drawable/round2"
                         />
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
                 <ImageView android:id="@+id/recipeImage"
                     android:src="@drawable/_11_1_ek1"
@@ -337,7 +343,6 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
         </RelativeLayout>
         </ScrollView>
             <RelativeLayout android:id="@+id/navigation_bar_ek2"
