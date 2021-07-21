@@ -17,7 +17,8 @@ import exportkit.xd.View.Search.SearchUser_activity;
 
 public class Tips_activity extends AppCompatActivity {
 
-    Button increase_fats,increase_carbs,increase_proteins, search;
+    Button increaseFats, increaseCarbs, increaseProteins,
+            decreaseFats, decreaseCarbs, decreaseProteins, search;
     ImageButton home, profile;
 
     @Override
@@ -27,46 +28,7 @@ public class Tips_activity extends AppCompatActivity {
         search = findViewById(R.id.search1);
         home = (ImageButton)findViewById(R.id.home1);
         profile = (ImageButton)findViewById(R.id.profile1);
-
-        search.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                Intent nextScreen = new Intent(getApplicationContext(), SearchUser_activity.class);
-                startActivity(nextScreen);
-
-            }
-        });
-        home.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);
-                startActivity(nextScreen);
-
-            }
-        });
-        profile.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-
-                Intent nextScreen = new Intent(getApplicationContext(), Profile_activity.class);
-                startActivity(nextScreen);
-
-            }
-        });
     }
     /*Display Tips_activity*/
-    private void fats() {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        dialogBuilder.setTitle("Tips_activity");
-        dialogBuilder.setMessage("Some informative message for the user to do that.");
-        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialogBuilder.create().show();
-    }
+
 }
