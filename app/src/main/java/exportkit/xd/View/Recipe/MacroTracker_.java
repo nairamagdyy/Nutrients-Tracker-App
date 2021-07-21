@@ -1,5 +1,6 @@
 package exportkit.xd.View.Recipe;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
@@ -99,8 +102,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
 
         increaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), Tips_activity.class);
-                startActivity(nextScreen);
+                fats_();
             }
         });
         decreaseFats.setOnClickListener(new View.OnClickListener() {
@@ -164,6 +166,18 @@ public class MacroTracker_ extends Camera implements IAppViews {
 
             }
         });
+    }
+    private void fats_() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Tips");
+        dialogBuilder.setMessage("Some informative message for the user to do that.");
+        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialogBuilder.create().show();
     }
 
     @Override
