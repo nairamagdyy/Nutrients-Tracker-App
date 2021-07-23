@@ -99,7 +99,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
         }else {
             photo.setImageURI(Uri.parse(image));
         }
-
+/*
         //get recipe nutrients details
         Vector<String> macros= recipeController.getRecipeNutrients(recipeId);
         for(int i=0; i<macros.size(); i++){
@@ -111,7 +111,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
             else if(split[0].equals("Protein"))
                 protein.setText(String.format("%.2f",Double.parseDouble(split[1].trim()))+"g");
         }
-
+*/
         increaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 trackMacros(KEYS.INCREASE_FATS);
@@ -200,7 +200,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
         for(int i=0; i<ingredients.size(); i++){
             ArrayList<Ingredient> list= new ArrayList<>();
             list.add(ingredients.get(i));
-            facts= nutrientsController.calculateNutrients(list);
+           // facts= nutrientsController.calculateNutrients(list);
 
         }
 

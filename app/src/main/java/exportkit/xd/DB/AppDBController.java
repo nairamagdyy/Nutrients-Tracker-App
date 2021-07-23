@@ -16,9 +16,9 @@ import exportkit.xd.DB.Constants.RecipeNutrientsTableConstants;
 import exportkit.xd.DB.Constants.RecipeTableConstants;
 import exportkit.xd.DB.Constants.UserFavoriteListTableConstants;
 import exportkit.xd.DB.Constants.UserTableConstants;
+import exportkit.xd.Model.NutrientsFactsRecord;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
-import exportkit.xd.View.Recipe.Ingredient;
 
 public class AppDBController extends SQLiteOpenHelper {
     SQLiteDatabase db;
@@ -287,23 +287,22 @@ public class AppDBController extends SQLiteOpenHelper {
 
 
     //---------------------------------RECIPE NUTRIENTS TABLE---------------------------------------
-    public long insertRecipeNutrients(ArrayList<Ingredient> facts){
+    public long insertRecipeNutrients(NutrientsFactsRecord facts){
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        for(int i=0; i<facts.size(); i++){
-            if(facts.get(i).name.equals("Calories"))
-                values.put(recipeNutrientsTable.DB_col_CALORIES, facts.get(i).amount);
-            else if (facts.get(i).name.equals("Protein"))
-                values.put(recipeNutrientsTable.DB_col_PROTEIN, facts.get(i).amount);
-            else if (facts.get(i).name.equals("Fats"))
-                values.put(recipeNutrientsTable.DB_col_FATS, facts.get(i).amount);
-            else if (facts.get(i).name.equals("SatFats"))
-                values.put(recipeNutrientsTable.DB_col_SatFATS, facts.get(i).amount);
-            else if (facts.get(i).name.equals("Fiber"))
-                values.put(recipeNutrientsTable.DB_col_FIBER, facts.get(i).amount);
-            else if (facts.get(i).name.equals("Carbs"))
-                values.put(recipeNutrientsTable.DB_col_CARBS, facts.get(i).amount);
-        }
+        values.put(recipeNutrientsTable.col_Calories, facts.getCalories());
+        values.put(recipeNutrientsTable.col_Protein, facts.getProtein());
+        values.put(recipeNutrientsTable.col_Carbs, facts.getCarbs());
+        values.put(recipeNutrientsTable.col_Fats, facts.getFats());
+        values.put(recipeNutrientsTable.col_SaFats, facts.getSaFats());
+        values.put(recipeNutrientsTable.col_Sugars, facts.getSugars());
+        values.put(recipeNutrientsTable.col_Cholesterol, facts.getCholesterol());
+        values.put(recipeNutrientsTable.col_Calcium, facts.getCalcium());
+        values.put(recipeNutrientsTable.col_Vitamin_A, facts.getVitamin_A());
+        values.put(recipeNutrientsTable.col_Vitamin_B6, facts.getVitamin_B6());
+        values.put(recipeNutrientsTable.col_Vitamin_B12, facts.getVitamin_B12());
+        values.put(recipeNutrientsTable.col_Vitamin_C, facts.getVitamin_C());
+        values.put(recipeNutrientsTable.col_Vitamin_D, facts.getVitamin_D());
 
         // Inserting Row
         long id = db.insert(recipeNutrientsTable.DB_Table, null, values);
@@ -312,13 +311,17 @@ public class AppDBController extends SQLiteOpenHelper {
         return id;
     }
 
-    public Vector<String> getRecipeNutrients(int id){
+    public NutrientsFactsRecord getRecipeNutrients(int id){
         db = this.getReadableDatabase();
         Cursor cursor = db.query(recipeNutrientsTable.DB_Table,
                 new String[] {
-                        recipeNutrientsTable.DB_col_CALORIES, recipeNutrientsTable.DB_col_PROTEIN,
-                        recipeNutrientsTable.DB_col_FATS, recipeNutrientsTable.DB_col_SatFATS,
-                        recipeNutrientsTable.DB_col_FIBER, recipeNutrientsTable.DB_col_CARBS
+                        recipeNutrientsTable.col_Calories, recipeNutrientsTable.col_Protein,
+                        recipeNutrientsTable.col_Fats, recipeNutrientsTable.col_SaFats,
+                        recipeNutrientsTable.col_Carbs, recipeNutrientsTable.col_Sugars,
+                        recipeNutrientsTable.col_Cholesterol, recipeNutrientsTable.col_Calcium,
+                        recipeNutrientsTable.col_Vitamin_A, recipeNutrientsTable.col_Vitamin_C,
+                        recipeNutrientsTable.col_Vitamin_B6, recipeNutrientsTable.col_Vitamin_B12,
+                        recipeNutrientsTable.col_Vitamin_D
                 },
                 recipeNutrientsTable.DB_col_ID + "=?",
                 new String[] { String.valueOf(id)},
@@ -327,21 +330,22 @@ public class AppDBController extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        Vector<String> facts= new Vector<>();
-        String str= "Calories: "+ cursor.getString(cursor.getColumnIndex(recipeNutrientsTable.DB_col_CALORIES));
-        facts.add(str);
-        str= "Protein: "+ cursor.getString(cursor.getColumnIndex(recipeNutrientsTable.DB_col_PROTEIN));
-        facts.add(str);
-        str= "Fats: "+ cursor.getString(cursor.getColumnIndex(recipeNutrientsTable.DB_col_FATS));
-        facts.add(str);
-        str= "Sat.Fats: "+ cursor.getString(cursor.getColumnIndex(recipeNutrientsTable.DB_col_SatFATS));
-        facts.add(str);
-        str= "Carbs: "+ cursor.getString(cursor.getColumnIndex(recipeNutrientsTable.DB_col_CARBS));
-        facts.add(str);
-        str= "Fiber: "+ cursor.getString(cursor.getColumnIndex(recipeNutrientsTable.DB_col_FIBER));
-        facts.add(str);
+        NutrientsFactsRecord record= new NutrientsFactsRecord();
+        record.setCalories(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Calories)));
+        record.setProtein(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Protein)));
+        record.setFats(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Fats)));
+        record.setSaFats(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_SaFats)));
+        record.setCarbs(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Carbs)));
+        record.setSugars(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Sugars)));
+        record.setCholesterol(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Cholesterol)));
+        record.setCalcium(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Calcium)));
+        record.setVitamin_A(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Vitamin_A)));
+        record.setVitamin_C(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Vitamin_C)));
+        record.setVitamin_B6(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Vitamin_B6)));
+        record.setVitamin_B12(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Vitamin_B12)));
+        record.setVitamin_D(cursor.getDouble(cursor.getColumnIndex(recipeNutrientsTable.col_Vitamin_D)));
 
-        return facts;
+        return record;
     }
 
 

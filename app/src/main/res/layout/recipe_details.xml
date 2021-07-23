@@ -142,44 +142,12 @@
                     android:text="Description"
                     />
 
-                <TextView android:id="@+id/nutrients_"
-                    android:textStyle="bold"
-                    android:textSize="17sp"
-                    android:textColor="@color/cacao_maca_walnut_milk_color"
-                    android:layout_marginLeft="22dp"
-                    android:layout_marginTop="550dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="nutrition Facts"
-                    />
-
-                <TextView android:id="@+id/nutritionFacts"
-                    android:textStyle="bold"
-                    android:textSize="17sp"
-                    android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginTop="580dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="dfghn"
-                    />
-
-
-                <View android:id="@+id/line_spacing_ek15"
-                    android:background="@drawable/line_spacing_ek1_shape"
-                    android:layout_marginTop="650dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    />
-
                 <TextView android:id="@+id/ingredient_"
                     android:textStyle="bold"
                     android:textSize="17sp"
                     android:textColor="@color/cacao_maca_walnut_milk_color"
                     android:layout_marginLeft="22dp"
-                    android:layout_marginTop="670dp"
+                    android:layout_marginTop="540dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ingredients"
@@ -190,7 +158,7 @@
                     android:textSize="17sp"
                     android:textColor="@color/your_recipe_has_been_uploaded__you_can_see_it_on_your_profile__your_recipe_has_been_uploaded__you_can_see_it_on_your_color"
                     android:layout_marginLeft="18dp"
-                    android:layout_marginTop="690dp"
+                    android:layout_marginTop="570dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="dfghn"
@@ -278,20 +246,32 @@
         </RelativeLayout>
     </ScrollView>
 
+
     <RelativeLayout android:id="@+id/navigation_bar_ek2"
         android:layout_marginTop="800dp"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="100dp"
         android:background="#ffffff"
         >
+
+        <Button android:id="@+id/displayNutrients"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Display Nutrition Facts"
+            android:background="@drawable/round" />
 
         <RelativeLayout android:id="@+id/iconly_bold_home_ek2"
             android:layout_marginStart="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="26dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="55dp">
 
 
             <RelativeLayout android:id="@+id/home_ek10"
@@ -317,7 +297,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="162dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="65dp"
             android:layout_centerHorizontal="true">
 
             <Button
@@ -341,7 +321,7 @@
             android:layout_alignParentRight="true"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="55dp"
             android:layout_marginRight="30dp"
             android:src="@drawable/ic_logout"
             app:c_border="true"

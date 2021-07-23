@@ -1,11 +1,13 @@
 package exportkit.xd.Model;
 
-public class NutrientsFactsSheet {
-    String FoodName, Category,
-            Cholesterol, Calcium, Vitamin_A, Vitamin_C, Vitamin_B12, Vitamin_B6, Vitamin_D;
-    double Calories, Fats, SaFats, Protein, Carbs, Sugars;
+//Excel Sheet
+public class NutrientsFactsRecord {
+    String FoodName="", Category="";
+    double Cholesterol=0, Calcium=0, Vitamin_A=0, Vitamin_C=0,
+            Vitamin_B12=0, Vitamin_B6=0, Vitamin_D=0,
+            Calories=0, Fats=0, SaFats=0, Protein=0, Carbs=0, Sugars=0;
 
-    public NutrientsFactsSheet(){}
+    public NutrientsFactsRecord(){}
 
     public String getFoodName() {
         return FoodName;
@@ -23,59 +25,59 @@ public class NutrientsFactsSheet {
         Category = category;
     }
 
-    public String getCholesterol() {
+    public double getCholesterol() {
         return Cholesterol;
     }
 
-    public void setCholesterol(String cholesterol) {
+    public void setCholesterol(double cholesterol) {
         Cholesterol = cholesterol;
     }
 
-    public String getCalcium() {
+    public double getCalcium() {
         return Calcium;
     }
 
-    public void setCalcium(String calcium) {
+    public void setCalcium(double calcium) {
         Calcium = calcium;
     }
 
-    public String getVitamin_A() {
+    public double getVitamin_A() {
         return Vitamin_A;
     }
 
-    public void setVitamin_A(String vitamin_A) {
+    public void setVitamin_A(double vitamin_A) {
         Vitamin_A = vitamin_A;
     }
 
-    public String getVitamin_C() {
+    public double getVitamin_C() {
         return Vitamin_C;
     }
 
-    public void setVitamin_C(String vitamin_C) {
+    public void setVitamin_C(double vitamin_C) {
         Vitamin_C = vitamin_C;
     }
 
-    public String getVitamin_B12() {
+    public double getVitamin_B12() {
         return Vitamin_B12;
     }
 
-    public void setVitamin_B12(String vitamin_B12) {
+    public void setVitamin_B12(double vitamin_B12) {
         Vitamin_B12 = vitamin_B12;
     }
 
-    public String getVitamin_B6() {
+    public double getVitamin_B6() {
         return Vitamin_B6;
     }
 
-    public void setVitamin_B6(String vitamin_B6) {
+    public void setVitamin_B6(double vitamin_B6) {
         Vitamin_B6 = vitamin_B6;
     }
 
-    public String getVitamin_D() {
+    public double getVitamin_D() {
         return Vitamin_D;
     }
 
-    public void setVitamin_D(String vitamin_D) {
+    public void setVitamin_D(double vitamin_D) {
         Vitamin_D = vitamin_D;
     }
 

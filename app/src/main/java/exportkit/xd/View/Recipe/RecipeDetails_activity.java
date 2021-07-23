@@ -1,6 +1,7 @@
 package exportkit.xd.View.Recipe;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,13 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
 import java.util.Vector;
 
 import exportkit.xd.Controller.RecipeController;
 import exportkit.xd.Controller.UserController;
+import exportkit.xd.DB.Constants.RecipeNutrientsTableConstants;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.NutrientsFactsRecord;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
@@ -31,9 +36,9 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
     RecipeController recipeController;
     UserController userController;
     ImageView image;
-    TextView name, description, ingredient, nutrients;
+    TextView name, description, ingredient;
     private ImageButton editButton, HomeButton, backButton, favButton;
-    private Button SearchButton, MacroTracker;
+    private Button SearchButton, MacroTracker, nutrientsTable;
     private CircularImageView ProfileIcon;
 
     @Override
@@ -59,7 +64,7 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
         name= findViewById(R.id.foodName);
         description= findViewById(R.id.getDescription);
         ingredient= findViewById(R.id.ingredients);
-        nutrients= findViewById(R.id.nutritionFacts);
+        nutrientsTable= findViewById(R.id.displayNutrients);
 
         backButton = findViewById(R.id.back);
         editButton= findViewById(R.id.edit);
@@ -96,10 +101,6 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
         name.setText(recipe.getName());
         description.setText(recipe.getDescription());
         ingredient.setText(recipe.getIngredients());
-        //get facts information
-        Vector<String> facts= recipeController.getRecipeNutrients(recipe.getNutrientsID());
-        nutrients.setText(String.valueOf(facts));
-
 
         //buttons
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +124,30 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
                 favButton.setVisibility(View.GONE);
                 editButton.setImageResource(R.drawable.star_1);
                 editButton.setVisibility(View.VISIBLE);
+            }
+        });
+        nutrientsTable.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                //get facts information
+                NutrientsFactsRecord facts= recipeController.getRecipeNutrients(recipe.getNutrientsID());
+                //convert it to String
+                RecipeNutrientsTableConstants cnst= new RecipeNutrientsTableConstants();
+                String str="";
+                str= cnst.col_Calories+": "+facts.getCalories()+"\n";
+                str+= "\n"+cnst.col_Protein+": "+facts.getProtein()+"g\n";
+                str+= "\n"+cnst.col_Carbs+": "+facts.getCarbs()+"g\n";
+                if(facts.getSugars()!=0) str+= "\t\t\t"+cnst.col_Sugars+": "+facts.getSugars()+"g\n";
+                str+= "\n"+cnst.col_Fats+": "+facts.getFats()+"g\n";
+                if(facts.getSaFats()!=0) str+= "\t\t\t"+cnst.col_SaFats+": "+facts.getSaFats()+"g\n";
+                if(facts.getCholesterol()!=0) str+= "\n"+cnst.col_Cholesterol+": "+facts.getCholesterol()+"mg\n";
+                if(facts.getCalcium()!=0) str+= "\n"+cnst.col_Calcium+": "+facts.getCalcium()+"%\n";
+                if(facts.getVitamin_A()!=0) str+= "\n"+cnst.col_Vitamin_A+": "+facts.getVitamin_A()+"%\n";
+                if(facts.getVitamin_C()!=0) str+= "\n"+cnst.col_Vitamin_C+": "+facts.getVitamin_C()+"%\n";
+                if(facts.getVitamin_D()!=0) str+= "\n"+cnst.col_Vitamin_D+": "+facts.getVitamin_D()+"%\n";
+                if(facts.getVitamin_B6()!=0) str+= "\n"+cnst.col_Vitamin_B6+": "+facts.getVitamin_B6()+"%\n";
+                if(facts.getVitamin_B12()!=0) str+= "\n"+cnst.col_Vitamin_B12+": "+facts.getVitamin_B12()+"%";
+
+                display("Nutrition Facts", str);
             }
         });
         MacroTracker.setOnClickListener(new View.OnClickListener(){
@@ -173,6 +198,20 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
         });
     }
 
+
+    private void display(String title, String msg){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle(title);
+        dialogBuilder.setMessage(msg);
+        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialogBuilder.create().show();
+    }
+    //----------------------------------------------------------------------------------------------
     @Override
     public void onSuccess(String message) {
         Toast.makeText(getApplication(),message,Toast.LENGTH_LONG).show();

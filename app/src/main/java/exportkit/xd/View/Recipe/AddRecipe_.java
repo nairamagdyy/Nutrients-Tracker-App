@@ -17,6 +17,7 @@ import exportkit.xd.Controller.CameraController;
 import exportkit.xd.Controller.NutrientsController;
 import exportkit.xd.Controller.RecipeController;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.NutrientsFactsRecord;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.R;
 import exportkit.xd.View.Scanner.Camera;
@@ -91,11 +92,11 @@ public class AddRecipe_ extends Camera implements IAppViews {
                         for(int i=0; i<ingredientsList.size(); i++) {
                             String name= ingredientsList.get(i).name;
                             String amount= String.valueOf(ingredientsList.get(i).amount);
-                            String record= String.valueOf(i+1)+") "+amount+" Cups of "+name+"\n";
+                            String record= String.valueOf(i+1)+") "+amount+" Grams of "+name+"\n";
                             all_ingredients+=record;
                         }
                         //calculate Nutrients Facts for the recipe then insert it
-                        ArrayList<Ingredient> facts= nutrientsController.calculateNutrients(ingredientsList);
+                        NutrientsFactsRecord facts= nutrientsController.calculateNutrients(ingredientsList);
                         long nutrientsID= recipeController.addRecipeNutrients(facts);
 
                         //save recipe with all information in DB

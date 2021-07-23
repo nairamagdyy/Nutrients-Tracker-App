@@ -6,8 +6,8 @@ import android.content.res.AssetManager;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import exportkit.xd.DB.Constants.NutrientsFactsSheetConstants;
-import exportkit.xd.Model.NutrientsFactsSheet;
+import exportkit.xd.DB.Constants.RecipeNutrientsTableConstants;
+import exportkit.xd.Model.NutrientsFactsRecord;
 import exportkit.xd.View.Recipe.Ingredient;
 import jxl.Cell;
 import jxl.Sheet;
@@ -16,15 +16,15 @@ import jxl.Workbook;
 public class NutrientsDBController {
 
     Context context;
-    NutrientsFactsSheetConstants columns= new NutrientsFactsSheetConstants();
+    public RecipeNutrientsTableConstants columns= new RecipeNutrientsTableConstants();
 
     public NutrientsDBController(Context cntx) {
         this.context= cntx;
     }
 
-    public ArrayList<NutrientsFactsSheet> getNutrientsInfo(ArrayList<Ingredient> ingredients)
+    public ArrayList<NutrientsFactsRecord> getNutrientsInfo(ArrayList<Ingredient> ingredients)
     {
-        ArrayList<NutrientsFactsSheet> list= new ArrayList<>();
+        ArrayList<NutrientsFactsRecord> list= new ArrayList<>();
 
         try{
             //open excel file and read it
@@ -43,7 +43,7 @@ public class NutrientsDBController {
                 Cell cellFood = sheet.findCell(name); //search on ingredient
                 int row = cellFood.getRow(); //get number of row
                 Cell[] factsRow = sheet.getRow(row); //read all columns
-                list.add(storeFacts(headerRow, factsRow)); //create instance of NutrientsFactsSheet
+                list.add(storeFacts(headerRow, factsRow)); //create instance of NutrientsFactsRecord
             }
         }
         catch (Exception e){ }
@@ -51,8 +51,8 @@ public class NutrientsDBController {
         return list;
     }
 
-    private NutrientsFactsSheet storeFacts(Cell[] headerRow, Cell[] factsRow){
-        NutrientsFactsSheet facts= new NutrientsFactsSheet();
+    private NutrientsFactsRecord storeFacts(Cell[] headerRow, Cell[] factsRow){
+        NutrientsFactsRecord facts= new NutrientsFactsRecord();
         for(int i=0; i<headerRow.length; i++){
            if(!factsRow[i].getContents().equals("null")) {
 
@@ -81,25 +81,25 @@ public class NutrientsDBController {
                    facts.setSugars(Double.parseDouble(factsRow[i].getContents().trim()));
 
                } else if (headerRow[i].getContents().trim().equals(columns.col_Cholesterol)) {
-                   facts.setCholesterol(factsRow[i].getContents().trim());
+                   facts.setCholesterol(Double.parseDouble(factsRow[i].getContents().trim()));
 
                } else if (headerRow[i].getContents().trim().equals(columns.col_Calcium)) {
-                   facts.setCalcium(factsRow[i].getContents().trim());
+                   facts.setCalcium(Double.parseDouble(factsRow[i].getContents().trim()));
 
                } else if (headerRow[i].getContents().trim().equals(columns.col_Vitamin_A)) {
-                   facts.setVitamin_A(factsRow[i].getContents().trim());
+                   facts.setVitamin_A(Double.parseDouble(factsRow[i].getContents().trim()));
 
                } else if (headerRow[i].getContents().trim().equals(columns.col_Vitamin_C)) {
-                   facts.setVitamin_C(factsRow[i].getContents().trim());
+                   facts.setVitamin_C(Double.parseDouble(factsRow[i].getContents().trim()));
 
                } else if (headerRow[i].getContents().trim().equals(columns.col_Vitamin_B6)) {
-                   facts.setVitamin_B6(factsRow[i].getContents().trim());
+                   facts.setVitamin_B6(Double.parseDouble(factsRow[i].getContents().trim()));
 
                } else if (headerRow[i].getContents().trim().equals(columns.col_Vitamin_B12)) {
-                   facts.setVitamin_B12(factsRow[i].getContents().trim());
+                   facts.setVitamin_B12(Double.parseDouble(factsRow[i].getContents().trim()));
 
                } else if (headerRow[i].getContents().trim().equals(columns.col_Vitamin_D)) {
-                   facts.setVitamin_D(factsRow[i].getContents().trim());
+                   facts.setVitamin_D(Double.parseDouble(factsRow[i].getContents().trim()));
                }
            }
         }
