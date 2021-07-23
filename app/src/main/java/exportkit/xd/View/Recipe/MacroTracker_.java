@@ -14,18 +14,21 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
+import exportkit.xd.Controller.NutrientsController;
 import exportkit.xd.Controller.RecipeController;
 import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.Profile_activity;
-import exportkit.xd.View.Search.SearchUser_activity;
 import exportkit.xd.View.Scanner.Camera;
-import exportkit.xd.View.Homepage_activity;
+import exportkit.xd.View.Search.SearchUser_activity;
 
 public class MacroTracker_ extends Camera implements IAppViews {
 
@@ -39,6 +42,14 @@ public class MacroTracker_ extends Camera implements IAppViews {
 
     UserController userController;
     RecipeController recipeController;
+    NutrientsController nutrientsController;
+
+    int recipeId;
+
+    enum KEYS{
+        INCREASE_FATS, INCREASE_CARBS, INCREASE_PROTEIN,
+        DECREASE_FATS, DECREASE_CARBS, DECREASE_PROTEIN
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +58,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
 
         userController= new UserController(this);
         recipeController= new RecipeController(this);
+        nutrientsController= new NutrientsController(this);
 
         //get logged user
         SessionManager session= new SessionManager(this);
@@ -54,7 +66,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
         User user= userController.getUser((int)loggedUserID);
 
         //retrieve recipe id
-        int recipeId= getIntent().getExtras().getInt("recipeID");
+        recipeId= getIntent().getExtras().getInt("recipeID");
         String PROFILE_KEY= getIntent().getExtras().getString("IProfile");
         String image= getIntent().getExtras().getString("image");
 
@@ -102,37 +114,33 @@ public class MacroTracker_ extends Camera implements IAppViews {
 
         increaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                trackMacros(KEYS.INCREASE_FATS);
                 fats_();
             }
         });
         decreaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), Tips_activity.class);
-                startActivity(nextScreen);
+                fats_();
             }
         });
         increaseCarbs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), Tips_activity.class);
-                startActivity(nextScreen);
+                fats_();
             }
         });
         decreaseCarbs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), Tips_activity.class);
-                startActivity(nextScreen);
+                fats_();
             }
         });
         increaseProteins.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), Tips_activity.class);
-                startActivity(nextScreen);
+                fats_();
             }
         });
         decreaseProteins.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent nextScreen = new Intent(getApplicationContext(), Tips_activity.class);
-                startActivity(nextScreen);
+                fats_();
             }
         });
         recipeDetailsButton.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +175,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
             }
         });
     }
+
     private void fats_() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setTitle("Tips");
@@ -180,13 +189,71 @@ public class MacroTracker_ extends Camera implements IAppViews {
         dialogBuilder.create().show();
     }
 
-    @Override
-    public void onSuccess(String message) {
 
+    private String trackMacros(KEYS key){
+        String msg= "";
+        String[] query= String.valueOf(key).split("_");
+        //track nutrients for each ingredient
+        Recipe recipe= recipeController.getRecipe(recipeId);
+        Vector<Ingredient> ingredients= readRecipeIngredients(recipe.getIngredients());
+        ArrayList<Ingredient> facts;
+        for(int i=0; i<ingredients.size(); i++){
+            ArrayList<Ingredient> list= new ArrayList<>();
+            list.add(ingredients.get(i));
+            facts= nutrientsController.calculateNutrients(list);
+
+        }
+
+        if(query[0].equals("INCREASE")){
+            if(query[1].equals("FATS")){
+
+            }else if (query[1].equals("CARBS")){
+
+            }else if((query[1].equals("PROTEIN"))){
+
+            }
+        }
+        else if(query[0].equals("DECREASE")){
+            if(query[1].equals("FATS")){
+
+            }else if (query[1].equals("CARBS")){
+
+            }else if((query[1].equals("PROTEIN"))){
+
+            }
+        }
+
+        return msg;
     }
 
-    @Override
-    public void onError(String message) {
+    private Vector<Ingredient> readRecipeIngredients(String recipeIngredients){
+        Vector<Ingredient> ingredients= new Vector<>();
+        String txtIngredient="";
 
+        for(int i=0; i<recipeIngredients.length(); i++){
+            if(recipeIngredients.charAt(i)!='\n'){
+                txtIngredient+= recipeIngredients.charAt(i);
+            }
+            else{
+                //generate name and amount from txtIngredient-> ex: 1) 50.0 Cups of Ice milk
+                String[] split= txtIngredient.split("of");
+                Ingredient itemIngredients= new Ingredient();
+                itemIngredients.name= split[1];
+                itemIngredients.amount= Double.parseDouble(split[0].split(" ")[1]); //50.0
+                ingredients.add(itemIngredients);
+
+                txtIngredient="";
+            }
+        }
+
+        return ingredients;
     }
+
+    //----------------------------------------------------------------------------------------------
+
+    @Override
+    public void onSuccess(String message) { }
+
+    @Override
+    public void onError(String message) { }
 }

@@ -1,9 +1,9 @@
 package exportkit.xd.View.Recipe;
 
-public class Item {
+public class Ingredient {
     public String name;
     public double amount;
 
-    public Item() {
+    public Ingredient() {
     }
 }

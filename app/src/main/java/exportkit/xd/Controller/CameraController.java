@@ -12,7 +12,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import exportkit.xd.DB.Constatnts.CameraConstants;
+import exportkit.xd.DB.Constants.CameraConstants;
 
 public class CameraController{
     Activity view;

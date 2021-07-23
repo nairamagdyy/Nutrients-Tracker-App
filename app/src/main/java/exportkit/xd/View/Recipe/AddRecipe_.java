@@ -30,7 +30,7 @@ public class AddRecipe_ extends Camera implements IAppViews {
     Button dynamicAddBtn;
 
     //variables
-    ArrayList<Item> ingredientsList = new ArrayList<>();
+    ArrayList<Ingredient> ingredientsList = new ArrayList<>();
 
     private TextView name, description;
     private ImageButton saveBtn ;
@@ -95,7 +95,7 @@ public class AddRecipe_ extends Camera implements IAppViews {
                             all_ingredients+=record;
                         }
                         //calculate Nutrients Facts for the recipe then insert it
-                        ArrayList<Item> facts= nutrientsController.calculateNutrients(ingredientsList);
+                        ArrayList<Ingredient> facts= nutrientsController.calculateNutrients(ingredientsList);
                         long nutrientsID= recipeController.addRecipeNutrients(facts);
 
                         //save recipe with all information in DB
@@ -162,7 +162,7 @@ public class AddRecipe_ extends Camera implements IAppViews {
             EditText TextName= (EditText)view.findViewById(R.id.name),
                     TextAmount= (EditText)view.findViewById(R.id.amount);
 
-            Item ingredient = new Item();
+            Ingredient ingredient = new Ingredient();
 
             if(!TextName.getText().toString().equals("") && !TextAmount.getText().toString().equals("")){
                 ingredient.name= TextName.getText().toString().trim();
@@ -177,7 +177,7 @@ public class AddRecipe_ extends Camera implements IAppViews {
 
         if(ingredientsList.size()==0){
             result = false;
-            Toast.makeText(this, "Add Item First!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Add Ingredient First!", Toast.LENGTH_SHORT).show();
         }else if(!result){
             Toast.makeText(this, "Enter All Details Correctly!", Toast.LENGTH_SHORT).show();
         }

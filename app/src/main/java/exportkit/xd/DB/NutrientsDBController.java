@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import exportkit.xd.DB.Constants.NutrientsFactsSheetConstants;
 import exportkit.xd.Model.NutrientsFactsSheet;
-import exportkit.xd.View.Recipe.Item;
+import exportkit.xd.View.Recipe.Ingredient;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -22,7 +22,7 @@ public class NutrientsDBController {
         this.context= cntx;
     }
 
-    public ArrayList<NutrientsFactsSheet> getNutrientsInfo(ArrayList<Item> ingredients)
+    public ArrayList<NutrientsFactsSheet> getNutrientsInfo(ArrayList<Ingredient> ingredients)
     {
         ArrayList<NutrientsFactsSheet> list= new ArrayList<>();
 

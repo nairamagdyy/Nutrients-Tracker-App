@@ -12,7 +12,7 @@ import java.util.Vector;
 import exportkit.xd.DB.AppDBController;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Recipe.Item;
+import exportkit.xd.View.Recipe.Ingredient;
 
 public class RecipeController {
 
@@ -33,7 +33,7 @@ public class RecipeController {
             view.onError("FAILED");
     }
 
-    public long addRecipeNutrients(ArrayList<Item> facts){
+    public long addRecipeNutrients(ArrayList<Ingredient> facts){
         return db.insertRecipeNutrients(facts);
     }
 

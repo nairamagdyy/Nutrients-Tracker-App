@@ -13,10 +13,10 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import exportkit.xd.Controller.CameraController;
 
-import static exportkit.xd.DB.Constatnts.CameraConstants.CAMERA_REQUEST_CODE;
-import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_CAMERA_CODE;
-import static exportkit.xd.DB.Constatnts.CameraConstants.IMAGE_PICK_GALLERY_CODE;
-import static exportkit.xd.DB.Constatnts.CameraConstants.STORAGE_REQUEST_CODE;
+import static exportkit.xd.DB.Constants.CameraConstants.CAMERA_REQUEST_CODE;
+import static exportkit.xd.DB.Constants.CameraConstants.IMAGE_PICK_CAMERA_CODE;
+import static exportkit.xd.DB.Constants.CameraConstants.IMAGE_PICK_GALLERY_CODE;
+import static exportkit.xd.DB.Constants.CameraConstants.STORAGE_REQUEST_CODE;
 
 public abstract class Camera extends AppCompatActivity {
     public CameraController cameraController;

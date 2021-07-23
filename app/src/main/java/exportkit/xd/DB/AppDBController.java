@@ -18,7 +18,7 @@ import exportkit.xd.DB.Constants.UserFavoriteListTableConstants;
 import exportkit.xd.DB.Constants.UserTableConstants;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
-import exportkit.xd.View.Recipe.Item;
+import exportkit.xd.View.Recipe.Ingredient;
 
 public class AppDBController extends SQLiteOpenHelper {
     SQLiteDatabase db;
@@ -287,7 +287,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
 
     //---------------------------------RECIPE NUTRIENTS TABLE---------------------------------------
-    public long insertRecipeNutrients(ArrayList<Item> facts){
+    public long insertRecipeNutrients(ArrayList<Ingredient> facts){
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         for(int i=0; i<facts.size(); i++){
