@@ -15,7 +15,6 @@ import androidx.appcompat.app.AlertDialog;
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 import exportkit.xd.Controller.NutrientsController;
 import exportkit.xd.Controller.RecipeController;
@@ -47,9 +46,9 @@ public class MacroTracker_ extends Camera implements IAppViews {
 
     int recipeId;
 
-    enum KEYS{
-        INCREASE_FATS, INCREASE_CARBS, INCREASE_PROTEIN,
-        DECREASE_FATS, DECREASE_CARBS, DECREASE_PROTEIN
+    public enum QUERY {
+        INCREASE_Fats, INCREASE_Carbs, INCREASE_Protein,
+        DECREASE_Fats, DECREASE_Carbs, DECREASE_Protein
     }
 
     @Override
@@ -109,7 +108,7 @@ public class MacroTracker_ extends Camera implements IAppViews {
 
         increaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                trackMacros(KEYS.INCREASE_FATS);
+                trackMacros(QUERY.INCREASE_Fats);
                 fats_();
             }
         });
@@ -184,20 +183,15 @@ public class MacroTracker_ extends Camera implements IAppViews {
         dialogBuilder.create().show();
     }
 
-
-    private String trackMacros(KEYS key){
+    private String trackMacros(QUERY key){
         String msg= "";
+        //get query input, what user want to track
         String[] query= String.valueOf(key).split("_");
         //track nutrients for each ingredient
         Recipe recipe= recipeController.getRecipe(recipeId);
-        Vector<Ingredient> ingredients= readRecipeIngredients(recipe.getIngredients());
-        ArrayList<Ingredient> facts;
-        for(int i=0; i<ingredients.size(); i++){
-            ArrayList<Ingredient> list= new ArrayList<>();
-            list.add(ingredients.get(i));
-           // facts= nutrientsController.calculateNutrients(list);
-
-        }
+        //split ingredients, each ingredient in one index in vector
+        ArrayList<String> ingredientsList= readRecipeIngredients(recipe.getIngredients());
+        nutrientsController.trackMacros(String.valueOf(key), readRecipeIngredients(recipe.getIngredients()));
 
         if(query[0].equals("INCREASE")){
             if(query[1].equals("FATS")){
@@ -221,8 +215,8 @@ public class MacroTracker_ extends Camera implements IAppViews {
         return msg;
     }
 
-    private Vector<Ingredient> readRecipeIngredients(String recipeIngredients){
-        Vector<Ingredient> ingredients= new Vector<>();
+    private ArrayList<String> readRecipeIngredients(String recipeIngredients){
+        ArrayList<String> ingredients= new ArrayList<>();
         String txtIngredient="";
 
         for(int i=0; i<recipeIngredients.length(); i++){
@@ -230,17 +224,13 @@ public class MacroTracker_ extends Camera implements IAppViews {
                 txtIngredient+= recipeIngredients.charAt(i);
             }
             else{
-                //generate name and amount from txtIngredient-> ex: 1) 50.0 Cups of Ice milk
+                //generate name and amount from txtIngredient-> ex: 1) 50.0 Grams of Ice milk
                 String[] split= txtIngredient.split("of");
-                Ingredient itemIngredients= new Ingredient();
-                itemIngredients.name= split[1];
-                itemIngredients.amount= Double.parseDouble(split[0].split(" ")[1]); //50.0
-                ingredients.add(itemIngredients);
+                ingredients.add(split[1].toLowerCase().replaceAll("\\s",""));
 
                 txtIngredient="";
             }
         }
-
         return ingredients;
     }
 

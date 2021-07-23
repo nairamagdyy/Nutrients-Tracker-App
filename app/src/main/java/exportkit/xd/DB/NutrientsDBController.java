@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import exportkit.xd.DB.Constants.RecipeNutrientsTableConstants;
 import exportkit.xd.Model.NutrientsFactsRecord;
-import exportkit.xd.View.Recipe.Ingredient;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
@@ -22,7 +21,7 @@ public class NutrientsDBController {
         this.context= cntx;
     }
 
-    public ArrayList<NutrientsFactsRecord> getNutrientsInfo(ArrayList<Ingredient> ingredients)
+    public ArrayList<NutrientsFactsRecord> getNutrientsInfo(ArrayList<String> ingredients)
     {
         ArrayList<NutrientsFactsRecord> list= new ArrayList<>();
 
@@ -39,7 +38,7 @@ public class NutrientsDBController {
             //loop on ingredients List
             for(int k=0; k<ingredients.size(); k++) { //loop on my ingredients list
                 //convert all letters to lowercase and remove all spaces -> excel format
-                String name= (ingredients.get(k).name).toLowerCase().replaceAll("\\s","");
+                String name= (ingredients.get(k)).toLowerCase().replaceAll("\\s","");
                 Cell cellFood = sheet.findCell(name); //search on ingredient
                 int row = cellFood.getRow(); //get number of row
                 Cell[] factsRow = sheet.getRow(row); //read all columns

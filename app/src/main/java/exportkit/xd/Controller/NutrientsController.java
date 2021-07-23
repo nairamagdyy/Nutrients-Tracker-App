@@ -20,7 +20,9 @@ public class NutrientsController {
         NutrientsFactsRecord recipeFacts= new NutrientsFactsRecord();
 
         //1. get nutrition info foreach ingredient
-        ArrayList<NutrientsFactsRecord> listInfo= db.getNutrientsInfo(ingredients);
+        ArrayList<String>nameList= new ArrayList<>();
+        for(int i=0; i<ingredients.size(); i++) { nameList.add(ingredients.get(i).name); }
+        ArrayList<NutrientsFactsRecord> listInfo= db.getNutrientsInfo(nameList);
 
         //2. loop on list and start to calculate -> summation
         for(int i=0; i<listInfo.size(); i++){
@@ -98,6 +100,17 @@ public class NutrientsController {
         return recipeFacts;
     }
 
+    public void trackMacros(String queryStr, ArrayList<String> list){
+        //get query input, what user want to track
+        String[] query= String.valueOf(queryStr).split("_");
+        //read info for each ingredient
+        ArrayList<NutrientsFactsRecord> listInfo= db.getNutrientsInfo(list);
+        for(int i=4; i<list.size(); i++){
+
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------
     private int indexOf(ArrayList<Ingredient> list, String name){
         int idx=-1;
         for (int i=0; i<list.size(); i++){

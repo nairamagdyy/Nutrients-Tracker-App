@@ -74,5 +74,4 @@ public class RecipeController {
         return db.searchRecipe(recipename);
     }
 
-
 }
