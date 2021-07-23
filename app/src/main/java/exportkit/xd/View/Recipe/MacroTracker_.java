@@ -21,6 +21,7 @@ import exportkit.xd.Controller.NutrientsController;
 import exportkit.xd.Controller.RecipeController;
 import exportkit.xd.Controller.UserController;
 import exportkit.xd.DB.SessionManager;
+import exportkit.xd.Model.NutrientsFactsRecord;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
@@ -99,19 +100,13 @@ public class MacroTracker_ extends Camera implements IAppViews {
         }else {
             photo.setImageURI(Uri.parse(image));
         }
-/*
+
         //get recipe nutrients details
-        Vector<String> macros= recipeController.getRecipeNutrients(recipeId);
-        for(int i=0; i<macros.size(); i++){
-            String[] split= macros.get(i).split(":");
-            if(split[0].equals("Fats"))
-                fats.setText(String.format("%.2f",Double.parseDouble(split[1].trim()))+"g");
-            else if(split[0].equals("Carbs"))
-                carbs.setText(String.format("%.2f",Double.parseDouble(split[1].trim()))+"g");
-            else if(split[0].equals("Protein"))
-                protein.setText(String.format("%.2f",Double.parseDouble(split[1].trim()))+"g");
-        }
-*/
+        NutrientsFactsRecord facts= recipeController.getRecipeNutrients(recipeId);
+        fats.setText(String.valueOf(facts.getFats())+"g");
+        carbs.setText(String.valueOf(facts.getCarbs())+"g");
+        protein.setText(String.valueOf(facts.getProtein())+"g");
+
         increaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 trackMacros(KEYS.INCREASE_FATS);
