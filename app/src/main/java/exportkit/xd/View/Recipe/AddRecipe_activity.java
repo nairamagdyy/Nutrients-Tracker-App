@@ -38,7 +38,6 @@ public class AddRecipe_activity extends Camera implements IAppViews {
 
     RecipeController recipeController;
     NutrientsController nutrientsController;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
