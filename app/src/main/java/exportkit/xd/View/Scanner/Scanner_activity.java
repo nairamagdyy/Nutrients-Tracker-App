@@ -13,6 +13,7 @@ import exportkit.xd.View.Homepage_activity;
 
 
 public class Scanner_activity extends Camera {
+    /*
     ImageView image;
     Button displayBtn, cancelBtn;
     ImageButton doneBtn;
@@ -52,4 +53,5 @@ public class Scanner_activity extends Camera {
             }
         });
     }
+    */
 }

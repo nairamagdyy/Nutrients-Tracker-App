@@ -73,6 +73,7 @@ public class SearchRecipe_activity extends Activity implements IAppViews {
                 else
                 {
                     RecipeId= recipeInfo.get(0).getId();
+                    
                     onSuccess("");
                 }
             }

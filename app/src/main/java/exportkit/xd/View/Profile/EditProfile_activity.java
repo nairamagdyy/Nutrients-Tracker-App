@@ -33,14 +33,14 @@ public class EditProfile_activity extends Camera implements IAppViews {
         setContentView(R.layout.edit_profile);
 
         userController = new UserController((IAppViews) this);
-        cameraController = new CameraController(this);
+        CameraController cameraController = new CameraController(this);
 
         SessionManager session= new SessionManager(this);
         int loggedUserID = (int) session.getUserFromSession();
         User user= userController.getUser((int)loggedUserID);
 
         //find views
-        uploadedImage= (CircularImageView)findViewById(R.id.avatar);
+        CircularImageView uploadedImage = (CircularImageView) findViewById(R.id.avatar);
         email= (TextView) findViewById(R.id.editmail);
         password= (TextView) findViewById(R.id.editpass);
         phone = (TextView) findViewById(R.id.editphonenumber);

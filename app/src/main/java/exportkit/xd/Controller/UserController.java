@@ -70,7 +70,8 @@ public class UserController{
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public List<User> searchUser(String username) {
-         return db.searchUser(username);
+
+        return db.searchUser(username);
     }
 
 }
