@@ -264,7 +264,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Display Nutrition Facts"
-            android:background="@drawable/round" />
+            android:background="@drawable/round"
+            android:layout_centerHorizontal="true"/>
 
         <RelativeLayout android:id="@+id/iconly_bold_home_ek2"
             android:layout_marginStart="40dp"
