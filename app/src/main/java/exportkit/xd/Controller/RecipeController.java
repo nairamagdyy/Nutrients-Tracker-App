@@ -70,8 +70,8 @@ public class RecipeController {
        db.deleteRecipeFromFavList(userId, recipeId);
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public List<Recipe> SearchRecipe(String recipename) {
-        return db.searchRecipe(recipename);
+    public List<Recipe> SearchRecipe(String recipeName) {
+        return db.searchRecipe(recipeName);
     }
 
 }

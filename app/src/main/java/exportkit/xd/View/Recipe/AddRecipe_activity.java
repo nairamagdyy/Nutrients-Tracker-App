@@ -25,7 +25,7 @@ import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.Profile_activity;
 
-public class AddRecipe_ extends Camera implements IAppViews {
+public class AddRecipe_activity extends Camera implements IAppViews {
     //dynamic view
     LinearLayout ingredients_layoutList;
     Button dynamicAddBtn;

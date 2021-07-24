@@ -18,7 +18,7 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.Profile_activity;
-import exportkit.xd.View.Recipe.AddRecipe_;
+import exportkit.xd.View.Recipe.AddRecipe_activity;
 import exportkit.xd.View.Scanner.Scanner_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 
@@ -70,7 +70,7 @@ public class Homepage_activity extends Activity implements IAppViews{
 		});
 		addRecipeButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Intent nextScreen = new Intent(getApplicationContext(), AddRecipe_.class);
+				Intent nextScreen = new Intent(getApplicationContext(), AddRecipe_activity.class);
 				startActivity(nextScreen);
 			}
 		});

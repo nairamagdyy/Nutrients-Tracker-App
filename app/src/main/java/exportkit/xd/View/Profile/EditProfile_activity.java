@@ -21,7 +21,7 @@ import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Scanner.Camera;
 
-public class EditProfile_ extends Camera implements IAppViews {
+public class EditProfile_activity extends Camera implements IAppViews {
     UserController userController;
 
     private TextView email, password, phone, name, username;
@@ -88,7 +88,7 @@ public class EditProfile_ extends Camera implements IAppViews {
                     User user = new User(Fullname, Username, Email, Phone, Password);
                     user.setId(loggedUserID);
                     user.setAvatar(""+ cameraController.imageUri);
-                    userController.EditProfile(user);
+                    userController.editProfile(user);
                 }
             }
         });

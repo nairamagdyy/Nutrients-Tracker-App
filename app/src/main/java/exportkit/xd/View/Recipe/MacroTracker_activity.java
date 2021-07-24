@@ -30,7 +30,7 @@ import exportkit.xd.View.Profile.Profile_activity;
 import exportkit.xd.View.Scanner.Camera;
 import exportkit.xd.View.Search.SearchUser_activity;
 
-public class MacroTracker_ extends Camera implements IAppViews {
+public class MacroTracker_activity extends Camera implements IAppViews {
 
     private CircularImageView ProfileButton;
     private ImageView photo;
