@@ -1,6 +1,7 @@
 package exportkit.xd.View.Scanner;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import exportkit.xd.Controller.CameraController;
 import exportkit.xd.R;
 import exportkit.xd.View.Homepage_activity;
+
 
 public class Scanner_activity extends Camera {
     ImageView image;
@@ -47,7 +49,7 @@ public class Scanner_activity extends Camera {
         });
         doneBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-              //cameraController.imageUri
+                //image
             }
         });
     }
