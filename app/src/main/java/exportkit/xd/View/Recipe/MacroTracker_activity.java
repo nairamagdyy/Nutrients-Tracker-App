@@ -27,7 +27,6 @@ import exportkit.xd.R;
 import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.Profile_activity;
-import exportkit.xd.View.Scanner.Camera;
 import exportkit.xd.View.Search.SearchUser_activity;
 
 public class MacroTracker_activity extends Camera implements IAppViews {

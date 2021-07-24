@@ -19,7 +19,6 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.IAppViews;
-import exportkit.xd.View.Scanner.Camera;
 
 public class EditProfile_activity extends Camera implements IAppViews {
     UserController userController;
