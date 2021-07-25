@@ -20,7 +20,7 @@ import static exportkit.xd.DB.Constants.CameraConstants.STORAGE_REQUEST_CODE;
 
 public abstract class Camera extends AppCompatActivity {
     public CameraController cameraController;
-    public CircularImageView uploadedImage; //in view/ xml file
+    public CircularImageView uploadedImage; //in view/xml file
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
