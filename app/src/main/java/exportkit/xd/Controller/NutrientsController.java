@@ -34,43 +34,43 @@ public class NutrientsController {
 
             //3. based on amount and facts start to calculate -> amount*factAmount/servingSize
             recipeFacts.setCalories(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getCalories()+(amount*record.getCalories()/db.columns.servingSize))
+                    recipeFacts.getCalories()+(amount*record.getCalories()/db.file.servingSize))
             ));//calories
             recipeFacts.setFats(Double.parseDouble(new DecimalFormat("#.0#").format(
-                    recipeFacts.getFats()+(amount*record.getFats()/db.columns.servingSize))
+                    recipeFacts.getFats()+(amount*record.getFats()/db.file.servingSize))
             )); //fats
             recipeFacts.setCarbs(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getCarbs()+(amount*record.getCarbs()/db.columns.servingSize))
+                    recipeFacts.getCarbs()+(amount*record.getCarbs()/db.file.servingSize))
             )); //carbs
             recipeFacts.setProtein(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getProtein()+(amount*record.getProtein()/db.columns.servingSize))
+                    recipeFacts.getProtein()+(amount*record.getProtein()/db.file.servingSize))
             )); //protein
             recipeFacts.setSaFats(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getSaFats()+(amount*record.getSaFats()/db.columns.servingSize))
+                    recipeFacts.getSaFats()+(amount*record.getSaFats()/db.file.servingSize))
             )); //satFat
             recipeFacts.setSugars(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getSugars()+(amount*record.getSugars()/db.columns.servingSize))
+                    recipeFacts.getSugars()+(amount*record.getSugars()/db.file.servingSize))
             )); //sugars
             recipeFacts.setCholesterol(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getCholesterol()+(amount*record.getCholesterol()/db.columns.servingSize))
+                    recipeFacts.getCholesterol()+(amount*record.getCholesterol()/db.file.servingSize))
             )); //Cholesterol
             recipeFacts.setCalcium(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getCalcium()+(amount*record.getCalcium()/db.columns.servingSize))
+                    recipeFacts.getCalcium()+(amount*record.getCalcium()/db.file.servingSize))
             )); //Calcium
             recipeFacts.setVitamin_A(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getVitamin_A()+(amount*record.getVitamin_A()/db.columns.servingSize))
+                    recipeFacts.getVitamin_A()+(amount*record.getVitamin_A()/db.file.servingSize))
             )); //vitamin A
             recipeFacts.setVitamin_C(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getVitamin_C()+(amount*record.getVitamin_C()/db.columns.servingSize))
+                    recipeFacts.getVitamin_C()+(amount*record.getVitamin_C()/db.file.servingSize))
             )); //vitamin C
             recipeFacts.setVitamin_B6(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getVitamin_B6()+(amount*record.getVitamin_B6()/db.columns.servingSize))
+                    recipeFacts.getVitamin_B6()+(amount*record.getVitamin_B6()/db.file.servingSize))
             )); //vitamin B6
             recipeFacts.setVitamin_B12(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getVitamin_B12()+(amount*record.getVitamin_B12()/db.columns.servingSize))
+                    recipeFacts.getVitamin_B12()+(amount*record.getVitamin_B12()/db.file.servingSize))
             )); //vitamin B12
             recipeFacts.setVitamin_D(Double.parseDouble( new DecimalFormat("#.0#").format(
-                    recipeFacts.getVitamin_D()+(amount*record.getVitamin_D()/db.columns.servingSize))
+                    recipeFacts.getVitamin_D()+(amount*record.getVitamin_D()/db.file.servingSize))
             )); //Vitamin D
         }
 /*

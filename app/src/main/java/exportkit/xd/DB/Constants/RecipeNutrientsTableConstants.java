@@ -1,6 +1,8 @@
 package exportkit.xd.DB.Constants;
 
 public class RecipeNutrientsTableConstants {
+    //sheet name
+    public static final String sheetName= "NutritionFacts.xls";
     //standard measure= 100g, unit: gram
     public final int servingSize=100;
     //Table name
