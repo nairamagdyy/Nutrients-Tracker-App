@@ -54,12 +54,11 @@ public class UserController{
         if(session.checkLogin())
             session.logoutUserFromSession();
     }
-
     public User getUser(int id){
         return db.getUser(id);
     }
 
-    public void editProfile(User user){
+    public void EditProfile(User user){
 
         Boolean data = db.editUser(user);
         if(data)
@@ -69,9 +68,8 @@ public class UserController{
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public List<User> searchUser(String username) {
-
-        return db.searchUser(username);
+    public List<User> SearchUser(String username) {
+         return db.searchUser(username);
     }
 
 }

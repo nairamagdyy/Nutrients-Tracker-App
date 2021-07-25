@@ -33,14 +33,14 @@ public class EditProfile_activity extends Camera implements IAppViews {
         setContentView(R.layout.edit_profile);
 
         userController = new UserController((IAppViews) this);
-        CameraController cameraController = new CameraController(this);
+        cameraController = new CameraController(this);
 
         SessionManager session= new SessionManager(this);
         int loggedUserID = (int) session.getUserFromSession();
         User user= userController.getUser((int)loggedUserID);
 
         //find views
-        CircularImageView uploadedImage = (CircularImageView) findViewById(R.id.avatar);
+        uploadedImage= (CircularImageView)findViewById(R.id.avatar);
         email= (TextView) findViewById(R.id.editmail);
         password= (TextView) findViewById(R.id.editpass);
         phone = (TextView) findViewById(R.id.editphonenumber);
@@ -88,7 +88,7 @@ public class EditProfile_activity extends Camera implements IAppViews {
                     User user = new User(Fullname, Username, Email, Phone, Password);
                     user.setId(loggedUserID);
                     user.setAvatar(""+ cameraController.imageUri);
-                    userController.editProfile(user);
+                    userController.EditProfile(user);
                 }
             }
         });

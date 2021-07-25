@@ -46,7 +46,7 @@ public class AddRecipe_activity extends Camera implements IAppViews {
         setContentView(R.layout.add_recipe);
 
         recipeController = new RecipeController(this);
-        CameraController cameraController = new CameraController(this);
+        cameraController = new CameraController(this);
         nutrientsController= new NutrientsController(this);
 
         //dynamic view
@@ -58,7 +58,7 @@ public class AddRecipe_activity extends Camera implements IAppViews {
         int loggedUser = (int) session.getUserFromSession();
 
         //find views
-        View uploadedImage = findViewById(R.id.uploadImage);
+        uploadedImage= findViewById(R.id.uploadImage);
         name= findViewById(R.id.enter_food_name);
         description= findViewById(R.id.enter_description);
         saveBtn = findViewById(R.id.done);

@@ -14,7 +14,6 @@ import exportkit.xd.Model.Recipe;
 import exportkit.xd.View.IAppViews;
 
 public class RecipeController {
-
     IAppViews view;
     AppDBController db;
 
@@ -70,8 +69,8 @@ public class RecipeController {
        db.deleteRecipeFromFavList(userId, recipeId);
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public List<Recipe> SearchRecipe(String recipeName) {
-        return db.searchRecipe(recipeName);
+    public List<Recipe> SearchRecipe(String recipename) {
+        return db.searchRecipe(recipename);
     }
 
 }
