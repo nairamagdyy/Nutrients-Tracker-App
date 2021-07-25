@@ -27,7 +27,6 @@ import java.io.IOException;
 import exportkit.xd.Model.FoodRecognizerModel;
 import exportkit.xd.R;
 import exportkit.xd.View.Homepage_activity;
-import exportkit.xd.View.Recipe.AddRecipe_activity;
 
 public class ScannerActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2{
     private static final String TAG="Homepage_activity";
@@ -81,7 +80,7 @@ public class ScannerActivity extends Activity implements CameraBridgeViewBase.Cv
         mOpenCvCameraView.setCvCameraViewListener(this);
         try{
             // input size is 300 for this model
-            foodRecognizerModel=new FoodRecognizerModel(getAssets(),"ssd_mobilenet.tflite","labelmap.txt",300);
+            foodRecognizerModel=new FoodRecognizerModel(getAssets(), "detect.tflite", "classes.txt",300);
             Log.d(TAG,"Model is successfully loaded");
         }
         catch (IOException e){

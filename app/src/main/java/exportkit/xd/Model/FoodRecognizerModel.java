@@ -42,19 +42,15 @@ public class FoodRecognizerModel {
     List<String> predictions = new ArrayList<String>() ;
     public FoodRecognizerModel(AssetManager assetManager, String modelPath, String labelPath, int inputSize) throws IOException{
         INPUT_SIZE=inputSize;
-        // use to define gpu or cpu // no. of threads
         Interpreter.Options options=new Interpreter.Options();
         gpuDelegate=new GpuDelegate();
         options.addDelegate(gpuDelegate);
-        options.setNumThreads(4); // set it according to your phone
-        // loading model
+        options.setNumThreads(4);
         interpreter=new Interpreter(loadModelFile(assetManager,modelPath),options);
-        // load labelmap
         labelList=loadLabelList(assetManager,labelPath);
 
 
     }
-
     private List<String> loadLabelList(AssetManager assetManager, String labelPath) throws IOException {
         // to store label
         List<String> labelList=new ArrayList<>();
@@ -79,46 +75,25 @@ public class FoodRecognizerModel {
 
         return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
-    // create new Mat function
     public Mat recognizeImage(Mat mat_image){
-        // Rotate original image by 90 degree get get portrait frame
         Mat rotated_mat_image=new Mat();
         Core.flip(mat_image.t(),rotated_mat_image,1);
-        // if you do not do this process you will get improper prediction, less no. of object
-        // now convert it to bitmap
+
         Bitmap bitmap=null;
         bitmap=Bitmap.createBitmap(rotated_mat_image.cols(),rotated_mat_image.rows(),Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(rotated_mat_image,bitmap);
-        // define height and width
         height=bitmap.getHeight();
         width=bitmap.getWidth();
-
-        // scale the bitmap to input size of model
         Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
-
-        // convert bitmap to bytebuffer as model input should be in it
         ByteBuffer byteBuffer=convertBitmapToByteBuffer(scaledBitmap);
-
-        // defining output
-        // 10: top 10 object detected
-        // 4: there coordinate in image
-        //  float[][][]result=new float[1][10][4];
         Object[] input=new Object[1];
         input[0]=byteBuffer;
 
         Map<Integer,Object> output_map=new TreeMap<>();
-        // we are not going to use this method of output
-        // instead we create treemap of three array (boxes,score,classes)
-
         float[][][]boxes =new float[1][10][4];
-        // 10: top 10 object detected
-        // 4: there coordinate in image
-        float[][] scores=new float[1][10];
-        // stores scores of 10 object
-        float[][] classes=new float[1][10];
-        // stores class of object
 
-        // add it to object_map;
+        float[][] scores=new float[1][10];
+        float[][] classes=new float[1][10];
         output_map.put(0,boxes);
         output_map.put(1,classes);
         output_map.put(2,scores);
@@ -128,8 +103,6 @@ public class FoodRecognizerModel {
         Object Object_class=output_map.get(1);
         Object score=output_map.get(2);
 
-        // loop through each object
-        // as output has only 10 boxes
         for (int i=0;i<3;i++){
             float class_value=(float) Array.get(Array.get(Object_class,0),i);
             float score_value=(float) Array.get(Array.get(score,0),i);
