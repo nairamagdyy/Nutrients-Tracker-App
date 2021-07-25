@@ -128,7 +128,6 @@ public class AppDBController extends SQLiteOpenHelper {
         return cursor.getInt(0) ;
     }
 
-
     public boolean editUser(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -229,6 +228,7 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return recTable>0;
     }
+
     public List<Recipe> searchRecipe(String recipename) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query(recipeTable.DB_Table, new String[] {recipeTable.DB_col_ID}, recipeTable.DB_col_NAME + "=?",
@@ -284,7 +284,6 @@ public class AppDBController extends SQLiteOpenHelper {
                 +" AND "+favListTable.DB_col_RecipeID+" = "+recipeID;
         db.execSQL(query);
     }
-
 
     //---------------------------------RECIPE NUTRIENTS TABLE---------------------------------------
     public long insertRecipeNutrients(NutrientsFactsRecord facts){
@@ -347,9 +346,6 @@ public class AppDBController extends SQLiteOpenHelper {
 
         return record;
     }
-
-
-
 
 }
 

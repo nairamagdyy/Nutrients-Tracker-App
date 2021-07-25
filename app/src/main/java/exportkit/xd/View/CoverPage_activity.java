@@ -22,8 +22,9 @@ public class CoverPage_activity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coverpage);
-        signup = (Button) findViewById(R.id.signup);
 
+        //find views
+        signup = (Button) findViewById(R.id.signup);
         login = (Button) findViewById(R.id.login);
 
         signup.setOnClickListener(new View.OnClickListener() {

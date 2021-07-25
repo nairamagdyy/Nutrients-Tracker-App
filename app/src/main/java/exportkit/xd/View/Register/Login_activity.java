@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import exportkit.xd.Controller.UserController;
-import exportkit.xd.DB.AppDBController;
 import exportkit.xd.R;
 import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
@@ -20,7 +19,6 @@ import exportkit.xd.View.IAppViews;
 public class Login_activity extends Activity implements IAppViews {
 
 	UserController userController;
-	AppDBController db;
 	private TextView email, password,
 			loginb, signUpb;
 	private ImageView hidden;
@@ -31,7 +29,6 @@ public class Login_activity extends Activity implements IAppViews {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
 		userController = new UserController(this);
-		db = new AppDBController(this)  ;
 		email= (TextView) findViewById(R.id.email_or_username);
 		password = (TextView) findViewById(R.id.password);
 
