@@ -20,6 +20,7 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.NutrientsFactsRecord;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.R;
+import exportkit.xd.View.Scanner.Camera;
 import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.Profile_activity;
@@ -38,13 +39,14 @@ public class AddRecipe_activity extends Camera implements IAppViews {
 
     RecipeController recipeController;
     NutrientsController nutrientsController;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_recipe);
 
         recipeController = new RecipeController(this);
-        CameraController cameraController = new CameraController(this);
+        cameraController = new CameraController(this);
         nutrientsController= new NutrientsController(this);
 
         //dynamic view
@@ -56,7 +58,7 @@ public class AddRecipe_activity extends Camera implements IAppViews {
         int loggedUser = (int) session.getUserFromSession();
 
         //find views
-        View uploadedImage = findViewById(R.id.uploadImage);
+        uploadedImage= findViewById(R.id.uploadImage);
         name= findViewById(R.id.enter_food_name);
         description= findViewById(R.id.enter_description);
         saveBtn = findViewById(R.id.done);

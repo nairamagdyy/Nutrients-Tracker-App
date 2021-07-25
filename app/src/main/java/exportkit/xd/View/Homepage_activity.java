@@ -1,4 +1,3 @@
-
 package exportkit.xd.View;
 
 import android.app.Activity;
@@ -19,7 +18,6 @@ import exportkit.xd.Model.User;
 import exportkit.xd.R;
 import exportkit.xd.View.Profile.Profile_activity;
 import exportkit.xd.View.Recipe.AddRecipe_activity;
-import exportkit.xd.View.Scanner.Scanner_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 
 public class Homepage_activity extends Activity implements IAppViews{
@@ -75,11 +73,10 @@ public class Homepage_activity extends Activity implements IAppViews{
 			}
 		});
 		cameraButton.setOnClickListener(new View.OnClickListener() {
-
-				public void onClick(View v) {
-					startActivity(new Intent(getApplicationContext(), Scanner_activity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-				}
-
+			public void onClick(View v){
+				//Intent nextScreen = new Intent(getApplicationContext(), .class);
+				//startActivity(nextScreen);
+			}
 		});
 	}
 
