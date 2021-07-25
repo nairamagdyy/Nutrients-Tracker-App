@@ -109,32 +109,31 @@ public class MacroTracker_activity extends Camera implements IAppViews {
         increaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 trackMacros(QUERY.INCREASE_Fats);
-                fats_();
             }
         });
         decreaseFats.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                fats_();
+                trackMacros(QUERY.DECREASE_Fats);
             }
         });
         increaseCarbs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                fats_();
+                trackMacros(QUERY.INCREASE_Carbs);
             }
         });
         decreaseCarbs.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                fats_();
+                trackMacros(QUERY.DECREASE_Carbs);
             }
         });
         increaseProteins.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                fats_();
+                trackMacros(QUERY.INCREASE_Protein);
             }
         });
         decreaseProteins.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                fats_();
+                trackMacros(QUERY.DECREASE_Protein);
             }
         });
         recipeDetailsButton.setOnClickListener(new View.OnClickListener() {
@@ -170,49 +169,14 @@ public class MacroTracker_activity extends Camera implements IAppViews {
         });
     }
 
-    private void fats_() {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        dialogBuilder.setTitle("Tips");
-        dialogBuilder.setMessage("Some informative message for the user to do that.");
-        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialogBuilder.create().show();
-    }
-
-    private String trackMacros(QUERY key){
-        String msg= "";
-        //get query input, what user want to track
-        String[] query= String.valueOf(key).split("_");
+    private void trackMacros(QUERY key){
         //track nutrients for each ingredient
         Recipe recipe= recipeController.getRecipe(recipeId);
         //split ingredients, each ingredient in one index in vector
         ArrayList<String> ingredientsList= readRecipeIngredients(recipe.getIngredients());
-        nutrientsController.trackMacros(String.valueOf(key), readRecipeIngredients(recipe.getIngredients()));
-
-        if(query[0].equals("INCREASE")){
-            if(query[1].equals("FATS")){
-
-            }else if (query[1].equals("CARBS")){
-
-            }else if((query[1].equals("PROTEIN"))){
-
-            }
-        }
-        else if(query[0].equals("DECREASE")){
-            if(query[1].equals("FATS")){
-
-            }else if (query[1].equals("CARBS")){
-
-            }else if((query[1].equals("PROTEIN"))){
-
-            }
-        }
-
-        return msg;
+        String msg= nutrientsController.trackMacros(String.valueOf(key), readRecipeIngredients(recipe.getIngredients()));
+        //display msg
+        display(msg);
     }
 
     private ArrayList<String> readRecipeIngredients(String recipeIngredients){
@@ -232,6 +196,19 @@ public class MacroTracker_activity extends Camera implements IAppViews {
             }
         }
         return ingredients;
+    }
+
+    private void display(String msg) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Tips");
+        dialogBuilder.setMessage(msg);
+        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialogBuilder.create().show();
     }
 
     //----------------------------------------------------------------------------------------------
