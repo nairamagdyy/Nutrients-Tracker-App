@@ -19,7 +19,7 @@ import org.opencv.core.Mat;
 import java.io.IOException;
 
 import exportkit.xd.Controller.CameraController;
-import exportkit.xd.Model.FoodRecognizerModel;
+import exportkit.xd.Controller.MLModelController;
 import exportkit.xd.R;
 import exportkit.xd.View.Homepage_activity;
 
@@ -30,7 +30,7 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
     private Mat mGray;
     Button back ;
 
-     FoodRecognizerModel foodRecognizerModel;
+    MLModelController MLModelController;
     private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
@@ -71,7 +71,7 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
         mOpenCvCameraView.setCvCameraViewListener(this);
         try{
             // input size is 300 for this model
-            foodRecognizerModel=new FoodRecognizerModel(getAssets(), "detect.tflite", "classes.txt",300);
+            MLModelController =new MLModelController(getAssets(), "detect.tflite", "classes.txt",300);
             Log.d(TAG,"Model is successfully loaded");
         }
         catch (IOException e){
@@ -114,7 +114,7 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
         mRgba=inputFrame.rgba();
         mGray=inputFrame.gray();
         Mat out=new Mat();
-        out=foodRecognizerModel.recognizeImage(mRgba);
+        out= MLModelController.recognizeImage(mRgba);
 
         return out;
     }

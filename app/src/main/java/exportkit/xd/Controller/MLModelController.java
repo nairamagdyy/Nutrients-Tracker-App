@@ -1,4 +1,4 @@
-package exportkit.xd.Model;
+package exportkit.xd.Controller;
 
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class FoodRecognizerModel {
+public class MLModelController {
     // this is used to load model and predict
     private Interpreter interpreter;
     // store all label in array
@@ -40,7 +40,7 @@ public class FoodRecognizerModel {
     private int height=0;
     private  int width=0;
     List<String> predictions = new ArrayList<String>() ;
-    public FoodRecognizerModel(AssetManager assetManager, String modelPath, String labelPath, int inputSize) throws IOException{
+    public MLModelController(AssetManager assetManager, String modelPath, String labelPath, int inputSize) throws IOException{
         INPUT_SIZE=inputSize;
         Interpreter.Options options=new Interpreter.Options();
         gpuDelegate=new GpuDelegate();
@@ -75,6 +75,7 @@ public class FoodRecognizerModel {
 
         return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
+
     public Mat recognizeImage(Mat mat_image){
         Mat rotated_mat_image=new Mat();
         Core.flip(mat_image.t(),rotated_mat_image,1);
