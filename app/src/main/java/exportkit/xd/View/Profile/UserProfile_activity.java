@@ -44,7 +44,7 @@ public class UserProfile_activity extends Activity implements IProfile, IAppView
     RecyclerView recycleRecipeList;
     List<String>  recipeNameList = new ArrayList<>();
     List<String> recipeImageList = new ArrayList<>();
-    exportkit.xd.View.Adapter Adapter;
+    Adapter adapter;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,10 +101,10 @@ public class UserProfile_activity extends Activity implements IProfile, IAppView
             recipeImageList.add(recipe.getImage());
         }
 
-        Adapter = new Adapter(this, recipesIdList, recipeNameList, recipeImageList);
+        adapter = new Adapter(this, recipesIdList, recipeNameList, recipeImageList);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
         recycleRecipeList.setLayoutManager(gridLayoutManager);
-        recycleRecipeList.setAdapter(Adapter);
+        recycleRecipeList.setAdapter(adapter);
 
         // buttons functions
         HomeButton.setOnClickListener(new View.OnClickListener() {

@@ -30,6 +30,7 @@ import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
 import exportkit.xd.View.Profile.Profile_activity;
 import exportkit.xd.View.Profile.UserProfile_activity;
+import exportkit.xd.View.Search.SearchRecipe_activity;
 import exportkit.xd.View.Search.SearchUser_activity;
 
 public class RecipeDetails_activity extends Activity implements IAppViews {
@@ -88,6 +89,8 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
             }else
                 editButton.setImageResource(R.drawable.star_1);
         }
+        if(PROFILE_KEY.equals("searchRecipe"))
+            editButton.setVisibility(View.GONE); //no delete no favList
 
         //get recipe info from db
         Recipe recipe= recipeController.getRecipe(recipeId);
@@ -168,6 +171,8 @@ public class RecipeDetails_activity extends Activity implements IAppViews {
                 Intent nextScreen;
                 if(PROFILE_KEY.equals("myProfile"))
                     nextScreen= new Intent(getApplicationContext(), Profile_activity.class);
+                else if(PROFILE_KEY.equals("searchRecipe"))
+                    nextScreen= new Intent(getApplicationContext(), SearchRecipe_activity.class);
                 else {
                     nextScreen = new Intent(getApplicationContext(), UserProfile_activity.class);
                     Bundle bundle = new Bundle();

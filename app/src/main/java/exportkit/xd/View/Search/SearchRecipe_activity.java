@@ -1,6 +1,7 @@
 package exportkit.xd.View.Search;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -12,10 +13,14 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import exportkit.xd.Controller.RecipeController;
 import exportkit.xd.Controller.UserController;
@@ -23,28 +28,40 @@ import exportkit.xd.DB.SessionManager;
 import exportkit.xd.Model.Recipe;
 import exportkit.xd.Model.User;
 import exportkit.xd.R;
+import exportkit.xd.View.Adapter;
 import exportkit.xd.View.Homepage_activity;
 import exportkit.xd.View.IAppViews;
+import exportkit.xd.View.Profile.IProfile;
 import exportkit.xd.View.Profile.Profile_activity;
 import exportkit.xd.View.Recipe.RecipeDetails_activity;
 
-public class SearchRecipe_activity extends Activity implements IAppViews {
+public class SearchRecipe_activity extends Activity implements IProfile, IAppViews {
     UserController userController;
     RecipeController recipeController;
+
+    RecyclerView recycleSearchList;
+    Vector<Integer> recipesIdList= new Vector<>();
+    List<String>  recipeNameList = new ArrayList<>();
+    List<String> recipeImageList = new ArrayList<>();
+    Adapter adapter;
 
     EditText recipeName;
     Button done , recipesButton , usersButton ;
     ImageButton back, HomeButton;
+    private CircularImageView ProfileIcon;
     int RecipeId ;
 
-    private CircularImageView ProfileIcon;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_recipe);
+
         userController = new UserController(this);
         recipeController = new RecipeController(this);
+        Context cntx= this;
 
         //find views
+        recycleSearchList = findViewById(R.id.list);
         recipeName = (EditText) findViewById(R.id.search);
         done = (Button) findViewById(R.id.ellipse_ek22);
         back = (ImageButton) findViewById(R.id.backk);
@@ -67,13 +84,22 @@ public class SearchRecipe_activity extends Activity implements IAppViews {
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v) {
                 String txtName = recipeName.getText().toString().replaceAll("\\s",""); //remove all spaces
-                List<Recipe> recipeInfo = recipeController.SearchRecipe(txtName);
+                List<Recipe> recipeInfo = recipeController.SearchRecipe(txtName); //just rectuen id
                 if (recipeInfo.isEmpty()) {
                     onError("Recipe Name Doesn't exist");
                 }
                 else
                 {
-                    RecipeId= recipeInfo.get(0).getId();
+                    //Recyclerview as GridView for recipes
+                    recycleSearchList.setVisibility(View.VISIBLE);
+                    for(int i=0; i<recipeInfo.size();i++){
+                        Recipe recipe= recipeController.getRecipe(recipeInfo.get(i).getId());
+                        recipesIdList.add(recipe.getId());
+                        recipeNameList.add(recipe.getName());
+                        recipeImageList.add(recipe.getImage());
+                    }
+                    adapter = new Adapter(cntx, recipesIdList, recipeNameList, recipeImageList);
+                    //RecipeId= recipeInfo.get(0).getId();
                     onSuccess("");
                 }
             }
@@ -108,16 +134,31 @@ public class SearchRecipe_activity extends Activity implements IAppViews {
 
     @Override
     public void onSuccess(String message) {
+        /*
         Intent nextScreen = new Intent(getApplicationContext(), RecipeDetails_activity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("id", RecipeId);
         bundle.putString("IProfile","myProfile");
         nextScreen.putExtras(bundle);
-        startActivity(nextScreen);
+        startActivity(nextScreen);*/
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+        recycleSearchList.setLayoutManager(gridLayoutManager);
+        recycleSearchList.setAdapter(adapter);
     }
 
     @Override
     public void onError(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void viewRecipeDetails(int id) {
+        Intent nextScreen = new Intent(getApplicationContext(), RecipeDetails_activity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("id",id);
+        bundle.putString("IProfile","searchRecipe");
+        nextScreen.putExtras(bundle);
+        startActivity(nextScreen);
+
     }
 }
