@@ -33,6 +33,7 @@
 		<activity android:name="exportkit.xd.View.Recipe.MacroTracker_activity" />
 		<activity android:name="exportkit.xd.View.Search.SearchRecipe_activity" />
 		<activity android:name="exportkit.xd.View.Recipe.RecipeDetails_activity" />
+		<activity android:name="exportkit.xd.View.Scanner.ScannerActivity" />
 
         <!-- Image cropper activity -->
 		<activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
