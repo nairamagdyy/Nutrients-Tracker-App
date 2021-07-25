@@ -14,7 +14,7 @@
 		android:label="@string/app_name"
         android:supportsRtl="true">
 		<activity
-			android:name=".View.CoverPage_activity"
+			android:name=".View.Homepage_activity"
 			android:label="gp"
 			android:theme="@style/AppTheme" >
 			<intent-filter>
@@ -24,7 +24,7 @@
 		</activity>
 		<activity android:name="exportkit.xd.View.Register.Login_activity"/>
 		<activity android:name="exportkit.xd.View.Register.SignUp_activity"/>
-		<activity android:name="exportkit.xd.View.Homepage_activity" />
+		<activity android:name="exportkit.xd.View.CoverPage_activity" />
 		<activity android:name="exportkit.xd.View.Profile.Profile_activity"/>
 		<activity android:name="exportkit.xd.View.Profile.EditProfile_activity"/>
 		<activity android:name="exportkit.xd.View.Search.SearchUser_activity" />
