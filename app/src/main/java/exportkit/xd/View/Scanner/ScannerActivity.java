@@ -1,12 +1,6 @@
 package exportkit.xd.View.Scanner;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
@@ -24,17 +18,18 @@ import org.opencv.core.Mat;
 
 import java.io.IOException;
 
+import exportkit.xd.Controller.CameraController;
 import exportkit.xd.Model.FoodRecognizerModel;
 import exportkit.xd.R;
 import exportkit.xd.View.Homepage_activity;
 
-public class ScannerActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2{
+public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCameraViewListener2{
     private static final String TAG="Homepage_activity";
-
+    CameraController cameraController;
     private Mat mRgba;
     private Mat mGray;
     Button back ;
-    private CameraBridgeViewBase mOpenCvCameraView;
+
      FoodRecognizerModel foodRecognizerModel;
     private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
         @Override
@@ -65,12 +60,8 @@ public class ScannerActivity extends Activity implements CameraBridgeViewBase.Cv
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        int MY_PERMISSIONS_REQUEST_CAMERA=0;
-        // if camera permission is not given it will ask for it on device
-        if (ContextCompat.checkSelfPermission(ScannerActivity.this, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(ScannerActivity.this, new String[] {Manifest.permission.CAMERA}, MY_PERMISSIONS_REQUEST_CAMERA);
-        }
+        cameraController= new CameraController(this);
+        cameraController.openLiveCamera();
 
         setContentView(R.layout.activity_camera);
 
@@ -110,29 +101,15 @@ public class ScannerActivity extends Activity implements CameraBridgeViewBase.Cv
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (mOpenCvCameraView !=null){
-            mOpenCvCameraView.disableView();
-        }
-    }
-
-    public void onDestroy(){
-        super.onDestroy();
-        if(mOpenCvCameraView !=null){
-            mOpenCvCameraView.disableView();
-        }
-
-    }
-
     public void onCameraViewStarted(int width ,int height){
         mRgba=new Mat(height,width, CvType.CV_8UC4);
         mGray =new Mat(height,width,CvType.CV_8UC1);
     }
+
     public void onCameraViewStopped(){
         mRgba.release();
     }
+
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame){
         mRgba=inputFrame.rgba();
         mGray=inputFrame.gray();

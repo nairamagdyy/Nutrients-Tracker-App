@@ -11,6 +11,8 @@ import com.blogspot.atifsoftwares.circularimageview.CircularImageView;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import org.opencv.android.CameraBridgeViewBase;
+
 import exportkit.xd.Controller.CameraController;
 
 import static exportkit.xd.DB.Constants.CameraConstants.CAMERA_REQUEST_CODE;
@@ -21,6 +23,7 @@ import static exportkit.xd.DB.Constants.CameraConstants.STORAGE_REQUEST_CODE;
 public abstract class Camera extends AppCompatActivity {
     public CameraController cameraController;
     public CircularImageView uploadedImage; //in view/ xml file
+    public CameraBridgeViewBase mOpenCvCameraView; //live camera ML
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -99,4 +102,23 @@ public abstract class Camera extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mOpenCvCameraView !=null){
+            mOpenCvCameraView.disableView();
+        }
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+        if(mOpenCvCameraView !=null){
+            mOpenCvCameraView.disableView();
+        }
+
+    }
+
+
 }

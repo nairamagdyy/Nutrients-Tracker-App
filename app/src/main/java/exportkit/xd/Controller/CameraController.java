@@ -10,8 +10,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.MediaStore;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import exportkit.xd.DB.Constants.CameraConstants;
 
 public class CameraController{
@@ -23,6 +25,8 @@ public class CameraController{
     public String[] storagePermissions; //storage only
     //variables (will contain data to save)
     public Uri imageUri;
+
+    //----------------------------------------------------------------------------------------------
 
     public CameraController(Activity view) {
         this.view= view;
@@ -60,6 +64,11 @@ public class CameraController{
         });
         //create/show dialog
         builder.create().show();
+    }
+
+    public void openLiveCamera(){
+        if(!checkCameraPermission())
+            requestCameraPermission();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -111,4 +120,7 @@ public class CameraController{
         galleryIntent.setType("image/*"); //we want only images
         view.startActivityForResult(galleryIntent, constants.IMAGE_PICK_GALLERY_CODE);
     }
+
+    //----------------------------------------------------------------------------------------------
+
 }
