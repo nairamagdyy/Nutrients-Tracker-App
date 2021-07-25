@@ -66,7 +66,8 @@ public class SearchRecipe_activity extends Activity implements IAppViews {
         done.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             public void onClick(View v) {
-                List<Recipe> recipeInfo = recipeController.SearchRecipe(recipeName.getText().toString());
+                String txtName = recipeName.getText().toString().replaceAll("\\s",""); //remove all spaces
+                List<Recipe> recipeInfo = recipeController.SearchRecipe(txtName);
                 if (recipeInfo.isEmpty()) {
                     onError("Recipe Name Doesn't exist");
                 }
