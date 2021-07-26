@@ -1,50 +1,44 @@
 package exportkit.xd.View;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import exportkit.xd.R;
-import exportkit.xd.View.Profile.IProfile;
+import exportkit.xd.View.Scanner.TrackIngredients_activity;
 
-public class adapter_ingr extends RecyclerView.Adapter<adapter_ingr.ViewHolder>{
+public class Adapter_ingr extends RecyclerView.Adapter<Adapter_ingr.ViewHolder>{
 
-    List<String> ingredient;
-    List<Integer> ids;
+    String[] ingredient;
     LayoutInflater inflater;
-    IProfile view;
+    TrackIngredients_activity view;
 
-    public adapter_ingr(Context ctx, List<Integer> ids, List<String> ingredient){
+    public Adapter_ingr(Context ctx, String[] ingredient){
         this.ingredient = ingredient;
-        this.ids= ids;
         this.inflater = LayoutInflater.from(ctx);
-        this.view= (IProfile) ctx;
+        this.view= (TrackIngredients_activity) ctx;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.ingredients,parent,false);
+        View view = inflater.inflate(R.layout.ingredient_view,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.ingredient_name.setText(ingredient.get(position));
+        holder.ingredient_name.setText(ingredient[position]);
     }
 
     @Override
     public int getItemCount() {
-        return ingredient.size();
+        return ingredient.length;
     }
 
 
@@ -58,7 +52,7 @@ public class adapter_ingr extends RecyclerView.Adapter<adapter_ingr.ViewHolder>{
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v){
-                    view.viewRecipeDetails(ids.get(getAdapterPosition()));
+                    view.viewFacts(ingredient[getAdapterPosition()]);
                 }
             });
         }

@@ -31,7 +31,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
         this.view= (IProfile) ctx;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

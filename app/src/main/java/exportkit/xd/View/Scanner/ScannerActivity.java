@@ -17,6 +17,7 @@ import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import exportkit.xd.Controller.CameraController;
 import exportkit.xd.Controller.MLModelController;
@@ -27,7 +28,7 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
     private static final String TAG="Homepage_activity";
     CameraController cameraController;
     private Mat mRgba;
-    Button back ;
+    Button back, doneBtn ;
 
     MLModelController MLModelController;
     private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
@@ -49,6 +50,8 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
         }
     };
 
+    public ArrayList<String> ingredients;
+
     public ScannerActivity(){
         Log.i(TAG,"Instantiated new "+this.getClass());
     }
@@ -62,9 +65,14 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
         cameraController.openLiveCamera();
         setContentView(R.layout.activity_camera);
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);
-        back = (Button)findViewById(R.id.back_button);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
+
+        back = (Button)findViewById(R.id.back_button);
+        doneBtn = (Button)findViewById(R.id.done_button);
+
+        ingredients = new ArrayList<String>() ;
+
         try{
             // input size is 300 for this model
             MLModelController =new MLModelController(getAssets(), "detect.tflite", "classes.txt",300);
@@ -74,6 +82,16 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
             Log.d(TAG,"Getting some error");
             e.printStackTrace();
         }
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                ingredients= MLModelController.predictions;
+                Intent nextScreen = new Intent(getApplicationContext(), TrackIngredients_activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("list",ingredients.toString());
+                nextScreen.putExtras(bundle);
+                startActivity(nextScreen);
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent nextScreen = new Intent(getApplicationContext(), Homepage_activity.class);

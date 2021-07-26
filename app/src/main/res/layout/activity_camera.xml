@@ -19,6 +19,14 @@
             android:id="@+id/back_button"
             android:text="Back"
             />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/done_button"
+            android:layout_marginLeft="300dp"
+            android:text="Capture"
+            />
         <org.opencv.android.JavaCameraView
             android:layout_width="match_parent"
             android:layout_height="match_parent"

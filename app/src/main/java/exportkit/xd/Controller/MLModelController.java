@@ -22,10 +22,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class MLModelController {
@@ -40,7 +38,7 @@ public class MLModelController {
     private int width=0;
 
     ArrayList<String> labels = new ArrayList<String>() ;
-    ArrayList<String> predictions = new ArrayList<String>() ;
+    public ArrayList<String> predictions = new ArrayList<String>() ;
 
     public MLModelController(AssetManager assetManager, String modelPath, String labelPath, int inputSize) throws IOException{
         INPUT_SIZE=inputSize;
@@ -50,8 +48,8 @@ public class MLModelController {
         options.setNumThreads(4);
         interpreter=new Interpreter(loadModelFile(assetManager,modelPath),options);
         labelList=loadLabelList(assetManager,labelPath);
-
     }
+
     private List<String> loadLabelList(AssetManager assetManager, String labelPath) throws IOException {
         List<String> labelList=new ArrayList<>();
         BufferedReader reader=new BufferedReader(new InputStreamReader(assetManager.open(labelPath)));
@@ -71,6 +69,7 @@ public class MLModelController {
         long declaredLength=fileDescriptor.getDeclaredLength();
         return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
+
     public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list)
     {
         // Create a new ArrayList
@@ -137,7 +136,6 @@ public class MLModelController {
         }
         predictions = removeDuplicates(labels);
         predictions.remove("???");
-        System.out.println("Ingredients : "+ predictions);
         Core.flip(image.t(),mat_image,0);
         return mat_image;
     }
