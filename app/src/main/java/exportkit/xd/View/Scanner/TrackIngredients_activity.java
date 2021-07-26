@@ -113,8 +113,8 @@ public class TrackIngredients_activity extends Activity implements IAppViews {
         NutrientsFactsRecord facts= nutrientsController.calculateNutrients(list);
 
         //convert it to String
-        String str="";
-        str= cnst.col_Calories+": "+facts.getCalories()+"\n";
+        String str="100g of "+s+":\n\n" ;
+        str+= cnst.col_Calories+": "+facts.getCalories()+"\n";
         str+= "\n"+cnst.col_Protein+": "+facts.getProtein()+"g\n";
         str+= "\n"+cnst.col_Carbs+": "+facts.getCarbs()+"g\n";
         if(facts.getSugars()!=0) str+= "\t\t\t"+cnst.col_Sugars+": "+facts.getSugars()+"g\n";
