@@ -83,7 +83,7 @@ public class AddRecipe_activity extends Camera implements IAppViews {
                         recipeDescription= ""+description.getText().toString().trim();
 
                 if (recipeName.equalsIgnoreCase(""))//|| recipeIngredients.equals(""))
-                    Toast.makeText(getApplication(),"you should fill the empty fields",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplication(),"you should fill food name field",Toast.LENGTH_LONG).show();
                 else
                 {
                     if(readDynamicView()){

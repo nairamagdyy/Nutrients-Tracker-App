@@ -111,7 +111,7 @@ public abstract class Camera extends AppCompatActivity {
             mOpenCvCameraView.disableView();
         }
     }
-
+    @Override
     public void onDestroy(){
         super.onDestroy();
         if(mOpenCvCameraView !=null){

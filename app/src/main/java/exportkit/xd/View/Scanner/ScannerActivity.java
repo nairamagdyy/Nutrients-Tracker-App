@@ -27,7 +27,6 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
     private static final String TAG="Homepage_activity";
     CameraController cameraController;
     private Mat mRgba;
-    private Mat mGray;
     Button back ;
 
     MLModelController MLModelController;
@@ -59,12 +58,9 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
         cameraController= new CameraController(this);
         cameraController.openLiveCamera();
-
         setContentView(R.layout.activity_camera);
-
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);
         back = (Button)findViewById(R.id.back_button);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
@@ -100,23 +96,21 @@ public class ScannerActivity extends Camera implements CameraBridgeViewBase.CvCa
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_4_0,this,mLoaderCallback);
         }
     }
-
+    @Override
+    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame){
+        mRgba=inputFrame.rgba();
+        Mat out=new Mat();
+        out= MLModelController.recognizeImage(mRgba);
+        return out;
+    }
+    @Override
     public void onCameraViewStarted(int width ,int height){
         mRgba=new Mat(height,width, CvType.CV_8UC4);
-        mGray =new Mat(height,width,CvType.CV_8UC1);
     }
-
+    @Override
     public void onCameraViewStopped(){
         mRgba.release();
     }
 
-    public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame){
-        mRgba=inputFrame.rgba();
-        mGray=inputFrame.gray();
-        Mat out=new Mat();
-        out= MLModelController.recognizeImage(mRgba);
-
-        return out;
-    }
 
 }

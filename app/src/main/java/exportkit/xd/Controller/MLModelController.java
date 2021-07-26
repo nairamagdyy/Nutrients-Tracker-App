@@ -22,8 +22,10 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class MLModelController {
@@ -32,14 +34,14 @@ public class MLModelController {
     // store all label in array
     private List<String> labelList;
     private int INPUT_SIZE;
-    private int PIXEL_SIZE=3; // for RGB
-    private int IMAGE_MEAN=0;
-    private  float IMAGE_STD=255.0f;
     // use to initialize gpu in app
     private GpuDelegate gpuDelegate;
     private int height=0;
-    private  int width=0;
-    List<String> predictions = new ArrayList<String>() ;
+    private int width=0;
+
+    ArrayList<String> labels = new ArrayList<String>() ;
+    ArrayList<String> predictions = new ArrayList<String>() ;
+
     public MLModelController(AssetManager assetManager, String modelPath, String labelPath, int inputSize) throws IOException{
         INPUT_SIZE=inputSize;
         Interpreter.Options options=new Interpreter.Options();
@@ -49,15 +51,11 @@ public class MLModelController {
         interpreter=new Interpreter(loadModelFile(assetManager,modelPath),options);
         labelList=loadLabelList(assetManager,labelPath);
 
-
     }
     private List<String> loadLabelList(AssetManager assetManager, String labelPath) throws IOException {
-        // to store label
         List<String> labelList=new ArrayList<>();
-        // create a new reader
         BufferedReader reader=new BufferedReader(new InputStreamReader(assetManager.open(labelPath)));
         String line;
-        // loop through each line and store it to labelList
         while ((line=reader.readLine())!=null){
             labelList.add(line);
         }
@@ -66,23 +64,39 @@ public class MLModelController {
     }
 
     private ByteBuffer loadModelFile(AssetManager assetManager, String modelPath) throws IOException {
-        // use to get description of file
         AssetFileDescriptor fileDescriptor=assetManager.openFd(modelPath);
         FileInputStream inputStream=new FileInputStream(fileDescriptor.getFileDescriptor());
         FileChannel fileChannel=inputStream.getChannel();
         long startOffset =fileDescriptor.getStartOffset();
         long declaredLength=fileDescriptor.getDeclaredLength();
-
         return fileChannel.map(FileChannel.MapMode.READ_ONLY,startOffset,declaredLength);
     }
+    public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list)
+    {
+        // Create a new ArrayList
+        ArrayList<T> newList = new ArrayList<T>();
 
+        // Traverse through the first list
+        for (T element : list) {
+
+            // If this element is not present in newList
+            // then add it
+            if (!newList.contains(element)) {
+
+                newList.add(element);
+            }
+        }
+
+        // return the new list
+        return newList;
+    }
     public Mat recognizeImage(Mat mat_image){
-        Mat rotated_mat_image=new Mat();
-        Core.flip(mat_image.t(),rotated_mat_image,1);
+        Mat image=new Mat();
+        Core.flip(mat_image.t(),image,1);
 
         Bitmap bitmap=null;
-        bitmap=Bitmap.createBitmap(rotated_mat_image.cols(),rotated_mat_image.rows(),Bitmap.Config.ARGB_8888);
-        Utils.matToBitmap(rotated_mat_image,bitmap);
+        bitmap=Bitmap.createBitmap(image.cols(),image.rows(),Bitmap.Config.ARGB_8888);
+        Utils.matToBitmap(image,bitmap);
         height=bitmap.getHeight();
         width=bitmap.getWidth();
         Bitmap scaledBitmap=Bitmap.createScaledBitmap(bitmap,INPUT_SIZE,INPUT_SIZE,false);
@@ -92,7 +106,6 @@ public class MLModelController {
 
         Map<Integer,Object> output_map=new TreeMap<>();
         float[][][]boxes =new float[1][10][4];
-
         float[][] scores=new float[1][10];
         float[][] classes=new float[1][10];
         output_map.put(0,boxes);
@@ -111,20 +124,21 @@ public class MLModelController {
             if(score_value>0.5){
                 Object box1=Array.get(Array.get(value,0),i);
                 // we are multiplying it with Original height and width of frame
-
                 float top=(float) Array.get(box1,0)*height;
                 float left=(float) Array.get(box1,1)*width;
                 float bottom=(float) Array.get(box1,2)*height;
                 float right=(float) Array.get(box1,3)*width;
-                // draw rectangle in Original frame //  starting point    // ending point of box  // color of box       thickness
-                Imgproc.rectangle(rotated_mat_image,new Point(left,top),new Point(right,bottom),new Scalar(0, 255, 0, 255),2);
-                // write text on frame// string of class name of object  // starting point                         // color of text           // size of text
-                predictions.add(labelList.get((int) class_value)) ;
-                Imgproc.putText(rotated_mat_image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
+                // draw rectangle in Original frame //  starting point    // ending point of box  // color of box //thickness
+                Imgproc.rectangle(image,new Point(left,top),new Point(right,bottom),new Scalar(0, 255, 0, 255),2);
+                // write text on frame// string of class name of object  // starting point // color of text // size of text
+                labels.add(labelList.get((int) class_value)) ;
+                Imgproc.putText(image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
             }
-
         }
-        Core.flip(rotated_mat_image.t(),mat_image,0);
+        predictions = removeDuplicates(labels);
+        predictions.remove("???");
+        System.out.println("Ingredients : "+ predictions);
+        Core.flip(image.t(),mat_image,0);
         return mat_image;
     }
 
